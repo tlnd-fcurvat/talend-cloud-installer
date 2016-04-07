@@ -9,8 +9,6 @@
 #
 class profile::base {
 
-  notice('###   class profile::baser is called ')
-
   profile::register_profile{ 'base': order => 1, }
 
   #
@@ -21,8 +19,8 @@ class profile::base {
   # depreceated since concat 2.0
   # include concat::setup
   include ::stdlib
-  include ::selinux
-  include ::awscli
+  if $::osfamily == 'RedHat' { include ::selinux }
+  if $::ec2_matadata { include ::awscli }
   include ::java
 
   # get some usual helpers installed
