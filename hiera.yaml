@@ -1,0 +1,11 @@
+---
+:backends:
+  - yaml
+
+:hierarchy:
+  - clientcert/%{clientcert}
+  - puppet_role/%{puppet_role}
+  - common
+
+:yaml:
+  :datadir: hieradata

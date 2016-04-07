@@ -1,0 +1,15 @@
+---
+message: "This node is using common data"
+
+common_packages:
+  'hiera-eyaml':
+    ensure: 'installed'
+    provider: 'gem'
+  'hiera-eyaml-kms':
+    ensure: 'installed'
+    provider: 'gem'
+  'aws-sdk':
+    ensure: 'installed'
+    provider: 'gem'
+
+
