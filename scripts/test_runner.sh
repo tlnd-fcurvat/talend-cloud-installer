@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-CHANGED=$(git diff --name-status origin/development.. | tr -d "A\t" | grep "^modules/" | cut -d"/" -f2 | uniq)
+CHANGED=$(git diff --name-status origin/master.. | tr -d "A\t" | grep "^modules/" | cut -d"/" -f2 | uniq)
 RAKE=`which rake`
 BUNDLER=`which bundle`
 UPSTREAM_EXCLUDES='datacat ssh archive jenkins cassandra'
@@ -17,7 +17,7 @@ test_module() {
 run_bundler() {
   BUNDLER=$(which bundler)
   if [ -n $BUNDLER ]; then
-    $BUNDLER install --path=vendor/bundler
+    $BUNDLER install --path=vendor/bundler > /dev/null
   else
 	echo 'ERROR: bundler gem not installed'
 	exit 1
