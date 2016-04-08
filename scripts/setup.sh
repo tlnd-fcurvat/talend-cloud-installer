@@ -6,7 +6,7 @@ PUPPET=`which puppet`
 
 
 if [ -n $BUNDLER ]; then
-	${BUNDLER} install  > /dev/null
+	${BUNDLER} install --path=vendor/bundler > /dev/null
 else
 	echo 'Error bundler gem not installed'
 	exit 1
