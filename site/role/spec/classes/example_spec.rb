@@ -23,7 +23,7 @@ describe 'role::example' do
       # Test all default params are set
       it {
         should contain_class('role::example')
-
+        should contain_class('profile::base')
       }
     end
 

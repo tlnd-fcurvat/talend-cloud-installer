@@ -1,3 +1,8 @@
 fixtures:
   symlinks:
     profile: '#{source_dir}'
+  repositories:
+    selinux: "git://github.com/jfryman/puppet-selinux.git"
+    stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+    java: "git://github.com/puppetlabs/puppetlabs-java.git"
+    concat: "git://github.com/puppetlabs/puppetlabs-concat.git"
