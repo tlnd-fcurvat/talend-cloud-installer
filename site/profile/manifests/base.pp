@@ -1,4 +1,3 @@
-#
 # The base profile should include component modules that will be on all nodes
 #
 # -*- mode: puppet -*-
@@ -11,26 +10,23 @@ class profile::base {
 
   profile::register_profile{ 'base': order => 1, }
 
-  #
   # Ensure we have a yum repo first before we intall rpm packages ....
-  #
   Yumrepo <| |> -> Package <| |>
 
   # depreceated since concat 2.0
   # include concat::setup
   include ::stdlib
-  if $::osfamily == 'RedHat' { include ::selinux }
-  if $::ec2_matadata { include ::awscli }
   include ::java
+  if $::osfamily == 'RedHat' { include ::selinux }
+  if $::ec2_metadata { include ::awscli }
 
   # get some usual helpers installed
   $common_packages = hiera_hash('common_packages', {})
   create_resources(Package, $common_packages)
 
 
-  ### This distributes the custom fact to the host(-pluginsync)
-  ### on using puppet apply
-  ###
+  # This distributes the custom fact to the host(-pluginsync)
+  # on using puppet apply
   file { $::settings::libdir:
     ensure  => directory,
     source  => 'puppet:///plugins',

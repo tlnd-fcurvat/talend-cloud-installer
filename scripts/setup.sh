@@ -20,7 +20,7 @@ else
 fi
 
 if [ -n $PUPPET ]; then
-	FACTER_puppet_role=webserver ${PUPPET} apply --verbose \
+	${PUPPET} apply --verbose \
 		--noop \
 		--modulepath=site:modules \
 		--hiera_config=hiera.yaml manifests/site.pp  > /dev/null
