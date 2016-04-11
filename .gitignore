@@ -1,3 +1,7 @@
 hieradata/nodes/example-puppet-master.yaml
 modules/
 vendor/
+.bundle/
+.idea/
+Gemfile.lock
+
