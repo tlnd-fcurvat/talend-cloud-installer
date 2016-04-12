@@ -1,0 +1,12 @@
+HOSTS:
+  centos6.test.local:
+   platform: 'el-6-x86_64'
+   image: 'centos:centos6'
+   hypervisor: docker
+   docker_image_commands:
+     - "yum update -y"
+     - "yum install -y tar cronie "
+CONFIG:
+  type: foss
+  log_level: verbose
+  masterless: true
