@@ -1,7 +1,5 @@
 source "https://rubygems.org"
 
-gem 'rake'
-
 gem 'aws-sdk'
 gem 'hiera-eyaml'
 gem 'hiera-eyaml-kms'

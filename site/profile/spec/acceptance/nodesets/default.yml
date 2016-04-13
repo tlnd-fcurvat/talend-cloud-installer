@@ -1,10 +1,9 @@
 HOSTS:
-  centos6.test.local:
-   platform: 'el-6-x86_64'
-   image: 'centos:centos6'
-   hypervisor: docker
-   docker_image_commands:
-     - "yum install -y tar cronie "
+  centos-7-x64:
+    platform: "el-7-x86_64"
+    box: "centos/7"
+    box_url: 'https://atlas.hashicorp.com/centos/boxes/7/versions/1603.01/providers/virtualbox.box'
+    hypervisor: vagrant
 CONFIG:
   type: foss
   log_level: verbose
