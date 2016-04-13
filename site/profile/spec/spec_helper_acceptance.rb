@@ -15,22 +15,6 @@ unless ENV["RS_PROVISION"] == "no" or ENV["BEAKER_provision"] == "no"
     end
     on host, 'git clone https://github.com/Talend/talend-cloud-installer.git /tmp/puppet'
     on host, 'gem install r10k'
-    #   if host['platform'] =~ /sles-1/i ||  host['platform'] =~ /solaris-1/i
-    #     get_stdlib = <<-stdlib
-    #     package{'wget':}
-    #     exec{'download':
-    #       command => "wget -P /root/ https://forgeapi.puppetlabs.com/v3/files/puppetlabs-stdlib-4.3.2.tar.gz --no-check-certificate",
-    #       path => ['/opt/csw/bin/','/usr/bin/']
-    #     }
-    #     stdlib
-    #     apply_manifest_on(host, get_stdlib)
-    #     # have to use force otherwise it checks ssl cert even though it is a local file
-    #     on host, puppet('module install /root/puppetlabs-stdlib-4.3.2.tar.gz --force')
-    #   else
-    #     on host, puppet("module install puppetlabs-stdlib")
-    #     # For test support
-    #     #on host, puppet("module install puppetlabs-apt")
-    #   end
   end
 end
 
