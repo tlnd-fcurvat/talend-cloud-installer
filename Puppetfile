@@ -7,4 +7,5 @@ forge "http://forge.puppetlabs.com"
  mod "puppetlabs/concat",      '2.1.0'
  mod "puppetlabs/java"
  mod "jfryman/selinux"
+ mod "jdowning/awscli"
 

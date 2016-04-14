@@ -14,7 +14,7 @@ unless ENV["RS_PROVISION"] == "no" or ENV["BEAKER_provision"] == "no"
       install_package(host, 'rubygem-bundler')
     end
     on host, 'git clone https://github.com/Talend/talend-cloud-installer.git /tmp/puppet'
-    on host, 'gem install r10k'
+    on host, 'cd /tmp/puppet && bundle install --path=vendor/bundle '
   end
 end
 
