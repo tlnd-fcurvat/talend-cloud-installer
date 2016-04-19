@@ -16,7 +16,7 @@ class profile::base {
   # depreceated since concat 2.0
   # include concat::setup
   include ::stdlib
-  include ::java
+
   if $::osfamily == 'RedHat' { include ::selinux }
   if $::ec2_metadata { include ::awscli }
 

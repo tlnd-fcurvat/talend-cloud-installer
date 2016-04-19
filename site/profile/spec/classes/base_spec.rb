@@ -6,23 +6,25 @@ describe 'profile::base' do
   let(:node) { 'rspec.stg.hrs.com' }
   let(:facts) {{  :ipaddress      => '10.42.42.42',
                   :concat_basedir => '/var/lib/puppet/concat',
+                  :augeasversion => '1.4.0'
   }}
 
   describe 'building  on Centos' do
     let(:facts) { { :operatingsystem  => 'Centos',
                     :concat_basedir   => '/var/lib/puppet/concat',
-                    :osfamily         => 'RedHat'}}
+                    :osfamily         => 'RedHat',
+                    :augeasversion => '1.4.0'
+    }}
 
     # Test if it compiles
     it { should compile }
-    it { should have_resource_count(20)}
+    it { should have_resource_count(17)}
 
     # Test all default params are set
     it {
       should contain_class('profile::base')
       should contain_class('stdlib')
       should contain_class('selinux')
-      should contain_class('java')
     }
 
     context 'on AWS ' do
@@ -38,23 +40,25 @@ describe 'profile::base' do
   describe 'building  on Debian' do
     let(:facts) { { :operatingsystem  => 'Ubuntu',
                     :lsbdistcodename  => 'trusty',
+                    :lsbdistid => 'Ubuntu',
                     :concat_basedir   => '/var/lib/puppet/concat',
-                    :osfamily         => 'Debian'}}
+                    :osfamily         => 'Debian',
+                    :augeasversion => '1.4.0'}}
 
     # Test if it compiles
     it { should compile }
-    it { should have_resource_count(20)}
+    it { should have_resource_count(15)}
 
     # Test all default params are set
     it {
       should contain_class('profile::base')
       should contain_class('stdlib')
-      should contain_class('java')
       should_not contain_class('selinux')
     }
     context 'on AWS ' do
       let(:facts) { { :operatingsystem  => 'Ubuntu',
                       :lsbdistcodename  => 'trusty',
+                      :lsbdistid => 'Ubuntu',
                       :concat_basedir   => '/var/lib/puppet/concat',
                       :ec2_metadata     => '{ :some =>  \'ec2 content\'}',
                       :osfamily         => 'Debian'}}
