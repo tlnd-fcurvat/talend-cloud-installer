@@ -29,7 +29,6 @@ class profile::web::tomcat {
   tomcat::config::server{ 'default':
     catalina_base => '/opt/apache-tomcat/default',
     port    => '8080',
-    address => '127.0.0.1'
   }
 
   profile::register_profile{ 'tomcat': }
