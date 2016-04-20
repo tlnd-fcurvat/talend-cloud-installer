@@ -15,8 +15,8 @@ class profile::web::tomcat {
     source_url    => 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.53/bin/apache-tomcat-7.0.53.tar.gz',
     catalina_home => '/opt/tomcat',
   }
-  
-  tomcat::config::server{
+
+  tomcat::config::server{'default':
     port    => '8080',
     address => '127.0.0.1'
   }
