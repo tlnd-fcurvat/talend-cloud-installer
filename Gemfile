@@ -1,32 +1,40 @@
 source "https://rubygems.org"
 
-gem 'aws-sdk'
-gem 'hiera-eyaml'
-gem 'hiera-eyaml-kms'
-
-gem 'beaker' 
-gem 'beaker-puppet_install_helper'
-gem 'beaker-rspec'
-gem 'puppetlabs_spec_helper', '1.0.1'
-
-gem 'spec'
-gem 'rspec', '3.4.0'
-gem 'rspec-core', '3.4.0'
-gem 'rspec-expectations', '3.4.0'
-gem 'rspec-mocks', '3.4.0'
-gem 'rspec-support', '3.4.0'
-gem 'rspec-puppet'
-gem 'rspec-puppet-facts'
-
 # We expect you have puppet installed
 gem 'puppet', '3.8.4'
 
 gem 'r10k'
+gem 'hiera-eyaml'
+gem 'hiera-eyaml-kms'
 
-gem 'puppet-lint'
-gem 'puppet-syntax'
+group :development do
+  gem 'beaker'
+  gem 'beaker-puppet_install_helper'
+  gem 'beaker-rspec'
+  gem 'puppetlabs_spec_helper', '1.0.1'
 
-gem 'ci_reporter'
-gem 'serverspec'
-gem 'docker-api'
+  gem 'spec'
+  gem 'rspec', '3.4.0'
+  gem 'rspec-core', '3.4.0'
+  gem 'rspec-expectations', '3.4.0'
+  gem 'rspec-mocks', '3.4.0'
+  gem 'rspec-support', '3.4.0'
+  gem 'rspec-puppet'
+  gem 'rspec-puppet-facts'
+
+
+
+  gem 'puppet-lint'
+  gem 'puppet-syntax'
+
+  gem 'ci_reporter'
+  gem 'serverspec'
+  gem 'docker-api'
+  gem 'aws-sdk'
+end
+
+
+
+
+
 
