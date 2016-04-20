@@ -25,15 +25,16 @@ class profile::web::tomcat {
     additional_attributes => {
       'path' => '/test',
     },
+  } ->
+  tomcat::config::server{ 'default':
+    port    => '8080',
+    address => '127.0.0.1'
   }
 
   profile::register_profile{ 'tomcat': }
 
 
-  tomcat::config::server{ 'default':
-    port    => '8080',
-    address => '127.0.0.1'
-  }
+
 
   # configuring tomcat server contexts applications from hiera
   #$tomcat_server_contexts = hiera_hash('tomcat_server_contexts', {})
