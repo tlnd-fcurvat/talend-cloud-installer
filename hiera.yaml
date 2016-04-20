@@ -9,3 +9,4 @@
 
 :yaml:
   :datadir: hieradata
+  :datadir: /etc/puppet/hieradata
