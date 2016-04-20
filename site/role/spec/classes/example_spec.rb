@@ -18,13 +18,16 @@ describe 'role::example' do
 
       # Test if it compiles
       it { should compile }
-      it { should have_resource_count(20)}
+      it { should have_resource_count(59)}
 
       # Test all default params are set
       it {
         should contain_class('role::example')
         should contain_class('profile::base')
-      }
+        should contain_class('profile::full_java_stack')
+        should contain_class('profile::web::nginx')
+        should contain_class('profile::web::tomcat')
+        should contain_class('java')      }
     end
 
   end
