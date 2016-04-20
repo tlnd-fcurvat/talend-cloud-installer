@@ -8,7 +8,6 @@ gem 'beaker'
 gem 'beaker-puppet_install_helper'
 gem 'beaker-rspec'
 gem 'puppetlabs_spec_helper', '1.0.1'
-gem 'rspec-hiera-puppet'
 
 gem 'spec'
 gem 'rspec', '3.4.0'

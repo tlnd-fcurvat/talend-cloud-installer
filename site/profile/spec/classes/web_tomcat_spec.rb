@@ -1,8 +1,8 @@
 require 'puppetlabs_spec_helper/module_spec_helper'
 
-describe 'profile::full_java_stack' do
+describe 'profile::web::tomcat' do
 
-  let(:title) { 'profile::full_java_stack' }
+  let(:title) { 'profile::web::tomcat' }
   let(:node) { 'rspec.stg.hrs.com' }
   let(:facts) {{  :ipaddress      => '10.42.42.42',
                   :concat_basedir => '/var/lib/puppet/concat',
@@ -17,15 +17,12 @@ describe 'profile::full_java_stack' do
 
     # Test if it compiles
     it { should compile }
-    it { should have_resource_count(44)}
+    it { should have_resource_count(10)}
 
     # Test all default params are set
     it {
       should contain_class('java')
       should contain_class('tomcat')
-      should contain_class('nginx')
-      #should contain_nginx__resource__vhost('www.puppetlabs.com')
-      #should contain_tomcat__config__server__context('mycat-test')
     }
 
   end
@@ -40,15 +37,13 @@ describe 'profile::full_java_stack' do
 
     # Test if it compiles
     it { should compile }
-    it { should have_resource_count(53)}
+    it { should have_resource_count(12)}
 
     # Test all default params are set
     it {
       should contain_class('java')
       should_not contain_class('selinux')
       should contain_class('tomcat')
-      should contain_class('nginx')
-      #should contain_nginx__resource__vhost('www.puppetlabs.com')
     }
 
   end
