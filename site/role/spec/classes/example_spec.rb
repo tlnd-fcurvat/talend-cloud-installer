@@ -24,7 +24,6 @@ describe 'role::example' do
       it {
         should contain_class('role::example')
         should contain_class('profile::base')
-        should contain_class('profile::full_java_stack')
         should contain_class('profile::web::nginx')
         should contain_class('profile::web::tomcat')
         should contain_class('java')      }
