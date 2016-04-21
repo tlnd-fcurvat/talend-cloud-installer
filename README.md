@@ -2,12 +2,11 @@ Table of Contents
 =================
 
   * [What You Get From This control\-repo](#what-you-get-from-this-control-repo)
-  
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
-
+  * [Requirements](#requirements)
+  * [Setup](#setup)
 # What You Get From This control-repo
 
-This repository exists as a template control-repo that can be used with R10k or Puppet Enterprise Code Manager.
+This repository exists as a talend cloud installer control-repo that is used with R10k.
 
 The major points are:
  - An environment.conf that correctly implements:
@@ -20,13 +19,37 @@ The major points are:
    
 # Requirements
 
-  - Ruby
-  - Bundler Gem 
-  
+  - Ruby >= 1.9.3
+  - Bundler >= 1.11.0
+
 # Setup
-Setup this repository with 
-``` bash 
-# git clone git@github.com:Talend/talend-cloud-installer.git
-# cd talend-cloud-installer 
-# sh scripts/setup.sh
+## Install
+Clone this repo
+``` bash
+git clone git@github.com:Talend/talend-cloud-installer.git
 ```
+
+## Apply Changes
+Apply configurations within this repository with
+``` bash
+sh scripts/setup.sh
+```
+This runs bundler and a puppet apply with --noop enabled
+
+## Testing Setup
+Run bundler inside the checkout to statisfy requirents
+``` bash
+bundle install --path=vendor/bundle
+```
+Run puppet-rspec test for all site modules with
+``` bash
+sh scripts/test_runner.sh
+```
+
+For manually running rspec or beaker test per module change in the module dir and manually run
+ ``` bash
+ bundle exec rake beaker
+ ```
+
+
+
