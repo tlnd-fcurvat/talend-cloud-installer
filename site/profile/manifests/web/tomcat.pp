@@ -11,12 +11,13 @@ class profile::web::tomcat {
   class { '::tomcat': }
   class { '::java': }
 
-  tomcat::instance { 'default':
-    catalina_base => '/opt/apache-tomcat/default',
+  tomcat::instance { 'instance1':
+    catalina_base => '/opt/apache-tomcat/instance1',
+    manage_service => 'true'
     source_url    => 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.53/bin/apache-tomcat-7.0.53.tar.gz',
   } ->
-  tomcat::config::server::context { 'default-test':
-    catalina_base         => '/opt/apache-tomcat/default',
+  tomcat::config::server::context { 'instance1-test':
+    catalina_base         => '/opt/apache-tomcat/instance1',
     context_ensure        => 'present',
     doc_base              => 'test.war',
     parent_service        => 'Catalina',
@@ -26,8 +27,8 @@ class profile::web::tomcat {
       'path' => '/test',
     },
   } ->
-  tomcat::config::server{ 'default':
-    catalina_base => '/opt/apache-tomcat/default',
+  tomcat::config::server{ 'instance1':
+    catalina_base => '/opt/apache-tomcat/instance1',
     port    => '8080',
   }
 
