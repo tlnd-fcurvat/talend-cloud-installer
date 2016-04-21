@@ -13,14 +13,13 @@ class profile::web::tomcat {
 
   tomcat::instance { 'instance1':
     catalina_base => '/opt/apache-tomcat/instance1',
-    manage_service => true,
     source_url    => 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.53/bin/apache-tomcat-7.0.53.tar.gz',
-  }
+  } ->
 
   tomcat::config::server{ 'instance1':
     catalina_base => '/opt/apache-tomcat/instance1',
     port    => '8080',
-  }
+  } ->
   tomcat::config::server::context { 'instance1-test':
     catalina_base         => '/opt/apache-tomcat/instance1',
     context_ensure        => 'present',
@@ -31,6 +30,10 @@ class profile::web::tomcat {
     additional_attributes => {
       'path' => '/test',
     },
+  } ->
+
+  tomcat::service { 'instance1':
+    use_jsvc => true,
   }
 
   profile::register_profile{ 'tomcat': }
