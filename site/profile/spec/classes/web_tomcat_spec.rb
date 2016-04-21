@@ -14,7 +14,7 @@ describe 'profile::web::tomcat' do
                     :concat_basedir   => '/var/lib/puppet/concat',
                     :osfamily         => 'RedHat',
                     :augeasversion => '1.4.0',
-                    :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+                    :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
     }}
 
     # Test if it compiles
@@ -36,7 +36,7 @@ describe 'profile::web::tomcat' do
                     :concat_basedir   => '/var/lib/puppet/concat',
                     :osfamily         => 'Debian',
                     :augeasversion => '1.4.0',
-                    :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'}}
+                    :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'}}
 
     # Test if it compiles
     it { should compile }

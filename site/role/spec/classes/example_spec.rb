@@ -14,7 +14,7 @@ describe 'role::example' do
                     :concat_basedir   => '/var/lib/puppet/concat',
                     :osfamily         => 'RedHat',
                     :augeasversion => '1.4.0',
-                    :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'}}
+                    :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'}}
 
 
     context 'with defaults for all parameters' do
