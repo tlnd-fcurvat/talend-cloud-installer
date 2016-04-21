@@ -33,11 +33,6 @@ describe "role::example", :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfami
       it { should be_listening }
     end
 
-    describe service('tomcat') do
-      it { is_expected.to be_enabled }
-      it { is_expected.to be_running }
-    end
-
     describe port(8080) do
       it { should be_listening }
     end
