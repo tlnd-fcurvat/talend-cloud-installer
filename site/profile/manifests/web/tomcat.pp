@@ -33,6 +33,7 @@ class profile::web::tomcat {
   } ->
 
   tomcat::service { 'instance1':
+    catalina_base => '/opt/apache-tomcat/instance1',
     use_jsvc => true,
   }
 
