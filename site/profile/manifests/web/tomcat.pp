@@ -41,3 +41,7 @@ class profile::web::tomcat {
   #create_resources('tomcat::config::server::context', $tomcat_server_contexts)
 
 }
+
+define configure_hiera_servers {}
+define configure_hiera_contexts {}
+define configure_hiera_instances {}

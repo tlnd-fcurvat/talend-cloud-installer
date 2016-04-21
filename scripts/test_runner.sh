@@ -7,7 +7,7 @@ UPSTREAM_EXCLUDES='datacat ssh archive jenkins cassandra'
 test_module() {
 	cd  $1
 	echo "INFO: Testing $1"
-	$RAKE syntax spec 
+	$BUNDLER exec rake syntax spec 
 	if [ $? != 0 ]; then
 		exit 1
 	fi
@@ -15,9 +15,9 @@ test_module() {
 }
 
 run_bundler() {
-  BUNDLER=$(which bundler)
+  BUNDLER=$(which bundle)
   if [ -n $BUNDLER ]; then
-    $BUNDLER install --path=vendor/bundler > /dev/null
+    $BUNDLER install --path=vendor/bundler 
   else
 	echo 'ERROR: bundler gem not installed'
 	exit 1

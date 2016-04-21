@@ -6,19 +6,22 @@ describe 'role::example' do
   let(:node) { 'rspec.stg.hrs.com' }
   let(:facts) {{  :ipaddress      => '10.42.42.42',
                   :concat_basedir => '/var/lib/puppet/concat',
-                  :osfamily       => 'RedHat'}}
+                  :osfamily       => 'RedHat',
+                  :augeasversion => '1.4.0'}}
 
   describe 'building  on Centos' do
     let(:facts) { { :operatingsystem  => 'Centos',
                     :concat_basedir   => '/var/lib/puppet/concat',
-                    :osfamily         => 'RedHat'}}
+                    :osfamily         => 'RedHat',
+                    :augeasversion => '1.4.0',
+                    :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'}}
 
 
     context 'with defaults for all parameters' do
 
       # Test if it compiles
       it { should compile }
-      it { should have_resource_count(59)}
+      it { should have_resource_count(73)}
 
       # Test all default params are set
       it {

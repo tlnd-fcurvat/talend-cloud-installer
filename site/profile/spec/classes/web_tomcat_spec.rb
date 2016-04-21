@@ -13,11 +13,13 @@ describe 'profile::web::tomcat' do
     let(:facts) { { :operatingsystem  => 'Centos',
                     :concat_basedir   => '/var/lib/puppet/concat',
                     :osfamily         => 'RedHat',
-                    :augeasversion => '1.4.0'}}
+                    :augeasversion => '1.4.0',
+                    :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    }}
 
     # Test if it compiles
     it { should compile }
-    it { should have_resource_count(10)}
+    it { should have_resource_count(24)}
 
     # Test all default params are set
     it {
@@ -33,11 +35,12 @@ describe 'profile::web::tomcat' do
                     :lsbdistid => 'Ubuntu',
                     :concat_basedir   => '/var/lib/puppet/concat',
                     :osfamily         => 'Debian',
-                    :augeasversion => '1.4.0'}}
+                    :augeasversion => '1.4.0',
+                    :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'}}
 
     # Test if it compiles
     it { should compile }
-    it { should have_resource_count(12)}
+    it { should have_resource_count(26)}
 
     # Test all default params are set
     it {
