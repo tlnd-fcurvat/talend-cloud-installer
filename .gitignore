@@ -4,4 +4,4 @@ vendor/
 .bundle/
 .idea/
 Gemfile.lock
-
+.reviewboardrc
