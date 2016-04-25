@@ -14,11 +14,11 @@ group :development do
   gem 'puppetlabs_spec_helper', '1.0.1'
 
   gem 'spec'
-  gem 'rspec', '3.4.0'
-  gem 'rspec-core', '3.4.0'
-  gem 'rspec-expectations', '3.4.0'
-  gem 'rspec-mocks', '3.4.0'
-  gem 'rspec-support', '3.4.0'
+  gem 'rspec', '~> 3.4'
+  gem 'rspec-core', '~> 3.4'
+  gem 'rspec-expectations', '~> 3.4'
+  gem 'rspec-mocks', '~> 3.4'
+  gem 'rspec-support', '~> 3.4'
   gem 'rspec-puppet'
   gem 'rspec-puppet-facts'
 
