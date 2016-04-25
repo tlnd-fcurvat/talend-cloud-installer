@@ -18,7 +18,7 @@ class profile::web::tomcat {
 
   tomcat::config::server{ 'instance1':
     catalina_base => '/opt/apache-tomcat/instance1',
-    port    => '8080',
+    port          => '8080',
   } ->
   tomcat::config::server::context { 'instance1-test':
     catalina_base         => '/opt/apache-tomcat/instance1',
@@ -47,6 +47,6 @@ class profile::web::tomcat {
 
 }
 
-define configure_hiera_servers {}
-define configure_hiera_contexts {}
-define configure_hiera_instances {}
+# define configure_hiera_servers {}
+# define configure_hiera_contexts {}
+# define configure_hiera_instances {}
