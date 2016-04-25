@@ -7,7 +7,7 @@ UPSTREAM_EXCLUDES='datacat ssh archive jenkins cassandra'
 test_module() {
 	cd  $1
 	echo "INFO: Testing $1"
-	$BUNDLER exec rake syntax spec 
+	$BUNDLER exec rake lint syntax spec 
 	if [ $? != 0 ]; then
 		exit 1
 	fi
