@@ -29,7 +29,7 @@ class profile::base {
   # on using puppet apply
   file { $::settings::libdir:
     ensure  => directory,
-    source  => 'puppet:///modules/plugins',
+    source  => 'puppet:///plugins',
     recurse => true,
     purge   => true,
     backup  => false,
