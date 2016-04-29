@@ -8,7 +8,7 @@
 #  type: foss
 #  log_level: verbose
 #  masterless: true
-#    
+#
 HOSTS:
   centos-7:
     vmname: centos-7-us-east-1
