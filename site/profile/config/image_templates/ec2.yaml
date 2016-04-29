@@ -1,5 +1,5 @@
 AMI:
-  centos-7-x86-64-ireland:
+  centos-7-us-east-1:
     :image:
-      :foss: ami-61bbf104
+      :foss: ami-6d1c2007
     :region: us-east-1

@@ -3,10 +3,10 @@
 BUNDLER=`which bundle`
 
 if [ -n $BUNDLER ]; then
-	${BUNDLER} install --path=vendor/bundler --without=development
+	$BUNDLER install --path=vendor/bundler --without=development
 else
-	echo 'Error bundler gem not installed'
-	exit 1
+  echo "ERROR: No Bundler installed "
+  exit 1
 fi
 
 bundle exec r10k puppetfile install
