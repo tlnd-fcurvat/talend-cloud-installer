@@ -11,7 +11,6 @@ fi
 
 bundle exec r10k puppetfile install
 
-
 bundle exec puppet apply --verbose \
 		--noop \
 		--modulepath=site:modules \
