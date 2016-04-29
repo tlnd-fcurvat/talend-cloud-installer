@@ -33,14 +33,6 @@ describe "role::example", :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfami
       it { should be_listening }
     end
 
-    describe port(8080) do
-      it { should be_listening }
-    end
-
-    describe process("tomcat-instance1") do
-      its(:user) { should eq "tomcat" }
-      its(:args) { should match /tomcat-instance1/ }
-    end
 
   end
 end
