@@ -9,14 +9,14 @@ class profile::web::nginx {
   include ::nginx
   profile::register_profile{ 'nginx': }
 
-  if $::osfamily == 'RedHat'{
-    selinux::boolean{ 'httpd_can_network_connect':
-      ensure => 'on',
-    }
-    selinux::boolean{ 'httpd_setrlimit':
-      ensure => 'on',
-    }
-  }
+  #if $::osfamily == 'RedHat'{
+  #  selinux::boolean{ 'httpd_can_network_connect':
+  #    ensure => 'on',
+  #  }
+  #  selinux::boolean{ 'httpd_setrlimit':
+  #    ensure => 'on',
+  #  }
+  #}
   #
   # configuring nginx applications from hiera
   #
