@@ -11,7 +11,7 @@ group :development do
   gem 'beaker', :git => 'https://github.com/Talend/beaker.git', :branch => 'aheumaier-patch-2' # https://tickets.puppetlabs.com/browse/BKR-782
   gem 'beaker-puppet_install_helper'
   gem 'beaker-rspec'
-  gem 'puppetlabs_spec_helper', '1.0.1'
+  gem 'puppetlabs_spec_helper', :git => 'https://github.com/Talend/puppetlabs_spec_helper.git'
 
   gem 'spec'
   gem 'rspec', '~> 3.4'
