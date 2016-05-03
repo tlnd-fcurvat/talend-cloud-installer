@@ -11,7 +11,7 @@ class profile::web::nginx {
 
   if $::osfamily == 'RedHat'{
     selinux::boolean{ 'httpd_can_network_connect':
-     ensure => 'on',
+      ensure => 'on',
     }
     selinux::boolean{ 'httpd_setrlimit':
       ensure => 'on',
