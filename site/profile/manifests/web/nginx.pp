@@ -18,10 +18,9 @@ class profile::web::nginx {
     }
   }
   
- # configuring nginx applications from hiera
-  
+  # configuring nginx applications from hiera
   $nginx_vhosts = hiera_hash('nginx::resource::vhosts', {})
-create_resources('nginx::resource::vhost',$nginx_vhosts)
+  create_resources('nginx::resource::vhost',$nginx_vhosts)
 
   $nginx_locations = hiera_hash('nginx::resource::locations', {})
   create_resources('nginx::resource::location',$nginx_locations)
