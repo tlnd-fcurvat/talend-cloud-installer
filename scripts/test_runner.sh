@@ -17,7 +17,7 @@ test_module() {
 run_bundler() {
   BUNDLER=$(which bundle)
   if [ -n $BUNDLER ]; then
-    $BUNDLER install --path=vendor/bundler 
+    $BUNDLER install --path=vendor/bundle
   else
 	echo 'ERROR: bundler gem not installed'
 	exit 1
