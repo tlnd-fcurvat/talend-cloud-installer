@@ -15,3 +15,4 @@ fixtures:
     nginx: "jfryman/nginx"
     staging: "nanliu/staging"
     apt: "puppetlabs/apt"
+    mongodb: "puppetlabs/mongodb"

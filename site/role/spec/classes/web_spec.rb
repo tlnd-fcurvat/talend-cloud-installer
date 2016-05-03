@@ -1,8 +1,8 @@
 require 'puppetlabs_spec_helper/module_spec_helper'
 
-describe 'role::example' do
+describe 'role::web' do
 
-  let(:title) { 'role::example' }
+  let(:title) { 'role::web' }
   let(:node) { 'rspec.datapwn.com' }
   let(:facts) {{  :ipaddress      => '10.42.42.42',
                   :concat_basedir => '/var/lib/puppet/concat',
@@ -25,7 +25,7 @@ describe 'role::example' do
 
       # Test all default params are set
       it {
-        should contain_class('role::example')
+        should contain_class('role::web')
         should contain_class('profile::base')
         should contain_class('profile::web::nginx')
         should contain_class('profile::web::tomcat')
