@@ -1,13 +1,13 @@
 require 'spec_helper_acceptance'
 
-describe "role::example", :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
+describe "role::web", :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
 
 
   context 'default install' do
 
     it 'should provision base role' do
       pp = <<-EOS
-        class { 'role::example':
+        class { 'role::web':
         }
       EOS
 
