@@ -1,7 +1,7 @@
 require 'spec_helper_acceptance'
 
-describe "mongodb", :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
-  describe "mongodb" do
+describe "nginx", :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
+  describe "nginx" do
     it 'should provision nginx web profile' do
       pp = <<-EOS
         class { 'profile::web::nginx':
