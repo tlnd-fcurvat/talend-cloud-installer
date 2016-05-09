@@ -15,4 +15,6 @@ fixtures:
     nginx: "jfryman/nginx"
     staging: "nanliu/staging"
     apt: "puppetlabs/apt"
-    mongodb: "puppetlabs/mongodb"
+    mongodb:
+      repo: "puppetlabs/mongodb"
+      ref: "0.13.0"

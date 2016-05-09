@@ -12,5 +12,5 @@ forge "http://forge.puppetlabs.com"
  mod "jdowning/awscli"
  mod "stahnma/epel"
  mod "nanliu/staging"
- mod "puppetlabs/mongodb", '0.4.0'
+ mod "puppetlabs/mongodb", '0.13.0'
  mod "hubspot/nexus"

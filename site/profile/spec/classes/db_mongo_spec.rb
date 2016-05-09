@@ -1,8 +1,8 @@
 require 'puppetlabs_spec_helper/module_spec_helper'
 
-describe 'role::mongodb' do
+describe 'profile::db::mongodb' do
 
-  let(:title) { 'role::mongodb' }
+  let(:title) { 'profile::db::mongodb' }
   let(:node) { 'mongodb.datapwn.com' }
   let(:facts) {{  :ipaddress      => '10.42.42.42',
                   :concat_basedir => '/var/lib/puppet/concat',
@@ -21,15 +21,15 @@ describe 'role::mongodb' do
 
       # Test if it compiles
       it { should compile }
-      it { should have_resource_count(33)}
+      it { should have_resource_count(16)}
 
       # Test all default params are set
       it {
-        should contain_class('role::mongodb')
         should contain_class('profile::db::mongodb')
+        should contain_class('mongodb::client')
+        should contain_package('epel-release')
         should contain_class('mongodb::server')      }
     end
 
   end
 end
-
