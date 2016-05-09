@@ -9,7 +9,7 @@ class profile::db::mongodb {
   class { '::mongodb::client': } ->
   class { '::mongodb::server':
     verbose => true,
-    auth => true,
+    auth    => true,
   }
 
   mongodb::db { 'testdb':
