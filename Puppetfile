@@ -13,4 +13,4 @@ forge "http://forge.puppetlabs.com"
  mod "stahnma/epel"
  mod "nanliu/staging"
  mod "puppetlabs/mongodb", '0.13.0'
- mod "hubspot/nexus"
+ mod "hubspot/nexus", '1.3.3'
