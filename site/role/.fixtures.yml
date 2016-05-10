@@ -18,3 +18,9 @@ fixtures:
     mongodb:
       repo: "puppetlabs/mongodb"
       ref: "0.13.0"
+    nexus:
+      repo: "hubspot/nexus"
+      ref: "1.3.3 "
+    wget:
+     repo: "maestrodev/wget"
+     ref: "1.7.3"
