@@ -1,22 +1,25 @@
 # Setting up the single nexus instance
 #
-class profile::db::nexus {
+class profile::db::nexus (
 
-  # puppetlabs-java
-  # NOTE: Nexus requires
-  class{ '::java': }
+  $nexus_root = '/srv',
 
+) {
 
-  Service{
-    provider => 'init'
+  include java
+
+  file{'/usr/lib/systemd/system/nexus.service':
+    ensure => 'present',
+    content => template('profile/nexus.service.erb')
   }
 
   class{ '::nexus':
     version    => '2.8.0',
     revision   => '05',
-    nexus_root => '/srv', # All directories and files will be relative to this
+    nexus_root => $nexus_root, # All directories and files will be relative to this
   }
 
+  File['/usr/lib/systemd/system/nexus.service'] ->
   Class['::java'] ->
   Class['::nexus']
 
