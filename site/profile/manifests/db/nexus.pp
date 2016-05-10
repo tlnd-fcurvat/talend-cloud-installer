@@ -6,6 +6,11 @@ class profile::db::nexus {
   # NOTE: Nexus requires
   class{ '::java': }
 
+
+  Service{
+    provider => 'init'
+  }
+
   class{ '::nexus':
     version    => '2.8.0',
     revision   => '05',
