@@ -14,3 +14,4 @@ forge "http://forge.puppetlabs.com"
  mod "nanliu/staging"
  mod "puppetlabs/mongodb", '0.13.0'
  mod "hubspot/nexus", '1.3.3'
+ mod "maestrodev/wget", "1.7.3"
