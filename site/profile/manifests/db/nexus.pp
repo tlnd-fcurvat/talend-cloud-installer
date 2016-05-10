@@ -10,7 +10,7 @@ class profile::db::nexus (
 
   file{'/usr/lib/systemd/system/nexus.service':
     ensure => 'present',
-    content => template('nexus/nexus.service.erb')
+    content => template('profile/nexus.service.erb')
   }
 
   class{ '::nexus':
