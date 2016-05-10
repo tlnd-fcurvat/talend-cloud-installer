@@ -34,5 +34,5 @@ Package {
 node default {
   # This is where you can declare classes for all nodes.
   # dynamic it is include "%::system_role"
-	include "role::example"
+  include "role::${::puppet_role}"
 }
