@@ -8,7 +8,7 @@ class profile::db::nexus (
 
   include java
   
-  ensure_packages(['wget']) 
+  ensure_packages(['wget'])
 
   file{'/usr/lib/systemd/system/nexus.service':
     ensure  => 'present',
