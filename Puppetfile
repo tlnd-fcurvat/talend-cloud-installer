@@ -15,3 +15,8 @@ forge "http://forge.puppetlabs.com"
  mod "puppetlabs/mongodb", '0.13.0'
  mod "hubspot/nexus", '1.3.3'
  mod "maestrodev/wget", "1.7.3"
+ mod "dataprep_dataset",
+   :git    => 'https://github.com/Talend/puppet-dataprep_dataset',
+   :branch => 'development'
+ mod "herculesteam/augeasproviders_core"
+ mod "herculesteam/augeasproviders_shellvar"
