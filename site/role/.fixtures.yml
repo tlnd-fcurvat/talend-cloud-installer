@@ -2,6 +2,10 @@ fixtures:
   symlinks:
     role: '#{source_dir}'
     profile: '#{source_dir}/../profile'
+  repositories:
+    dataprep_dataset:
+      repo: "https://github.com/Talend/puppet-dataprep_dataset"
+      ref: "development"
   forge_modules:
     tomcat:
       repo: "puppetlabs/tomcat"
@@ -24,3 +28,5 @@ fixtures:
     wget:
      repo: "maestrodev/wget"
      ref: "1.7.3"
+    shellvar: "herculesteam/augeasproviders_shellvar"
+    auges_core: "herculesteam/augeasproviders_core"

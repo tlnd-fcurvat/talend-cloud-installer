@@ -7,9 +7,11 @@ class profile::db::nexus (
 ) {
 
   include java
+  
+  ensure_packages(['wget'])
 
   file{'/usr/lib/systemd/system/nexus.service':
-    ensure => 'present',
+    ensure  => 'present',
     content => template('profile/nexus.service.erb')
   }
 
