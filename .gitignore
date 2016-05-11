@@ -5,3 +5,5 @@ vendor/
 .idea/
 Gemfile.lock
 .reviewboardrc
+log
+.vagrant
