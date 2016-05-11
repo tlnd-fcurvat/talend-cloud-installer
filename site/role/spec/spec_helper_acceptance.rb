@@ -13,6 +13,7 @@ unless ENV["RS_PROVISION"] == "no" or ENV["BEAKER_provision"] == "no"
     on host, "git clone https://github.com/Talend/talend-cloud-installer.git #{WORKDIR}"
     on host, "cd #{WORKDIR} && bundle install --path=vendor/bundle --without development"
     on host, "cp -R #{WORKDIR}/hiera* /etc/puppet/"
+    on host, 'mkdir -p /etc/facter/facts.d'
   end
 end
 
