@@ -3,7 +3,7 @@ require 'puppetlabs_spec_helper/module_spec_helper'
 describe 'profile::db::nexus' do
 
   let(:title) { 'profile::db::nexus' }
-  let(:node) { 'nexus.datapwn.com' }
+  let(:node) { 'nexus.tesnode.com' }
   let(:facts) {{  :ipaddress      => '10.42.42.42',
                   :concat_basedir => '/var/lib/puppet/concat',
                   :osfamily       => 'RedHat',
