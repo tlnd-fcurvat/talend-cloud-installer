@@ -27,6 +27,7 @@ describe "nginx", :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
     end
 
     describe port(80) do
+      before { skip("Initial implementation. There are no virtual hosts as of now") }
       it { should be_listening }
     end
 

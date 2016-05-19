@@ -1,8 +1,10 @@
 require 'spec_helper_acceptance'
 
 describe "mongodb", :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
+
   describe "mongodb" do
-    it 'should provision mongodb databasye profile' do
+
+    it 'should provision mongodb database profile' do
       pp = <<-EOS
         class { 'profile::db::mongodb':
         }
@@ -13,7 +15,6 @@ describe "mongodb", :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) 
       # updates the alternatives for java
       apply_manifest(pp, :catch_failures => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules', :hiera_config => '/tmp/puppet/hiera.yaml')
 
-      apply_manifest(pp, :catch_changes => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules', :hiera_config => '/tmp/puppet/hiera.yaml')
     end
 
     describe package('mongodb-server') do
