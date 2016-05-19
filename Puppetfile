@@ -15,7 +15,7 @@ forge "http://forge.puppetlabs.com"
  mod "nanliu/staging"
  mod "puppetlabs/mongodb", '0.13.0'
  mod "nexus",
-   :git => 'https://github.com/Talend/',
+   :git => 'https://github.com/Talend/puppet-nexus.git',
    :branch => 'master'
  mod "maestrodev/wget", "1.7.3"
  mod "dataprep_dataset",
