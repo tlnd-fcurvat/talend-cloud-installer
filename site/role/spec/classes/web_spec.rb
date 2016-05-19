@@ -3,7 +3,7 @@ require 'puppetlabs_spec_helper/module_spec_helper'
 describe 'role::web' do
 
   let(:title) { 'role::web' }
-  let(:node) { 'rspec.datapwn.com' }
+  let(:node) { 'rspec.testnode.com' }
   let(:facts) {{  :ipaddress      => '10.42.42.42',
                   :concat_basedir => '/var/lib/puppet/concat',
                   :osfamily       => 'RedHat',
