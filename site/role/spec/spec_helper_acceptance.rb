@@ -6,7 +6,12 @@ run_puppet_install_helper
 
 UNSUPPORTED_PLATFORMS = [ "Darwin", "windows" ]
 WORKDIR = '/tmp/puppet'
-GIT_BRANCH = `git branch | grep '^\*'`
+
+unless ENV.has_key?('GIT_BRANCH') then
+  GIT_BRANCH = `git branch | grep '^\*' | cut -f2 -d" "`
+else
+  GIT_BRANCH = ENV['GIT_BRANCH']
+end
 
 unless ENV["RS_PROVISION"] == "no" or ENV["BEAKER_provision"] == "no"
   hosts.each do |host|
