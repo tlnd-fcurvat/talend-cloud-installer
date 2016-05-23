@@ -18,4 +18,4 @@ common_packages:
 
 jdk_oracle::version: '7'
 jdk_oracle::install_dir: '/opt'
-jdk_oracle::use_cache: true
+jdk_oracle::use_cache: false
