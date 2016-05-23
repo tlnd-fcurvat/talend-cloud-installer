@@ -12,9 +12,7 @@ class profile::web::tomcat (
 ){
 
 
-
-  class { '::tomcat': }
-  class { '::jdk_oracle': }
+  class { '::jdk_oracle': } ->
 
   tomcat::instance { 'instance1':
     install_from_source => true,
@@ -25,9 +23,7 @@ class profile::web::tomcat (
     group               => 'tomcat',
     catalina_base       => '/opt/apache-tomcat/instance1',
     catalina_home       => undef,
-    manage_service      => true,
     java_home           => '/opt/jdk1.7.0_79/bin/java',
-    use_init            => true,
   } ->
 
   tomcat::config::server{ 'instance1':
@@ -44,13 +40,12 @@ class profile::web::tomcat (
     additional_attributes => {
       'path' => '/test',
     },
+  } ->
+  tomcat::service { 'instance1':
+    catalina_base => '/opt/apache-tomcat/instance1',
+    use_init      => true,
+    service_name  => 'tomcat'
   }
-  # ->
-  #
-  # tomcat::service { 'instance1':
-  #   catalina_base => '/opt/apache-tomcat/instance1',
-  #   use_init => true,
-  # }
 
   profile::register_profile{ 'tomcat': }
 
