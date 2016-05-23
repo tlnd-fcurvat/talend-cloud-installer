@@ -11,6 +11,9 @@ class profile::web::tomcat (){
     require => Package["epel-release"]
   }
 
+
+  $dummy = inline_template("<% ENV['JAVA_HOME'] = '/opt/java_home' %>")
+
   class { '::jdk_oracle': } ->
 
   tomcat::instance { 'tomcat7':
