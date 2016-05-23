@@ -16,9 +16,6 @@ common_packages:
     provider: 'gem'
   'epel-release':
     ensure: 'installed'
-  ruby-augeas:
-    ensure: 'installed'
-    require: 'Package["epel-release"]'
 
 
 jdk_oracle::version: '7'

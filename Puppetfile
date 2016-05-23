@@ -11,7 +11,9 @@ forge "http://forge.puppetlabs.com"
  mod "jfryman/selinux"
  mod "jfryman/nginx"
  mod "jdowning/awscli"
- mod "tylerwalts/jdk_oracle", "1.4.0"
+ mod "tylerwalts/jdk_oracle",
+    :git    => 'https://github.com/tylerwalts/jdk_oracle',
+    :branch => 'master'
  mod "stahnma/epel"
  mod "nanliu/staging"
  mod "puppetlabs/mongodb", '0.13.0'

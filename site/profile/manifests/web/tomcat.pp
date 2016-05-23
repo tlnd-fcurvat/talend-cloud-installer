@@ -6,8 +6,10 @@
 #
 class profile::web::tomcat (){
 
-
-
+  package{  'ruby-augeas':
+    ensure  => 'installed',
+    require => Package["epel-release"]
+  }
 
   class { '::jdk_oracle': } ->
 
