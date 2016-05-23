@@ -28,20 +28,8 @@ class profile::web::tomcat (
 
   tomcat::config::server{ 'instance1':
     catalina_base => '/opt/apache-tomcat/instance1',
-    port          => '8080',
+    port          => '8081',
   } ->
-  # tomcat::config::server::context { 'instance1-test':
-  #   catalina_base         => '/opt/apache-tomcat/instance1',
-  #   context_ensure        => 'present',
-  #   doc_base              => 'test.war',
-  #   parent_service        => 'Catalina',
-  #   parent_engine         => 'Catalina',
-  #   parent_host           => 'localhost',
-  #   additional_attributes => {
-  #     'path' => '/test',
-  #   },
-  #} ->
-
   tomcat::service { 'instance1':
     catalina_base => '/opt/apache-tomcat/instance1',
     use_init      => false,
