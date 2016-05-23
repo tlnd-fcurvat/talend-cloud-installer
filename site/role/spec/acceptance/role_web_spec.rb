@@ -5,7 +5,7 @@ describe "role::web", :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamily')
 
   context 'default install' do
 
-    it 'should provision base role' do
+    it 'should provision role::web role' do
       pp = <<-EOS
         class { 'role::web':
         }

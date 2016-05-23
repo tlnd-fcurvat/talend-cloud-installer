@@ -13,7 +13,7 @@ class profile::web::tomcat (){
   }
   package{  'ruby-augeas':
     ensure  => 'installed',
-    require => Package["epel-release"]
+    require => Package['epel-release']
   }
 
   java::oracle { 'jdk8' :
