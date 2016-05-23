@@ -4,16 +4,30 @@
 # === Authors
 # Andreas Heumaier <andreas.heumaier@nordcloud.com>
 #
-class profile::web::tomcat {
+class profile::web::tomcat (
+
+
+
+
+){
 
 
 
   class { '::tomcat': }
-  class { '::java': }
+  class { '::jdk_oracle': }
 
   tomcat::instance { 'instance1':
-    catalina_base => '/opt/apache-tomcat/instance1',
-    source_url    => 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.53/bin/apache-tomcat-7.0.53.tar.gz',
+    install_from_source => true,
+    source_url          => 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.53/bin/apache-tomcat-7.0.53.tar.gz',
+    manage_user         => true,
+    manage_group        => true,
+    user                => 'tomcat',
+    group               => 'tomcat',
+    catalina_base       => '/opt/apache-tomcat/instance1',
+    catalina_home       => undef,
+    manage_service      => true,
+    java_home           => '/opt/jdk1.7.0_79/bin/java',
+    use_init            => true,
   } ->
 
   tomcat::config::server{ 'instance1':
@@ -30,11 +44,13 @@ class profile::web::tomcat {
     additional_attributes => {
       'path' => '/test',
     },
-  } ->
-
-  tomcat::service { 'instance1':
-    catalina_base => '/opt/apache-tomcat/instance1',
   }
+  # ->
+  #
+  # tomcat::service { 'instance1':
+  #   catalina_base => '/opt/apache-tomcat/instance1',
+  #   use_init => true,
+  # }
 
   profile::register_profile{ 'tomcat': }
 
