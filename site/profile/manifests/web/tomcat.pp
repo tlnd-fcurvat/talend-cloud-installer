@@ -23,41 +23,31 @@ class profile::web::tomcat (
     group               => 'tomcat',
     catalina_base       => '/opt/apache-tomcat/instance1',
     catalina_home       => undef,
-    java_home           => '/opt/jdk1.7.0_79/bin/java',
+    java_home           => '/opt/jdk-7',
   } ->
 
   tomcat::config::server{ 'instance1':
     catalina_base => '/opt/apache-tomcat/instance1',
     port          => '8080',
   } ->
-  tomcat::config::server::context { 'instance1-test':
-    catalina_base         => '/opt/apache-tomcat/instance1',
-    context_ensure        => 'present',
-    doc_base              => 'test.war',
-    parent_service        => 'Catalina',
-    parent_engine         => 'Catalina',
-    parent_host           => 'localhost',
-    additional_attributes => {
-      'path' => '/test',
-    },
-  } ->
+  # tomcat::config::server::context { 'instance1-test':
+  #   catalina_base         => '/opt/apache-tomcat/instance1',
+  #   context_ensure        => 'present',
+  #   doc_base              => 'test.war',
+  #   parent_service        => 'Catalina',
+  #   parent_engine         => 'Catalina',
+  #   parent_host           => 'localhost',
+  #   additional_attributes => {
+  #     'path' => '/test',
+  #   },
+  #} ->
+
   tomcat::service { 'instance1':
     catalina_base => '/opt/apache-tomcat/instance1',
-    use_init      => true,
-    service_name  => 'tomcat'
+    use_init      => false,
   }
 
   profile::register_profile{ 'tomcat': }
 
 
-
-
-  # configuring tomcat server contexts applications from hiera
-  #$tomcat_server_contexts = hiera_hash('tomcat_server_contexts', {})
-  #create_resources('tomcat::config::server::context', $tomcat_server_contexts)
-
 }
-
-# define configure_hiera_servers {}
-# define configure_hiera_contexts {}
-# define configure_hiera_instances {}
