@@ -21,7 +21,7 @@ describe 'role::nexus' do
 
       # Test if it compiles
       it { should compile }
-      it { should have_resource_count(72)}
+      it { should have_resource_count(71)}
 
       # Test all default params are set
       it {
