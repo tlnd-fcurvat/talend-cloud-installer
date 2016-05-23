@@ -33,6 +33,15 @@ describe "role::web", :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamily')
       it { should be_listening }
     end
 
+    it 'should have java process with correct arguments' do
+      expect(command('pgrep -a java').stdout).to match /\/opt\/apache-tomcat\/tomcat7\//
+    end
+
+    describe port(8080) do
+      it { should be_listening }
+    end
+
+
 
   end
 end
