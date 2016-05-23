@@ -11,21 +11,4 @@ class role::syncope {
   include ::profile::web::syncope
 
 
-  # TODO: this has to be in the profile!
-  class { 'tomcat':
-    version => 7,
-    sources => false,
-  }
-  # TODO: this has to be in the profile too !
-  if $::t_subenv == 'build' {
-    tomcat::instance {'syncope-srv':
-      ensure    => installed,
-    }
-  } else {
-    tomcat::instance {'syncope-srv':
-      ensure    => present,
-    }
-  }
-
-
 }

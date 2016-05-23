@@ -21,7 +21,7 @@ describe 'profile::db::nexus' do
 
       # Test if it compiles
       it { should compile }
-      it { should have_resource_count(31)}
+      it { should have_resource_count(29)}
 
       # Test all default params are set
       it {

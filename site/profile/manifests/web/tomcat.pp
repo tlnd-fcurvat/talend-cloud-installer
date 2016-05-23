@@ -6,25 +6,30 @@
 #
 class profile::web::tomcat (){
 
+  unless defined(Package['epel-release']){
+    package{  'epel-release':
+      ensure  => 'installed',
+    }
+  }
   package{  'ruby-augeas':
     ensure  => 'installed',
     require => Package["epel-release"]
   }
 
-
-  $dummy = inline_template("<% ENV['JAVA_HOME'] = '/opt/java_home' %>")
-
-  class { '::jdk_oracle': } ->
+  java::oracle { 'jdk8' :
+    ensure  => 'present',
+    version => '8',
+    java_se => 'jre',
+  } ->
 
   tomcat::instance { 'tomcat7':
     install_from_source => true,
-    source_url          => 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.53/bin/apache-tomcat-7.0.53.tar.gz',
+    source_url          => 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.69/bin/apache-tomcat-7.0.69.tar.gz',
     manage_user         => true,
     manage_group        => true,
     user                => 'tomcat',
     group               => 'tomcat',
     catalina_base       => '/opt/apache-tomcat/tomcat7',
-    catalina_home       => undef,
     java_home           => '/opt/jdk-7',
   } ->
   tomcat::service { 'tomcat7':
