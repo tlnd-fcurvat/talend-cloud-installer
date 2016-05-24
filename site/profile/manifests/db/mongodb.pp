@@ -2,8 +2,10 @@
 #
 class profile::db::mongodb {
 
-  package{ 'epel-release':
-    ensure => 'present';
+  unless defined(Package['epel-release']){
+    package{ 'epel-release':
+      ensure => 'present';
+    }
   } ->
 
   class { '::mongodb::client': } ->
