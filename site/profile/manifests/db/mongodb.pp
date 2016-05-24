@@ -6,7 +6,7 @@ class profile::db::mongodb {
     package{ 'epel-release':
       ensure => 'present';
     }
-  } ->
+  }
 
   class { '::mongodb::client': } ->
   class { '::mongodb::server':

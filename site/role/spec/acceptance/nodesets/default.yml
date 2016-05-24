@@ -29,7 +29,6 @@ HOSTS:
     user: centos
     roles:
       - mongodb
-      - default
   centos-7-nexus:
     vmname: centos-7-nexus
     platform: el-7-x86_64
@@ -39,7 +38,6 @@ HOSTS:
     user: centos
     roles:
       - nexus
-      - default
   centos-7-dataprepdataset:
     vmname: centos-7-dataprepdataset
     platform: el-7-x86_64
@@ -49,7 +47,6 @@ HOSTS:
     user: centos
     roles:
       - dataprepdataset
-      - default
 CONFIG:
   type: foss
   log_level: verbose
