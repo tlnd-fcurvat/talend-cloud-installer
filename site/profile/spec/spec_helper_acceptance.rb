@@ -16,17 +16,12 @@ end
 unless ENV["RS_PROVISION"] == "no" or ENV["BEAKER_provision"] == "no"
   hosts.each do |host|
     on host, "yum -y install epel-release"
-    on host, 'yum -y install git gcc gcc-c++ ruby-devel libxslt-devel libxml2-devel rubygem-bundler'
+    on host, 'yum -y install git rubygem-bundler'
     on host, "git clone https://github.com/Talend/talend-cloud-installer.git #{WORKDIR} -b #{GIT_BRANCH}"
     on host, "cd #{WORKDIR} && bundle install --path=vendor/bundle --without development"
     on host, "cp -R #{WORKDIR}/hiera* /etc/puppet/"
   end
 end
-
-custom_facts = <<-EOS
-puppet_role=#{host['roles'].first}
-packagecloud_master_token=#{ENV['PACKAGECLOUD_MASTER_TOKEN']}
-EOS
 
 RSpec.configure do |c|
   # Project root
@@ -38,6 +33,12 @@ RSpec.configure do |c|
   # Configure all nodes in nodeset
   c.before :suite do
     hosts.each do |host|
+      custom_facts = <<-EOS
+puppet_role=#{host['roles'].first}
+packagecloud_master_token=#{ENV['PACKAGECLOUD_MASTER_TOKEN']}
+      EOS
+
+
       c.host = host
       create_remote_file host, '/etc/facter/facts.d/external_facts.txt', custom_facts, :protocol => 'rsync'
       on host,"cd #{WORKDIR} && bundle exec r10k puppetfile install"
