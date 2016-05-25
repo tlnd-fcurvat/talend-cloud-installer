@@ -1,7 +1,7 @@
 require 'spec_helper_acceptance'
 
 if hosts_with_role(hosts, 'base').length >= 1
-  describe "profile", :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
+  describe "profile" do
     describe "base" do
       it 'should provision base profile' do
         pp = <<-EOS

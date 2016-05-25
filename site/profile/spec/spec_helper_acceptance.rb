@@ -34,7 +34,7 @@ RSpec.configure do |c|
   c.before :suite do
     hosts.each do |host|
       custom_facts = <<-EOS
-puppet_role=#{host['roles'].first}
+puppet_role=base
 packagecloud_master_token=#{ENV['PACKAGECLOUD_MASTER_TOKEN']}
       EOS
 
