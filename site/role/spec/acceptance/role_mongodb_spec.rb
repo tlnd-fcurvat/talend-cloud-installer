@@ -13,7 +13,7 @@ if hosts_with_role(hosts, 'mongodb').length >= 1
 
       context 'installation of jmongodb services' do
 
-        describe package('mongodb') do
+        describe package('mongodb-server') do
           it { is_expected.to be_installed }
         end
 

@@ -1,6 +1,5 @@
 require 'spec_helper_acceptance'
 
-
 if hosts_with_role(hosts, 'dataprepdataset').length >= 1
   describe "role::dataprepdataset" do
 
