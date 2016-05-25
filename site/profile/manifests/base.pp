@@ -26,6 +26,10 @@ class profile::base {
   if $::osfamily == 'RedHat' { include ::selinux }
   if $::ec2_metadata { include ::awscli }
 
+  # get some packagecloud repos installed
+  $packagecloud_repos = hiera_hash('packagecloud_repos', {})
+  create_resources('packagecloud::repo', $packagecloud_repos)
+
   # get some usual helpers installed
   $common_packages = hiera_hash('common_packages', {})
   create_resources(Package, $common_packages)

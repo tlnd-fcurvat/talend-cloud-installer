@@ -14,6 +14,7 @@ forge "http://forge.puppetlabs.com"
  mod "jdowning/awscli"
  mod "stahnma/epel"
  mod "nanliu/staging"
+ mod "computology-packagecloud", '0.3.0'
  mod "puppetlabs/mongodb", '0.13.0'
  mod "nexus",
    :git => 'https://github.com/Talend/puppet-nexus.git',
