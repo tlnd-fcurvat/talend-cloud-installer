@@ -23,6 +23,11 @@ unless ENV["RS_PROVISION"] == "no" or ENV["BEAKER_provision"] == "no"
   end
 end
 
+custom_facts = <<-EOS
+puppet_role=#{host['roles'].first}
+packagecloud_master_token=#{ENV['PACKAGECLOUD_MASTER_TOKEN']}
+EOS
+
 RSpec.configure do |c|
   # Project root
   proj_root = File.expand_path(File.join(File.dirname(__FILE__), ".."))
@@ -33,6 +38,8 @@ RSpec.configure do |c|
   # Configure all nodes in nodeset
   c.before :suite do
     hosts.each do |host|
+      c.host = host
+      create_remote_file host, '/etc/facter/facts.d/external_facts.txt', custom_facts, :protocol => 'rsync'
       on host,"cd #{WORKDIR} && bundle exec r10k puppetfile install"
     end
   end

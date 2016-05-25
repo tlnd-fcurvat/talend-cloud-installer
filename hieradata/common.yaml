@@ -19,14 +19,14 @@ common_packages:
 
 packagecloud_repos:
   'talend/tic':
-    type: 'rpm',
-    master_token: 'undef',
+    type: 'rpm'
+    master_token: %{::packagecloud_master_token}
   'talend/oter':
-    type: 'rpm',
-    master_token: 'undef',
+    type: 'rpm'
+    master_token: %{::packagecloud_master_token}
   'talend/thirdparty':
-    type: 'rpm',
-    master_token: 'undef',
+    type: 'rpm'
+    master_token: %{::packagecloud_master_token}
 
 
 jdk_oracle::version: '7'
