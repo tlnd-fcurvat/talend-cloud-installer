@@ -40,7 +40,8 @@ RSpec.configure do |c|
   c.before :suite do
     hosts.each do |host|
       c.host = host
-      create_remote_file host, '/etc/facter/facts.d/external_facts.txt', custom_facts, :protocol => 'rsync'
+      create_remote_file host, '/etc/facter/facts.d/role_facts.txt', "puppet_role=#{host['roles'].first}", :protocol => 'rsync'
+      create_remote_file host, '/etc/facter/facts.d/packagecloud_facts.txt', ENV['PACKAGECLOUD_MASTER_TOKEN'], :protocol => 'rsync'
       on host,"cd #{WORKDIR} && bundle exec r10k puppetfile install"
     end
   end

@@ -1,7 +1,7 @@
 require 'spec_helper_acceptance'
 
 if hosts_with_role(hosts, 'mongodb').length >= 1
-  describe "mongodb" do
+  describe "profile::mongodb" do
 
     describe "mongodb" do
 

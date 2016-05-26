@@ -1,7 +1,7 @@
 require 'spec_helper_acceptance'
 
 if hosts_with_role(hosts, 'web_nginx').length >= 1
-  describe "nginx" do
+  describe "profile::nginx" do
     describe "nginx" do
       it 'should provision nginx web profile' do
         pp = <<-EOS
