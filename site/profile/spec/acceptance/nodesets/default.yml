@@ -1,6 +1,6 @@
 HOSTS:
   centos-7-base:
-    role:
+    roles:
       - default
       - base
     vmname: centos-7-base
