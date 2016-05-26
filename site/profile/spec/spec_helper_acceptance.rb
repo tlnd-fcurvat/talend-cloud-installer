@@ -24,11 +24,6 @@ unless ENV["RS_PROVISION"] == "no" or ENV["BEAKER_provision"] == "no"
   end
 end
 
-custom_facts = <<-EOS
-puppet_role=base
-packagecloud_master_token=#{ENV['PACKAGECLOUD_MASTER_TOKEN']}
-EOS
-
 RSpec.configure do |c|
   # Project root
   proj_root = File.expand_path(File.join(File.dirname(__FILE__), ".."))

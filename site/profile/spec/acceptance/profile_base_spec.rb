@@ -1,9 +1,9 @@
 require 'spec_helper_acceptance'
 
-if hosts_with_role(hosts, 'base').length >= 1
 
   describe "profile::base" do
-    describe "on profile::base" do
+
+    context "on profile::base" do
       it 'should provision base profile' do
         pp = <<-EOS
         class { 'profile::base':
@@ -33,4 +33,3 @@ if hosts_with_role(hosts, 'base').length >= 1
       end
     end
   end
-end
