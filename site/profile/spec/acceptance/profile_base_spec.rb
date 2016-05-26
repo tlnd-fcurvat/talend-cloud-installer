@@ -30,7 +30,7 @@ require 'spec_helper_acceptance'
         end
 
         describe package('aws-sdk') do
-          it { is_expected.to be_installed }
+          it { is_expected.to be_installed.by('pip') }
         end
       end
     end
