@@ -20,11 +20,8 @@ if hosts_with_role(hosts, 'base').length >= 1
         #apply_manifest_on(agent, pp, :catch_changes => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules', :hiera_config => '/tmp/puppet/hiera.yaml')
       end
 
-      context 'should have base rofile prvisioned' do
+      context 'should have base profile provisioned' do
 
-        describe package('syncope') do
-          it { is_expected.to be_installed }
-        end
 
         describe package('aws-sdk') do
           it { is_expected.to be_installed.by('pip') }
