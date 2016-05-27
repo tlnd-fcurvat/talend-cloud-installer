@@ -1,6 +1,6 @@
 require 'spec_helper_acceptance'
 
-#if hosts_with_role(hosts, 'base').length >= 1
+if hosts_with_role(hosts, 'base').length >= 1
   describe "profile::base" do
 
     context "on profile::base" do
@@ -35,4 +35,4 @@ require 'spec_helper_acceptance'
       end
     end
   end
-#end
+end
