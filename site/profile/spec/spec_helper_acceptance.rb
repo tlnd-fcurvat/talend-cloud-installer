@@ -4,7 +4,6 @@ require 'beaker-rspec/helpers/serverspec'
 
 run_puppet_install_helper
 
-UNSUPPORTED_PLATFORMS = [ "Darwin", "windows" ]
 WORKDIR = '/tmp/puppet'
 
 unless ENV.has_key?('GIT_BRANCH') then

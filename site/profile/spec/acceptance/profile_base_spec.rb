@@ -1,6 +1,7 @@
 require 'spec_helper_acceptance'
 
-if hosts_with_role(hosts, 'base').length >= 1
+on hosts_with_role(hosts, 'base') do
+
   describe "profile::base" do
 
     context "on profile::base" do
@@ -22,6 +23,20 @@ if hosts_with_role(hosts, 'base').length >= 1
 
       context 'should have base profile provisioned' do
 
+        describe yumrepo('epel') do
+          it { should exist }
+          it { should be_enabled }
+        end
+
+        describe yumrepo('talend_other') do
+          it { should exist }
+          it { should be_enabled }
+        end
+
+        describe yumrepo('talend_thirdparty') do
+          it { should exist }
+          it { should be_enabled }
+        end
 
         describe package('aws-sdk') do
           it { is_expected.to be_installed.by('pip') }

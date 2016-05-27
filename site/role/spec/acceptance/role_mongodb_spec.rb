@@ -11,7 +11,7 @@ if hosts_with_role(hosts, 'mongodb').length >= 1
         #expect( apply_manifest_on(agent, pp, :catch_failures => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules').exit_code).to be_zero
       end
 
-      context 'installation of jmongodb services' do
+      context 'installation of mongodb services' do
 
         describe package('mongodb-server') do
           it { is_expected.to be_installed }
