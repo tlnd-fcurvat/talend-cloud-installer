@@ -3,7 +3,7 @@ require 'spec_helper_acceptance'
   describe "profile::nginx" do
     let(:pp) do
       <<-EOS
-        class { 'profile::db::mongodb':
+        class { 'profile::web::nginx':
         }
       EOS
     end
