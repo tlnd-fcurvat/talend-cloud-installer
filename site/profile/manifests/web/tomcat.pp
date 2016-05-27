@@ -30,7 +30,7 @@ class profile::web::tomcat (){
     user                => 'tomcat',
     group               => 'tomcat',
     catalina_base       => '/opt/apache-tomcat/tomcat7',
-    java_home           => '/opt/jdk-7',
+    java_home           => '/usr/java/default',
   } ->
   tomcat::service { 'tomcat7':
     catalina_base => '/opt/apache-tomcat/tomcat7',
