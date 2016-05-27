@@ -45,7 +45,7 @@ shared_examples "a idempotent resource" do
     apply_manifest(pp, :catch_failures => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules', :hiera_config => '/tmp/puppet/hiera.yaml')
   end
 
-  it 'should apply a second time without changes', :skip_pup_5016 do
-    apply_manifest(pp, :catch_changes => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules', :hiera_config => '/tmp/puppet/hiera.yaml')
-  end
+  # it 'should apply a second time without changes', :skip_pup_5016 do
+  #   apply_manifest(pp, :catch_changes => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules', :hiera_config => '/tmp/puppet/hiera.yaml')
+  # end
 end
