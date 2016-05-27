@@ -10,6 +10,16 @@
 #  masterless: true
 #
 HOSTS:
+  centos-7-base:
+    vmname: centos-7-base
+    platform: el-7-x86_64
+    hypervisor: ec2
+    amisize: t2.small
+    snapshot: foss
+    user: centos
+    roles:
+      - default
+      - base
   centos-7-web:
     vmname: centos-7-web
     platform: el-7-x86_64
@@ -19,7 +29,6 @@ HOSTS:
     user: centos
     roles:
       - web
-      - default
   centos-7-mongodb:
     vmname: centos-7-mongodb
     platform: el-7-x86_64

@@ -17,6 +17,13 @@ common_packages:
   'epel-release':
     ensure: 'installed'
 
+packagecloud_repos:
+  'talend/other':
+    type: 'rpm'
+    master_token: "%{::packagecloud_master_token}"
+  'talend/thirdparty':
+    type: 'rpm'
+
 
 jdk_oracle::version: '7'
 jdk_oracle::install_dir: '/opt'
