@@ -4,7 +4,7 @@ class profile::web::syncope {
 
   class{ 'syncope':
     java_home         => $::java_default_home,
-    postgres_username => "postgres",
+    postgres_username => 'postgres',
     postgres_password => $::master_password,
     postgres_node     => 'localhost',
     application_path  => '/srv/tomcat/syncope-srv/webapps',
