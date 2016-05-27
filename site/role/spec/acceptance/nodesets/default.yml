@@ -55,7 +55,7 @@ HOSTS:
     snapshot: foss
     user: centos
     roles:
-      - dataprepdataset
+      - dataprep_dataset
 CONFIG:
   type: foss
   log_level: verbose
