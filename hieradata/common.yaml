@@ -18,15 +18,11 @@ common_packages:
     ensure: 'installed'
 
 packagecloud_repos:
-  'talend/tic':
-    type: 'rpm'
-    master_token: "%{::packagecloud_master_token}"
-  'talend/oter':
+  'talend/other':
     type: 'rpm'
     master_token: "%{::packagecloud_master_token}"
   'talend/thirdparty':
     type: 'rpm'
-    master_token: "%{::packagecloud_master_token}"
 
 
 jdk_oracle::version: '7'
