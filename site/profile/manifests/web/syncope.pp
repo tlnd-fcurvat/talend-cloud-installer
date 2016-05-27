@@ -2,14 +2,22 @@
 #
 class profile::web::syncope {
 
-  package {
-    'syncope':
-      ensure => installed;
-    'syncope-console':
-      ensure => installed;
-    'syncope-sts':
-      ensure => installed;
+  class{ 'syncope':
+    java_home         => $::java_default_home,
+    postgres_username => "postgres",
+    postgres_password => $::master_password,
+    postgres_node     => 'localhost',
+    application_path  => '/srv/tomcat/syncope-srv/webapps',
+    admin_password    => $::master_password,
   }
+
+  class { 'postgresql::server': }
+
+  postgresql::server::db { 'syncope':
+    user     => 'syncope',
+    password => postgresql_password('syncope', $::master_passwords),
+  }
+
 
 
 }
