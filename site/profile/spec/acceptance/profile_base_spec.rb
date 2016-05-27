@@ -8,9 +8,6 @@ if hosts_with_role(hosts, 'base').length >= 1
         pp = <<-EOS
         class { 'profile::base':
         }
-        package{'syncope':
-          ensure => present,
-        }
         EOS
 
         # With the version of java that ships with pe on debian wheezy, update-alternatives
@@ -20,7 +17,7 @@ if hosts_with_role(hosts, 'base').length >= 1
 
         apply_manifest_on(agent, pp, :catch_failures => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules', :hiera_config => '/tmp/puppet/hiera.yaml')
 
-        apply_manifest_on(agent, pp, :catch_changes => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules', :hiera_config => '/tmp/puppet/hiera.yaml')
+        #apply_manifest_on(agent, pp, :catch_changes => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules', :hiera_config => '/tmp/puppet/hiera.yaml')
       end
 
       context 'should have base rofile prvisioned' do
