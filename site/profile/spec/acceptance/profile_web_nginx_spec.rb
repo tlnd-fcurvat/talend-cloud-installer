@@ -1,21 +1,17 @@
 require 'spec_helper_acceptance'
 
-describe "nginx", :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
-  describe "nginx" do
-    it 'should provision nginx web profile' do
-      pp = <<-EOS
+  describe "profile::nginx" do
+    let(:pp) do
+      <<-EOS
         class { 'profile::web::nginx':
         }
       EOS
-
-      # With the version of java that ships with pe on debian wheezy, update-alternatives
-      # throws an error on the first run due to missing alternative for policytool. It still
-      # updates the alternatives for java
-      apply_manifest(pp, :catch_failures => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules', :hiera_config => '/tmp/puppet/hiera.yaml')
-
-      apply_manifest(pp, :catch_changes => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules', :hiera_config => '/tmp/puppet/hiera.yaml')
     end
 
+    it_behaves_like "a idempotent resource"
+  end
+
+  describe 'should have web::nginx profile configured' do
 
     describe package('nginx') do
       it { is_expected.to be_installed }
@@ -32,4 +28,3 @@ describe "nginx", :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
     end
 
   end
-end

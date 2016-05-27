@@ -1,19 +1,36 @@
 require 'spec_helper_acceptance'
 
-describe "profile", :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
-  describe "base" do
-    it 'should provision base role' do
-      pp = <<-EOS
+
+describe "profile::base" do
+  let(:pp) do
+    <<-EOS
         class { 'profile::base':
         }
-      EOS
-
-      # With the version of java that ships with pe on debian wheezy, update-alternatives
-      # throws an error on the first run due to missing alternative for policytool. It still
-      # updates the alternatives for java
-      apply_manifest(pp, :catch_failures => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules', :hiera_config => '/tmp/puppet/hiera.yaml')
-
-      apply_manifest(pp, :catch_changes => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules', :hiera_config => '/tmp/puppet/hiera.yaml')
-    end
+    EOS
   end
+
+  it_behaves_like "a idempotent resource"
 end
+
+describe 'should have base profile configured' do
+
+  describe yumrepo('epel') do
+    it { should exist }
+    it { should be_enabled }
+  end
+
+  describe yumrepo('talend_other') do
+    it { should exist }
+    it { should be_enabled }
+  end
+
+  describe yumrepo('talend_thirdparty') do
+    it { should exist }
+    it { should be_enabled }
+  end
+
+  # describe package('aws-sdk') do
+  #   it { is_expected.to be_installed.by('pip') }
+  # end
+end
+

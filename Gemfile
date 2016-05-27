@@ -12,7 +12,7 @@ group :development do
   gem 'beaker-puppet_install_helper'
   gem 'beaker-rspec'
   gem 'puppetlabs_spec_helper', :git => 'https://github.com/Talend/puppetlabs_spec_helper.git'
-
+  
   gem 'spec'
   gem 'rspec', '~> 3.4'
   gem 'rspec-core', '~> 3.4'
@@ -21,8 +21,6 @@ group :development do
   gem 'rspec-support', '~> 3.4'
   gem 'rspec-puppet'
   gem 'rspec-puppet-facts'
-
-
 
   gem 'puppet-lint'
   gem 'puppet-syntax'

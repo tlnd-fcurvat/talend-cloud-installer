@@ -1,11 +1,9 @@
 require 'spec_helper_acceptance'
 
-
-
-describe "profile::mongodb" do
+describe "role::mongodb" do
   let(:pp) do
     <<-EOS
-        class { 'profile::db::mongodb':
+        class { 'role::mongodb':
         }
     EOS
   end
@@ -13,7 +11,8 @@ describe "profile::mongodb" do
   it_behaves_like "a idempotent resource"
 end
 
-describe 'should have mongodb profile configured' do
+describe 'should have mongodb role configured' do
+
   describe package('mongodb-server') do
     it { is_expected.to be_installed }
   end
