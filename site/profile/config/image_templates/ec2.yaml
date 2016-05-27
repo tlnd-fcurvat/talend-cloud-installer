@@ -3,3 +3,11 @@ AMI:
     :image:
       :foss: ami-6d1c2007
     :region: us-east-1
+  centos-7-mongodb:
+    :image:
+      :foss: ami-6d1c2007
+    :region: us-east-1
+  centos-7-web-nginx:
+    :image:
+      :foss: ami-6d1c2007
+    :region: us-east-1
