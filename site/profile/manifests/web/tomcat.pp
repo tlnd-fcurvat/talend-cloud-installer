@@ -8,6 +8,7 @@ class profile::web::tomcat (
 
   $catalina_base = '/opt/apache-tomcat/tomcat7',
   $tomcat_version = '8',
+  
 ){
 
   $source_url = $tomcat_version ? {
