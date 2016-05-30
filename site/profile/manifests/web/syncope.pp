@@ -2,7 +2,7 @@
 #
 class profile::web::syncope {
 
-  class{ 'syncope':
+  class{ '::syncope':
     java_home         => $::java_default_home,
     postgres_username => 'postgres',
     postgres_password => $::master_password,
