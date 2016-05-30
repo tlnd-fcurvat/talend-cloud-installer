@@ -7,7 +7,7 @@ class profile::web::syncope {
     postgres_username => 'postgres',
     postgres_password => $::master_password,
     postgres_node     => 'localhost',
-    application_path  => '/srv/tomcat/syncope-srv/webapps',
+    application_path  => '/opt/tomcat/webapps',
     admin_password    => $::master_password,
   }
 
@@ -17,7 +17,6 @@ class profile::web::syncope {
     user     => 'syncope',
     password => postgresql_password('syncope', $::master_passwords),
   }
-
 
 
 }
