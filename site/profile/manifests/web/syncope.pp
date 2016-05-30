@@ -9,7 +9,6 @@ class profile::web::syncope {
     postgres_node     => 'localhost',
     application_path  => '/opt/tomcat/webapps',
     admin_password    => $::master_password,
-    require           => Class['profile::web::tomcat']
   }
 
   class { 'postgresql::server': }

@@ -8,7 +8,7 @@ class profile::web::tomcat (
 
   $catalina_base = '/opt/apache-tomcat/tomcat7',
   $tomcat_version = '8',
-  
+
 ){
 
   $source_url = $tomcat_version ? {
@@ -24,6 +24,13 @@ class profile::web::tomcat (
   package{  'ruby-augeas':
     ensure  => 'installed',
     require => Package['epel-release']
+  }
+
+  unless defined(File['/opt/tomcat']){
+    file{ '/opt/tomcat':
+      ensure => 'link',
+      target => $catalina_base
+    }
   }
 
   java::oracle { 'jdk8' :
@@ -42,6 +49,7 @@ class profile::web::tomcat (
     catalina_base       => $catalina_base,
     java_home           => '/usr/java/default',
   } ->
+
   tomcat::service { 'tomcat':
     catalina_base => $catalina_base,
     use_init      => false,
@@ -49,9 +57,6 @@ class profile::web::tomcat (
 
   profile::register_profile{ 'tomcat': }
 
-  file{'/opt/tomcat':
-    ensure => 'link',
-    target => $catalina_base
-  }
+
 
 }
