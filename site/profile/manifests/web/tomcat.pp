@@ -48,11 +48,6 @@ class profile::web::tomcat (
     group               => 'tomcat',
     catalina_base       => $catalina_base,
     java_home           => '/usr/java/default',
-  } ->
-
-  tomcat::service { 'tomcat':
-    catalina_base => $catalina_base,
-    use_init      => false,
   }
 
   profile::register_profile{ 'tomcat': }
