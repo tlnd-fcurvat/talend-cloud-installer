@@ -18,5 +18,6 @@ class profile::web::syncope {
     password => postgresql_password('syncope', $::master_passwords),
   }
 
+  Tomcat::Instance['tomcat'] -> Class['::syncope']
 
 }
