@@ -10,12 +10,14 @@ describe "role::dataprep_dataset" do
   end
 
   it_behaves_like "a idempotent resource"
-end
 
-describe 'should have dataprep_dataset role configured' do
+  context 'should have dataprep_dataset role configured' do
 
-  it 'should have java process with correct arguments' do
-    expect(command('pgrep -a java').stdout).to match /\/opt\/talend\/dataprep\//
+    it 'should have java process with correct arguments' do
+      expect(command('pgrep -a java').stdout).to match /\/opt\/talend\/dataprep\//
+    end
+
   end
-
 end
+
+
