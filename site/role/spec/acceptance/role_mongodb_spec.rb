@@ -1,6 +1,6 @@
 require 'spec_helper_acceptance'
 
-describe "role::mongodb" do
+describe "role::mongodb" , :if => fact('hostname').match(/mongodb/)do
   let(:pp) do
     <<-EOS
         class { 'role::mongodb':
