@@ -22,7 +22,7 @@ describe 'profile::web::tomcat' do
 
     # Test if it compiles
     it { should compile }
-    it { should have_resource_count(32)}
+    it { should have_resource_count(30)}
 
     # Test all default params are set
     it {
