@@ -3,6 +3,6 @@
 class profile::web::syncope {
 
   include ::syncope
-  include ::profile::db::posgresql
+  include ::profile::db::postgresql
 
 }
