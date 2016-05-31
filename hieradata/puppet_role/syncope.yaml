@@ -9,7 +9,7 @@ nginx::resource::vhosts:
   'syncope.aws.talend.com':
     proxy: 'http://syncope'
 
-profile::web::tomcat::tomcat_version: '7'
+syncope::tomcat_version: '7'
 
 syncope::postgres_username: 'postgres'
 syncope::postgres_password: "%{::master_password}"
@@ -22,4 +22,4 @@ syncope::admin_password: "%{::master_password}"
 'pg_databases':
   'syncope':
     user: 'syncope'
-    password: postgresql_password('syncope', $::master_passwords)
+    password: "%{::master_password}"
