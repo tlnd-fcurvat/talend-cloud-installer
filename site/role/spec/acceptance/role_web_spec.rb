@@ -3,7 +3,7 @@ require 'spec_helper_acceptance'
 
 
 
-describe "role::web" do
+describe "role::web" , :if => fact('hostname').match(/web/) do
   let(:pp) do
     <<-EOS
         class { 'role::web':
