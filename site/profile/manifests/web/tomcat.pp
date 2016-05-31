@@ -6,7 +6,7 @@
 #
 class profile::web::tomcat (
 
-  $catalina_base = '/opt/apache-tomcat/tomcat7',
+  $catalina_base = '/opt/apache-tomcat/tomcat',
   $tomcat_version = '8',
 
 ){
@@ -14,16 +14,6 @@ class profile::web::tomcat (
   $source_url = $tomcat_version ? {
     '7'     => 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.69/bin/apache-tomcat-7.0.69.tar.gz',
     default => 'http://archive.apache.org/dist/tomcat/tomcat-8/v8.5.2/bin/apache-tomcat-8.5.2.tar.gz'
-  }
-
-  unless defined(Package['epel-release']){
-    package{  'epel-release':
-      ensure  => 'installed',
-    }
-  }
-  package{  'ruby-augeas':
-    ensure  => 'installed',
-    require => Package['epel-release']
   }
 
   unless defined(File['/opt/tomcat']){
@@ -39,7 +29,7 @@ class profile::web::tomcat (
     java_se => 'jre',
   } ->
 
-  tomcat::instance { "tomcat${tomcat_version}":
+  tomcat::instance { 'tomcat':
     install_from_source => true,
     source_url          => $source_url,
     manage_user         => true,
