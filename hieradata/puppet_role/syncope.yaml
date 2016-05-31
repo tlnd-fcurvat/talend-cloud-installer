@@ -8,3 +8,5 @@ nginx::resource::upstreams:
 nginx::resource::vhosts:
   'syncope.aws.talend.com':
     proxy: 'http://syncope'
+
+profile::web::tomcat::tomcat_version: '7'
