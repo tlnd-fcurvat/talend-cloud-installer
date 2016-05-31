@@ -3,7 +3,7 @@ require 'spec_helper_acceptance'
 
 
 
-describe "role::syncope" , :if => fact('hostname').match(/syncope/)do
+describe "role::syncope" , :if => fact('puppet_role').match(/syncope/)do
   let(:pp) do
     <<-EOS
         class { 'role::syncope':

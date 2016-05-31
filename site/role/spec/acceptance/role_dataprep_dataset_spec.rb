@@ -1,7 +1,7 @@
 require 'spec_helper_acceptance'
 
 
-describe "role::dataprep_dataset" , :if => fact('hostname').match(/dataprepdataset/) do
+describe "role::dataprep_dataset" , :if => fact('puppet_role').match(/dataprepdataset/) do
   let(:pp) do
     <<-EOS
         class { 'role::dataprep_dataset':
