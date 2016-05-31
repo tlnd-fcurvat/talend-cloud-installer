@@ -7,6 +7,7 @@ class role::syncope {
   # All roles should include the base profile
   include ::profile::base
   include ::profile::web::nginx
+  include ::profile::web::tomcat
   include ::profile::web::syncope
 
 

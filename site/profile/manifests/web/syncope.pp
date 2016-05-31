@@ -2,11 +2,6 @@
 #
 class profile::web::syncope {
 
-  class{'profile::web::tomcat':
-
-
-  } ->
-
   class{ '::syncope':
     java_home         => $::java_default_home,
     postgres_username => 'postgres',
