@@ -1,3 +1,5 @@
+# Setting up the single postgresql server instance
+#
 class profile::db::postgresql {
 
   class { 'postgresql::server': }
