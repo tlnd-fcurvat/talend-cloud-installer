@@ -1,17 +1,7 @@
 require 'spec_helper_acceptance'
 
-
-
-
-describe "role::syncope" , :if => fact('puppet_role').match(/syncope/)do
-  let(:pp) do
-    <<-EOS
-        class { 'role::syncope':
-        }
-    EOS
-  end
-
-  it_behaves_like "a idempotent resource"
+describe 'role::syncope' , :if => fact('puppet_roles').split(',').include?('syncope') do
+  it_behaves_like 'puppet::appliable', 'include "role::syncope"'
 
   context 'should have syncope role configured' do
 
@@ -38,5 +28,3 @@ describe "role::syncope" , :if => fact('puppet_role').match(/syncope/)do
 
   end
 end
-
-
