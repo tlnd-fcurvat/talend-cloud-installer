@@ -25,18 +25,3 @@ end
 PuppetSyntax.exclude_paths = exclude_paths
 
 task :default => [:lint, :validate, :spec]
-
-# Define separate rake task for every role spec
-# TODO: revise this in favor of more sophisticated solution
-#       at the moment it looks like that it should be beaker
-#       native tests (so, no beaker-rspec/serverspec) OR
-#       test-kitchen with kitchen-puppet
-Dir['spec/acceptance/**/role_*_spec.rb'].sort.map do |role_spec|
-  /role_(.*?)_spec\.rb/.match(File.basename(role_spec))[1]
-end.each do |role|
-  desc "Run beaker for #{role} spec only"
-  RSpec::Core::RakeTask.new("beaker:role:#{role}") do |t|
-    t.rspec_opts = ['--color']
-    t.pattern = "spec/acceptance/**/role_#{role}_spec.rb"
-  end
-end
