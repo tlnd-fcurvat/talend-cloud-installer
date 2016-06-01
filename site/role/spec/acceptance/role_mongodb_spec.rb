@@ -1,17 +1,9 @@
 require 'spec_helper_acceptance'
 
-describe "role::mongodb" , :if => fact('puppet_role').match(/mongodb/)do
-  let(:pp) do
-    <<-EOS
-        class { 'role::mongodb':
-        }
-    EOS
-  end
+describe 'role::mongodb', :if => fact('puppet_roles').split(',').include?('mongodb') do
+  it_behaves_like 'puppet::appliable', 'include "role::mongodb"'
 
-  it_behaves_like "a idempotent resource"
-
-  context 'should have mongodb role configured' do
-
+  describe 'should have mongodb role configured' do
     describe package('mongodb-server') do
       it { is_expected.to be_installed }
     end
@@ -24,9 +16,5 @@ describe "role::mongodb" , :if => fact('puppet_role').match(/mongodb/)do
     describe port(27017) do
       it { should be_listening }
     end
-
   end
 end
-
-
-

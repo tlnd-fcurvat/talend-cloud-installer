@@ -1,20 +1,9 @@
 require 'spec_helper_acceptance'
 
+describe 'role::web', :if => fact('puppet_roles').split(',').include?('web') do
+  it_behaves_like 'puppet::appliable', 'include "role::web"'
 
-
-
-describe "role::web" , :if => fact('puppet_role').match(/web/) do
-  let(:pp) do
-    <<-EOS
-        class { 'role::web':
-        }
-    EOS
-  end
-
-  it_behaves_like "a idempotent resource"
-
-  context 'should have web role configured' do
-
+  describe 'should have web role configured' do
     describe package('nginx') do
       it { is_expected.to be_installed }
     end
@@ -29,14 +18,11 @@ describe "role::web" , :if => fact('puppet_role').match(/web/) do
     end
 
     it 'should have java process with correct arguments' do
-      expect(command('pgrep -a java').stdout).to match /\/opt\/tomcat\//
+      expect(command('pgrep -a java').stdout).to match /\/opt\/apache-tomcat\/tomcat7\//
     end
 
     describe port(8080) do
       it { should be_listening }
     end
-
   end
 end
-
-
