@@ -16,7 +16,7 @@ hosts.each do |host|
   on host, 'mkdir -p /etc/facter/facts.d'
   create_remote_file host,
     '/etc/facter/facts.d/role_facts.txt',
-    "puppet_role=#{host['roles'].last}\npuppet_roles=%#{host['roles'].join('%,%')}%",
+    "puppet_role=#{host['roles'].last}\npuppet_roles=#{host['roles'].join(',')}",
     :protocol => 'rsync'
 end
 
