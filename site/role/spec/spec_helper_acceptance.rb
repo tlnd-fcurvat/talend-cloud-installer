@@ -5,6 +5,10 @@ require 'beaker-rspec/helpers/serverspec'
 UNSUPPORTED_PLATFORMS = [ "Darwin", "windows" ]
 WORKDIR = '/tmp/puppet'
 
+# Load shared acceptance examples
+base_spec_dir = Pathname.new(File.join(File.dirname(__FILE__), 'acceptance'))
+Dir[base_spec_dir.join('shared/**/*.rb')].sort.each{ |f| require f }
+
 unless ENV.has_key?('GIT_BRANCH') then
   GIT_BRANCH = `git branch | grep '^\*' | cut -f2 -d" "`
 else
@@ -44,14 +48,4 @@ RSpec.configure do |c|
       on host,"cd #{WORKDIR} && bundle exec r10k puppetfile install"
     end
   end
-end
-
-shared_examples "a idempotent resource" do
-  it 'should apply with no errors' do
-    apply_manifest(pp, :catch_failures => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules', :hiera_config => '/tmp/puppet/hiera.yaml')
-  end
-
-  # it 'should apply a second time without changes', :skip_pup_5016 do
-  #   apply_manifest(pp, :catch_changes => true, :modulepath => '/tmp/puppet/site:/tmp/puppet/modules', :hiera_config => '/tmp/puppet/hiera.yaml')
-  # end
 end
