@@ -25,6 +25,7 @@ packagecloud_repos:
     type: 'rpm'
 
 
-jdk_oracle::version: '7'
-jdk_oracle::install_dir: '/opt'
-jdk_oracle::use_cache: false
+profile::web::tomcat::catalina_base: '/opt/apache-tomcat/tomcat'
+profile::web::tomcat::tomcat_version: '8'
+
+

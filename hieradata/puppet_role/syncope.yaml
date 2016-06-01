@@ -1,14 +1,4 @@
 ---
-tomcat_server_contexts:
-  'syncope-srv':
-    catalina_base: '/opt/apache-tomcat/syncope-srv'
-    context_ensure: 'present'
-    doc_base: 'test.war'
-    parent_service: 'Catalina'
-    parent_engine: 'Catalina'
-    parent_host: 'localhost'
-    additional_attributes:
-      'path': '/syncope-srv'
 
 nginx::resource::upstreams:
   'syncope':
@@ -18,3 +8,18 @@ nginx::resource::upstreams:
 nginx::resource::vhosts:
   'syncope.aws.talend.com':
     proxy: 'http://syncope'
+
+syncope::tomcat_version: '7'
+
+syncope::postgres_username: 'postgres'
+syncope::postgres_password: "%{::master_password}"
+syncope::postgres_node: 'localhost'
+
+syncope::java_home: "%{::java_default_home}"
+syncope::application_path: '/opt/tomcat/webapps'
+syncope::admin_password: "%{::master_password}"
+
+'pg_databases':
+  'syncope':
+    user: 'syncope'
+    password: "%{::master_password}"
