@@ -1,0 +1,15 @@
+---
+elasticsearch::manage_repo: true
+elasticsearch::repo_version: '1.5'
+elasticsearch::java_install: false
+elasticsearch::status: running
+
+limits::entries:
+  elasticsearch_files:
+    user: elasticsearch
+    limit_type: nofile
+    both: 65535
+  elasticsearch_memlock:
+    user: elasticsearch
+    limit_type: memlock
+    both: unlimited
