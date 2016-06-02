@@ -7,6 +7,8 @@ class profile::elasticsearch(
   $heap_size      = undef,
   $config         = undef
 ) {
+  include java
+
   #initialize defaults
   include ::elasticsearch
 
