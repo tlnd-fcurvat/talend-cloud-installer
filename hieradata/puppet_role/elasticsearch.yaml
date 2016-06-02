@@ -4,7 +4,7 @@ elasticsearch::repo_version: '1.5'
 elasticsearch::java_install: false
 elasticsearch::status: running
 
-profile:elasticsearch::plugins_hash:
+profile::elasticsearch::plugins_hash:
   'elasticsearch/elasticsearch-cloud-aws/2.5.1':
     module_dir: 'cloud-aws'
     instances: 'default'
