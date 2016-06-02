@@ -12,6 +12,9 @@ class profile::elasticsearch(
   #initialize defaults
   include ::elasticsearch
 
+  Class['::java'] ->
+  Elasticsearch::Instance['default']
+
   $userdata_json = parsejson($::ec2_userdata, {})
 
   if has_key($userdata_json,'cloud_formation') {
