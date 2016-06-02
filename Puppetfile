@@ -20,6 +20,7 @@ mod "computology-packagecloud", '0.3.0'
 mod "maestrodev/wget", "1.7.3"
 mod "herculesteam/augeasproviders_core"
 mod "herculesteam/augeasproviders_shellvar"
+mod "elasticsearch/elasticsearch", "0.9.9"
 
 # Talend puppet modules
 #
