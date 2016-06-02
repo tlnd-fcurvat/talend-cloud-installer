@@ -71,8 +71,8 @@ class profile::elasticsearch(
     $calculated_heap_size = abs(floor($::memorysize_mb * ($heap_size_numeric / 100.0)))
     validate_integer($calculated_heap_size)
 
-    augeas { "elasticsearch":
-      context => "/files/etc/sysconfig/elasticsearch-default",
+    augeas { 'elasticsearch':
+      context => '/files/etc/sysconfig/elasticsearch-default',
       changes => "set ES_HEAP_SIZE ${calculated_heap_size}m",
       notify  => Elasticsearch::Instance['default'],
     }
