@@ -21,6 +21,7 @@ mod "maestrodev/wget", "1.7.3"
 mod "herculesteam/augeasproviders_core"
 mod "herculesteam/augeasproviders_shellvar"
 mod "elasticsearch/elasticsearch", "0.9.9"
+mod "saz/limits", "2.3.0"
 
 # Talend puppet modules
 #
