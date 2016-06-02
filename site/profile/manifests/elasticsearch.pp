@@ -10,9 +10,7 @@ class profile::elasticsearch(
   #initialize defaults
   include ::elasticsearch
 
-  if $::ec2_userdata {
-    $userdata_json = parsejson($::ec2_userdata)
-  }
+  $userdata_json = parsejson($::ec2_userdata, {})
 
   if has_key($userdata_json,'cloud_formation') {
     $userdata_cloudformation = $userdata_json['cloud_formation']
