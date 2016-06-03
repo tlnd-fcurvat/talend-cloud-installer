@@ -15,7 +15,7 @@ else
   GIT_BRANCH = ENV['GIT_BRANCH']
 end
 
-# Insall puppet on hosts as well as provision them with role facts
+# Install puppet on hosts, as well as provision them with role facts
 hosts.each do |host|
   install_puppet
   on host, 'mkdir -p /etc/facter/facts.d'
