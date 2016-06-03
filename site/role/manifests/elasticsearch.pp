@@ -6,5 +6,5 @@ class role::elasticsearch {
   include java
   include ::profile::elasticsearch
 
-  Class['java'] -> Class['elasticsearch']
+  Class['java'] -> Class['::profile::elasticsearch']
 }
