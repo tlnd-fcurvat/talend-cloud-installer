@@ -25,14 +25,15 @@ hosts.each do |host|
     :protocol => 'rsync'
 end
 
-unless ENV["RS_PROVISION"] == "no" or ENV["BEAKER_provision"] == "no"
-  hosts.each do |host|
-    on host, 'yum -y install epel-release'
-    on host, 'yum -y install git rubygem-bundler ruby-augeas'
-    on host, "git clone https://github.com/Talend/talend-cloud-installer.git #{WORKDIR} -b #{GIT_BRANCH}"
-    on host, "cd #{WORKDIR} && bundle install --path=vendor/bundle --without development"
-    on host, "cp -R #{WORKDIR}/hiera* /etc/puppet/"
-  end
+# Deploy codebase on hosts
+hosts.each do |host|
+  rsync_to host,
+    File.expand_path(File.join(File.dirname(__FILE__), '..', '..', '..' )), # control repo root
+    WORKDIR
+  on host, 'yum -y install epel-release'
+  on host, 'yum -y install git rubygem-bundler ruby-augeas'
+  on host, "cd #{WORKDIR} && bundle install --path=vendor/bundle --without development"
+  on host, "cp -R #{WORKDIR}/hiera* /etc/puppet/"
 end
 
 RSpec.configure do |c|
