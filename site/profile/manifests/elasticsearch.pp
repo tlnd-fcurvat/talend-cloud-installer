@@ -43,7 +43,7 @@ class profile::elasticsearch(
   # remove joda-time-2.7 and add joda-time-2.8.2
   file {
     '/usr/share/elasticsearch/plugins/cloud-aws/joda-time-2.8.2.jar':
-      source  => '/opt/staging/elk/joda-time-2.8.2.jar',
+      source  => '/opt/staging/profile/joda-time-2.8.2.jar',
       require => [
         Elasticsearch::Plugin['elasticsearch/elasticsearch-cloud-aws/2.5.1'],
         Staging::File['joda-time-2.8.2.jar']
