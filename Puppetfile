@@ -34,4 +34,7 @@ mod 'syncope',
 mod "dataprep_dataset",
   :git    => 'https://github.com/Talend/puppet-dataprep_dataset',
   :branch => 'development'
+mod "activemq",
+  :git => 'https://github.com/Talend/puppet-activemq.git',
+  :branch => 'master'
 
