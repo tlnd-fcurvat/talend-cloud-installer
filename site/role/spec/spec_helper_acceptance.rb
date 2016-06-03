@@ -2,18 +2,11 @@ require 'beaker-rspec'
 require 'beaker/puppet_install_helper'
 require 'beaker-rspec/helpers/serverspec'
 
-UNSUPPORTED_PLATFORMS = [ "Darwin", "windows" ]
 WORKDIR = '/tmp/puppet'
 
 # Load shared acceptance examples
 base_spec_dir = Pathname.new(File.join(File.dirname(__FILE__), 'acceptance'))
 Dir[base_spec_dir.join('shared/**/*.rb')].sort.each{ |f| require f }
-
-unless ENV.has_key?('GIT_BRANCH') then
-  GIT_BRANCH = `git branch | grep '^\*' | cut -f2 -d" "`
-else
-  GIT_BRANCH = ENV['GIT_BRANCH']
-end
 
 # Install puppet on hosts, as well as provision them with role facts
 hosts.each do |host|
