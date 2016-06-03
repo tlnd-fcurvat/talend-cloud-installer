@@ -3,6 +3,7 @@
 class role::elasticsearch {
 
   include ::profile::base
+  include java
   include ::profile::elasticsearch
 
 }

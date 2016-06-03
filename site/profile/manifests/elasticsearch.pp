@@ -7,13 +7,8 @@ class profile::elasticsearch(
   $heap_size      = undef,
   $config         = undef
 ) {
-  include java
-
   #initialize defaults
   include ::elasticsearch
-
-  Class['::java'] ->
-  Elasticsearch::Instance['default']
 
   $userdata_json = parsejson($::ec2_userdata, {})
 
