@@ -11,7 +11,9 @@ activemq::pg_host: 'localhost'
 activemq::pg_db: 'activemq'
 activemq::pg_username: 'activemq'
 activemq::pg_password: "%{::master_password}"
-activemq::activemq_auth_ensure: 'installed'     
+activemq::activemq_auth_ensure: 'installed'
+activemq::persistence: 'kahadb'
+
 
 'pg_databases':
   'activemq':
