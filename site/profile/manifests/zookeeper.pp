@@ -1,6 +1,6 @@
-class ::profile::zookeeper {
+class profile::zookeeper {
 
   include ::java
   include ::zookeeper
-  
+
 }
