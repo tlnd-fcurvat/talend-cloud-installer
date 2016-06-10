@@ -37,4 +37,7 @@ mod "dataprep_dataset",
 mod "activemq",
   :git => 'https://github.com/Talend/puppet-activemq.git',
   :branch => 'master'
+mod "zookeeper",
+  :git => 'https://github.com/Talend/puppet-zookeeper.git',
+  :branch => 'master'
 
