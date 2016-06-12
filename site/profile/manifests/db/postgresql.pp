@@ -17,8 +17,8 @@ class profile::db::postgresql(
 
   if $pg_role_user {
 
-    postgresql_psql { "CREATE ROLE ${pg_role_user} ENCRYPTED PASSWORD ****":
-      command     => "CREATE ROLE \"${pg_role_user}\" ENCRYPTED PASSWORD '\$NEWPGPASSWD' TRUE FALSE FALSE FALSE FALSE CONNECTION LIMIT -1",
+    postgresql_psql { "CREATE ROLE ${pg_role_user}":
+      command     => "CREATE ROLE \"${pg_role_user}\" WITH LOGIN PASSWORD '\$NEWPGPASSWD'",
       unless      => "SELECT rolname FROM pg_roles WHERE rolname='${pg_role_user}'",
       environment => "NEWPGPASSWD=${pg_role_user_password}",
       require     => Class['Postgresql::Server'],
