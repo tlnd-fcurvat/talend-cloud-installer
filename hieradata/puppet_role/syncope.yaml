@@ -1,4 +1,9 @@
 ---
+java::distribution: "jre"
+java::package: "jre1.8.0_60"
+java::version: "1.8.0_60-fcs"
+java::java_home: "/usr/java/jre1.8.0_60"
+
 syncope::postgres_host: "%{::tic_db_host}"
 syncope::postgres_db_name: 'syncope'
 syncope::postgres_password: "%{::master_password}"
