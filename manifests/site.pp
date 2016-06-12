@@ -22,6 +22,10 @@ Package {
   allow_virtual => true,
 }
 
+stage { 'base': }
+stage { 'finally': }
+Stage['base'] -> Stage['main'] -> Stage['finally']
+
 # DEFAULT NODE
 # Node definitions in this file are merged with node data from the console. See
 # http://docs.puppetlabs.com/guides/language_guide.html#nodes for more on
