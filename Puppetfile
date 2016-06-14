@@ -25,6 +25,9 @@ mod "saz/limits", "2.3.0"
 
 # Talend puppet modules
 #
+mod "cloudwatchlogs",
+  :git => 'https://github.com/Talend/puppet-cloudwatchlogs.git',
+  :branch => 'master'
 mod "nexus",
   :git => 'https://github.com/Talend/puppet-nexus.git',
   :branch => 'master'
