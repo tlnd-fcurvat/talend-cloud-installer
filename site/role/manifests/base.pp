@@ -6,4 +6,8 @@ class role::base {
   # All roles should include the base profile
   include ::profile::base
 
+  $cloudwatch_logfiles = hiera_hash('cloudwatchlog_files', {})
+  create_resources('::cloudwatchlogs::log', $cloudwatch_logfiles)
+
+
 }

@@ -24,6 +24,18 @@ packagecloud_repos:
   'talend/thirdparty':
     type: 'rpm'
 
+cloudwatchlog_files:
+  "%{::puppet_role}SystemMessages":
+    path: '/var/log/messages'
+  "%{::puppet_role}SystemSecure":
+    path: '/var/log/secure'
+  "%{::puppet_role}SystemAudit":
+    path: '/var/log/audit/audit.log'
+    datetime_format: '%s'
+
+
+
+
 
 profile::web::tomcat::catalina_base: '/opt/apache-tomcat/tomcat'
 profile::web::tomcat::tomcat_version: '8'
