@@ -36,9 +36,10 @@ RSpec.configure do |c|
   c.before :suite do
     hosts.each do |host|
       c.host = host
-
       create_remote_file host, '/etc/facter/facts.d/packagecloud_facts.txt', "packagecloud_master_token=#{ENV['PACKAGECLOUD_MASTER_TOKEN']}", :protocol => 'rsync'
       create_remote_file host, '/etc/facter/facts.d/master_password_facts.txt', "master_password=#{ENV['PACKAGECLOUD_MASTER_TOKEN']}", :protocol => 'rsync'
+      create_remote_file host, '/root/.aws/credentials', "[default]\naws_access_key_id=#{ENV['AWS_ACCESS_KEY_ID']}\naws_secret_access_key=#{ENV['AWS_SECRET_ACCESS_KEY']}}", :protocol => 'rsync'
+      create_remote_file host, '/root/.aws/config', "[default]\nregion = us-east-1\noutput = json", :protocol => 'rsync'
       on host,"cd #{WORKDIR} && bundle exec r10k puppetfile install"
     end
   end
