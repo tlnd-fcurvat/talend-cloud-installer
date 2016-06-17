@@ -2,7 +2,9 @@
 #
 class profile::web::syncope {
 
+  class {'::profile::db::postgresql':
+    stage => 'base'
+  }
   include ::syncope
-  include ::profile::db::postgresql
 
 }

@@ -1,25 +1,35 @@
 ---
+java::distribution: "jre"
+java::package: "jre1.8.0_60"
+java::version: "1.8.0_60-fcs"
+java::java_home: "/usr/java/jre1.8.0_60"
 
-nginx::resource::upstreams:
-  'syncope':
-    members:
-      - '127.0.0.1:8080 fail_timeout=0'
-
-nginx::resource::vhosts:
-  'syncope.aws.talend.com':
-    proxy: 'http://syncope'
-
-syncope::tomcat_version: '7'
-
-syncope::postgres_username: 'postgres'
+syncope::postgres_host: "%{::tic_db_host}"
+syncope::postgres_db_name: 'syncope'
 syncope::postgres_password: "%{::master_password}"
-syncope::postgres_node: 'localhost'
-
-syncope::java_home: "%{::java_default_home}"
-syncope::application_path: '/opt/tomcat/webapps'
 syncope::admin_password: "%{::master_password}"
 
-'pg_databases':
+profile::db::postgresql::pg_role_user: syncope
+profile::db::postgresql::pg_role_db_name: syncope
+profile::db::postgresql::pg_role_user_password: "%{::master_password}"
+
+postgresql::server::service_ensure: stopped
+postgresql::server::service_enable: false
+postgresql::server::service_manage: true
+
+postgresql::globals::default_connect_settings:
+      PGHOST: "%{::tic_db_host}"
+      PGUSER: 'tadmin'
+      PGDATABASE: 'tadmin'
+      PGPASSWORD: "%{::master_password}"
+
+pg_databases:
   'syncope':
-    user: 'syncope'
-    password: "%{::master_password}"
+    dbname: 'syncope'
+    owner: 'tadmin'
+
+pg_roles:
+  'syncope':
+    login: true
+    password_hash: "%{::master_password}"
+
