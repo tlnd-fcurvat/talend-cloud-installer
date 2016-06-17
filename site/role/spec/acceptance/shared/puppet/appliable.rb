@@ -6,7 +6,8 @@ shared_examples 'puppet::appliable' do |pp|
       pp,
       :catch_failures => true,
       :modulepath     => '/tmp/puppet/site:/tmp/puppet/modules',
-      :hiera_config   => '/tmp/puppet/hiera.yaml'
+      :hiera_config   => '/tmp/puppet/hiera.yaml',
+      :confdir        => '/tmp/puppet'
     )
   end
 end
