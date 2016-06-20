@@ -15,6 +15,7 @@ hosts.each do |host|
   # Install puppet on hosts, and provision them with role facts
   install_puppet
   on host, 'mkdir -p /etc/facter/facts.d'
+  on host, 'mkdir -p /root/.aws'
   create_remote_file host,
     '/etc/facter/facts.d/role_facts.txt',
     "puppet_role=#{host['roles'].first}\npuppet_roles=#{host['roles'].join(',')}",
