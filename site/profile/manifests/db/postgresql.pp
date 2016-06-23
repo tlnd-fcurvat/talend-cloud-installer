@@ -6,7 +6,8 @@ class profile::db::postgresql(
   $pg_role_user_password=undef,
   $pg_role_db_name=undef) {
 
-  include ::postgresql::server
+  contain ::postgresql::server
+  contain ::postgresql::client
 
   # get some postgresql databases installed
   $pg_databases = hiera_hash('pg_databases', {})
