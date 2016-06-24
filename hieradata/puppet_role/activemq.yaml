@@ -14,8 +14,27 @@ activemq::pg_password: "%{::master_password}"
 activemq::activemq_auth_ensure: 'installed'
 activemq::persistence: 'kahadb'
 
+profile::db::postgresql::pg_role_user: activemq
+profile::db::postgresql::pg_role_db_name: ams
+profile::db::postgresql::pg_role_user_password: "%{::master_password}"
 
-'pg_databases':
-  'activemq':
-    user: 'activemq'
-    password: "%{::master_password}"
+postgresql::server::service_ensure: stopped
+postgresql::server::service_enable: false
+postgresql::server::service_manage: true
+
+postgresql::globals::default_connect_settings:
+      PGHOST: "%{::tic_db_host}"
+      PGUSER: 'tadmin'
+      PGDATABASE: 'tadmin'
+      PGPASSWORD: "%{::master_password}"
+
+pg_databases:
+  'ams':
+    dbname: 'ams'
+    owner: 'tadmin'
+
+pg_roles:
+  'ams':
+    login: true
+    password_hash: "%{::master_password}"
+
