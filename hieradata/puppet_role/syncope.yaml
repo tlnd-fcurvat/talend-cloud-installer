@@ -33,3 +33,8 @@ pg_roles:
     login: true
     password_hash: "%{::master_password}"
 
+cloudwatchlog_files:
+  "/talend/tic/%{::puppet_role}/opt/tomcat/logs/catalina.out":
+    path: '/opt/tomcat/logs/catalina.out'
+  "/talend/tic/%{::puppet_role}/opt/tomcat/logs/sts.out":
+    path: '/opt/tomcat/logs/sts.out'
