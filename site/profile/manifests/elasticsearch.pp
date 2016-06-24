@@ -48,7 +48,7 @@ class profile::elasticsearch(
         Elasticsearch::Plugin['elasticsearch/elasticsearch-cloud-aws/2.5.1'],
         Staging::File['joda-time-2.8.2.jar']
       ],
-      notify => Service['elasticsearch-instance-default'];
+      notify  => Service['elasticsearch-instance-default'];
 
     '/usr/share/elasticsearch/plugins/cloud-aws/joda-time-2.7.jar':
       ensure  => absent,
