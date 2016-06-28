@@ -17,7 +17,7 @@ class profile::web::nginx {
       ensure => 'on',
     }
   }
-  
+
   # configuring nginx applications from hiera
   $nginx_vhosts = hiera_hash('nginx::resource::vhosts', {})
   create_resources('nginx::resource::vhost',$nginx_vhosts)

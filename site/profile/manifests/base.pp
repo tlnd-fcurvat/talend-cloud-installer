@@ -37,6 +37,8 @@ class profile::base {
   $common_packages = hiera_hash('common_packages', {})
   create_resources(Package, $common_packages)
 
+  $cloudwatch_logfiles = hiera_hash('cloudwatchlog_files', {})
+  create_resources('::cloudwatchlogs::log', $cloudwatch_logfiles)
 
   # This distributes the custom fact to the host(-pluginsync)
   # on using puppet apply
