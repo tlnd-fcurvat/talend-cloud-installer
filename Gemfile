@@ -27,8 +27,10 @@ group :development do
 
   gem 'ci_reporter'
   gem 'serverspec'
-  gem 'docker-api'
+  gem 'serverspec-aws-resources', :github => 'talend/serverspec-aws-resources'
   gem 'aws-sdk'
+  gem 'aws-sdk-core'
+  gem 'retries'
 end
 
 
