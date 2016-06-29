@@ -24,7 +24,7 @@ hosts.each do |host|
   # Deploy codebase on hosts
   rsync_to host, proj_root, WORKDIR
   on host, 'yum -y install epel-release'
-  on host, 'yum -y install git rubygem-bundler ruby-augeas'
+  on host, 'yum -y install git rubygem-bundler ruby-augeas ruby-devel gcc gcc-c++'
   on host, "cd #{WORKDIR} && bundle install --path=vendor/bundle --without development"
   on host, "cp -R #{WORKDIR}/hiera* /etc/puppet/"
 end
