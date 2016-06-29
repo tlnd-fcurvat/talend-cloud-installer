@@ -28,6 +28,9 @@ mod "saz/limits", "2.3.0"
 mod "aws",
   :git => 'https://github.com/Talend/puppetlabs-aws.git',
   :branch => 'master'
+mod "cloudwatch",
+  :git => 'https://github.com/Talend/puppet-cloudwatch.git',
+	 :branch => 'master'
 mod "cloudwatchlogs",
   :git => 'https://github.com/Talend/puppet-cloudwatchlogs.git',
   :branch => 'master'
