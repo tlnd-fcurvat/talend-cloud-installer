@@ -6,6 +6,9 @@ gem 'puppet', '3.8.4'
 gem 'r10k'
 gem 'hiera-eyaml'
 gem 'hiera-eyaml-kms'
+gem 'aws-sdk-core', '2.0.5'
+gem 'retries'
+
 
 group :development do
   gem 'beaker', :git => 'https://github.com/Talend/beaker.git', :branch => 'aheumaier-patch-2' # https://tickets.puppetlabs.com/browse/BKR-782
@@ -28,9 +31,6 @@ group :development do
   gem 'ci_reporter'
   gem 'serverspec'
   gem 'serverspec-aws-resources', :git => 'https://github.com/Talend/serverspec-aws-resources.git'
-  gem 'aws-sdk'
-  gem 'aws-sdk-core'
-  gem 'retries'
 end
 
 
