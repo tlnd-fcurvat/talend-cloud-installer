@@ -4,6 +4,7 @@ source "https://rubygems.org"
 gem 'puppet', '3.8.4'
 
 gem 'r10k'
+gem 'json'
 gem 'hiera-eyaml'
 gem 'hiera-eyaml-kms'
 gem 'aws-sdk-core', '2.0.5'
