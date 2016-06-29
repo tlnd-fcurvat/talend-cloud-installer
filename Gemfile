@@ -27,7 +27,7 @@ group :development do
 
   gem 'ci_reporter'
   gem 'serverspec'
-  gem 'serverspec-aws-resources', :github => 'talend/serverspec-aws-resources'
+  gem 'serverspec-aws-resources', :git => 'https://github.com/Talend/serverspec-aws-resources.git'
   gem 'aws-sdk'
   gem 'aws-sdk-core'
   gem 'retries'
