@@ -27,9 +27,9 @@ shared_examples 'profile::base' do
 
     describe 'configuration' do
       subject { file('/etc/awslogs/awslogs.conf').content }
-      it { should include '[/talend/tic/base/var/log/audit/audit.log]' }
-      it { should include '[/talend/tic/base/var/log/messages]' }
-      it { should include '[/talend/tic/base/var/log/secure]' }
+      it { should match /\[\/talend\/tic\/.*?\/var\/log\/audit\/audit.log\]/ }
+      it { should match /\[\/talend\/tic\/.*?\/var\/log\/messages\]/ }
+      it { should match /\[\/talend\/tic\/.*?\/var\/log\/secure\]/ }
     end
 
     describe 'log' do
