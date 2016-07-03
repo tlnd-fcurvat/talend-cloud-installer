@@ -6,7 +6,6 @@ elasticsearch::status: running
 
 profile::elasticsearch::plugins_hash:
   'elasticsearch/elasticsearch-cloud-aws/2.5.1':
-    module_dir: 'cloud-aws'
     instances: 'default'
 
 limits::entries:
