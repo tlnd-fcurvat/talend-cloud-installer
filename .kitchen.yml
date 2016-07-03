@@ -21,6 +21,30 @@ platforms:
   - name: centos-7.2
 
 suites:
+  - name: role-activemq
+    provisioner:
+      custom_facts:
+        puppet_role: activemq
+  - name: role-elasticsearch
+    provisioner:
+      custom_facts:
+        puppet_role: elasticsearch
+  - name: role-nexus
+    provisioner:
+      custom_facts:
+        puppet_role: nexus
+  - name: role-syncope
+    provisioner:
+      custom_facts:
+        puppet_role: syncope
+  - name: role-web
+    provisioner:
+      custom_facts:
+        puppet_role: web
+  - name: role-zookeeper
+    provisioner:
+      custom_facts:
+        puppet_role: zookeeper
   - name: profile-base
     provisioner:
       manifests_path: test/integration
