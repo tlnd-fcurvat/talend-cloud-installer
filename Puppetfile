@@ -1,4 +1,4 @@
-forge "http://forge.puppetlabs.com"
+forge "https://forgeapi.puppetlabs.com"
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
@@ -27,26 +27,25 @@ mod "saz/limits", "2.3.0"
 #
 mod "aws",
   :git => 'https://github.com/Talend/puppetlabs-aws.git',
-  :branch => 'master'
+  :ref => 'master'
 mod "cloudwatch",
   :git => 'https://github.com/Talend/puppet-cloudwatch.git',
-	 :branch => 'master'
+  :ref => 'master'
 mod "cloudwatchlogs",
   :git => 'https://github.com/Talend/puppet-cloudwatchlogs.git',
-  :branch => 'master'
+  :ref => 'master'
 mod "nexus",
   :git => 'https://github.com/Talend/puppet-nexus.git',
-  :branch => 'master'
+  :ref => 'master'
 mod 'syncope',
   :git => 'https://github.com/Talend/puppet-syncope.git',
-  :branch => 'master'
+  :ref => 'master'
 mod "dataprep_dataset",
-  :git    => 'https://github.com/Talend/puppet-dataprep_dataset',
-  :branch => 'development'
+  :git => 'https://github.com/Talend/puppet-dataprep_dataset',
+  :ref => 'development'
 mod "activemq",
   :git => 'https://github.com/Talend/puppet-activemq.git',
-  :branch => 'master'
+  :ref => 'master'
 mod "zookeeper",
   :git => 'https://github.com/Talend/puppet-zookeeper.git',
-  :branch => 'master'
-
+  :ref => 'master'
