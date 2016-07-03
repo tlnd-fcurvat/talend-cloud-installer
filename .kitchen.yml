@@ -21,6 +21,10 @@ platforms:
   - name: centos-7.2
 
 suites:
+  - name: role-dataprep_dataset
+    provisioner:
+      custom_facts:
+        puppet_role: dataprep_dataset
   - name: role-activemq
     provisioner:
       custom_facts:
