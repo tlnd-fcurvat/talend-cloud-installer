@@ -16,7 +16,7 @@ group :development do
   gem 'beaker-puppet_install_helper'
   gem 'beaker-rspec'
   gem 'puppetlabs_spec_helper', :git => 'https://github.com/Talend/puppetlabs_spec_helper.git'
-  
+
   gem 'spec'
   gem 'rspec', '~> 3.4'
   gem 'rspec-core', '~> 3.4'
@@ -34,8 +34,11 @@ group :development do
   gem 'serverspec-aws-resources', :git => 'https://github.com/Talend/serverspec-aws-resources.git'
 end
 
-
-
-
-
-
+group :system_tests do
+  gem 'librarian-puppet'
+  gem 'test-kitchen'
+  gem 'kitchen-puppet'
+  gem 'kitchen-vagrant'
+  gem 'kitchen-sync'
+  gem 'vagrant'
+end
