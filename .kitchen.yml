@@ -12,6 +12,7 @@ provisioner:
   ignore_spec_fixtures: true
   custom_facts:
     packagecloud_master_token: <%= ENV['PACKAGECLOUD_MASTER_TOKEN'] %>
+    master_password: randompassword
 
 transport:
   name: sftp
