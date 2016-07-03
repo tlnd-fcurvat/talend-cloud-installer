@@ -21,6 +21,18 @@ platforms:
   - name: centos-7.2
 
 suites:
+  - name: role-services
+    provisioner:
+      custom_facts:
+        puppet_role: services
+        ec2_instance_id: i-foo
+        ec2_userdata: {}
+  - name: role-frontend
+    provisioner:
+      custom_facts:
+        puppet_role: frontend
+        ec2_instance_id: i-foo
+        ec2_userdata: {}
   - name: role-dataprep_dataset
     provisioner:
       custom_facts:
