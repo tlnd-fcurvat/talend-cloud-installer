@@ -1,1 +1,4 @@
 ---
+nexus::admin_password: "%{::master_password}"
+nexus::enable_anonymous_access: false
+nexus::initialize_passwords: true
