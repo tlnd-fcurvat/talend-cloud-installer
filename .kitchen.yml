@@ -4,8 +4,9 @@ driver:
 
 provisioner:
   name: puppet_apply
-  manifests_path: test/integration
   modules_path: site
+  manifests_path: manifests
+  manifest: site.pp
   hiera_data_path: hieradata
   hiera_data_remote_path: /etc/puppet/hieradata
   ignore_spec_fixtures: true
@@ -21,21 +22,25 @@ platforms:
 suites:
   - name: profile-base
     provisioner:
+      manifests_path: test/integration
       manifest: profile-base/init.pp
       custom_facts:
         puppet_role: base
   - name: profile-elasticsearch
     provisioner:
+      manifests_path: test/integration
       manifest: profile-elasticsearch/init.pp
       custom_facts:
         puppet_role: elasticsearch
   - name: profile-nexus
     provisioner:
+      manifests_path: test/integration
       manifest: profile-nexus/init.pp
       custom_facts:
         puppet_role: nexus
   - name: profile-mongodb
     provisioner:
+      manifests_path: test/integration
       manifest: profile-mongodb/init.pp
       custom_facts:
         puppet_role: mongodb
