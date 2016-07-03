@@ -24,3 +24,18 @@ suites:
       manifest: profile-base/init.pp
       custom_facts:
         puppet_role: base
+  - name: profile-elasticsearch
+    provisioner:
+      manifest: profile-elasticsearch/init.pp
+      custom_facts:
+        puppet_role: elasticsearch
+  - name: profile-nexus
+    provisioner:
+      manifest: profile-nexus/init.pp
+      custom_facts:
+        puppet_role: nexus
+  - name: profile-mongodb
+    provisioner:
+      manifest: profile-mongodb/init.pp
+      custom_facts:
+        puppet_role: mongodb
