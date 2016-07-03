@@ -59,6 +59,7 @@ class profile::base {
 
   concat{ '/etc/sysconfig/puppetRole':
     owner => 'root',
+    force => true,
     group => 'root',
     mode  => '0644',
   }
