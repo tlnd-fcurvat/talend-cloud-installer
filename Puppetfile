@@ -25,6 +25,9 @@ mod "saz/limits", "2.3.0"
 
 # Talend puppet modules
 #
+mod "talend-tic",
+  :git => 'https://github.com/Talend/puppet-tic.git',
+  :ref => 'master'
 mod "aws",
   :git => 'https://github.com/Talend/puppetlabs-aws.git',
   :ref => 'master'

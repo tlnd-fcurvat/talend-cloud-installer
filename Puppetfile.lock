@@ -1,6 +1,16 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
+    camptocamp-archive (0.8.1)
+    camptocamp-systemd (0.3.0)
+    camptocamp-tomcat (0.15.0)
+      camptocamp-archive (< 2.0.0, >= 0.3.0)
+      camptocamp-systemd (< 2.0.0, >= 0.1.5)
+      herculesteam-augeasproviders_core (< 3.0.0, >= 2.0.0)
+      herculesteam-augeasproviders_shellvar (< 3.0.0, >= 2.0.0)
+      puppetlabs-concat (< 2.0.0, >= 1.0.0)
+      puppetlabs-inifile (< 2.0.0, >= 1.0.0)
+      puppetlabs-stdlib (< 5.0.0, >= 4.0.0)
     ceritsc-yum (0.9.8)
       puppetlabs-stdlib (>= 4.2.0)
     computology-packagecloud (0.3.0)
@@ -23,6 +33,8 @@ FORGE
       puppetlabs-stdlib (< 5.0.0, >= 4.2.0)
     jfryman-selinux (0.4.0)
       puppetlabs-stdlib (>= 0)
+    justinclayton-serf (1.0.0)
+      nanliu-staging (>= 0.3.1)
     maestrodev-wget (1.7.3)
     nanliu-staging (1.0.3)
     puppet-archive (0.5.1)
@@ -113,6 +125,27 @@ GIT
       puppetlabs-stdlib (>= 1.0.0)
 
 GIT
+  remote: https://github.com/Talend/puppet-tic.git
+  ref: master
+  sha: 2a861395742f828091d17e3722ad159fd9b3f085
+  specs:
+    talend-tic (0.0.1)
+      camptocamp-archive (>= 0)
+      camptocamp-systemd (>= 0)
+      camptocamp-tomcat (>= 0)
+      computology-packagecloud (>= 0)
+      herculesteam-augeasproviders_core (>= 0)
+      herculesteam-augeasproviders_shellvar (>= 0)
+      jfryman-nginx (>= 0)
+      justinclayton-serf (>= 0)
+      puppetlabs-apt (>= 0)
+      puppetlabs-concat (= 1.2.5)
+      puppetlabs-inifile (>= 0)
+      puppetlabs-java (= 1.5.0)
+      puppetlabs-postgresql (>= 0)
+      puppetlabs-stdlib (>= 1.0.0)
+
+GIT
   remote: https://github.com/Talend/puppet-zookeeper.git
   ref: master
   sha: de17047d3e65fe3ac7a7e4d388c06b4d9b7aa6af
@@ -161,5 +194,6 @@ DEPENDENCIES
   saz-limits (= 2.3.0)
   stahnma-epel (>= 0)
   syncope (>= 0)
+  talend-tic (>= 0)
   zookeeper (>= 0)
 
