@@ -1,4 +1,8 @@
 shared_examples 'profile::elasticsearch' do
+
+  it_behaves_like 'profile::defined', 'elasticsearch'
+  it_behaves_like 'profile::common::packages'
+
   describe package('elasticsearch') do
     it { should be_installed }
   end
@@ -7,13 +11,14 @@ shared_examples 'profile::elasticsearch' do
     it { should be_running }
   end
 
-  describe command('/usr/share/elasticsearch/bin/plugin --list') do
-    its(:exit_status) { should eq 0 }
-    its(:stdout) { should include 'cloud-aws' }
+  describe 'elasticsearch plugin list' do
+    subject { command('/usr/share/elasticsearch/bin/plugin --list').stdout }
+    it { should include 'cloud-aws' }
   end
 
-  describe command('/usr/bin/curl "http://localhost:9200/?pretty"') do
-    its(:exit_status) { should eq 0 }
-    its(:stdout) { should include '"status" : 200' }
+  describe 'service status http request' do
+    subject { command('/usr/bin/curl "http://localhost:9200/?pretty"').stdout }
+    it { should include '"status": 200' }
   end
+
 end
