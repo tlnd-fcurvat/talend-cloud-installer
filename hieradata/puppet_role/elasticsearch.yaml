@@ -22,3 +22,7 @@ limits::entries:
     user: elasticsearch
     limit_type: memlock
     both: unlimited
+
+cloudwatchlog_files:
+  "/talend/tic/%{::puppet_role}/var/log/elasticsearch/default/tic.log":
+    path: '/var/log/elasticsearch/default/tic.log'
