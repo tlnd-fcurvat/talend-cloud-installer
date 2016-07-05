@@ -8,9 +8,9 @@
 #
 class profile::base {
 
-  require ::profile::common::packagecloud_repos
-  require ::profile::common::packages
-  require ::profile::common::cloudwatchlogs
+  include ::profile::common::packagecloud_repos
+  include ::profile::common::packages
+  include ::profile::common::cloudwatchlogs
 
   include ::profile::common::concat
 
