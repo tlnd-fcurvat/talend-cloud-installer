@@ -11,8 +11,6 @@ class profile::elasticsearch(
 
 ) {
 
-  require ::profile::common::cloudwatchlogs
-
   class { '::profile::elasticsearch::setup':
     plugins_hash   => $plugins_hash,
     security_group => $security_group,
@@ -27,6 +25,7 @@ class profile::elasticsearch(
   contain ::profile::elasticsearch::wait
 
   include ::profile::common::concat
+  include ::profile::common::cloudwatchlogs
 
   profile::register_profile { 'elasticsearch': }
 
