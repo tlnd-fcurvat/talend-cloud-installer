@@ -9,9 +9,9 @@ syncope::postgres_db_name: 'syncope'
 syncope::postgres_password: "%{::master_password}"
 syncope::admin_password: "%{::master_password}"
 
-profile::db::postgresql::pg_role_user: syncope
-profile::db::postgresql::pg_role_db_name: syncope
-profile::db::postgresql::pg_role_user_password: "%{::master_password}"
+profile::postgresql::pg_role_user: syncope
+profile::postgresql::pg_role_db_name: syncope
+profile::postgresql::pg_role_user_password: "%{::master_password}"
 
 postgresql::server::service_ensure: stopped
 postgresql::server::service_enable: false
