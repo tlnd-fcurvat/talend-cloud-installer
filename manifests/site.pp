@@ -22,6 +22,12 @@ Package {
   allow_virtual => true,
 }
 
+# Ensure we have a path set for all possible execs
+# This is now limited to unixoid systems
+Exec {
+  path => '/usr/bin:/usr/sbin/:/bin:/sbin:/usr/local/bin:/usr/local/sbin',
+}
+
 stage { 'base': }
 stage { 'finally': }
 Stage['base'] -> Stage['main'] -> Stage['finally']
