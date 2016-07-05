@@ -9,3 +9,5 @@ postgresql::globals::default_connect_settings: {}
 pg_databases:
   'ams':
     dbname: 'ams'
+  'syncope':
+    dbname: 'syncope'

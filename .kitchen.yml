@@ -99,3 +99,9 @@ suites:
       manifest: profile-zookeeper/init.pp
       custom_facts:
         puppet_role: zookeeper
+  - name: profile-syncope
+    provisioner:
+      manifests_path: test/integration
+      manifest: profile-syncope/init.pp
+      custom_facts:
+        puppet_role: syncope
