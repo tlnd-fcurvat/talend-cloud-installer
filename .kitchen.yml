@@ -12,9 +12,11 @@ provisioner:
   ignore_spec_fixtures: true
   puppet_environment: vagrant
   custom_facts:
-    tic_db_host: localhost
+    tic_db_host: <%= ENV['TIC_DB_HOST'] %>
     packagecloud_master_token: <%= ENV['PACKAGECLOUD_MASTER_TOKEN'] %>
-    master_password: randompassword
+    master_password: <%= ENV['MASTER_PASSWORD'] %>
+    ec2_instance_id: i-foo
+    ec2_userdata: {}
 
 transport:
   name: sftp
@@ -27,14 +29,10 @@ suites:
     provisioner:
       custom_facts:
         puppet_role: services
-        ec2_instance_id: i-foo
-        ec2_userdata: {}
   - name: role-frontend
     provisioner:
       custom_facts:
         puppet_role: frontend
-        ec2_instance_id: i-foo
-        ec2_userdata: {}
   - name: role-dataprep_dataset
     provisioner:
       custom_facts:
