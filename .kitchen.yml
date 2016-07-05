@@ -93,3 +93,9 @@ suites:
       manifest: profile-activemq/init.pp
       custom_facts:
         puppet_role: activemq
+  - name: profile-zookeeper
+    provisioner:
+      manifests_path: test/integration
+      manifest: profile-zookeeper/init.pp
+      custom_facts:
+        puppet_role: zookeeper
