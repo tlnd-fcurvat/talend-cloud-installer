@@ -16,9 +16,4 @@ shared_examples 'profile::mongodb' do
     it { should be_listening }
   end
 
-  describe 'testdb collection list' do
-    subject { command('mongo localhost:27017/testdb -u user1 -p pass1 --eval "printjson(db.getCollectionNames())"').stdout }
-    it { should include '"dummyData"' }
-  end
-
 end
