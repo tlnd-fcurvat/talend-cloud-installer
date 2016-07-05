@@ -10,6 +10,7 @@ provisioner:
   hiera_data_path: hieradata
   hiera_data_remote_path: /etc/puppet/hieradata
   ignore_spec_fixtures: true
+  puppet_environment: development
   custom_facts:
     packagecloud_master_token: <%= ENV['PACKAGECLOUD_MASTER_TOKEN'] %>
     master_password: randompassword
