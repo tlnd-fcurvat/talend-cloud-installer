@@ -6,8 +6,7 @@
 #
 class profile::web::nginx {
 
-  require ::nginx
-
+  include ::nginx
   include ::profile::common::concat
 
   profile::register_profile{ 'nginx': }
