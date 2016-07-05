@@ -8,6 +8,10 @@ profile::elasticsearch::plugins_hash:
   'elasticsearch/elasticsearch-cloud-aws/2.5.1':
     instances: 'default'
 
+common_packages:
+  'wget':
+    ensure: 'installed'
+
 limits::entries:
   elasticsearch_files:
     user: elasticsearch
