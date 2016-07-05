@@ -1,2 +1,2 @@
-class { 'profile::db::mongodb':
+class { 'profile::mongodb':
 }

@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe 'profile::db::mongodb' do
-  it_behaves_like 'profile::db::mongodb'
+describe 'profile::mongodb' do
+  it_behaves_like 'profile::mongodb'
 end
