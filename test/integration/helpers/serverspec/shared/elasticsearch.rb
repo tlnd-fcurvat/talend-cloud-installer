@@ -2,6 +2,7 @@ shared_examples 'profile::elasticsearch' do
 
   it_behaves_like 'profile::defined', 'elasticsearch'
   it_behaves_like 'profile::common::packages'
+  it_behaves_like 'profile::common::cloudwatchlog_files', %w(/var/log/elasticsearch/default/tic.log)
 
   describe package('elasticsearch') do
     it { should be_installed }
