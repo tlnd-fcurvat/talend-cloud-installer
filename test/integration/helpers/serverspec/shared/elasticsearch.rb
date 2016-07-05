@@ -18,7 +18,7 @@ shared_examples 'profile::elasticsearch' do
 
   describe 'service status http request' do
     subject { command('/usr/bin/curl "http://localhost:9200/?pretty"').stdout }
-    it { should include '"status": 200' }
+    it { should match /"status"\s+:\s+200/ }
   end
 
 end
