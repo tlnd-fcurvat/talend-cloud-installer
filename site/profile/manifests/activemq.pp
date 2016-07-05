@@ -4,6 +4,7 @@
 class profile::activemq {
 
   require ::profile::common::packagecloud_repos
+  require ::profile::common::cloudwatchlogs
   require ::profile::java
   require ::profile::postgresql
 

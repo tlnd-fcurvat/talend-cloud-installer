@@ -4,6 +4,7 @@
 class profile::zookeeper {
 
   require ::profile::common::packagecloud_repos
+  require ::profile::common::cloudwatchlogs
   require ::profile::java
 
   include ::profile::common::concat

@@ -9,6 +9,7 @@ class profile::nexus (
 
   require ::profile::java
   require ::profile::common::packages
+  require ::profile::common::cloudwatchlogs
 
   include ::profile::common::concat
 
