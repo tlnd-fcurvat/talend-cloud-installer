@@ -2,6 +2,7 @@ shared_examples 'profile::activemq' do
 
   it_behaves_like 'profile::defined', 'activemq'
   it_behaves_like 'profile::common::packagecloud_repos'
+  it_behaves_like 'profile::common::cloudwatchlog_files', %w(/opt/activemq/data/activemq.log)
 
 	describe service('activemq') do
 		it { should be_enabled }
