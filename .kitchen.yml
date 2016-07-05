@@ -25,18 +25,6 @@ platforms:
   - name: centos-7.2
 
 suites:
-  - name: role-services
-    provisioner:
-      custom_facts:
-        puppet_role: services
-  - name: role-frontend
-    provisioner:
-      custom_facts:
-        puppet_role: frontend
-  - name: role-dataprep_dataset
-    provisioner:
-      custom_facts:
-        puppet_role: dataprep_dataset
   - name: role-activemq
     provisioner:
       custom_facts:
