@@ -1,2 +1,2 @@
-class { 'profile::db::nexus':
+class { 'profile::nexus':
 }

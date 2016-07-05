@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe 'profile::db::nexus' do
-  it_behaves_like 'profile::db::nexus'
+describe 'profile::nexus' do
+  it_behaves_like 'profile::nexus'
 end
