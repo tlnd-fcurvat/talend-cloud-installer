@@ -87,3 +87,9 @@ suites:
       manifest: profile-mongodb/init.pp
       custom_facts:
         puppet_role: mongodb
+  - name: profile-activemq
+    provisioner:
+      manifests_path: test/integration
+      manifest: profile-activemq/init.pp
+      custom_facts:
+        puppet_role: activemq

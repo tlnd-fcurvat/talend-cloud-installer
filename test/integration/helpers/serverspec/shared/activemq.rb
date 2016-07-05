@@ -1,4 +1,8 @@
 shared_examples 'profile::activemq' do
+
+  it_behaves_like 'profile::defined', 'activemq'
+  it_behaves_like 'profile::common::packagecloud_repos'
+
 	describe service('activemq') do
 		it { should be_enabled }
 		it { should be_running }
@@ -11,4 +15,5 @@ shared_examples 'profile::activemq' do
 	describe port(5432) do
 		it { should be_listening }
 	end
+
 end
