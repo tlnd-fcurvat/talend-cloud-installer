@@ -11,8 +11,8 @@ activemq::brokers: 'localhost'
 activemq::java_home: '/usr/java/default'
 activemq::zk_password: "%{::master_password}"
 activemq::zookeeper_nodes: ''
-activemq::pg_host: 'localhost'
-activemq::pg_db: 'activemq'
+activemq::pg_host: "%{::tic_db_host}"
+activemq::pg_db: 'ams'
 activemq::pg_username: 'activemq'
 activemq::pg_password: "%{::master_password}"
 activemq::activemq_auth_ensure: 'installed'
