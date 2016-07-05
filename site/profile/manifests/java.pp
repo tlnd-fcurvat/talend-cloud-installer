@@ -1,5 +1,7 @@
-# this is the java profile
+#
+# Wraps the java module
+#
 class profile::java {
-  include ::java
+  contain ::java
 }
 
