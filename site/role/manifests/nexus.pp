@@ -7,4 +7,6 @@ class role::nexus {
   include ::profile::web::nginx
   include ::profile::nexus
 
+  role::register_role { 'nexus': }
+
 }
