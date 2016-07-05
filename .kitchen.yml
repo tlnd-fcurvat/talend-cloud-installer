@@ -12,6 +12,7 @@ provisioner:
   ignore_spec_fixtures: true
   puppet_environment: development
   custom_facts:
+    tic_db_host: localhost
     packagecloud_master_token: <%= ENV['PACKAGECLOUD_MASTER_TOKEN'] %>
     master_password: randompassword
 
