@@ -6,7 +6,10 @@
 #
 class profile::web::nginx {
 
-  include ::nginx
+  require ::nginx
+
+  include ::profile::common::concat
+
   profile::register_profile{ 'nginx': }
 
   if $::osfamily == 'RedHat'{
