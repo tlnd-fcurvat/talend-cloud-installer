@@ -4,6 +4,7 @@
 
 :hierarchy:
   - clientcert/%{clientcert}
+  - environment/%{::environment}
   - puppet_role/%{puppet_role}
   - common
 
