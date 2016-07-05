@@ -1,12 +1,16 @@
-# tomcat activemq  service profile
+#
+# ActiveMQ service profile
 #
 class profile::activemq {
 
-  include ::java
-  include ::activemq
-  include ::profile::db::postgresql
+  require ::profile::common::packagecloud_repos
+  require ::profile::java
+  require ::profile::postgresql
 
-  profile::register_profile{ 'activemq': }
+  include ::profile::common::concat
 
+  profile::register_profile { 'activemq': }
+
+  contain ::activemq
 
 }
