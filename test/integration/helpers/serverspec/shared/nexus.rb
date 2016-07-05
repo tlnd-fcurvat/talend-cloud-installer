@@ -31,7 +31,7 @@ shared_examples 'profile::nexus' do
   end
 
   describe 'admin user should have its password updated' do
-    describe command('/usr/bin/curl -v -f -X GET -u admin:randompassword http://localhost:8081/nexus/service/local/users/admin 2>&1') do
+    describe command('/usr/bin/curl -v -f -X GET -u admin:mypassword http://localhost:8081/nexus/service/local/users/admin 2>&1') do
       its(:exit_status) { should eq 0 }
       its(:stdout) { should include 'HTTP/1.1 200 OK' }
       its(:stdout) { should include '<userId>admin</userId>' }
