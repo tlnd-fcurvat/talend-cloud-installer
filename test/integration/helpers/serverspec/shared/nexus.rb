@@ -2,6 +2,10 @@ shared_examples 'profile::nexus' do
 
   it_behaves_like 'profile::defined', 'nexus'
   it_behaves_like 'profile::common::packages'
+  it_behaves_like 'profile::common::cloudwatchlog_files', %w(
+    /srv/sonatype-work/nexus/logs/nexus.log
+    /srv/sonatype-work/nexus/logs/request.log
+  )
 
   describe service('nexus') do
     it { is_expected.to be_enabled }

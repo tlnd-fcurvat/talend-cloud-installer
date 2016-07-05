@@ -2,3 +2,9 @@
 nexus::admin_password: "%{::master_password}"
 nexus::enable_anonymous_access: false
 nexus::initialize_passwords: true
+
+cloudwatchlog_files:
+  "/talend/tic/%{::puppet_role}/srv/sonatype-work/nexus/logs/nexus.log":
+    path: '/srv/sonatype-work/nexus/logs/nexus.log'
+  "/talend/tic/%{::puppet_role}/srv/sonatype-work/nexus/logs/request.log":
+    path: '/srv/sonatype-work/nexus/logs/request.log'
