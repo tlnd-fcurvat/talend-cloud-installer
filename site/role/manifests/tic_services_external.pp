@@ -6,8 +6,7 @@ class role::tic_services_external {
   require profile::tic_services
 
   $common_features = [
-    '(',
-    'aries-blueprint',
+    '(aries-blueprint',
     'bundle',
     'config',
     'deployer',
@@ -24,8 +23,7 @@ class role::tic_services_external {
     'shell-compat',
     'ssh',
     'system',
-    ')',
-    'wrap',
+    'wrap)',
     'camel',
     'tipaas-crypto-service-client',
     'tipaas-artifact-manager-client-runtime',
@@ -89,11 +87,15 @@ class role::tic_services_external {
     # WIP Integration settings
     hiera_karaf_base_features_install        => $common_features,
     hiera_karaf_additional_features_install  => $additional_features,
-    default_activemq_nodes                   => $::active_mq,
-    hiera_zookeeper_nodes                    => $::zookeeper,
-    hiera_postgres_db_host                   => $::db,
-    default_nexus_nodes                      => $::nexus,
-    hiera_elasticsearch_host                 => $::elastic_search
+    default_activemq_nodes                   => $::activemq_nodes,
+    hiera_zookeeper_nodes                    => $::zookeeper_nodes,
+    hiera_postgres_db_host                   => $::postgres_nodes,
+    default_nexus_nodes                      => $::nexus_nodes,
+    hiera_elasticsearch_host                 => $::elasticsearch_nodes,
+    hiera_mongo_nodes                        => [$::mongodb_nodes],
+    hiera_webhooks_redis_host                => $::redis_nodes,
+    # hiera_ams_syncope_host                   => $::syncope_nodes
+
   } ->
 
   class { 'tic': }
