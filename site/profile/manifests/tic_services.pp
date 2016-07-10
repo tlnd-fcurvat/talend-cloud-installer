@@ -9,6 +9,7 @@ class profile::tic_services {
   # Workaround for DEVOPS-703
   file {
     ['/opt/talend', '/opt/talend/ipaas']:
-        ensure => directory
+        ensure => directory,
+        before => Package['talend-ipaas-rt-infra']
   }
 }
