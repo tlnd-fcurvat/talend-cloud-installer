@@ -127,7 +127,7 @@ GIT
 GIT
   remote: https://github.com/Talend/puppet-tic.git
   ref: master
-  sha: 2a861395742f828091d17e3722ad159fd9b3f085
+  sha: cd13029b7390c3cefc2141d77b5ea9b48d117ee7
   specs:
     talend-tic (0.0.1)
       camptocamp-archive (>= 0)
