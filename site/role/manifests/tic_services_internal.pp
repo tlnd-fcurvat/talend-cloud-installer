@@ -5,6 +5,8 @@ class role::tic_services_internal {
 
   require profile::tic_services
 
+  role::register_role { 'tic_services_internal': }
+
 	class { 'tic::globals':
 		role                               => 'services',
 		hiera_dts_s3_bucket_test_data      => 'us-east-1-rd-tipaas-dts-test-talend-com',
