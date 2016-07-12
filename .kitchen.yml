@@ -25,6 +25,14 @@ platforms:
   - name: centos-7.2
 
 suites:
+  - name: role-tic_services_internal
+    provisioner:
+      custom_facts:
+        puppet_role: tic_services_internal
+  - name: role-tic_services_external
+    provisioner:
+      custom_facts:
+        puppet_role: tic_services_external
   - name: role-activemq
     provisioner:
       custom_facts:
