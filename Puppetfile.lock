@@ -3,14 +3,6 @@ FORGE
   specs:
     camptocamp-archive (0.8.1)
     camptocamp-systemd (0.3.0)
-    camptocamp-tomcat (0.15.0)
-      camptocamp-archive (< 2.0.0, >= 0.3.0)
-      camptocamp-systemd (< 2.0.0, >= 0.1.5)
-      herculesteam-augeasproviders_core (< 3.0.0, >= 2.0.0)
-      herculesteam-augeasproviders_shellvar (< 3.0.0, >= 2.0.0)
-      puppetlabs-concat (< 2.0.0, >= 1.0.0)
-      puppetlabs-inifile (< 2.0.0, >= 1.0.0)
-      puppetlabs-stdlib (< 5.0.0, >= 4.0.0)
     ceritsc-yum (0.9.8)
       puppetlabs-stdlib (>= 4.2.0)
     computology-packagecloud (0.3.0)
@@ -67,7 +59,7 @@ FORGE
 GIT
   remote: https://github.com/Talend/puppet-activemq.git
   ref: master
-  sha: 1752fb20c364054df709e701c3fd15aca8ac68a4
+  sha: ccbcc7b15104d66b379962d0f20d14bbc8f0e19b
   specs:
     activemq (0.1.0)
       computology-packagecloud (>= 0)
@@ -127,12 +119,11 @@ GIT
 GIT
   remote: https://github.com/Talend/puppet-tic.git
   ref: master
-  sha: cd13029b7390c3cefc2141d77b5ea9b48d117ee7
+  sha: ab5bb2375fc11c0e7cce173785b1f1ebb9a2a814
   specs:
-    talend-tic (0.0.1)
+    talend-tic (0.1.0)
       camptocamp-archive (>= 0)
       camptocamp-systemd (>= 0)
-      camptocamp-tomcat (>= 0)
       computology-packagecloud (>= 0)
       herculesteam-augeasproviders_core (>= 0)
       herculesteam-augeasproviders_shellvar (>= 0)
@@ -144,6 +135,7 @@ GIT
       puppetlabs-java (= 1.5.0)
       puppetlabs-postgresql (>= 0)
       puppetlabs-stdlib (>= 1.0.0)
+      puppetlabs-tomcat (>= 0)
 
 GIT
   remote: https://github.com/Talend/puppet-zookeeper.git
