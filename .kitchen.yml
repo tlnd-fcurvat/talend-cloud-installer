@@ -25,6 +25,10 @@ platforms:
   - name: centos-7.2
 
 suites:
+  - name: role-frontend
+    provisioner:
+      custom_facts:
+        puppet_role: frontend
   - name: role-tic_services_internal
     provisioner:
       custom_facts:
