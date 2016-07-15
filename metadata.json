@@ -1,0 +1,19 @@
+{
+  "name": "talend-cloud-installer",
+  "version": "0.1.0",
+  "author": "talend",
+  "summary": "Control module for Talend Cloud Installer",
+  "license": "MIT",
+  "source": "https://github.com/Talend/talend-cloud-installer",
+  "project_page": "https://github.com/Talend/talend-cloud-installer",
+  "issues_url": "https://github.com/Talend/talend-cloud-installer/issues",
+  "dependencies": [
+    {"name": "computology-packagecloud", "version_requirement": "0.x"},
+    {"name": "elasticsearch/elasticsearch", "version_requirement": "0.x"},
+    {"name": "jfryman/nginx", "version_requirement": "0.x"},
+    {"name": "jfryman/selinux", "version_requirement": "0.x"},
+    {"name": "puppetlabs/concat", "version_requirement": "1.x"},
+    {"name": "puppetlabs/postgresql", "version_requirement": "4.x"},
+    {"name": "puppetlabs/tomcat", "version_requirement": "1.x"}
+  ]
+}
