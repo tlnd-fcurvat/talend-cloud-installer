@@ -13,6 +13,7 @@ class profile::mongodb {
   class { '::mongodb::server':
     verbose => true,
     auth    => true,
+    bind_ip => $::ipaddress
   }
 
   contain ::mongodb::server
