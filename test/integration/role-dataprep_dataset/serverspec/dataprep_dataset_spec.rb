@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe 'role::dataprep_dataset' do
   it_behaves_like 'profile::base'
+  it_behaves_like 'role::defined', 'dataprep_dataset'
 
-  describe 'should have dataprep_dataset role configured' do
-    it 'should have java process with correct arguments' do
-      expect(command('pgrep -a java').stdout).to match /\/opt\/talend\/dataprep\//
-    end
+  describe 'should have java process with correct arguments' do
+    subject { command('/usr/bin/pgrep -a java').stdout }
+    it { should include '/opt/talend/dataprep' }
   end
 end
