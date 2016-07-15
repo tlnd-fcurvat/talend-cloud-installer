@@ -1,54 +1,46 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
 forge "https://forgeapi.puppetlabs.com"
 
-# Modules from the Puppet Forge
-# Versions should be updated to be the latest at the time you start
+# use dependencies defined in metadata.json
+metadata
 
-mod "puppetlabs/stdlib", '4.11.0'
-mod "puppetlabs/concat", '1.2.5'
-mod "puppetlabs/java", '1.5.0'
-mod "puppetlabs/tomcat", '1.5.0'
-mod "puppetlabs/inifile", '1.5.0'
-mod 'puppetlabs/postgresql', '4.7.1'
-mod "puppetlabs/mongodb", '0.13.0'
-mod "puppet/archive", "0.5.1"
-mod "jfryman/selinux"
-mod "jfryman/nginx"
-mod "jdowning/awscli"
-mod "stahnma/epel"
-mod "nanliu/staging"
-mod "computology-packagecloud", '0.3.0'
-mod "maestrodev/wget", "1.7.3"
-mod "herculesteam/augeasproviders_core"
-mod "herculesteam/augeasproviders_shellvar"
-mod "elasticsearch/elasticsearch", "0.9.9"
-mod "saz/limits", "2.3.0"
+# use dependencies defined in Modulefile
+# modulefile
 
-# Talend puppet modules
-#
-mod "talend-tic",
-  :git => 'https://github.com/Talend/puppet-tic.git',
-  :ref => 'master'
-mod "aws",
-  :git => 'https://github.com/Talend/puppetlabs-aws.git',
-  :ref => 'master'
-mod "cloudwatch",
-  :git => 'https://github.com/Talend/puppet-cloudwatch.git',
-  :ref => 'master'
-mod "cloudwatchlogs",
+# A module from the Puppet Forge
+# mod 'puppetlabs-stdlib'
+
+# A module from git
+# mod 'puppetlabs-ntp',
+#   :git => 'git://github.com/puppetlabs/puppetlabs-ntp.git'
+
+# A module from a git branch/tag
+# mod 'puppetlabs-apt',
+#   :git => 'https://github.com/puppetlabs/puppetlabs-apt.git',
+#   :ref => '1.4.x'
+
+# A module from Github pre-packaged tarball
+# mod 'puppetlabs-apache', '0.6.0', :github_tarball => 'puppetlabs/puppetlabs-apache'
+
+mod 'talend-tic', '0.x',
+  :github_tarball => 'Talend/puppet-tic'
+mod 'talend-cloudwatch', '0.x',
+  :github_tarball => 'Talend/puppet-cloudwatch'
+mod 'talend-cloudwatchlogs',
   :git => 'https://github.com/Talend/puppet-cloudwatchlogs.git',
   :ref => 'master'
-mod "nexus",
+mod 'hubspot-nexus',
   :git => 'https://github.com/Talend/puppet-nexus.git',
   :ref => 'master'
-mod 'syncope',
+mod 'talend-syncope',
   :git => 'https://github.com/Talend/puppet-syncope.git',
   :ref => 'master'
-mod "dataprep_dataset",
+mod 'talend-dataprep_dataset',
   :git => 'https://github.com/Talend/puppet-dataprep_dataset',
   :ref => 'development'
-mod "activemq",
-  :git => 'https://github.com/Talend/puppet-activemq.git',
-  :ref => 'master'
-mod "zookeeper",
-  :git => 'https://github.com/Talend/puppet-zookeeper.git',
-  :ref => 'master'
+mod 'talend-activemq', '0.x',
+  :github_tarball => 'Talend/puppet-activemq'
+mod 'talend-zookeeper', '0.x',
+  :github_tarball => 'Talend/puppet-zookeeper'
