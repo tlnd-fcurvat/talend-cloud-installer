@@ -34,9 +34,8 @@ mod 'talend-cloudwatchlogs',
 mod 'hubspot-nexus',
   :git => 'https://github.com/Talend/puppet-nexus.git',
   :ref => 'master'
-mod 'talend-syncope',
-  :git => 'https://github.com/Talend/puppet-syncope.git',
-  :ref => 'master'
+mod 'talend-syncope', '0.x',
+  :github_tarball => 'Talend/puppet-syncope'
 mod 'talend-dataprep_dataset',
   :git => 'https://github.com/Talend/puppet-dataprep_dataset',
   :ref => 'development'

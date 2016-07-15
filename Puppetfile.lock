@@ -72,14 +72,6 @@ GIT
       puppetlabs-inifile (~> 1.5.0)
       puppetlabs-stdlib (< 5.0.0, >= 0.0.0)
 
-GIT
-  remote: https://github.com/Talend/puppet-syncope.git
-  ref: master
-  sha: 5a5e4d1872e125d906f5292503184042f16a4f7a
-  specs:
-    talend-syncope (0.1.0)
-      puppetlabs-stdlib (>= 1.0.0)
-
 GITHUBTARBALL
   remote: Talend/puppet-activemq
   specs:
@@ -89,6 +81,11 @@ GITHUBTARBALL
   remote: Talend/puppet-cloudwatch
   specs:
     talend-cloudwatch (0.1.0.1)
+
+GITHUBTARBALL
+  remote: Talend/puppet-syncope
+  specs:
+    talend-syncope (0.1.0.1)
 
 GITHUBTARBALL
   remote: Talend/puppet-tic
@@ -114,7 +111,7 @@ DEPENDENCIES
   talend-cloudwatch (~> 0.0)
   talend-cloudwatchlogs (>= 0)
   talend-dataprep_dataset (>= 0)
-  talend-syncope (>= 0)
+  talend-syncope (~> 0.0)
   talend-tic (~> 0.0)
   talend-zookeeper (~> 0.0)
 
