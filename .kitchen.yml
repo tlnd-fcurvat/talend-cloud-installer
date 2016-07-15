@@ -61,45 +61,9 @@ suites:
     provisioner:
       custom_facts:
         puppet_role: zookeeper
-  - name: profile-base
-    provisioner:
-      manifests_path: test/integration
-      manifest: profile-base/init.pp
-      custom_facts:
-        puppet_role: base
-  - name: profile-elasticsearch
-    provisioner:
-      manifests_path: test/integration
-      manifest: profile-elasticsearch/init.pp
-      custom_facts:
-        puppet_role: elasticsearch
-  - name: profile-nexus
-    provisioner:
-      manifests_path: test/integration
-      manifest: profile-nexus/init.pp
-      custom_facts:
-        puppet_role: nexus
   - name: profile-mongodb
     provisioner:
       manifests_path: test/integration
       manifest: profile-mongodb/init.pp
       custom_facts:
         puppet_role: mongodb
-  - name: profile-activemq
-    provisioner:
-      manifests_path: test/integration
-      manifest: profile-activemq/init.pp
-      custom_facts:
-        puppet_role: activemq
-  - name: profile-zookeeper
-    provisioner:
-      manifests_path: test/integration
-      manifest: profile-zookeeper/init.pp
-      custom_facts:
-        puppet_role: zookeeper
-  - name: profile-syncope
-    provisioner:
-      manifests_path: test/integration
-      manifest: profile-syncope/init.pp
-      custom_facts:
-        puppet_role: syncope
