@@ -3,7 +3,6 @@ modules/
 vendor/
 .bundle/
 .idea/
-Gemfile.lock
 log
 .vagrant
 site/role/spec/fixtures
