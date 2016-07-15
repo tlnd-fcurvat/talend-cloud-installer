@@ -72,35 +72,32 @@ class role::tic_services_external {
     'tipaas-notification-sendgrid-webhook-service'
   ]
 
-
   class { 'tic::globals':
-    role                               => 'services',
-    hiera_dts_s3_bucket_test_data      => 'us-east-1-rd-tipaas-dts-test-talend-com',
-    hiera_dts_s3_bucket_rejected_data  => 'us-east-1-rd-tipaas-dts-rejected-talend-com',
-    hiera_dts_s3_bucket_logs_data      => 'us-east-1-rd-tipaas-dts-logs-talend-com',
-    hiera_dts_s3_bucket_downloads_data => 'us-east-1-rd-tipaas-dts-downloads-talend-com',
-    karaf_service_ensure               => running,
-    java_xmx                           => 1024,
-    web_enable_test_context            => false,
-    web_use_ssl                        => true,
-    cms_node                           => 'cmsnode',
-    java_home                          => '/usr/java/jre1.8.0_60',
+    role                                    => 'services',
+    hiera_dts_s3_bucket_test_data           => 'us-east-1-rd-tipaas-dts-test-talend-com',
+    hiera_dts_s3_bucket_rejected_data       => 'us-east-1-rd-tipaas-dts-rejected-talend-com',
+    hiera_dts_s3_bucket_logs_data           => 'us-east-1-rd-tipaas-dts-logs-talend-com',
+    hiera_dts_s3_bucket_downloads_data      => 'us-east-1-rd-tipaas-dts-downloads-talend-com',
+    karaf_service_ensure                    => running,
+    java_xmx                                => 1024,
+    web_enable_test_context                 => false,
+    web_use_ssl                             => true,
+    cms_node                                => 'cmsnode',
+    java_home                               => '/usr/java/jre1.8.0_60',
 
     # WIP Integration settings
-    hiera_karaf_base_features_install        => $common_features,
-    hiera_karaf_additional_features_install  => $additional_features,
-    default_activemq_nodes                   => $::activemq_nodes,
-    hiera_zookeeper_nodes                    => $::zookeeper_nodes,
-    hiera_postgres_db_host                   => $::postgres_nodes,
-    default_nexus_nodes                      => $::nexus_nodes,
-    hiera_elasticsearch_host                 => $::elasticsearch_nodes,
-    hiera_mongo_nodes                        => [$::mongodb_nodes],
-    hiera_webhooks_redis_host                => $::redis_nodes,
-    # hiera_ams_syncope_host                   => $::syncope_nodes
+    hiera_karaf_base_features_install       => $common_features,
+    hiera_karaf_additional_features_install => $additional_features,
+    default_activemq_nodes                  => $::activemq_nodes,
+    hiera_zookeeper_nodes                   => $::zookeeper_nodes,
+    hiera_postgres_db_host                  => $::postgres_nodes,
+    default_nexus_nodes                     => $::nexus_nodes,
+    hiera_elasticsearch_host                => $::elasticsearch_nodes,
+    hiera_mongo_nodes                       => [$::mongodb_nodes],
+    hiera_webhooks_redis_host               => $::redis_nodes,
+    # hiera_ams_syncope_host                  => $::syncope_nodes
 
   } ->
-
   class { 'tic': }
 
 }
-
