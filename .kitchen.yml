@@ -13,6 +13,7 @@ provisioner:
   puppet_environment: vagrant
   custom_facts:
     tic_db_host: <%= ENV['TIC_DB_HOST'] %>
+    postgres_nodes: <%= ENV['TIC_DB_HOST'] %>
     packagecloud_master_token: <%= ENV['PACKAGECLOUD_MASTER_TOKEN'] %>
     master_password: <%= ENV['MASTER_PASSWORD'] %>
     ec2_instance_id: i-foo

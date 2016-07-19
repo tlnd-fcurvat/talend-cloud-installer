@@ -11,7 +11,7 @@ activemq::brokers: 'localhost'
 activemq::java_home: '/usr/java/default'
 activemq::zk_password: "%{::master_password}"
 activemq::zookeeper_nodes: ''
-activemq::pg_host: "%{::tic_db_host}"
+activemq::pg_host: "%{::postgres_nodes}"
 activemq::pg_db: 'ams'
 activemq::pg_username: 'activemq'
 activemq::pg_password: "%{::master_password}"
@@ -27,7 +27,7 @@ postgresql::server::service_enable: false
 postgresql::server::service_manage: true
 
 postgresql::globals::default_connect_settings:
-      PGHOST: "%{::tic_db_host}"
+      PGHOST: "%{::postgres_nodes}"
       PGUSER: 'tadmin'
       PGDATABASE: 'tadmin'
       PGPASSWORD: "%{::master_password}"

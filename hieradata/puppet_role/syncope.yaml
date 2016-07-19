@@ -4,7 +4,7 @@ java::package: "jre1.8.0_60"
 java::version: "1.8.0_60-fcs"
 java::java_home: "/usr/java/jre1.8.0_60"
 
-syncope::postgres_host: "%{::tic_db_host}"
+syncope::postgres_host: "%{::postgres_nodes}"
 syncope::postgres_db_name: 'syncope'
 syncope::postgres_password: "%{::master_password}"
 syncope::admin_password: "%{::master_password}"
@@ -18,7 +18,7 @@ postgresql::server::service_enable: false
 postgresql::server::service_manage: true
 
 postgresql::globals::default_connect_settings:
-      PGHOST: "%{::tic_db_host}"
+      PGHOST: "%{::postgres_nodes}"
       PGUSER: 'tadmin'
       PGDATABASE: 'tadmin'
       PGPASSWORD: "%{::master_password}"
