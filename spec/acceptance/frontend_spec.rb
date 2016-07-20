@@ -56,7 +56,7 @@ describe 'role::frontend' do
 
   describe file('/srv/tomcat/ipaas-srv/conf/server.xml') do
     its(:content) { should include 'port="8009"' }
-    its(:content) { should include 'address="127.0.0.1"' }
+    its(:content) { should include 'address="0.0.0.0"' }
     its(:content) { should include 'protocol="AJP/1.3"' }
     its(:content) { should include 'connectionTimeout="20000"' }
     its(:content) { should include 'redirectPort="8443"' }
@@ -64,7 +64,7 @@ describe 'role::frontend' do
 
   describe file('/srv/tomcat/ipaas-srv/conf/server.xml') do
     its(:content) { should include 'port="8081"' }
-    its(:content) { should include 'address="127.0.0.1"' }
+    its(:content) { should include 'address="0.0.0.0"' }
     its(:content) { should include 'protocol="HTTP/1.1"' }
     its(:content) { should include 'connectionTimeout="20000"' }
     its(:content) { should include 'redirectPort="8443"' }

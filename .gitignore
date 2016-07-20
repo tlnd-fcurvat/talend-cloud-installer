@@ -11,3 +11,4 @@ site/profile/spec/fixtures
 .librarian/
 .kitchen.local.yml
 .tmp/
+build/
