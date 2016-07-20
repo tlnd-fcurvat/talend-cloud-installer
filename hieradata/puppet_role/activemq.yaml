@@ -43,6 +43,6 @@ pg_roles:
     password_hash: "%{::master_password}"
 
 cloudwatchlog_files:
-  "/talend/tic/%{::puppet_role}/opt/activemq/data/activemq.log":
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/activemq/data/activemq.log":
     path: '/opt/activemq/data/activemq.log'
 

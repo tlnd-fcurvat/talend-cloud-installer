@@ -4,7 +4,7 @@ nexus::enable_anonymous_access: false
 nexus::initialize_passwords: true
 
 cloudwatchlog_files:
-  "/talend/tic/%{::puppet_role}/srv/sonatype-work/nexus/logs/nexus.log":
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/srv/sonatype-work/nexus/logs/nexus.log":
     path: '/srv/sonatype-work/nexus/logs/nexus.log'
-  "/talend/tic/%{::puppet_role}/srv/sonatype-work/nexus/logs/request.log":
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/srv/sonatype-work/nexus/logs/request.log":
     path: '/srv/sonatype-work/nexus/logs/request.log'
