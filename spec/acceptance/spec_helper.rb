@@ -2,6 +2,8 @@ require 'serverspec'
 Dir[Pathname.new(File.dirname(__FILE__)).join('shared/**/*.rb')].each{ |f| require f }
 
 RSpec.configure do |config|
+  config.add_formatter('RspecJunitFormatter', "build/junit/#{ENV['KITCHEN_SUITE']}.xml")
+  config.add_formatter('html', "build/html/#{ENV['KITCHEN_SUITE']}.html")
   set :host, ENV['KITCHEN_HOSTNAME']
   set :ssh_options,
     :user => ENV['KITCHEN_USERNAME'],
