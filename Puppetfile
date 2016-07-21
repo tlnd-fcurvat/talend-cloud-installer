@@ -35,9 +35,8 @@ mod 'hubspot-nexus',
   :ref => 'master'
 mod 'talend-syncope', '0.x',
   :github_tarball => 'Talend/puppet-syncope'
-mod 'talend-dataprep_dataset',
-  :git => 'https://github.com/Talend/puppet-dataprep_dataset',
-  :ref => 'development'
+mod 'talend-dataprep_dataset', '0.x',
+  :github_tarball => 'Talend/puppet-dataprep_dataset'
 mod 'talend-activemq', '0.x',
   :github_tarball => 'Talend/puppet-activemq'
 mod 'talend-zookeeper', '0.x',
