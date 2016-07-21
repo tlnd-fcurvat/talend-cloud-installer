@@ -50,16 +50,6 @@ FORGE
       puppetlabs-stdlib (>= 3.0.0)
 
 GIT
-  remote: https://github.com/Talend/puppet-cloudwatchlogs.git
-  ref: master
-  sha: 222f018c2211ad948bb2654cb1eb33228183b4ce
-  specs:
-    talend-cloudwatchlogs (0.1.0)
-      maestrodev-wget (~> 1.0)
-      puppetlabs-concat (< 3.0.0)
-      puppetlabs-stdlib (< 5.0.0, >= 1.0.0)
-
-GIT
   remote: https://github.com/Talend/puppet-dataprep_dataset
   ref: development
   sha: 1ff1bddd3209492560bdef958df9dedfb0e39f43
@@ -91,6 +81,11 @@ GITHUBTARBALL
     talend-cloudwatch (0.1.0.3)
 
 GITHUBTARBALL
+  remote: Talend/puppet-cloudwatchlogs
+  specs:
+    talend-cloudwatchlogs (0.1.0.1)
+
+GITHUBTARBALL
   remote: Talend/puppet-syncope
   specs:
     talend-syncope (0.1.0.2)
@@ -118,7 +113,7 @@ DEPENDENCIES
   puppetlabs-tomcat (~> 1.0)
   talend-activemq (~> 0.0)
   talend-cloudwatch (~> 0.0)
-  talend-cloudwatchlogs (>= 0)
+  talend-cloudwatchlogs (~> 0.0)
   talend-dataprep_dataset (>= 0)
   talend-syncope (~> 0.0)
   talend-tic (~> 0.0)

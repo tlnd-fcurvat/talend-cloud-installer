@@ -28,9 +28,8 @@ mod 'talend-tic', '0.x',
   :github_tarball => 'Talend/puppet-tic'
 mod 'talend-cloudwatch', '0.x',
   :github_tarball => 'Talend/puppet-cloudwatch'
-mod 'talend-cloudwatchlogs',
-  :git => 'https://github.com/Talend/puppet-cloudwatchlogs.git',
-  :ref => 'master'
+mod 'talend-cloudwatchlogs', '0.x',
+  :github_tarball => 'Talend/puppet-cloudwatchlogs'
 mod 'hubspot-nexus',
   :git => 'https://github.com/Talend/puppet-nexus.git',
   :ref => 'master'
