@@ -5,7 +5,7 @@ FORGE
       puppetlabs-stdlib (>= 4.2.0)
     computology-packagecloud (0.3.1)
       puppetlabs-stdlib (>= 0)
-    elasticsearch-elasticsearch (0.11.0)
+    elasticsearch-elasticsearch (0.12.0)
       ceritsc-yum (< 1.0.0, >= 0.9.6)
       puppetlabs-apt (< 3.0.0, >= 1.4.0)
       puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
@@ -78,27 +78,27 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: Talend/puppet-cloudwatch
   specs:
-    talend-cloudwatch (0.1.0.3)
+    talend-cloudwatch (0.1.0.4)
 
 GITHUBTARBALL
   remote: Talend/puppet-cloudwatchlogs
   specs:
-    talend-cloudwatchlogs (0.1.0.1)
+    talend-cloudwatchlogs (0.1.0.2)
 
 GITHUBTARBALL
   remote: Talend/puppet-syncope
   specs:
-    talend-syncope (0.1.0.2)
+    talend-syncope (0.1.0.3)
 
 GITHUBTARBALL
   remote: Talend/puppet-tic
   specs:
-    talend-tic (0.1.0.3)
+    talend-tic (0.1.0.4)
 
 GITHUBTARBALL
   remote: Talend/puppet-zookeeper
   specs:
-    talend-zookeeper (0.1.0.3)
+    talend-zookeeper (0.1.0.4)
 
 DEPENDENCIES
   computology-packagecloud (~> 0.0)
