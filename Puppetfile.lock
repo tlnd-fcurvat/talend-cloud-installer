@@ -1,6 +1,8 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
+    camptocamp-accounts (1.8.0)
+      puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
     ceritsc-yum (0.9.8)
       puppetlabs-stdlib (>= 4.2.0)
     computology-packagecloud (0.3.1)
@@ -46,6 +48,8 @@ FORGE
       puppetlabs-concat (< 3.0.0, >= 1.1.0)
       puppetlabs-stdlib (< 5.0.0, >= 4.6.0)
     richardc-datacat (0.6.2)
+    saz-sudo (3.1.0)
+      puppetlabs-stdlib (< 5.0.0, >= 2.3.0)
     stahnma-epel (1.2.2)
       puppetlabs-stdlib (>= 3.0.0)
 
@@ -95,6 +99,7 @@ GITHUBTARBALL
     talend-zookeeper (0.1.0.4)
 
 DEPENDENCIES
+  camptocamp-accounts (~> 1.0)
   computology-packagecloud (~> 0.0)
   elasticsearch-elasticsearch (~> 0.0)
   herculesteam-augeasproviders_shellvar (~> 2.0)
@@ -107,6 +112,7 @@ DEPENDENCIES
   puppetlabs-mongodb (~> 0.0)
   puppetlabs-postgresql (~> 4.0)
   puppetlabs-tomcat (~> 1.0)
+  saz-sudo (~> 3.0)
   talend-activemq (~> 0.0)
   talend-cloudwatch (~> 0.0)
   talend-cloudwatchlogs (~> 0.0)
