@@ -13,6 +13,7 @@ class profile::base {
   include ::profile::common::cloudwatchlogs
 
   include ::profile::common::concat
+  include ::profile::common::accounts
 
   profile::register_profile { 'base': order => 1, }
 
