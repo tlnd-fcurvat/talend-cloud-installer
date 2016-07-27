@@ -12,3 +12,4 @@ site/profile/spec/fixtures
 .kitchen.local.yml
 .tmp/
 build/
+.swp
