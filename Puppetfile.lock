@@ -36,7 +36,7 @@ FORGE
     puppetlabs-mongodb (0.14.0)
       puppetlabs-apt (< 3.0.0, >= 2.1.0)
       puppetlabs-stdlib (< 5.0.0, >= 4.4.0)
-    puppetlabs-postgresql (4.7.1)
+    puppetlabs-postgresql (4.8.0)
       puppetlabs-apt (< 3.0.0, >= 1.8.0)
       puppetlabs-concat (< 3.0.0, >= 1.1.0)
       puppetlabs-stdlib (~> 4.0)
@@ -87,7 +87,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: Talend/puppet-tic
   specs:
-    talend-tic (0.1.0.4)
+    talend-tic (0.1.0.5)
 
 GITHUBTARBALL
   remote: Talend/puppet-zookeeper
