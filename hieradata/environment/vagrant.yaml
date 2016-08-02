@@ -11,3 +11,7 @@ pg_databases:
     dbname: 'ams'
   'syncope':
     dbname: 'syncope'
+
+sudo::configs:
+  'vagrant':
+    'content': "%vagrant ALL=(ALL) NOPASSWD: ALL"
