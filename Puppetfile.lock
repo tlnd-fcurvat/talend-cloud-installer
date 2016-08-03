@@ -91,7 +91,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: Talend/puppet-tic
   specs:
-    talend-tic (0.1.0.8)
+    talend-tic (0.1.0.11)
 
 GITHUBTARBALL
   remote: Talend/puppet-zookeeper
