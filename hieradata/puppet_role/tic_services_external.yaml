@@ -4,5 +4,75 @@ java::package: "jre1.8.0_60"
 java::version: "1.8.0_60-fcs"
 java::java_home: "/usr/java/jre1.8.0_60"
 
-tic::activemq_broker_password: "%{::master_password}"
-tic::userdata_nexus_password_secret: "%{::master_password}"
+tic::services::java_home: "/usr/java/jre1.8.0_60"
+
+tic::services::activemq_broker_password: "%{::master_password}"
+tic::services::activemq_nodes: "%{::activemq_nodes}"
+tic::services::ams_syncope_host: "%{::syncope_nodes}"
+tic::services::elasticsearch_host: "%{::elasticsearch_nodes}"
+tic::services::mongo_nodes: "%{::mongodb_nodes}"
+tic::services::nexus_nodes: "%{::nexus_nodes}"
+tic::services::nexus_password: "%{::master_password}"
+tic::services::postgres_nodes: "%{::postgres_nodes}"
+tic::services::webhooks_redis_host: "%{::redis_nodes}"
+tic::services::zookeeper_nodes: "%{::zookeeper_nodes}"
+
+tic::services::karaf_features_install:
+  - '(aries-blueprint'
+  - 'bundle'
+  - 'config'
+  - 'deployer'
+  - 'diagnostic'
+  - 'feature'
+  - 'instance'
+  - 'jaas'
+  - 'kar'
+  - 'log'
+  - 'management'
+  - 'package'
+  - 'service'
+  - 'shell'
+  - 'shell-compat'
+  - 'ssh'
+  - 'system'
+  - 'wrap)'
+  - 'camel'
+  - 'tipaas-crypto-service-client'
+  - 'tipaas-artifact-manager-client-runtime'
+  - 'tipaas-bookkeeper-client'
+  - 'tipaas-account-manager-client'
+  - 'tipaas-scheduler-client'
+  - 'tipaas-dispatcher-client'
+  - 'tipaas-plan-executor-client'
+  - 'tipaas-flow-manager-client'
+  - 'tipaas-healthcheck-service-core'
+  - 'tipaas-container-management-service-client'
+  - 'tipaas-configuration-service-client'
+  - 'tipaas-webhooks-client'
+  - 'tipaas-notification-client'
+  - 'tipaas-notification-subscription-client'
+  - 'tipaas-data-transfer-service-client'
+  - 'tipaas-zookeeper-server'
+  - 'tipaas-crypto-service-core'
+  - 'tipaas-bookkeeper-service'
+  - 'tipaas-data-transfer-service-core'
+  - 'tipaas-artifact-manager-service'
+  - 'tipaas-account-manager-service'
+  - 'tipaas-dispatcher-core'
+  - 'tipaas-scheduler'
+  - 'tipaas-plan-executor-service'
+  - 'tipaas-flow-manager-service'
+  - 'tipaas-container-management-service'
+  - 'tipaas-pairing-service'
+  - 'tipaas-configuration-service-core'
+  - 'tipaas-schema-discovery-service-core'
+  - 'tesb-el-elasticsearch'
+  - 'tesb-el-server'
+  - 'tesb-el-collector-jms'
+  - 'tipaas-webhooks-service'
+  - 'tipaas-trial-registration-service'
+  - 'tipaas-custom-resources-service'
+  - 'tipaas-notification-subscription-service'
+  - 'tipaas-notification-manager'
+  - 'tipaas-notification-server'
+  - 'tipaas-notification-sendgrid-webhook-service'
