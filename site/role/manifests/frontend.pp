@@ -8,6 +8,7 @@ class role::frontend {
 
   include ::profile::common::concat
   include ::profile::common::cloudwatchlogs
+  include ::profile::web::nginx
 
   role::register_role { 'frontend': }
 
