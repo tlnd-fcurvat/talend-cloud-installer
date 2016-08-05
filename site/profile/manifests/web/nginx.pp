@@ -6,8 +6,10 @@
 #
 class profile::web::nginx {
 
-  include ::nginx
+  require ::nginx
+
   include ::profile::common::concat
+  include ::profile::common::cloudwatchlogs
 
   profile::register_profile{ 'nginx': }
 
@@ -19,15 +21,5 @@ class profile::web::nginx {
       ensure => 'on',
     }
   }
-
-  # configuring nginx applications from hiera
-  $nginx_vhosts = hiera_hash('nginx::resource::vhosts', {})
-  create_resources('nginx::resource::vhost',$nginx_vhosts)
-
-  $nginx_locations = hiera_hash('nginx::resource::locations', {})
-  create_resources('nginx::resource::location',$nginx_locations)
-
-  $nginx_upstreams = hiera_hash('nginx::resource::upstreams', {})
-  create_resources('nginx::resource::upstream',$nginx_upstreams)
 
 }
