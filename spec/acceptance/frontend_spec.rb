@@ -20,6 +20,16 @@ describe 'role::frontend' do
     it { should be_listening }
   end
 
+  describe port(8088) do
+    it { should be_listening }
+  end
+
+  describe command('/usr/bin/curl -v -I http://127.0.0.1:8088') do
+    its(:exit_status) { should eq 0 }
+    its(:stdout) { should include 'HTTP/1.1 301 Moved Permanently' }
+    its(:stdout) { should include 'Location: https://127.0.0.1/' }
+  end
+
   describe command('/usr/bin/ps ax | grep java') do
     its(:stdout) { should include '-Djava.security.auth.login.config=/srv/tomcat/ipaas-srv/conf/jaas-ipaas-services.conf' }
     its(:stdout) { should include '-Djava.awt.headless=true' }
