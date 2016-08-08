@@ -30,6 +30,10 @@ describe 'role::frontend' do
     its(:stdout) { should include 'Location: https://127.0.0.1/' }
   end
 
+  describe command('/usr/sbin/semanage port -l | /usr/bin/grep http_port_t') do
+    its(:stdout) { should include '8088' }
+  end
+
   describe command('/usr/bin/ps ax | grep java') do
     its(:stdout) { should include '-Djava.security.auth.login.config=/srv/tomcat/ipaas-srv/conf/jaas-ipaas-services.conf' }
     its(:stdout) { should include '-Djava.awt.headless=true' }
