@@ -1,5 +1,6 @@
 ---
 message: "This node is using common data"
+sudo::purge: false
 
 common_packages:
   'hiera-eyaml':
