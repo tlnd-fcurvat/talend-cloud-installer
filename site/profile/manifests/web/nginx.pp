@@ -20,6 +20,15 @@ class profile::web::nginx {
     selinux::boolean{ 'httpd_setrlimit':
       ensure => 'on',
     }
+
+    $vhosts = hiera('nginx::nginx_vhosts', {})
+    if has_key($vhosts, 'redirect') {
+      selinux::port{ 'allow-http-redirect-port':
+        context  => 'http_port_t',
+        protocol => 'tcp',
+        port     => $vhosts['redirect']['listen_port'],
+      }
+    }
   }
 
 }
