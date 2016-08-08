@@ -7,7 +7,7 @@ elasticsearch::status: running
 profile::elasticsearch::plugins_hash:
   'elasticsearch/elasticsearch-cloud-aws/2.5.1':
     instances: 'default'
-profile::elasticsearch::cluster_name: 'talend'
+profile::elasticsearch::cluster_name: 'tic'
 
 common_packages:
   'wget':
