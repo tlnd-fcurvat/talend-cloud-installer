@@ -24,5 +24,5 @@ limits::entries:
     both: unlimited
 
 cloudwatchlog_files:
-  "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/elasticsearch/default/tic.log":
-    path: '/var/log/elasticsearch/default/tic.log'
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/elasticsearch/default/%{hiera('profile::elasticsearch::cluster_name')}.log":
+    path: "/var/log/elasticsearch/default/%{hiera('profile::elasticsearch::cluster_name')}.log"
