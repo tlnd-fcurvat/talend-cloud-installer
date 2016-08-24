@@ -9,6 +9,7 @@ RSpec.configure do |config|
     :user => ENV['KITCHEN_USERNAME'],
     :port => ENV['KITCHEN_PORT'],
     :auth_methods => [ 'publickey' ],
+    :paranoid => false,
     :keys => ENV['KITCHEN_SSH_KEY']
   set :backend, :ssh
   set :request_pty, true
