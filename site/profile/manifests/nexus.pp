@@ -25,7 +25,7 @@ class profile::nexus (
       ensure => 'on',
     }
 
-		selinux::module { 'nginx':
+    selinux::module { 'nginx':
       content => '
 module nginx 1.0;
 
