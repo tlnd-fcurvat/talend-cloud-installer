@@ -10,7 +10,7 @@ shared_examples 'profile::zookeeper' do
     it { should be_listening }
   end
 
-  describe command('/usr/bin/wget -O - http://127.0.0.1:8080/exhibitor/v1/cluster/state') do
+  describe command('/usr/bin/curl http://127.0.0.1:8080/exhibitor/v1/cluster/state') do
     its(:stdout) { should match /"description":"(serving|latent)"/ }
   end
 
