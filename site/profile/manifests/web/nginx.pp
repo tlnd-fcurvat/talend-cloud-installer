@@ -6,8 +6,7 @@
 #
 class profile::web::nginx {
 
-  require ::nginx
-
+  include ::nginx
   include ::profile::common::concat
   include ::profile::common::cloudwatchlogs
 
