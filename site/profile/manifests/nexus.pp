@@ -17,6 +17,29 @@ class profile::nexus (
 
   profile::register_profile { 'nexus': }
 
+  if $::osfamily == 'RedHat'{
+    selinux::boolean { 'httpd_can_network_connect':
+      ensure => 'on',
+    }
+    selinux::boolean { 'httpd_setrlimit':
+      ensure => 'on',
+    }
+
+		selinux::module { 'nginx':
+      content => '
+module nginx 1.0;
+
+require {
+        type httpd_t;
+        type transproxy_port_t;
+        class tcp_socket name_connect;
+}
+
+allow httpd_t transproxy_port_t:tcp_socket name_connect;
+'
+    }
+  }
+
   class { '::nexus':
     version    => '2.8.0',
     revision   => '05',
