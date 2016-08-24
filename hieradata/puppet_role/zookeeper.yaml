@@ -1,4 +1,9 @@
 ---
+
+zookeeper::zookeeper_nodes: "%{::zookeeper_nodes}"
+zookeeper::backup_enable: true
+zookeeper::backup_bucket_name: "%{::backup_bucket}"
+
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/tomcat/logs/catalina.out":
     path: '/opt/tomcat/logs/catalina.out'
