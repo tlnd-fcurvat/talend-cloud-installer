@@ -3,9 +3,9 @@
 #
 class profile::tic_services (
 
-  activemq_nodes      = undef,
-  mongo_nodes         = undef,
-  zookeeper_nodes     = undef,
+  $activemq_nodes      = undef,
+  $mongo_nodes         = undef,
+  $zookeeper_nodes     = undef,
 
 ) {
 
