@@ -4,7 +4,7 @@
 class profile::nexus (
 
   $nexus_root  = '/srv',
-  $nexus_nodes = '',
+  $nexus_nodes = '', # A string f.e. '[ "10.0.2.12", "10.0.2.23" ]'
 
 ) {
 
@@ -49,11 +49,14 @@ allow httpd_t transproxy_port_t:tcp_socket name_connect;
   contain ::nexus
 
   # [ "10.0.2.12:8081", "10.0.2.23:8081" ]
-  $_nexus_nodes = unique(
-    concat(
-      ["${::ipaddress}:8081"],
-      split($nexus_nodes, ',')
-    )
+  $_nexus_nodes = suffix(
+    unique(
+      concat(
+        ["${::ipaddress}"],
+        split(regsubst($nexus_nodes, '[\s\[\]\"]', '', 'G'), ',')
+      )
+    ),
+    ':8081'
   )
 
   class { 'profile::nexus::nginx':
