@@ -17,6 +17,12 @@ tic::services::nexus_password: "%{::master_password}"
 tic::services::postgres_nodes: "%{::postgres_nodes}"
 tic::services::webhooks_redis_host: "%{::redis_nodes}"
 
+tic::services::dts_s3_bucket_rejected_data: "{::rejected_data_bucket}"
+tic::services::dts_s3_bucket_test_data: "{::test_data_bucket}"
+tic::services::dts_s3_bucket_logs_data: "{::flow_logs_bucket}"
+tic::services::dts_s3_bucket_downloads_data: "{::downloads_bucket}"
+tic::services::dts_s3_prefix: 'ptic'
+
 tic::services::karaf_features_install:
   - '(aries-blueprint'
   - 'bundle'
