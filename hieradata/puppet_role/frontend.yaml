@@ -8,7 +8,7 @@ tic::frontend::java_home: "/usr/java/jre1.8.0_60"
 tic::frontend::sts_host: '%{::syncope_nodes}'
 tic::frontend::sts_username: 'tadmin'
 tic::frontend::sts_password: "%{::master_password}"
-tic::frontend::trial_service_url: "%{::tic_services_internal_nodes}"
+tic::frontend::trial_service_nodes: "%{::tic_services_internal_nodes}"
 
 nginx::nginx_vhosts:
   'redirect':
