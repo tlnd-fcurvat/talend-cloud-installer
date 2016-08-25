@@ -35,9 +35,9 @@ class profile::tic_services (
   }
 
   class { '::tic::services':
-    activemq_nodes      => $_activemq_nodes,
-    mongo_nodes         => $_mongo_nodes,
-    zookeeper_nodes     => $_zookeeper_nodes,
+    activemq_nodes  => $_activemq_nodes,
+    mongo_nodes     => $_mongo_nodes,
+    zookeeper_nodes => $_zookeeper_nodes,
   }
 
   # Workaround for DEVOPS-703
