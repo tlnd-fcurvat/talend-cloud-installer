@@ -1,6 +1,6 @@
 ---
 
-zookeeper::zookeeper_nodes: "%{::zookeeper_nodes}"
+profile::zookeeper::zookeeper_nodes: "%{::zookeeper_nodes}"
 zookeeper::backup_enable: true
 zookeeper::backup_bucket_name: "%{::backup_bucket}"
 
