@@ -98,7 +98,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: Talend/puppet-zookeeper
   specs:
-    talend-zookeeper (0.1.0.8)
+    talend-zookeeper (0.1.0.9)
 
 DEPENDENCIES
   camptocamp-accounts (~> 1.0)
