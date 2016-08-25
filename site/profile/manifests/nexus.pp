@@ -52,7 +52,7 @@ allow httpd_t transproxy_port_t:tcp_socket name_connect;
   $_nexus_nodes = suffix(
     unique(
       concat(
-        [${::ipaddress}],
+        [$::ipaddress],
         split(regsubst($nexus_nodes, '[\s\[\]\"]', '', 'G'), ',')
       )
     ),
