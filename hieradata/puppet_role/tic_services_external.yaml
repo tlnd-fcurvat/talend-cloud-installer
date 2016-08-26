@@ -6,9 +6,9 @@ java::java_home: "/usr/java/jre1.8.0_60"
 
 tic::services::java_home: "/usr/java/jre1.8.0_60"
 
-profile::tic::services::activemq_nodes: "%{::activemq_nodes}"
-profile::tic::services::mongo_nodes: "%{::mongodb_nodes}"
-profile::tic::services::zookeeper_nodes: "%{::zookeeper_nodes}"
+profile::tic_services::activemq_nodes: "%{::activemq_nodes}"
+profile::tic_services::mongo_nodes: "%{::mongodb_nodes}"
+profile::tic_services::zookeeper_nodes: "%{::zookeeper_nodes}"
 tic::services::activemq_broker_password: "%{::master_password}"
 tic::services::ams_syncope_host: "%{::syncope_nodes}"
 tic::services::elasticsearch_host: "%{::elasticsearch_nodes}"
