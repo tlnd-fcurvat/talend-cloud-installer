@@ -27,10 +27,10 @@ postgresql::server::service_enable: false
 postgresql::server::service_manage: true
 
 postgresql::globals::default_connect_settings:
-      PGHOST: "%{::postgres_nodes}"
-      PGUSER: 'tadmin'
-      PGDATABASE: 'tadmin'
-      PGPASSWORD: "%{::master_password}"
+  PGHOST: "%{::postgres_nodes}"
+  PGUSER: 'tadmin'
+  PGDATABASE: 'tadmin'
+  PGPASSWORD: "%{::master_password}"
 
 pg_databases:
   'ams':
