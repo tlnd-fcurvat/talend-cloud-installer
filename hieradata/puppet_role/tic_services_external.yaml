@@ -4,6 +4,12 @@ java::package: "jre1.8.0_60"
 java::version: "1.8.0_60-fcs"
 java::java_home: "/usr/java/jre1.8.0_60"
 
+postgresql::globals::default_connect_settings:
+  PGHOST: "%{::postgres_nodes}"
+  PGUSER: 'tadmin'
+  PGDATABASE: 'tadmin'
+  PGPASSWORD: "%{::master_password}"
+
 tic::services::java_home: "/usr/java/jre1.8.0_60"
 
 profile::tic_services::activemq_nodes: "%{::activemq_nodes}"
