@@ -9,9 +9,15 @@ class profile::postgresql(
 
 ) {
 
-  require postgresql::server
-  require postgresql::client
-  require profile::postgresql::databases
+  require ::profile::common::packages
+
+  include ::profile::common::concat
+
+  profile::register_profile { 'postgresql': }
+
+  require ::postgresql::server
+  require ::postgresql::client
+  require ::profile::postgresql::databases
 
   class { 'profile::postgresql::role_user':
     pg_role_user          => $pg_role_user,
