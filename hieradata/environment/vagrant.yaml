@@ -1,16 +1,13 @@
 ---
 
-postgresql::server::service_ensure: running
-postgresql::server::service_enable: true
-postgresql::server::service_manage: true
-
-postgresql::globals::default_connect_settings: {}
-
-pg_databases:
-  'ams':
-    dbname: 'ams'
-  'syncope':
-    dbname: 'syncope'
+profile::postgresql::service_ensure: running
+profile::postgresql::service_enable: true
+profile::postgresql::roles:
+  ams:
+    files:
+      - /var/lib/activemq/lib/ams.sql
+      - /var/lib/activemq/lib/amqsec.sql
+  syncope: {}
 
 sudo::configs:
   'vagrant':
