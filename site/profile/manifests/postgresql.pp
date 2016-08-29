@@ -1,30 +1,22 @@
 #
-# Sets up a server, creates hiera-defined databases and role
+# Sets up a server, creates databases/roles and provisions databases
 #
-class profile::postgresql(
+class profile::postgresql (
 
-  $pg_role_user          = undef,
-  $pg_role_user_password = undef,
-  $pg_role_db_name       = undef,
+  $hostname       = undef,
+  $password       = undef,
+  $service_enable = stopped,
+  $service_ensure = true,
+  $roles          = {},
 
 ) {
 
   require ::profile::common::packages
-
   include ::profile::common::concat
-
   profile::register_profile { 'postgresql': }
 
-  require ::postgresql::server
-  require ::postgresql::client
-  require ::profile::postgresql::databases
-
-  class { 'profile::postgresql::role_user':
-    pg_role_user          => $pg_role_user,
-    pg_role_user_password => $pg_role_user_password,
-    pg_role_db_name       => $pg_role_db_name,
-  }
-
-  contain profile::postgresql::role_user
+  contain ::profile::postgresql::install
+  contain ::profile::postgresql::config
+  contain ::profile::postgresql::provision
 
 }
