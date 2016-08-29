@@ -40,6 +40,8 @@ class profile::tic_services (
     zookeeper_nodes => $_zookeeper_nodes,
   }
 
+  contain ::tic::services
+
   # Workaround for DEVOPS-703
   file {
     ['/opt/talend', '/opt/talend/ipaas']:
