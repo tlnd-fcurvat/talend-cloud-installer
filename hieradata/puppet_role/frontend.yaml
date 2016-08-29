@@ -9,7 +9,7 @@ tic::frontend::sts_host: '%{::syncope_nodes}'
 tic::frontend::sts_username: 'tadmin'
 tic::frontend::sts_password: "%{::master_password}"
 tic::frontend::trial_service_nodes: "%{::tic_services_internal_nodes}"
-tic::frontend::dts_service_node: "%{::tic_services_internal_nodes}"
+tic::frontend::dts_service_node: "%{::tic_services_external_nodes}"
 
 nginx::nginx_vhosts:
   'redirect':
