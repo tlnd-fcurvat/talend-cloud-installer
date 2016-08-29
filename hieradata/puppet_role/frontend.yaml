@@ -10,6 +10,8 @@ tic::frontend::sts_username: 'tadmin'
 tic::frontend::sts_password: "%{::master_password}"
 tic::frontend::trial_service_nodes: "%{::tic_services_internal_nodes}"
 tic::frontend::dts_service_node: "%{::tic_services_external_nodes}"
+tic::frontend::elasticache_address: "%{::memcache_nodes}"
+tic::frontend::web_use_ssl: false
 
 nginx::nginx_vhosts:
   'redirect':
