@@ -18,29 +18,13 @@ activemq::pg_password: "%{::master_password}"
 activemq::activemq_auth_ensure: 'installed'
 activemq::persistence: 'kahadb'
 
-profile::postgresql::pg_role_user: activemq
-profile::postgresql::pg_role_db_name: ams
-profile::postgresql::pg_role_user_password: "%{::master_password}"
-
-postgresql::server::service_ensure: stopped
-postgresql::server::service_enable: false
-postgresql::server::service_manage: true
-
-postgresql::globals::default_connect_settings:
-  PGHOST: "%{::postgres_nodes}"
-  PGUSER: 'tadmin'
-  PGDATABASE: 'tadmin'
-  PGPASSWORD: "%{::master_password}"
-
-pg_databases:
-  'ams':
-    dbname: 'ams'
-    owner: 'tadmin'
-
-pg_roles:
-  'ams':
-    login: true
-    password_hash: "%{::master_password}"
+profile::postgresql::hostname: "%{::postgres_nodes}"
+profile::postgresql::password: "%{::master_password}"
+profile::postgresql::roles:
+  ams:
+    files:
+      - /var/lib/activemq/lib/ams.sql
+      - /var/lib/activemq/lib/amqsec.sql
 
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/activemq/data/activemq.log":

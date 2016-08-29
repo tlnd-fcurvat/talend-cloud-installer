@@ -9,29 +9,10 @@ syncope::postgres_db_name: 'syncope'
 syncope::postgres_password: "%{::master_password}"
 syncope::admin_password: "%{::master_password}"
 
-profile::postgresql::pg_role_user: syncope
-profile::postgresql::pg_role_db_name: syncope
-profile::postgresql::pg_role_user_password: "%{::master_password}"
-
-postgresql::server::service_ensure: stopped
-postgresql::server::service_enable: false
-postgresql::server::service_manage: true
-
-postgresql::globals::default_connect_settings:
-      PGHOST: "%{::postgres_nodes}"
-      PGUSER: 'tadmin'
-      PGDATABASE: 'tadmin'
-      PGPASSWORD: "%{::master_password}"
-
-pg_databases:
-  'syncope':
-    dbname: 'syncope'
-    owner: 'tadmin'
-
-pg_roles:
-  'syncope':
-    login: true
-    password_hash: "%{::master_password}"
+profile::postgresql::hostname: "%{::postgres_nodes}"
+profile::postgresql::password: "%{::master_password}"
+profile::postgresql::roles:
+  syncope: {}
 
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/tomcat/logs/catalina.out":
