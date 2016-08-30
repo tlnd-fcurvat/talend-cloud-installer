@@ -25,6 +25,33 @@ profile::postgresql::roles:
     files:
       - /var/lib/activemq/lib/ams.sql
       - /var/lib/activemq/lib/amqsec.sql
+  scheduler:
+    files:
+      - /var/tmp/sql/scheduler.sql
+  lts:
+    files:
+      - /var/tmp/sql/lts.sql
+  crypto:
+    files:
+      - /var/tmp/sql/crypto.sql
+  cms:
+    files:
+      - /var/tmp/sql/cms.sql
+  config:
+    files:
+      - /var/tmp/sql/config.sql
+  trial:
+    files:
+      - /var/tmp/sql/trial.sql
+  pe:
+    files:
+      - /var/tmp/sql/pe.sql
+  webhooks:
+    files:
+      - /var/tmp/sql/webhooks.sql
+  notification_subscription:
+    files:
+      - /var/tmp/sql/notification_subscription.sql
 
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/activemq/data/activemq.log":
