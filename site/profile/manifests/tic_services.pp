@@ -10,6 +10,7 @@ class profile::tic_services (
 ) {
 
   require ::profile::java
+  require ::profile::postgresql
 
   include ::profile::common::concat
   include ::profile::common::cloudwatchlogs
