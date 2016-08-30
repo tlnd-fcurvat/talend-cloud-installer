@@ -4,7 +4,6 @@
 class profile::mongodb {
 
   require ::profile::common::packages
-  require ::mongodb::client
 
   include ::profile::common::concat
 
@@ -17,5 +16,6 @@ class profile::mongodb {
   }
 
   contain ::mongodb::server
+  contain ::mongodb::client
 
 }
