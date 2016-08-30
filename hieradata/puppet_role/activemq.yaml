@@ -25,6 +25,10 @@ profile::postgresql::roles:
     files:
       - /var/lib/activemq/lib/ams.sql
       - /var/lib/activemq/lib/amqsec.sql
+  # The following roles shouldn't be placed here, as
+  # well as the ptic-postgresql-schemes package.
+  # The only reason is that the active mq instance A is
+  # used as a single point of postgresql provisioning.
   scheduler:
     files:
       - /var/tmp/sql/scheduler.sql

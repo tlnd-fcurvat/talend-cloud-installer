@@ -16,6 +16,12 @@ class profile::activemq {
   class { '::profile::postgresql::provision': }
 
   contain ::activemq
-  contain ::profile::postgresql::provision
+
+  # prevent postgres provisioning on all the nodes except one: ActiveMQ-A
+  # this should be replaced with more sophisticated solution in the future
+  $ec2_userdata = pick($::ec2_userdata, '')
+  if $ec2_userdata =~ /InstanceA/ {
+    contain ::profile::postgresql::provision
+  }
 
 }
