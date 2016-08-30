@@ -7,11 +7,11 @@ class profile::postgresql::install {
   }
 
   class { 'postgresql::server':
-    listen_addresses   => '*',
-    postgres_password  => $profile::postgresql::password,
-    service_ensure     => $profile::postgresql::service_ensure,
-    service_enable     => $profile::postgresql::service_enable,
-    service_manage     => true,
+    listen_addresses  => '*',
+    postgres_password => $profile::postgresql::password,
+    service_ensure    => $profile::postgresql::service_ensure,
+    service_enable    => $profile::postgresql::service_enable,
+    service_manage    => true,
   }
 
   contain ::postgresql::server
