@@ -19,6 +19,8 @@ common_packages:
     ensure: 'installed'
   'nmap-ncat':
     ensure: 'installed'
+  'ptic-postgresql-schemes':
+    ensure: 'installed'
 
 packagecloud_repos:
   'talend/other':
