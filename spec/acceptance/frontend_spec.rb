@@ -85,7 +85,7 @@ describe 'role::frontend' do
   end
 
   describe file('/srv/tomcat/ipaas-srv/webapps/ipaas-server/WEB-INF/web.xml') do
-    its(:content) { should include '<secure>true</secure>' }
+    its(:content) { should include '<secure>false</secure>' }
   end
 
   describe file('/srv/tomcat/ipaas-srv/webapps/ipaas/WEB-INF/web.xml') do
