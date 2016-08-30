@@ -12,6 +12,10 @@ class profile::activemq {
 
   profile::register_profile { 'activemq': }
 
+  class { '::activemq': } ->
+  class { '::profile::postgresql::provision': }
+
   contain ::activemq
+  contain ::profile::postgresql::provision
 
 }
