@@ -17,6 +17,5 @@ class profile::postgresql (
 
   contain ::profile::postgresql::install
   contain ::profile::postgresql::config
-  contain ::profile::postgresql::provision
 
 }
