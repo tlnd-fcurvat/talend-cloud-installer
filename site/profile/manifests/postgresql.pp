@@ -6,7 +6,6 @@ class profile::postgresql (
   $hostname       = undef,
   $password       = undef,
   $service_enable = stopped,
-  $service_ensure = true,
   $roles          = {},
 
 ) {
