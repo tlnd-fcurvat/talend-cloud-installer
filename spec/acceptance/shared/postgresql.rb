@@ -15,7 +15,7 @@ shared_examples 'profile::postgresql' do |role, databases = []|
   end
 
   databases.each do |db|
-    describe command("PGPASSWORD=mypassword /usr/bin/psql -h localhost -U #{role} -d #{role} -c '\\dt'") do
+    describe command("PGPASSWORD=mypassword /usr/bin/psql -P pager -h localhost -U #{role} -d #{role} -c '\\dt'") do
       its(:stdout) { should include db }
     end
   end
