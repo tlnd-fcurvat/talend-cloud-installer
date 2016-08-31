@@ -12,7 +12,9 @@ syncope::admin_password: "%{::master_password}"
 profile::postgresql::hostname: "%{::postgres_nodes}"
 profile::postgresql::password: "%{::master_password}"
 profile::postgresql::roles:
-  syncope: {}
+  syncope:
+    files:
+      - /var/tmp/sql/syncope.sql
 
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/tomcat/logs/catalina.out":

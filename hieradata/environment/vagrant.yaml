@@ -1,12 +1,6 @@
 ---
 
 profile::postgresql::service_ensure: running
-profile::postgresql::roles:
-  ams:
-    files:
-      - /var/lib/activemq/lib/ams.sql
-      - /var/lib/activemq/lib/amqsec.sql
-  syncope: {}
 
 sudo::configs:
   'vagrant':
