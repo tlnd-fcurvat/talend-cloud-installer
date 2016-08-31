@@ -40,10 +40,6 @@ FORGE
     puppetlabs-mongodb (0.14.0)
       puppetlabs-apt (< 3.0.0, >= 2.1.0)
       puppetlabs-stdlib (< 5.0.0, >= 4.4.0)
-    puppetlabs-postgresql (4.8.0)
-      puppetlabs-apt (< 3.0.0, >= 1.8.0)
-      puppetlabs-concat (< 3.0.0, >= 1.1.0)
-      puppetlabs-stdlib (~> 4.0)
     puppetlabs-stdlib (4.12.0)
     puppetlabs-tomcat (1.5.0)
       nanliu-staging (< 2.0.0, >= 0.4.1)
@@ -64,6 +60,16 @@ GIT
       maestrodev-wget (< 2.0.0, >= 1.0.0)
       puppetlabs-inifile (~> 1.5.0)
       puppetlabs-stdlib (< 5.0.0, >= 0.0.0)
+
+GIT
+  remote: https://github.com/Talend/puppetlabs-postgresql.git
+  ref: master
+  sha: 0bf606796bbcd7367f4995735866d247ebdf01fc
+  specs:
+    puppetlabs-postgresql (4.8.0)
+      puppetlabs-apt (< 3.0.0, >= 1.8.0)
+      puppetlabs-concat (< 3.0.0, >= 1.1.0)
+      puppetlabs-stdlib (~> 4.0)
 
 GITHUBTARBALL
   remote: Talend/puppet-activemq
@@ -113,7 +119,7 @@ DEPENDENCIES
   puppetlabs-concat (~> 1.0)
   puppetlabs-java (~> 1.0)
   puppetlabs-mongodb (~> 0.0)
-  puppetlabs-postgresql (~> 4.0)
+  puppetlabs-postgresql (>= 0)
   puppetlabs-tomcat (~> 1.0)
   saz-sudo (~> 3.0)
   talend-activemq (~> 0.0)
