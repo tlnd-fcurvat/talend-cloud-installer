@@ -49,13 +49,13 @@ profile::postgresql::roles:
       - /var/tmp/sql/trial.sql
   pe:
     files:
-      - /var/tmp/sql/pe.sql
+      - /var/tmp/sql/pes.sql
   webhooks:
     files:
       - /var/tmp/sql/webhooks.sql
   notification_subscription:
     files:
-      - /var/tmp/sql/notification_subscription.sql
+      - /var/tmp/sql/notification-subscription.sql
 
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/activemq/data/activemq.log":
