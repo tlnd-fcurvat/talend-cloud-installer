@@ -1,7 +1,6 @@
 ---
 
 profile::postgresql::service_ensure: running
-profile::postgresql::service_enable: true
 profile::postgresql::roles:
   ams:
     files:
