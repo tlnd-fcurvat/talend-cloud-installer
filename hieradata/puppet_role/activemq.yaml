@@ -18,8 +18,6 @@ activemq::pg_password: "%{::master_password}"
 activemq::activemq_auth_ensure: 'installed'
 activemq::persistence: 'kahadb'
 
-profile::postgresql::hostname: "%{::postgres_nodes}"
-profile::postgresql::password: "%{::master_password}"
 profile::postgresql::roles:
   ams:
     files:
