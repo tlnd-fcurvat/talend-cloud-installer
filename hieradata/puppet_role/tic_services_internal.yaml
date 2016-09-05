@@ -9,6 +9,10 @@ tic::services::java_home: "/usr/java/jre1.8.0_60"
 profile::tic_services::activemq_nodes: "%{::activemq_nodes}"
 profile::tic_services::mongo_nodes: "%{::mongodb_nodes}"
 profile::tic_services::zookeeper_nodes: "%{::zookeeper_nodes}"
+
+tic::services::mongo_admin_user: "admin"
+tic::services::mongo_admin_password: "%{::master_password}"
+
 tic::services::activemq_broker_password: "%{::master_password}"
 tic::services::ams_mail_config_password_reset: "%{::master_password}"
 tic::services::ams_password: "%{::master_password}"
