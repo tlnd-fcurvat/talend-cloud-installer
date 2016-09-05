@@ -12,15 +12,16 @@ class profile::activemq {
 
   profile::register_profile { 'activemq': }
 
-  contain ::activemq
-
-  Class['::activemq'] -> Class['::profile::postgresql::provision']
-
   # prevent postgres provisioning on all the nodes except one: ActiveMQ-A
   # this should be replaced with more sophisticated solution in the future
   $ec2_userdata = pick($::ec2_userdata, '')
   if $ec2_userdata =~ /InstanceA/ {
+    class { '::activemq': } ->
+    class { '::profile::postgresql::provision': }
+    contain ::activemq
     contain ::profile::postgresql::provision
+  } else {
+    contain ::activemq
   }
 
 }
