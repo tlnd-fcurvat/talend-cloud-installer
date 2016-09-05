@@ -8,7 +8,6 @@ class profile::postgresql::install {
 
   class { 'postgresql::server':
     listen_addresses  => '*',
-    postgres_password => $profile::postgresql::password,
     service_ensure    => $profile::postgresql::service_ensure,
     service_manage    => true,
     default_database  => $profile::postgresql::database,
