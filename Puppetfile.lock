@@ -94,7 +94,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: Talend/puppet-syncope
   specs:
-    talend-syncope (0.1.0.6)
+    talend-syncope (0.1.0.7)
 
 GITHUBTARBALL
   remote: Talend/puppet-tic
