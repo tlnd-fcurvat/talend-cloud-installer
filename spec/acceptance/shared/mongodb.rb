@@ -16,4 +16,15 @@ shared_examples 'profile::mongodb' do
     it { should be_listening }
   end
 
+  describe command('/usr/bin/mongo -u admin -p mypassword ipaas --eval "printjson(db.getUser(\'admin\'));" | /usr/bin/tr -d "\t\n "') do
+    its(:stdout) { should include '{"role":"userAdminAnyDatabase","db":"admin"}' }
+    its(:stdout) { should include '{"role":"dbAdminAnyDatabase","db":"admin"}' }
+    its(:stdout) { should include '{"role":"readWriteAnyDatabase","db":"admin"}' }
+    its(:stdout) { should include '{"role":"dbOwner","db":"ipaas"}' }
+  end
+
+  describe file('/var/lock/mongo_admin_user_lock') do
+    it { should be_file }
+  end
+
 end
