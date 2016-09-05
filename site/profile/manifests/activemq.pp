@@ -12,10 +12,9 @@ class profile::activemq {
 
   profile::register_profile { 'activemq': }
 
-  class { '::activemq': } ->
-  class { '::profile::postgresql::provision': }
-
   contain ::activemq
+
+  Class['::activemq'] -> Class['::profile::postgresql::provision']
 
   # prevent postgres provisioning on all the nodes except one: ActiveMQ-A
   # this should be replaced with more sophisticated solution in the future
