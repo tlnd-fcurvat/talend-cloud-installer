@@ -35,6 +35,12 @@ tic::services::syncope_password: "%{::master_password}"
 tic::services::trial_db_password: "%{::master_password}"
 tic::services::webhooks_redis_host: "%{::redis_nodes}"
 
+tic::services::ams_mail_config_update_period: "1800000"
+tic::services::ams_mail_config_password_reset: "templates/password_reset_email_description.xml"
+tic::services::ams_mail_config_user_created: "templates/user_created_email_description.xml"
+tic::services::ams_current_region: "us-east-1"
+tic::services::ams_disaster_region: "us-west-2"
+
 tic::services::dts_s3_bucket_rejected_data: "{::rejecteddatabucket}"
 tic::services::dts_s3_bucket_test_data: "{::testdatabucket}"
 tic::services::dts_s3_bucket_logs_data: "{::flowlogsbucket}"
