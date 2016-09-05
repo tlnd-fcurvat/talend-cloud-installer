@@ -7,7 +7,7 @@ class profile::postgresql (
   $password       = undef,
   $username       = undef,
   $database       = undef,
-  $service_enable = stopped,
+  $service_ensure = stopped,
   $roles          = {},
 
 ) {
