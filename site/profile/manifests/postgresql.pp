@@ -5,6 +5,8 @@ class profile::postgresql (
 
   $hostname       = undef,
   $password       = undef,
+  $username       = undef,
+  $database       = undef,
   $service_enable = stopped,
   $roles          = {},
 

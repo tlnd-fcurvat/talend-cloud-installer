@@ -11,6 +11,7 @@ class profile::postgresql::install {
     postgres_password => $profile::postgresql::password,
     service_ensure    => $profile::postgresql::service_ensure,
     service_manage    => true,
+    default_database  => $profile::postgresql::database,
   }
 
   contain ::postgresql::server

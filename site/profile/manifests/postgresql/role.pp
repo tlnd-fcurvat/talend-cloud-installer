@@ -7,10 +7,12 @@ define profile::postgresql::role {
 
   postgresql::server::database { $name:
     dbname => $name,
+    owner  => $profile::postgresql::username,
   }
 
   postgresql::server::role { $name:
     password_hash => pick($role['password'], $profile::postgresql::password),
+    db            => $profile::postgresql::database,
   }
 
   postgresql::server::database_grant { $name:
