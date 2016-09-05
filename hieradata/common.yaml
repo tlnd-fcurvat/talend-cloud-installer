@@ -41,6 +41,8 @@ cloudwatchlog_files:
 profile::web::tomcat::catalina_base: '/opt/apache-tomcat/tomcat'
 profile::web::tomcat::tomcat_version: '8'
 
+profile::postgresql::username: tadmin
+profile::postgresql::database: tadmin
 postgresql::globals::default_connect_settings:
   PGHOST: "%{::postgres_nodes}"
   PGPASSWORD: "%{::master_password}"

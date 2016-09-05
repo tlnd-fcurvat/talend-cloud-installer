@@ -1,6 +1,8 @@
 ---
 
 profile::postgresql::service_ensure: running
+profile::postgresql::username: postgres
+profile::postgresql::database: postgres
 
 sudo::configs:
   'vagrant':
