@@ -3,6 +3,11 @@
 profile::postgresql::service_ensure: running
 profile::postgresql::username: postgres
 profile::postgresql::database: postgres
+postgresql::globals::default_connect_settings:
+  PGHOST: "%{::postgres_nodes}"
+  PGUSER: "postgres"
+  PGDATABASE: "postgres"
+  PGPASSWORD: "%{::master_password}"
 
 sudo::configs:
   'vagrant':

@@ -43,6 +43,8 @@ profile::postgresql::username: tadmin
 profile::postgresql::database: tadmin
 postgresql::globals::default_connect_settings:
   PGHOST: "%{::postgres_nodes}"
+  PGUSER: "tadmin"
+  PGDATABASE: "tadmin"
   PGPASSWORD: "%{::master_password}"
 
 profile::postgresql::hostname: "%{::postgres_nodes}"
