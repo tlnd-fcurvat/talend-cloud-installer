@@ -10,7 +10,6 @@ class profile::postgresql::install {
     listen_addresses  => '*',
     service_ensure    => $profile::postgresql::service_ensure,
     service_manage    => true,
-    default_database  => $profile::postgresql::database,
   }
 
   contain ::postgresql::server
