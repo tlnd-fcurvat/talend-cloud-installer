@@ -3,6 +3,7 @@
 profile::postgresql::service_ensure: running
 profile::postgresql::username: postgres
 profile::postgresql::database: postgres
+postgresql::server::postgres_password: "%{::master_password}"
 postgresql::globals::default_connect_settings:
   PGHOST: "%{::postgres_nodes}"
   PGUSER: "postgres"
