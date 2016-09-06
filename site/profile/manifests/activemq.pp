@@ -17,15 +17,18 @@ class profile::activemq {
   $ec2_userdata = pick($::ec2_userdata, '')
   if $ec2_userdata =~ /InstanceA/ {
     $update_user_password = "/usr/bin/psql \
-    -U ${::profile::postgresql::username} \
+    -U ams \
     -h ${::profile::postgresql::hostname} \
     -d ams \
-    -c \"update amqsec_system_users set password = '${::master_password}' where username = 'tadmin'\""
+    -c \"update amqsec_system_users set password = '\$AMS_TADMIN_PASSWORD' where username = 'tadmin'\""
 
     class { '::activemq': } ->
     class { '::profile::postgresql::provision': } ->
     exec { 'update the amqsec_system_users':
-      environment => "PGPASSWORD=${::profile::postgresql::password}",
+      environment => [
+        "PGPASSWORD=${::profile::postgresql::password}",
+        "AMS_TADMIN_PASSWORD=${::profile::postgresql::password}"
+      ],
       command     => $update_user_password,
     }
     contain ::activemq
