@@ -1,6 +1,7 @@
 ---
 :backends:
   - yaml
+  - eyaml
 
 :hierarchy:
   - clientcert/%{clientcert}
@@ -10,4 +11,7 @@
   - extra
 
 :yaml:
+  :datadir: "%{settings::confdir}/hieradata"
+
+:eyaml:
   :datadir: "%{settings::confdir}/hieradata"
