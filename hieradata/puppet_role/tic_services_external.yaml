@@ -47,6 +47,8 @@ tic::services::dts_s3_bucket_logs_data: "{::flowlogsbucket}"
 tic::services::dts_s3_bucket_downloads_data: "{::downloads_bucket}"
 tic::services::dts_s3_prefix: 'ptic'
 
+tic::services::kms_key_alias: 'ipaas_master_key'
+
 tic::services::karaf_features_install:
   - '(aries-blueprint'
   - 'bundle'
