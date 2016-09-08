@@ -21,9 +21,7 @@ tic::services::notification_manager_destination_queue: "ipaas.%{::main_stack}.no
 tic::services::notification_client_failures_log: org.talend.ipaas.rt.notification.client.Failures
 
 tic::services::activemq_broker_password: "%{::master_password}"
-tic::services::ams_mail_config_password_reset: "%{::master_password}"
 tic::services::ams_password: "%{::master_password}"
-tic::services::ams_password_reset_url_template: "%{::master_password}"
 tic::services::ams_postgres_password: "%{::master_password}"
 tic::services::ams_syncope_host: "%{::syncope_nodes}"
 tic::services::ams_syncope_password: "%{::master_password}"
@@ -41,6 +39,8 @@ tic::services::quartz_db_password: "%{::master_password}"
 tic::services::syncope_password: "%{::master_password}"
 tic::services::trial_db_password: "%{::master_password}"
 tic::services::webhooks_redis_host: "%{::redis_nodes}"
+
+tic::services::ams_password_reset_url_template: "/#/reset_password?token="
 
 tic::services::ams_mail_config_update_period: "1800000"
 tic::services::ams_mail_config_password_reset: "templates/password_reset_email_description.xml"
