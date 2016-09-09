@@ -6,7 +6,7 @@ java::java_home: "/usr/java/jre1.8.0_60"
 
 tic::frontend::java_home: "/usr/java/jre1.8.0_60"
 tic::frontend::sts_host: '%{::syncope_nodes}'
-tic::frontend::sts_username: 'tadmin'
+tic::frontend::sts_username: 'admin'
 tic::frontend::sts_password: "%{::master_password}"
 tic::frontend::elasticache_address: "%{::memcache_nodes}"
 
