@@ -13,8 +13,6 @@ profile::tic_services::zookeeper_nodes: "%{::zookeeper_nodes}"
 tic::services::mongo_admin_user: "admin"
 tic::services::mongo_admin_password: "%{::master_password}"
 
-tic::services::rt_aws_region: "%{::region}"
-
 tic::services::notification_manager_input_queue: "ipaas.%{::main_stack}.notification.manager.queue"
 tic::services::notification_manager_destination_queue: "ipaas.%{::main_stack}.notification.server.queue"
 
@@ -45,8 +43,12 @@ tic::services::webhooks_redis_host: "%{::redis_nodes}"
 tic::services::ams_mail_config_update_period: "1800000"
 tic::services::ams_mail_config_password_reset: "templates/password_reset_email_description.xml"
 tic::services::ams_mail_config_user_created: "templates/user_created_email_description.xml"
-tic::services::ams_current_region: "us-east-1"
-tic::services::ams_disaster_region: "us-west-2"
+tic::services::ams_current_region: "%{::region}"
+tic::services::ams_disaster_region: "%{::region}"
+
+tic::services::rt_aws_region: "%{::region}"
+
+tic::services::crypto_secondary_regions: "%{::region}"
 
 tic::services::dts_s3_bucket_rejected_data: "{::rejecteddatabucket}"
 tic::services::dts_s3_bucket_test_data: "{::testdatabucket}"
