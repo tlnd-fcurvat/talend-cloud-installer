@@ -1,5 +1,11 @@
 ---
 
+profile::init_configuration_service::ami_id:           'test-ami_id'
+profile::init_configuration_service::security_groups:  'test-security_groups'
+profile::init_configuration_service::instance_type:    'test-instance_type'
+profile::init_configuration_service::subnet_id:        'test-subnet_id'
+profile::init_configuration_service::instance_profile: 'test-instance_profile'
+
 profile::postgresql::service_ensure: running
 profile::postgresql::username: postgres
 profile::postgresql::database: postgres
