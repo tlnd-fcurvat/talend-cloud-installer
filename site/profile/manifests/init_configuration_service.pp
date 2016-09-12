@@ -1,10 +1,10 @@
 class profile::init_configuration_service (
 
-  $ami_id           = 'test',
-  $security_groups  = 'test',
-  $instance_type    = 'test',
-  $subnet_id        = 'test',
-  $instance_profile = 'test',
+  $ami_id           = 'missing',
+  $security_groups  = 'missing',
+  $instance_type    = 'missing',
+  $subnet_id        = 'missing',
+  $instance_profile = 'missing',
 
 ) {
 
