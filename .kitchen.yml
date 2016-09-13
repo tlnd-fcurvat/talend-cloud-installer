@@ -38,8 +38,6 @@ suites:
         - 'spec/acceptance/frontend_spec.rb'
   - name: role-tic_services_internal
     provisioner:
-      manifests_path: examples
-      manifest: tic-services-internal.pp
       custom_facts:
         puppet_role: tic_services_internal
     verifier:

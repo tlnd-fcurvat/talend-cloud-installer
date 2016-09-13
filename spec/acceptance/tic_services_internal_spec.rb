@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe 'role::tic_services_internal' do
   it_behaves_like 'profile::base'
-  it_behaves_like 'profile::defined', 'init_configuration_service'
   it_behaves_like 'role::defined', 'tic_services_internal'
 
 	describe package('talend-ipaas-rt-infra') do
