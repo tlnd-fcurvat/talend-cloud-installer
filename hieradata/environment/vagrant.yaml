@@ -1,10 +1,10 @@
 ---
 
-profile::init_configuration_service::ami_id:           'test-ami_id'
-profile::init_configuration_service::security_groups:  'test-security_groups'
-profile::init_configuration_service::instance_type:    'test-instance_type'
-profile::init_configuration_service::subnet_id:        'test-subnet_id'
-profile::init_configuration_service::instance_profile: 'test-instance_profile'
+tic::services::rt_flow_ami_id:           'test-ami_id'
+tic::services::rt_flow_security_groups:  'test-security_groups'
+tic::services::rt_flow_instance_type:    'test-instance_type'
+tic::services::rt_flow_subnet_id:        'test-subnet_id'
+tic::services::rt_flow_instance_profile: 'test-instance_profile'
 
 profile::postgresql::service_ensure: running
 profile::postgresql::username: postgres
