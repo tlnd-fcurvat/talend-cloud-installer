@@ -6,14 +6,16 @@ class profile::postgresql::install {
     manage_package_repo => true,
   }
 
+  $service_status = $profile::postgresql::service_ensure ? {
+    stopped => 'exit 1',
+    default => undef,
+  }
+
   class { 'postgresql::server':
     listen_addresses => '*',
     service_ensure   => $profile::postgresql::service_ensure,
     service_manage   => true,
-    service_status   => $profile::postgresql::service_ensure ? {
-      stopped => 'exit 1',
-      default => undef,
-    },
+    service_status   => $service_status,
   }
 
   contain ::postgresql::server
