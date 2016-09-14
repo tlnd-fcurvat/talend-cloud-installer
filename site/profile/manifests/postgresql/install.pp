@@ -10,6 +10,10 @@ class profile::postgresql::install {
     listen_addresses => '*',
     service_ensure   => $profile::postgresql::service_ensure,
     service_manage   => true,
+    service_status   => $profile::postgresql::service_ensure ? {
+      stopped => 'exit 1',
+      default => undef,
+    },
   }
 
   contain ::postgresql::server
