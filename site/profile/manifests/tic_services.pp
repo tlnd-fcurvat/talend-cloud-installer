@@ -49,11 +49,9 @@ class profile::tic_services (
     mongo_nodes       => $_mongo_nodes,
     zookeeper_nodes   => $_zookeeper_nodes,
     rt_flow_subnet_id => $rt_flow_subnet_ids[0],
-  } ->
-  class { '::tic::services::init_configuration_service': }
+  }
 
   contain ::tic::services
-  contain ::tic::services::init_configuration_service
 
   # Workaround for DEVOPS-703
   file {

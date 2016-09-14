@@ -9,4 +9,6 @@ class role::tic_services_internal {
 
   role::register_role { 'tic_services_internal': }
 
+  contain ::tic::services::init_configuration_service
+
 }
