@@ -22,7 +22,6 @@ tic::services::notification_manager_destination_queue: "ipaas.%{::main_stack}.no
 tic::services::notification_client_failures_log: org.talend.ipaas.rt.notification.client.Failures
 
 tic::services::activemq_broker_password: "%{::master_password}"
-tic::services::ams_password: "%{::master_password}"
 tic::services::ams_postgres_password: "%{::master_password}"
 tic::services::ams_syncope_host: "%{::syncope_nodes}"
 tic::services::ams_syncope_password: "%{::master_password}"
