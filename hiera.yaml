@@ -16,4 +16,4 @@
 :eyaml:
   :datadir: "%{settings::confdir}/hieradata"
   :extension: yaml
-  :kms_aws_region: us-east-1
+  :kms_aws_region: "%{::region}"
