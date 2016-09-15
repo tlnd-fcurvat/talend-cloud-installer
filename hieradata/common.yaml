@@ -27,6 +27,8 @@ packagecloud_repos:
   'talend/thirdparty':
     type: 'rpm'
 
+cloudwatchlogs::params::region: "%{::region}"
+
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/messages":
     path: '/var/log/messages'
