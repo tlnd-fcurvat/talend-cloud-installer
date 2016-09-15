@@ -94,7 +94,6 @@ tic::services::karaf_features_install:
   - 'tipaas-notification-client'
   - 'tipaas-notification-subscription-client'
   - 'tipaas-data-transfer-service-client'
-  - 'tipaas-zookeeper-server'
   - 'tipaas-crypto-service-core'
   - 'tipaas-bookkeeper-service'
   - 'tipaas-data-transfer-service-core'
