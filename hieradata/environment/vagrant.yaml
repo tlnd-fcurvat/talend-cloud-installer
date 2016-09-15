@@ -19,3 +19,6 @@ postgresql::globals::default_connect_settings:
 sudo::configs:
   'vagrant':
     'content': "%vagrant ALL=(ALL) NOPASSWD: ALL"
+
+tic::services::init_configuration_service::username: "%{::services_username}"
+tic::services::init_configuration_service::password: "%{::services_password}"
