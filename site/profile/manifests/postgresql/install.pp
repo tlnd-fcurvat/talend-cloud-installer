@@ -7,7 +7,7 @@ class profile::postgresql::install {
   }
 
   $service_status = $profile::postgresql::service_ensure ? {
-    stopped => 'exit 1',
+    stopped => 'test 1 -eq 2',
     default => undef,
   }
 
