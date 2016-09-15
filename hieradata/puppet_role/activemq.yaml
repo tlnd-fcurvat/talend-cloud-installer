@@ -25,8 +25,8 @@ activemq::persistence: 'kahadb'
 profile::postgresql::roles:
   ams:
     files:
-      - /var/lib/activemq/lib/ams.sql
-      - /var/lib/activemq/lib/amqsec.sql
+      - /var/tmp/sql/ams.sql
+      - /var/tmp/sql/amqsec.sql
   # The following roles shouldn't be placed here, as
   # well as the ptic-postgresql-schemes package.
   # The only reason is that the active mq instance A is
