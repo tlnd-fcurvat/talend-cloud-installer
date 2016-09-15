@@ -42,7 +42,7 @@ class profile::tic_services (
     $_flow_execution_subnets = $flow_execution_subnets
   }
 
-  $rt_flow_subnet_ids = split($flow_execution_subnets, ',')
+  $rt_flow_subnet_ids = split($_flow_execution_subnets, ',')
 
   class { '::tic::services':
     activemq_nodes    => $_activemq_nodes,
