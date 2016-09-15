@@ -18,6 +18,7 @@ tic::services::notification_manager_destination_queue: "ipaas.%{::main_stack}.no
 
 tic::services::notification_client_failures_log: org.talend.ipaas.rt.notification.client.Failures
 
+tic::services::activemq_broker_username: "admin"
 tic::services::activemq_broker_password: "%{::master_password}"
 tic::services::ams_mail_config_password_reset: "%{::master_password}"
 tic::services::ams_password_reset_url_template: "%{::master_password}"
