@@ -41,6 +41,7 @@ tic::services::quartz_db_password: "%{::master_password}"
 tic::services::syncope_password: "%{::master_password}"
 tic::services::trial_db_password: "%{::master_password}"
 tic::services::webhooks_redis_host: "%{::redis_nodes}"
+tic::frontend::dts_service_node: "%{::tic_services_external_nodes}"
 
 tic::services::ams_password_reset_url_template: "/#/reset_password?token="
 

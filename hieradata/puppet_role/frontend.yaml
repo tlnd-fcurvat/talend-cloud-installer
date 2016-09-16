@@ -15,7 +15,6 @@ tic::frontend::artifact_manager_nodes: "%{::tic_services_internal_nodes}"
 tic::frontend::crypto_service_nodes: "%{::tic_services_internal_nodes}"
 tic::frontend::custom_resources_nodes: "%{::tic_services_internal_nodes}"
 tic::frontend::data_prep_service_nodes: "%{::tic_services_internal_nodes}"
-tic::frontend::dts_service_node: "%{::tic_services_internal_nodes}"
 tic::frontend::flow_manager_nodes: "%{::tic_services_internal_nodes}"
 tic::frontend::notification_subscription_nodes: "%{::tic_services_internal_nodes}"
 tic::frontend::notifier_service_nodes: "%{::tic_services_internal_nodes}"
@@ -24,6 +23,7 @@ tic::frontend::schema_discovery_service_nodes: "%{::tic_services_internal_nodes}
 tic::frontend::trial_service_nodes: "%{::tic_services_internal_nodes}"
 tic::frontend::webhooks_service_nodes: "%{::tic_services_internal_nodes}"
 tic::frontend::cms_node: "%{::tic_services_internal_nodes}"
+tic::frontend::dts_service_node: "%{::tic_services_external_nodes}"
 
 tic::frontend::web_use_ssl: false
 
