@@ -10,6 +10,9 @@ tic::frontend::sts_username: 'admin'
 tic::frontend::sts_password: "%{::master_password}"
 tic::frontend::elasticache_address: "%{::memcache_nodes}"
 
+tic::frontend::elasticsearch_host: "%{::elasticsearch_nodes}"
+tic::frontend::elasticsearch_port: "9200"
+
 tic::frontend::account_manager_nodes: "%{::tic_services_internal_nodes}"
 tic::frontend::artifact_manager_nodes: "%{::tic_services_internal_nodes}"
 tic::frontend::crypto_service_nodes: "%{::tic_services_internal_nodes}"
