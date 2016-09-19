@@ -53,6 +53,7 @@ tic::services::ams_disaster_region: "%{::region}"
 
 tic::services::rt_aws_region: "%{::region}"
 
+tic::services::crypto_current_region: "%{::region}"
 tic::services::crypto_secondary_regions: "%{::region}"
 
 profile::amazon_ses_smtp::region: '%{::region}'

@@ -49,6 +49,7 @@ tic::services::ams_disaster_region: "%{::region}"
 
 tic::services::rt_aws_region: "%{::region}"
 
+tic::services::crypto_current_region: "%{::region}"
 tic::services::crypto_secondary_regions: "%{::region}"
 
 tic::services::dts_s3_bucket_rejected_data: "{::rejecteddatabucket}"
