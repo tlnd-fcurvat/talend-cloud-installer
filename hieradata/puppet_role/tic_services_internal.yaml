@@ -54,6 +54,9 @@ tic::services::ams_disaster_region: "%{::region}"
 
 tic::services::rt_aws_region: "%{::region}"
 
+tic::services::logs_datasource_servername: "%{::postgres_nodes}"
+tic::services::logs_datasource_password: "%{::master_password}"
+
 tic::services::crypto_current_region: "%{::region}"
 tic::services::crypto_secondary_regions: "%{::region}"
 
