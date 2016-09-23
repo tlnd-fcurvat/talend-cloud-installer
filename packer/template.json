@@ -69,6 +69,7 @@
     },
     {
       "type": "puppet-masterless",
+      "prevent_sudo": "true",
       "staging_directory": "/tmp/puppet",
       "manifest_file": "{{template_dir}}/../manifests/site.pp",
       "module_paths": [
