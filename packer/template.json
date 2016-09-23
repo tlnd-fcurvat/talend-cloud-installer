@@ -29,10 +29,6 @@
   ],
   "provisioners": [
     {
-      "type": "shell-local",
-      "command": "cd {{template_dir}}/.. && bundle install --path=vendor/bundler --without=development system_tests test && bundle exec librarian-puppet install --clean --verbose --path=modules"
-    },
-    {
       "type": "shell",
       "override": {
         "vagrant": {
