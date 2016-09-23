@@ -1,0 +1,80 @@
+{
+  "variables": {
+    "puppet_role": "",
+    "packagecloud_master_token": "{{env `PACKAGECLOUD_MASTER_TOKEN`}}",
+    "installer_version": "",
+    "source_ami": "",
+    "ami_description": ""
+  },
+  "builders": [
+    {
+      "type":         "null",
+      "name":         "vagrant",
+      "ssh_host":     "127.0.0.1",
+      "ssh_port":     "2222",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant"
+    },
+    {
+      "type": "amazon-chroot",
+      "name": "amazon",
+      "source_ami": "{{user `source_ami`}}",
+      "ami_name": "talend-tic-{{user `puppet_role`}}-{{timestamp}}",
+      "ami_description": "{{user `ami_description`}}",
+      "tags": {
+        "puppet_role": "{{user `puppet_role`}}",
+        "installer_version": "{{user `installer_version`}}"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell-local",
+      "command": "cd {{template_dir}}/.. && bundle install --path=vendor/bundler --without=development system_tests test && bundle exec librarian-puppet install --clean --verbose --path=modules"
+    },
+    {
+      "type": "shell",
+      "override": {
+        "vagrant": {
+          "execute_command": "sudo -E sh '{{ .Path }}'"
+        }
+      },
+      "inline": [
+        "yum clean all",
+        "rpm -Uv --replacepkgs http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm",
+        "yum install -y puppet",
+        "gem install aws-sdk hiera-eyaml hiera-eyaml-kms",
+        "rm -rf /tmp/puppet"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "mkdir -p /tmp/puppet/hieradata"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "{{template_dir}}/../hieradata/",
+      "destination": "/tmp/puppet/hieradata"
+    },
+    {
+      "type": "puppet-masterless",
+      "staging_directory": "/tmp/puppet",
+      "manifest_file": "{{template_dir}}/../manifests/site.pp",
+      "module_paths": [
+        "{{template_dir}}/../modules",
+        "{{template_dir}}/../site"
+      ],
+      "hiera_config_path": "{{template_dir}}/../hiera.yaml",
+      "extra_arguments": [
+        "--confdir=/tmp/puppet"
+      ],
+      "facter": {
+        "environment": "ami",
+        "puppet_role": "{{user `puppet_role`}}",
+        "packagecloud_master_token": "{{user `packagecloud_master_token`}}"
+      }
+    }
+  ]
+}
