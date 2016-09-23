@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'puppet', '~> 3.8'
 gem 'rake'
+gem 'librarian-puppet'
 
 group :test do
   gem 'metadata-json-lint'
@@ -14,7 +15,6 @@ group :development do
 end
 
 group :system_tests do
-  gem 'librarian-puppet'
   gem 'test-kitchen'
   gem 'kitchen-puppet'
   gem 'kitchen-sync'
