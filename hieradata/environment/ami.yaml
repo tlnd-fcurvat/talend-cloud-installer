@@ -1,0 +1,7 @@
+---
+
+tic::services::karaf_service_ensure: 'stopped'
+tic::frontend::tomcat_service_ensure: 'stopped'
+tic::services::init_configuration_service::ensure_init: false
+nginx::service_ensure: 'stopped'
+cloudwatchlogs::service_ensure: 'stopped'
