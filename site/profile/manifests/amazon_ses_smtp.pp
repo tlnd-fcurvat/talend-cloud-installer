@@ -12,7 +12,7 @@ class profile::amazon_ses_smtp (
     smtp_username => $smtp_accces_key_id,
     smtp_password => amazon_ses_smtp_password($smtp_secret_access_key),
     smtp_port     => 25,
-    ses_region    => $region,
+    ses_region    => pick($region, 'us-east-1'),
   }
 
 }
