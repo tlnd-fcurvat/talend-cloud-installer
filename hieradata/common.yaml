@@ -15,8 +15,6 @@ common_packages:
   'package_cloud':
     ensure: 'installed'
     provider: 'gem'
-  'epel-release':
-    ensure: 'installed'
   'nmap-ncat':
     ensure: 'installed'
 
