@@ -93,10 +93,8 @@ suites:
     verifier:
       patterns:
         - 'spec/acceptance/zookeeper_spec.rb'
-  - name: profile-mongodb
+  - name: role-mongodb
     provisioner:
-      manifests_path: examples
-      manifest: profile-mongodb-init.pp
       custom_facts:
         puppet_role: mongodb
     verifier:
