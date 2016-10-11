@@ -12,7 +12,7 @@ class profile::web::nginx {
 
   profile::register_profile{ 'nginx': }
 
-  if $::osfamily == 'RedHat'{
+  if $::osfamily == 'RedHat' and $::selinux {
     selinux::boolean{ 'httpd_can_network_connect':
       ensure => 'on',
     }
