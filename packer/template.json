@@ -29,6 +29,12 @@
   ],
   "provisioners": [
     {
+      "type": "shell",
+      "inline": [
+        "rm -rf /etc/yum.repos.d/*.repo"
+      ]
+    },
+    {
       "type": "file",
       "only": ["amazon"],
       "source": "yum-plugin-s3-iam-1.0.2-1.noarch.rpm",
