@@ -20,6 +20,9 @@ class profile::mongodb {
     ] \
 });\" && /bin/touch /var/lock/mongo_admin_user_lock"
 
+  class {'::mongodb::globals':
+    manage_package_repo => true,
+  }->
   class { '::mongodb::server':
     verbose => true,
     auth    => true,
