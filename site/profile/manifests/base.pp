@@ -17,7 +17,7 @@ class profile::base {
 
   profile::register_profile { 'base': order => 1, }
 
-  if $::osfamily == 'RedHat' and $::selinux == true {
+  if $::osfamily == 'RedHat' and $::selinux == "true" {
     include ::selinux
   }
   if $::ec2_metadata { include ::awscli }
