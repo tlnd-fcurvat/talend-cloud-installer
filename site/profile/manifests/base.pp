@@ -17,7 +17,9 @@ class profile::base {
 
   profile::register_profile { 'base': order => 1, }
 
-  if $::osfamily == 'RedHat' { include ::selinux }
+  if $::osfamily == 'RedHat' and $::selinux == true {
+    include ::selinux
+  }
   if $::ec2_metadata { include ::awscli }
 
   # This distributes the custom fact to the host(-pluginsync)
