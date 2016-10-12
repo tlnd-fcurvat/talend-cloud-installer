@@ -17,6 +17,8 @@ common_packages:
     provider: 'gem'
   'nmap-ncat':
     ensure: 'installed'
+  'cloud-init':
+    ensure: 'installed'
 
 packagecloud_repos:
   'talend/other':
