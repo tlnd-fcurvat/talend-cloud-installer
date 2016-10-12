@@ -3,6 +3,7 @@ require 'puppet-lint/tasks/puppet-lint'
 
 PuppetLint.configuration.send('disable_80chars')
 PuppetLint.configuration.send('disable_puppet_url_without_modules')
+PuppetLint.configuration.send('disable_quoted_booleans')
 PuppetLint.configuration.ignore_paths = %w(
   spec/**/*.pp
   pkg/**/*.pp
