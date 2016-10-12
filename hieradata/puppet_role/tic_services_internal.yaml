@@ -19,7 +19,7 @@ tic::services::mongo_admin_password: "%{::master_password}"
 tic::services::notification_manager_input_queue: "ipaas.%{::main_stack}.notification.manager.queue"
 tic::services::notification_manager_destination_queue: "ipaas.%{::main_stack}.notification.server.queue"
 
-tic::services::notification_client_failures_log: org.talend.ipaas.rt.notification.client.Failures
+tic::services::notification_client_failures_log: "org.talend.ipaas.rt.notification.client.Failures"
 
 tic::services::activemq_broker_username: "admin"
 tic::services::activemq_broker_password: "%{::master_password}"
