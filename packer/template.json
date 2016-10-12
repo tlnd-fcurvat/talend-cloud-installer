@@ -72,6 +72,17 @@
       "destination": "/tmp/puppet/hieradata"
     },
     {
+      "type": "shell",
+      "inline": [
+        "rm -rf /etc/yum.repos.d/centos-talend.repo"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "{{template_dir}}/centos-talend.repo",
+      "destination": "/etc/yum.repos.d/centos-talend.repo"
+    },
+    {
       "type": "puppet-masterless",
       "prevent_sudo": "true",
       "staging_directory": "/tmp/puppet",
