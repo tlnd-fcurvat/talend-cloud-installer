@@ -11,7 +11,7 @@ shared_examples 'profile::zookeeper' do
   end
 
   describe command('/usr/bin/curl http://127.0.0.1:8080/exhibitor/v1/cluster/state') do
-    its(:stdout) { should match /"description":"(serving|latent)"/ }
+    its(:stdout) { should match /"description":".*?"/ }
   end
 
 end
