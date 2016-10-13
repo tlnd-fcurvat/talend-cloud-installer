@@ -96,6 +96,12 @@
         "puppet_role": "{{user `puppet_role`}}",
         "packagecloud_master_token": "{{user `packagecloud_master_token`}}"
       }
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "rm -rf /etc/yum.repos.d/*.repo"
+      ]
     }
   ]
 }
