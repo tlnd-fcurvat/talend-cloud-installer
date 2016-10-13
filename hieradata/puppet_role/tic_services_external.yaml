@@ -6,6 +6,7 @@ java::java_home: "/usr/java/jre1.8.0_60"
 
 tic::services::java_home: "/usr/java/jre1.8.0_60"
 
+profile::tic_services::version: "%{::tic_services_version}"
 profile::tic_services::activemq_nodes: "%{::activemq_nodes}"
 profile::tic_services::mongo_nodes: "%{::mongodb_nodes}"
 profile::tic_services::zookeeper_nodes: "%{::zookeeper_nodes}"
