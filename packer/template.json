@@ -70,23 +70,13 @@
     {
       "type": "shell",
       "inline": [
-        "rm -rf /etc/yum.repos.d/centos-talend.repo"
+        "rm -rf /etc/yum.repos.d/*.repo"
       ]
     },
     {
       "type": "file",
-      "source": "{{template_dir}}/centos-talend.repo",
-      "destination": "/etc/yum.repos.d/centos-talend.repo"
-    },
-    {
-      "type": "file",
-      "source": "{{template_dir}}/talend-ipaas.repo",
-      "destination": "/etc/yum.repos.d/talend-ipaas.repo"
-    },
-    {
-      "type": "file",
-      "source": "{{template_dir}}/talend-sys-java.repo",
-      "destination": "/etc/yum.repos.d/talend-sys-java.repo"
+      "source": "{{template_dir}}/etc/yum.repos.d/",
+      "destination": "/etc/yum.repos.d"
     },
     {
       "type": "puppet-masterless",
