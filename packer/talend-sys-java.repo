@@ -1,0 +1,7 @@
+[talend-sys-java]
+name=talend-sys-java
+baseurl=http://us-east-1-rd-tipaas-talend-com.s3.amazonaws.com/yum-repos/sys-java
+gpgcheck=0
+enabled=1
+s3_enabled=true
+

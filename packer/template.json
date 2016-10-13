@@ -84,6 +84,11 @@
       "destination": "/etc/yum.repos.d/talend-ipaas.repo"
     },
     {
+      "type": "file",
+      "source": "{{template_dir}}/talend-sys-java.repo",
+      "destination": "/etc/yum.repos.d/talend-sys-java.repo"
+    },
+    {
       "type": "puppet-masterless",
       "prevent_sudo": "true",
       "staging_directory": "/tmp/puppet",
