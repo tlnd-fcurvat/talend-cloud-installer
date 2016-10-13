@@ -7,6 +7,7 @@ class profile::tic_services (
   $mongo_nodes            = undef,
   $zookeeper_nodes        = undef,
   $flow_execution_subnets = undef,
+  $version                = undef,
 
 ) {
 
@@ -44,11 +45,18 @@ class profile::tic_services (
 
   $rt_flow_subnet_ids = split($_flow_execution_subnets, ',')
 
+  if size($version) > 0 {
+    $_version = $version;
+  } else {
+    $_version = 'latest'
+  }
+
   class { '::tic::services':
     activemq_nodes    => $_activemq_nodes,
     mongo_nodes       => $_mongo_nodes,
     zookeeper_nodes   => $_zookeeper_nodes,
     rt_flow_subnet_id => $rt_flow_subnet_ids[0],
+    version           => $_version,
   }
 
   contain ::tic::services
