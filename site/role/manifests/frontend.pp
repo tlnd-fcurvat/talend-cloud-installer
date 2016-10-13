@@ -10,8 +10,8 @@ class role::frontend {
   include ::profile::common::cloudwatchlogs
   include ::profile::web::nginx
 
-  role::register_role { 'frontend': }
+  contain ::profile::tic_frontend
 
-  class { '::tic::frontend': }
+  role::register_role { 'frontend': }
 
 }
