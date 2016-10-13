@@ -12,7 +12,7 @@ class profile::tic_frontend (
   profile::register_profile { 'tic_frontend': }
 
   if size($version) > 0 {
-    $_version = $version;
+    $_version = $version
   } else {
     $_version = 'latest'
   }

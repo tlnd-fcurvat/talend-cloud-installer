@@ -46,7 +46,7 @@ class profile::tic_services (
   $rt_flow_subnet_ids = split($_flow_execution_subnets, ',')
 
   if size($version) > 0 {
-    $_version = $version;
+    $_version = $version
   } else {
     $_version = 'latest'
   }
