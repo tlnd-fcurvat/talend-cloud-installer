@@ -1,7 +1,6 @@
 {
   "variables": {
     "puppet_role": "",
-    "packagecloud_master_token": "{{env `PACKAGECLOUD_MASTER_TOKEN`}}",
     "installer_version": "",
     "source_ami": "",
     "ami_description": ""
@@ -93,8 +92,7 @@
       ],
       "facter": {
         "environment": "ami",
-        "puppet_role": "{{user `puppet_role`}}",
-        "packagecloud_master_token": "{{user `packagecloud_master_token`}}"
+        "puppet_role": "{{user `puppet_role`}}"
       }
     },
     {
