@@ -41,6 +41,8 @@ mod 'talend-activemq', '0.x',
   :github_tarball => 'Talend/puppet-activemq'
 mod 'talend-zookeeper', '0.x',
   :github_tarball => 'Talend/puppet-zookeeper'
+mod 'talend-user_accounts', '0.x',
+  :github_tarball => 'Talend/puppet-user_accounts'
 mod 'puppetlabs-postgresql',
   :git => 'https://github.com/Talend/puppetlabs-postgresql.git',
   :ref => 'master'

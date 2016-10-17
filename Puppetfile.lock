@@ -102,6 +102,11 @@ GITHUBTARBALL
     talend-tic (0.1.0.30)
 
 GITHUBTARBALL
+  remote: Talend/puppet-user_accounts
+  specs:
+    talend-user_accounts (0.1.0.1)
+
+GITHUBTARBALL
   remote: Talend/puppet-zookeeper
   specs:
     talend-zookeeper (0.1.0.9)
@@ -128,5 +133,6 @@ DEPENDENCIES
   talend-dataprep_dataset (~> 0.0)
   talend-syncope (~> 0.0)
   talend-tic (~> 0.0)
+  talend-user_accounts (~> 0.0)
   talend-zookeeper (~> 0.0)
 
