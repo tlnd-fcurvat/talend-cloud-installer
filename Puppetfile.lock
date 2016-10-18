@@ -104,7 +104,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: Talend/puppet-user_accounts
   specs:
-    talend-user_accounts (0.1.0.3)
+    talend-user_accounts (0.1.0.4)
 
 GITHUBTARBALL
   remote: Talend/puppet-zookeeper

@@ -2,8 +2,6 @@
 message: "This node is using common data"
 sudo::purge: false
 
-platform::packer_user_ensure: absent
-
 common_packages:
   'hiera-eyaml':
     ensure: 'installed'
