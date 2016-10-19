@@ -1,20 +1,16 @@
-(require 'puppetlabs_spec_helper/rake_tasks', true) rescue true
-(require 'puppet-lint/tasks/puppet-lint', true) rescue true
-require 'tilt'
+require 'puppetlabs_spec_helper/rake_tasks'
+require 'puppet-lint/tasks/puppet-lint'
 
-begin
-  PuppetLint.configuration.send('disable_80chars')
-  PuppetLint.configuration.send('disable_puppet_url_without_modules')
-  PuppetLint.configuration.send('disable_quoted_booleans')
-  PuppetLint.configuration.ignore_paths = %w(
-    spec/**/*.pp
-    pkg/**/*.pp
-    vendor/**/*.pp
-    test/**/*.pp
-    modules/**/*.pp
-  )
-rescue
-end
+PuppetLint.configuration.send('disable_80chars')
+PuppetLint.configuration.send('disable_puppet_url_without_modules')
+PuppetLint.configuration.send('disable_quoted_booleans')
+PuppetLint.configuration.ignore_paths = %w(
+  spec/**/*.pp
+  pkg/**/*.pp
+  vendor/**/*.pp
+  test/**/*.pp
+  modules/**/*.pp
+)
 
 desc 'Validate manifests, templates, and ruby files'
 task :validate do
@@ -36,14 +32,5 @@ begin
   require 'kitchen/rake_tasks'
   Kitchen::RakeTasks.new
 rescue LoadError
-end
-
-namespace :packer do
-
-  desc 'Build packer template'
-  task :template do
-    template = "#{File.dirname(__FILE__)}/packer/template.json.erb"
-    puts Tilt::ERBTemplate.new(template).render(Object.new, {})
-  end
-
+  puts '>>>>> Kitchen gem not loaded, omitting tasks' unless ENV['CI']
 end
