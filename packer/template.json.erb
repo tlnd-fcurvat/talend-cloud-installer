@@ -20,7 +20,13 @@
       "source_ami": "{{user `source_ami`}}",
       "ami_name": "talend-tic-{{user `puppet_role`}}-{{timestamp}}",
       "ami_description": "{{user `ami_description`}}",
+      <% if ENV.has_key?('REGIONS') and ENV['REGIONS'].length > 0 %>
+      "ami_regions": ["<%= ENV['REGIONS'].split(',').join('","') %>"],
+      <% end %>
       "tags": {
+        <% if ENV.has_key?('TAGS') and ENV['TAGS'].length > 0 %>
+        <%= ENV['TAGS'].split(',').map{|v| "\"#{v.split('=').join('": "')}\""}.join(',') %>
+        <% end %>
         "puppet_role": "{{user `puppet_role`}}",
         "installer_version": "{{user `installer_version`}}"
       }
@@ -91,6 +97,9 @@
         "--confdir=/tmp/puppet"
       ],
       "facter": {
+        <% if ENV.has_key?('FACTS') and ENV['FACTS'].length > 0 %>
+        <%= ENV['FACTS'].split(',').map{|v| "\"#{v.split('=').join('": "')}\""}.join(',') %>
+        <% end %>
         "environment": "ami",
         "puppet_role": "{{user `puppet_role`}}"
       }

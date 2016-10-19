@@ -1,5 +1,6 @@
 require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet-lint/tasks/puppet-lint'
+require 'tilt'
 
 PuppetLint.configuration.send('disable_80chars')
 PuppetLint.configuration.send('disable_puppet_url_without_modules')
@@ -33,4 +34,14 @@ begin
   Kitchen::RakeTasks.new
 rescue LoadError
   puts '>>>>> Kitchen gem not loaded, omitting tasks' unless ENV['CI']
+end
+
+namespace :packer do
+
+  desc 'Build packer template'
+  task :template do
+    template = "#{File.dirname(__FILE__)}/packer/template.json.erb"
+    puts Tilt::ERBTemplate.new(template).render(Object.new, {})
+  end
+
 end
