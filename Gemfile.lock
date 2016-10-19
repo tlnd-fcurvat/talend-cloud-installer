@@ -142,6 +142,7 @@ DEPENDENCIES
   metadata-json-lint
   net-ssh
   puppet (~> 3.8)
+  puppet-lint
   puppetlabs_spec_helper
   rake
   rspec_junit_formatter

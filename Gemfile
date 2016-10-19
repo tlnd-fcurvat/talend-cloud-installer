@@ -8,6 +8,7 @@ gem 'librarian-puppet'
 group :test do
   gem 'metadata-json-lint'
   gem 'puppetlabs_spec_helper'
+  gem 'puppet-lint'
 end
 
 group :development do
