@@ -1,17 +1,20 @@
-require 'puppetlabs_spec_helper/rake_tasks'
-require 'puppet-lint/tasks/puppet-lint'
+(require 'puppetlabs_spec_helper/rake_tasks', true) rescue true
+(require 'puppet-lint/tasks/puppet-lint', true) rescue true
 require 'tilt'
 
-PuppetLint.configuration.send('disable_80chars')
-PuppetLint.configuration.send('disable_puppet_url_without_modules')
-PuppetLint.configuration.send('disable_quoted_booleans')
-PuppetLint.configuration.ignore_paths = %w(
-  spec/**/*.pp
-  pkg/**/*.pp
-  vendor/**/*.pp
-  test/**/*.pp
-  modules/**/*.pp
-)
+begin
+  PuppetLint.configuration.send('disable_80chars')
+  PuppetLint.configuration.send('disable_puppet_url_without_modules')
+  PuppetLint.configuration.send('disable_quoted_booleans')
+  PuppetLint.configuration.ignore_paths = %w(
+    spec/**/*.pp
+    pkg/**/*.pp
+    vendor/**/*.pp
+    test/**/*.pp
+    modules/**/*.pp
+  )
+rescue
+end
 
 desc 'Validate manifests, templates, and ruby files'
 task :validate do
@@ -33,7 +36,6 @@ begin
   require 'kitchen/rake_tasks'
   Kitchen::RakeTasks.new
 rescue LoadError
-  puts '>>>>> Kitchen gem not loaded, omitting tasks' unless ENV['CI']
 end
 
 namespace :packer do
