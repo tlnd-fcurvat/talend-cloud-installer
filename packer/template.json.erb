@@ -25,7 +25,7 @@
       <% end %>
       "tags": {
         <% if ENV.has_key?('TAGS') and ENV['TAGS'].length > 0 %>
-        <%= ENV['TAGS'].split(',').map{|v| "\"#{v.split('=').join('": "')}\""}.join(',') %>
+        <%= ENV['TAGS'].split(',').map{|v| "\"#{v.split('=').join('": "')}\""}.join(',') %>,
         <% end %>
         "puppet_role": "{{user `puppet_role`}}",
         "installer_version": "{{user `installer_version`}}"
@@ -98,7 +98,7 @@
       ],
       "facter": {
         <% if ENV.has_key?('FACTS') and ENV['FACTS'].length > 0 %>
-        <%= ENV['FACTS'].split(',').map{|v| "\"#{v.split('=').join('": "')}\""}.join(',') %>
+        <%= ENV['FACTS'].split(',').map{|v| "\"#{v.split('=').join('": "')}\""}.join(',') %>,
         <% end %>
         "environment": "ami",
         "puppet_role": "{{user `puppet_role`}}"
