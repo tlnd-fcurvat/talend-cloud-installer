@@ -1,6 +1,7 @@
 {
   "variables": {
     "puppet_role": "",
+    "ami_name": "",
     "installer_version": "",
     "source_ami": "",
     "ami_description": ""
@@ -18,7 +19,7 @@
       "type": "amazon-chroot",
       "name": "amazon",
       "source_ami": "{{user `source_ami`}}",
-      "ami_name": "talend-tic-{{user `puppet_role`}}-{{timestamp}}",
+      "ami_name": "talend-tic-{{user `ami_name`}}-{{timestamp}}",
       "ami_description": "{{user `ami_description`}}",
       <% if ENV.has_key?('REGIONS') and ENV['REGIONS'].length > 0 %>
       "ami_regions": ["<%= ENV['REGIONS'].split(',').join('","') %>"],
