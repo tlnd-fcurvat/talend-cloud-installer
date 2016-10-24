@@ -76,6 +76,11 @@
       "destination": "/tmp/puppet/hieradata"
     },
     {
+      "type": "file",
+      "source": "{{template_dir}}/extra.yaml",
+      "destination": "/tmp/puppet/hieradata"
+    },
+    {
       "type": "shell",
       "inline": [
         "rm -rf /etc/yum.repos.d/*.repo"
