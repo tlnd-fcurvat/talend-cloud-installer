@@ -77,23 +77,37 @@
     },
     {
       "type": "file",
+      "only": ["amazon"],
       "source": "{{template_dir}}/extra.yaml",
       "destination": "/tmp/puppet/hieradata/extra.yaml"
     },
     {
       "type": "shell",
+      "only": ["amazon"],
       "inline": [
         "rm -rf /etc/yum.repos.d/*.repo"
       ]
     },
     {
+      "type": "shell",
+      "inline": [
+        "mkdir -p /tmp/packer/yum.repos.d"
+      ]
+    },
+    {
       "type": "file",
+      "only": ["amazon"],
       "source": "{{template_dir}}/etc/yum.repos.d/",
       "destination": "/etc/yum.repos.d"
     },
     {
       "type": "puppet-masterless",
       "prevent_sudo": "true",
+      "override": {
+        "vagrant": {
+          "prevent_sudo": "false"
+        }
+      },
       "staging_directory": "/tmp/puppet",
       "manifest_file": "{{template_dir}}/../manifests/site.pp",
       "module_paths": [
@@ -114,8 +128,24 @@
     },
     {
       "type": "shell",
+      "override": {
+        "vagrant": {
+          "execute_command": "sudo -E sh '{{ .Path }}'"
+        }
+      },
       "inline": [
-        "rm -rf /etc/yum.repos.d/*.repo"
+        "find /etc/yum.repos.d -type f ! -name 'puppetlabs.repo' -exec rm -rf {} +"
+      ]
+    },
+    {
+      "type": "shell",
+      "override": {
+        "vagrant": {
+          "execute_command": "sudo -E sh '{{ .Path }}'"
+        }
+      },
+      "inline": [
+        "rm -rf /tmp/puppet /tmp/packer"
       ]
     }
   ]
