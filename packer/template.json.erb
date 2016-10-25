@@ -85,7 +85,7 @@
       "type": "shell",
       "only": ["amazon"],
       "inline": [
-        "rm -rf /etc/yum.repos.d/*.repo"
+        "find /etc/yum.repos.d -type f ! -name 'puppetlabs.repo' -exec rm -rf {} +"
       ]
     },
     {
@@ -125,17 +125,6 @@
         "environment": "ami",
         "puppet_role": "{{user `puppet_role`}}"
       }
-    },
-    {
-      "type": "shell",
-      "override": {
-        "vagrant": {
-          "execute_command": "sudo -E sh '{{ .Path }}'"
-        }
-      },
-      "inline": [
-        "find /etc/yum.repos.d -type f ! -name 'puppetlabs.repo' -exec rm -rf {} +"
-      ]
     },
     {
       "type": "shell",
