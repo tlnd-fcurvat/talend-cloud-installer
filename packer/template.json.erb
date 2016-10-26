@@ -4,6 +4,7 @@
     "ami_name": "",
     "ami_version": "0.1",
     "ami_type": "hvm",
+    "packagecloud_master_token": "{{env `PACKAGECLOUD_MASTER_TOKEN`}}",
     "installer_version": "",
     "source_ami": "",
     "ami_description": ""
@@ -123,6 +124,7 @@
         <%= ENV['FACTS'].split(',').map{|v| "\"#{v.split('=').join('": "')}\""}.join(',') %>,
         <% end %>
         "environment": "ami",
+        "packagecloud_master_token": "{{user `packagecloud_master_token`}}",
         "puppet_role": "{{user `puppet_role`}}"
       }
     },
