@@ -1,0 +1,7 @@
+[talend-system]
+name=talend-system
+baseurl=http://us-east-1-rd-tipaas-talend-com.s3.amazonaws.com/yum-repos/system
+gpgcheck=0
+enabled=1
+s3_enabled=true
+
