@@ -1,0 +1,13 @@
+#!/bin/bash
+
+INSTALLER_VERSION='current'
+INSTALLER_PATH="/opt/talend-cloud-installer-${INSTALLER_VERSION}"
+MODULES_PATH="${INSTALLER_PATH}/site:${INSTALLER_PATH}/modules"
+
+/bin/puppet apply\
+ --color=false\
+ --verbose\
+ --hiera_config=${INSTALLER_PATH}/hiera.yaml\
+ --modulepath=${MODULES_PATH}\
+ --confdir=${INSTALLER_PATH}\
+ /opt/talend-cloud-installer-current/manifests/site.pp
