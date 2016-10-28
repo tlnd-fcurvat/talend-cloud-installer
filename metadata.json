@@ -13,6 +13,7 @@
     {"name": "jdowning/awscli", "version_requirement": "1.x"},
     {"name": "jfryman/nginx", "version_requirement": "0.x"},
     {"name": "jfryman/selinux", "version_requirement": "0.x"},
+    {"name": "Chaordix/ssm", "version_requirement": "0.x"},
     {"name": "puppetlabs/concat", "version_requirement": "1.x"},
     {"name": "puppetlabs/mongodb", "version_requirement": "0.x"},
     {"name": "puppetlabs/tomcat", "version_requirement": "1.x"},
