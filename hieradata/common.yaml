@@ -28,6 +28,7 @@ packagecloud_repos:
     type: 'rpm'
 
 cloudwatchlogs::params::region: "%{::region}"
+profile::common::ssm::region: "%{::region}"
 
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/messages":
