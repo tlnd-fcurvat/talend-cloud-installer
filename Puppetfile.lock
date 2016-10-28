@@ -1,6 +1,8 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
+    Chaordix-ssm (0.4.0)
+      puppetlabs-stdlib (>= 1.0.0)
     camptocamp-accounts (1.8.0)
       puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
     ceritsc-yum (0.9.8)
@@ -112,6 +114,7 @@ GITHUBTARBALL
     talend-zookeeper (0.1.0.13)
 
 DEPENDENCIES
+  Chaordix-ssm (~> 0.0)
   camptocamp-accounts (~> 1.0)
   computology-packagecloud (~> 0.0)
   elasticsearch-elasticsearch (~> 0.0)
