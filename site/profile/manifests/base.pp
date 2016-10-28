@@ -11,6 +11,7 @@ class profile::base {
   include ::profile::common::packagecloud_repos
   include ::profile::common::packages
   include ::profile::common::cloudwatchlogs
+  include ::profile::common::ssm
 
   include ::profile::common::concat
   include ::profile::common::accounts
