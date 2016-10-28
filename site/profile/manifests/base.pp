@@ -15,12 +15,17 @@ class profile::base {
   include ::profile::common::concat
   include ::profile::common::accounts
 
+
   profile::register_profile { 'base': order => 1, }
 
   if $::osfamily == 'RedHat' and $::selinux == 'true' {
     include ::selinux
   }
-  if $::ec2_metadata { include ::awscli }
+
+  if $::ec2_metadata {
+    include ::awscli
+    include profile::common::helper_scripts
+  }
 
   # This distributes the custom fact to the host(-pluginsync)
   # on using puppet apply
