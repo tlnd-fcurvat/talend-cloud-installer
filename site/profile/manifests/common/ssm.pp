@@ -8,7 +8,7 @@ class profile::common::ssm (
 
 ) {
 
-  class { 'ssm':
+  class { '::ssm':
     region         => $region,
     manage_service => $manage_service,
   }
