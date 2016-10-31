@@ -18,7 +18,11 @@ class profile::common::ssm (
       command => "/usr/bin/wget -T60 -N ${url} -O ${path}",
       creates => $path,
     } ->
-    package { $path: } ->
+    package { 'amazon-ssm-agent':
+      ensure   => present,
+      provider => 'rpm',
+      source   => $path,
+    } ->
     service { 'amazon-ssm-agent':
       ensure => $service_ensure,
       enable => $service_enable,
