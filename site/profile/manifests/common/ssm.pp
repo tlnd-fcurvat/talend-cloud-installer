@@ -11,17 +11,14 @@ class profile::common::ssm (
 ) {
 
   if $include {
-    $url  = "amazon-ssm-${region}.s3.amazonaws.com/latest/linux_amd64/amazon-ssm-agent.rpm"
+    $url  = "https://amazon-ssm-${region}.s3.amazonaws.com/latest/linux_amd64/amazon-ssm-agent.rpm"
     $path = '/opt/amazon-ssm-agent.rpm'
 
     exec { 'download-ssm-agent':
-      command => "/usr/bin/wget -T60 -N https://${url} -O ${path}",
-      path    => '/bin:/usr/bin:/usr/local/bin:/usr/sbin',
+      command => "/usr/bin/wget -T60 -N ${url} -O ${path}",
       creates => $path,
     } ->
-    package { 'amazon-ssm-agent':
-      source => $path,
-    } ->
+    package { $path: } ->
     service { 'amazon-ssm-agent':
       ensure => $service_ensure,
       enable => $service_enable,
