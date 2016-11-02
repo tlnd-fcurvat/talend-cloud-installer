@@ -9,6 +9,20 @@ class profile::mongodb {
 
   profile::register_profile { 'mongodb': }
 
+  $_mongo_nodes = parsejson($::mongodb_nodes)
+
+  # explicitly only support replica sets of size 3
+  if size($_mongo_nodes)  == '3' {
+    $_mongo_members = suffix($_mongo_nodes, ':27017')
+
+    mongodb_replset { 'tipaas':
+      ensure  => present,
+      members => $_mongo_members,
+      before  => Exec['setup MongoDB admin user']
+    }
+  }
+
+
   $create_admin_user = "/usr/bin/mongo ipaas --eval \"db.createUser({ \
     user: 'admin', \
     pwd: '${::master_password}', \
