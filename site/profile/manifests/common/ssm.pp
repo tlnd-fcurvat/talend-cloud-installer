@@ -17,6 +17,7 @@ class profile::common::ssm (
     exec { 'download-ssm-agent':
       command => "/usr/bin/wget -T60 -N ${url} -O ${path}",
       creates => $path,
+      require => Package['wget']
     } ->
     package { 'amazon-ssm-agent':
       ensure   => present,
