@@ -65,7 +65,7 @@ class profile::mongodb(
   class { '::mongodb::client':
   }
 
-  if $::mongodb_is_master == 'true' {
+  if $::cfn_resource_name == 'InstanceA' {
 
     Anchor['::mongodb::client::end'] ->
 
