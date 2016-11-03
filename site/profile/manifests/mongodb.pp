@@ -15,11 +15,15 @@ class profile::mongodb {
   if size($_mongo_nodes)  == '3' {
     $_mongo_members = suffix($_mongo_nodes, ':27017')
 
+    $mongo_replset_name = 'tipaas'
+
     mongodb_replset { 'tipaas':
       ensure  => present,
       members => $_mongo_members,
       before  => Exec['setup MongoDB admin user']
     }
+  } else {
+    $mongo_replset_name = undef
   }
 
 
@@ -41,6 +45,7 @@ class profile::mongodb {
     verbose => true,
     auth    => true,
     bind_ip => [$::ipaddress, '127.0.0.1'],
+    mongo_repl_set => $mongo_replset_name
   } ->
   class { '::mongodb::client':
   } ->
