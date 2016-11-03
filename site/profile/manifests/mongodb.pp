@@ -1,7 +1,9 @@
 #
 # Sets up the mongodb instance
 #
-class profile::mongodb {
+class profile::mongodb(
+  $shared_key = undef
+) {
 
   require ::profile::common::packages
 
@@ -15,15 +17,27 @@ class profile::mongodb {
   if size($_mongo_nodes)  == '3' {
     $_mongo_members = suffix($_mongo_nodes, ':27017')
 
-    $mongo_replset_name = 'tipaas'
+    $replset_name = 'tipaas'
 
-    mongodb_replset { 'tipaas':
-      ensure  => present,
-      members => $_mongo_members,
-      before  => Exec['setup MongoDB admin user']
+    $replset_config = {
+      'tipaas' => {
+        ensure  => 'present',
+        members => $_mongo_members
+      }
     }
+
+    if $shared_key {
+      $mongo_auth = true
+      $keyfile = '/var/lib/mongo/shared_key'
+    } else {
+      $mongo_auth = false
+      $keyfile = undef
+    }
+
   } else {
     $mongo_replset_name = undef
+    $replset_name = undef
+    $mongo_auth = true
   }
 
 
@@ -42,10 +56,11 @@ class profile::mongodb {
     manage_package_repo => true,
   }->
   class { '::mongodb::server':
-    verbose => true,
-    auth    => true,
-    bind_ip => [$::ipaddress, '127.0.0.1'],
-    replset => $mongo_replset_name
+    verbose        => true,
+    auth           => $mongo_auth,
+    bind_ip        => [$::ipaddress, '127.0.0.1'],
+    replset        => $replset_name,
+    replset_config => $replset_config
   } ->
   class { '::mongodb::client':
   } ->
