@@ -60,7 +60,9 @@ class profile::mongodb(
     auth           => $mongo_auth,
     bind_ip        => [$::ipaddress, '127.0.0.1'],
     replset        => $replset_name,
-    replset_config => $replset_config
+    replset_config => $replset_config,
+    key            => $shared_key,
+    keyfile        => $keyfile
   } ->
   class { '::mongodb::client':
   }
