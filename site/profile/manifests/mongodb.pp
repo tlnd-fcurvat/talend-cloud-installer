@@ -42,9 +42,9 @@ class profile::mongodb {
     manage_package_repo => true,
   }->
   class { '::mongodb::server':
-    verbose => true,
-    auth    => true,
-    bind_ip => [$::ipaddress, '127.0.0.1'],
+    verbose        => true,
+    auth           => true,
+    bind_ip        => [$::ipaddress, '127.0.0.1'],
     mongo_repl_set => $mongo_replset_name
   } ->
   class { '::mongodb::client':
