@@ -13,6 +13,7 @@ profile::tic_services::zookeeper_nodes: "%{::zookeeper_nodes}"
 profile::tic_services::flow_execution_subnets: "%{::flow_execution_subnets}"
 
 tic::services::rt_flow_security_groups: "%{::flow_execution_security_group}"
+tic::services::rt_flow_ami_id: "%{::rt_flow_ami_id}"
 
 tic::services::mongo_admin_user: "admin"
 tic::services::mongo_admin_password: "%{::master_password}"
