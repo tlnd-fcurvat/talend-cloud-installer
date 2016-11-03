@@ -12,7 +12,6 @@ class profile::mongodb(
   profile::register_profile { 'mongodb': }
 
   $_mongo_nodes = parsejson($::mongodb_nodes)
-  $_mongodb_is_master = str2bool($::mongodb_is_master)
 
   # explicitly only support replica sets of size 3
   if size($_mongo_nodes)  == '3' {
@@ -66,7 +65,7 @@ class profile::mongodb(
   class { '::mongodb::client':
   }
 
-  if $_mongodb_is_master {
+  if $::mongodb_is_master == 'true' {
 
     Anchor['::mongodb::client::end'] ->
 
