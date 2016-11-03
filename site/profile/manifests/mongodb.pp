@@ -12,6 +12,7 @@ class profile::mongodb(
   profile::register_profile { 'mongodb': }
 
   $_mongo_nodes = parsejson($::mongodb_nodes)
+  $_mongodb_is_master = str2bool($::mongodb_is_master)
 
   # explicitly only support replica sets of size 3
   if size($_mongo_nodes)  == '3' {
@@ -63,13 +64,20 @@ class profile::mongodb(
     replset_config => $replset_config
   } ->
   class { '::mongodb::client':
-  } ->
-  exec { 'setup MongoDB admin user':
-    command => $create_admin_user,
-    creates => '/var/lock/mongo_admin_user_lock',
+  }
+
+  if $_mongodb_is_master {
+
+    Anchor['::mongodb::client::end'] ->
+
+    exec { 'setup MongoDB admin user':
+      command => $create_admin_user,
+      creates => '/var/lock/mongo_admin_user_lock',
+    }
   }
 
   contain ::mongodb::server
   contain ::mongodb::client
 
 }
+
