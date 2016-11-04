@@ -2,7 +2,8 @@
 # Sets up the mongodb instance
 #
 class profile::mongodb(
-  $shared_key = undef
+  $shared_key = undef,
+  $replset_auth_enable = false
 ) {
 
   require ::profile::common::packages
@@ -26,7 +27,7 @@ class profile::mongodb(
       }
     }
 
-    if $shared_key {
+    if $replset_auth_enable == 'true' {
       $mongo_auth = true
       $keyfile = '/var/lib/mongo/shared_key'
     } else {
