@@ -7,12 +7,13 @@ FORGE
       puppetlabs-stdlib (>= 4.2.0)
     computology-packagecloud (0.3.1)
       puppetlabs-stdlib (>= 0)
-    elasticsearch-elasticsearch (0.13.1)
+    elasticsearch-elasticsearch (0.14.0)
       ceritsc-yum (< 1.0.0, >= 0.9.6)
       puppetlabs-apt (< 3.0.0, >= 1.4.0)
+      puppetlabs-java (< 2.0.0, >= 1.0.0)
       puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
       richardc-datacat (< 1.0.0, >= 0.6.2)
-    herculesteam-augeasproviders_core (2.1.2)
+    herculesteam-augeasproviders_core (2.1.3)
       puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
     herculesteam-augeasproviders_shellvar (2.2.1)
       herculesteam-augeasproviders_core (< 3.0.0, >= 2.1.0)
@@ -29,20 +30,20 @@ FORGE
     landcareresearch-amazon_ses (0.1.4)
       puppetlabs-stdlib (>= 2.4.0)
     maestrodev-wget (1.7.3)
-    nanliu-staging (1.0.3)
-    puppetlabs-apt (2.2.2)
+    puppet-staging (1.0.7)
+    puppetlabs-apt (2.3.0)
       puppetlabs-stdlib (< 5.0.0, >= 4.5.0)
     puppetlabs-concat (1.2.5)
       puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
     puppetlabs-inifile (1.5.0)
     puppetlabs-java (1.6.0)
       puppetlabs-stdlib (< 5.0.0, >= 2.4.0)
-    puppetlabs-mongodb (0.14.0)
+    puppetlabs-mongodb (0.16.0)
       puppetlabs-apt (< 3.0.0, >= 2.1.0)
       puppetlabs-stdlib (< 5.0.0, >= 4.4.0)
-    puppetlabs-stdlib (4.12.0)
-    puppetlabs-tomcat (1.5.0)
-      nanliu-staging (< 2.0.0, >= 0.4.1)
+    puppetlabs-stdlib (4.13.1)
+    puppetlabs-tomcat (1.6.0)
+      puppet-staging (< 2.0.0, >= 0.4.1)
       puppetlabs-concat (< 3.0.0, >= 1.1.0)
       puppetlabs-stdlib (< 5.0.0, >= 4.6.0)
     richardc-datacat (0.6.2)
@@ -54,7 +55,7 @@ FORGE
 GIT
   remote: https://github.com/Talend/puppet-nexus.git
   ref: master
-  sha: 4a8347f9d9a86fb65eed8ec88f38bd13e0826141
+  sha: 0332c4ee9757ca013b62724ef406f3245e653d27
   specs:
     hubspot-nexus (1.3.4)
       maestrodev-wget (< 2.0.0, >= 1.0.0)
@@ -74,17 +75,17 @@ GIT
 GITHUBTARBALL
   remote: Talend/puppet-activemq
   specs:
-    talend-activemq (0.1.0.18)
+    talend-activemq (0.1.1.1)
 
 GITHUBTARBALL
   remote: Talend/puppet-cloudwatch
   specs:
-    talend-cloudwatch (0.1.0.7)
+    talend-cloudwatch (0.1.0.9)
 
 GITHUBTARBALL
   remote: Talend/puppet-cloudwatchlogs
   specs:
-    talend-cloudwatchlogs (0.1.0.6)
+    talend-cloudwatchlogs (0.2.1.1)
 
 GITHUBTARBALL
   remote: Talend/puppet-dataprep_dataset
@@ -94,12 +95,12 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: Talend/puppet-syncope
   specs:
-    talend-syncope (0.1.0.8)
+    talend-syncope (0.1.1.1)
 
 GITHUBTARBALL
   remote: Talend/puppet-tic
   specs:
-    talend-tic (0.1.0.30)
+    talend-tic (0.1.1.1)
 
 GITHUBTARBALL
   remote: Talend/puppet-user_accounts
@@ -109,7 +110,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: Talend/puppet-zookeeper
   specs:
-    talend-zookeeper (0.1.0.13)
+    talend-zookeeper (0.1.1.1)
 
 DEPENDENCIES
   camptocamp-accounts (~> 1.0)
