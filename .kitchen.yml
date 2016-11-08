@@ -100,3 +100,10 @@ suites:
     verifier:
       patterns:
         - 'spec/acceptance/mongodb_spec.rb'
+  - name: role-test
+    provisioner:
+      custom_facts:
+        puppet_role: test
+    verifier:
+      patterns:
+        - 'spec/acceptance/test_spec.rb'
