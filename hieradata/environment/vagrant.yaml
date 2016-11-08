@@ -22,3 +22,5 @@ sudo::configs:
 
 tic::services::init_configuration_service::username: "%{::services_username}"
 tic::services::init_configuration_service::password: "%{::services_password}"
+
+activemq::persistence: 'kahadb'
