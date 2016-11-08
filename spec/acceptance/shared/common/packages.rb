@@ -1,7 +1,9 @@
-shared_examples 'profile::common::packages' do
+shared_examples 'profile::common::packages' do |packages=[]|
 
-  describe package('cloud-init') do
-    it { should be_installed }
+  (packages + %w(cloud-init)).each do |p|
+    describe package(p) do
+      it { should be_installed }
+    end
   end
 
   %w(hiera-eyaml hiera-eyaml-kms aws-sdk package_cloud).each do |p|
