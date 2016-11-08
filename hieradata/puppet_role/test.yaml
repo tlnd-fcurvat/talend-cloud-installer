@@ -1,0 +1,4 @@
+---
+common_packages:
+  'ipaas-rt-integration-test':
+    ensure: 'installed'
