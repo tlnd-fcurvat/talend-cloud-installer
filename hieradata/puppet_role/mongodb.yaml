@@ -1,2 +1,3 @@
 ---
 profile::mongodb::replset_auth_enable: '%{::mongo_replset_auth_enable}'
+profile::mongodb::mongodb_nodes: "%{::mongodb_nodes}"

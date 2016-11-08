@@ -2,8 +2,11 @@
 # Sets up the mongodb instance
 #
 class profile::mongodb(
-  $shared_key = undef,
-  $replset_auth_enable = false
+
+  $mongodb_nodes       = '', # A string f.e. '[ "10.0.2.12", "10.0.2.23" ]'
+  $shared_key          = undef,
+  $replset_auth_enable = false,
+
 ) {
 
   require ::profile::common::packages
@@ -12,18 +15,17 @@ class profile::mongodb(
 
   profile::register_profile { 'mongodb': }
 
-  $_mongo_nodes = parsejson($::mongodb_nodes)
+  # A list of strings, like ['10.0.2.12:27017', '10.0.2.23:27017']
+  $_mongo_nodes = suffix(split(regsubst($mongodb_nodes, '[\s\[\]\"]', '', 'G'), ','), ':27017')
 
   # explicitly only support replica sets of size 3
-  if size($_mongo_nodes)  == '3' {
-    $_mongo_members = suffix($_mongo_nodes, ':27017')
-
+  if size($_mongo_nodes) == 3 {
     $replset_name = 'tipaas'
 
     $replset_config = {
       'tipaas' => {
         ensure  => 'present',
-        members => $_mongo_members
+        members => $_mongo_nodes
       }
     }
 
@@ -34,7 +36,6 @@ class profile::mongodb(
       $mongo_auth = false
       $keyfile = undef
     }
-
   } else {
     $mongo_replset_name = undef
     $replset_name = undef
@@ -68,13 +69,12 @@ class profile::mongodb(
   class { '::mongodb::client':
   }
 
-  if $::cfn_resource_name == 'InstanceA' {
-
-    Anchor['::mongodb::client::end'] ->
-
+  $instanceLogicalId = pick($::cfn_resource_name, $::ec2_userdata, '')
+  if $instanceLogicalId =~ /InstanceA/ {
     exec { 'setup MongoDB admin user':
       command => $create_admin_user,
       creates => '/var/lock/mongo_admin_user_lock',
+      require => Class['::mongodb::client']
     }
   }
 
@@ -82,4 +82,3 @@ class profile::mongodb(
   contain ::mongodb::client
 
 }
-
