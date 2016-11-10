@@ -2,3 +2,7 @@
 common_packages:
   'ipaas-rt-integration-test':
     ensure: 'installed'
+
+cloudwatchlog_files:
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/ipaas-rt-test.log":
+    path: '/var/log/ipaas-rt-test.log'
