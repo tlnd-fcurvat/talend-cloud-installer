@@ -3,8 +3,11 @@
 #
 class role::test {
 
-  include ::profile::base
+  require ::profile::base
+  require ::pip
 
   role::register_role { 'test': }
+
+  pip::install { 'invoke': }
 
 }
