@@ -104,6 +104,8 @@ suites:
     provisioner:
       custom_facts:
         puppet_role: test
+        services_internal_host: "http://infra-host.com"
+        nexus_host: "http://nexus-host.com"
     verifier:
       patterns:
         - 'spec/acceptance/test_spec.rb'

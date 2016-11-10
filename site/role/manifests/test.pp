@@ -10,4 +10,11 @@ class role::test {
 
   pip::install { 'invoke': }
 
+  file { '/opt/talend/ipaas/rt-integration-test/config.ini':
+    content => "[ipaas-rt-test]
+nexus=${::nexus_host}
+infra=${::services_internal_host}
+"
+  }
+
 }

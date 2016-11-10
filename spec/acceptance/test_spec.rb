@@ -12,4 +12,10 @@ describe 'role::test' do
   describe command('/usr/bin/pip show invoke') do
     its(:exit_status) { should eq 0 }
   end
+
+  describe file('/opt/talend/ipaas/rt-integration-test/config.ini') do
+    its(:content) { should include '[ipaas-rt-test]' }
+    its(:content) { should include 'nexus=http://nexus-host.com' }
+    its(:content) { should include 'infra=http://infra-host.com' }
+  end
 end
