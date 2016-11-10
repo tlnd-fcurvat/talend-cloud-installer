@@ -22,8 +22,7 @@ activemq::pg_password: "%{::master_password}"
 activemq::activemq_auth_ensure: 'installed'
 activemq::persistence: 'postgres'
 activemq::persistence_pg_host: "%{::activemq_postgres_nodes}"
-activemq::persistence_pg_password: "%{::master_password}" 
-
+activemq::persistence_pg_password: "%{::master_password}"
 
 profile::postgresql::roles:
   ams:
