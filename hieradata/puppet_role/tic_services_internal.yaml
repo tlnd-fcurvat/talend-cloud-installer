@@ -44,6 +44,8 @@ tic::services::trial_db_password: "%{::master_password}"
 tic::services::webhooks_redis_host: "%{::redis_nodes}"
 tic::services::dts_service_url: "%{::dts_host}"
 tic::services::lts_service_url: "%{::lts_host}"
+tic::services::params::cms_dts_service_url: "%{::dts_host}"
+tic::services::params::cms_amq_broker_url: "%{::activemq_host}"
 tic::services::activemq_broker_username: "admin"
 tic::services::activemq_broker_password: "%{::master_password}"
 
