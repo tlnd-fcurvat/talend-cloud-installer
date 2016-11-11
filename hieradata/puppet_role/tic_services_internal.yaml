@@ -96,6 +96,7 @@ tic::services::karaf_features_install:
   - 'system'
   - 'wrap)'
   - 'camel'
+  - 'tipaas-amq-dependencies'
   - 'tipaas-crypto-service-client'
   - 'tipaas-artifact-manager-client-runtime'
   - 'tipaas-bookkeeper-client'
