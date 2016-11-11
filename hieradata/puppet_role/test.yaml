@@ -4,5 +4,5 @@ common_packages:
     ensure: 'installed'
 
 cloudwatchlog_files:
-  "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/ipaas-rt-test.log":
-    path: '/var/log/ipaas-rt-test.log'
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/rt_test.log":
+    path: '/var/log/rt_test.log'
