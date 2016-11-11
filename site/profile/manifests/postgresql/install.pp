@@ -14,6 +14,7 @@ class profile::postgresql::install {
   class { 'postgresql::server':
     listen_addresses => '*',
     service_ensure   => $profile::postgresql::service_ensure,
+    service_enable   => $profile::postgresql::service_enable,
     service_manage   => true,
     service_status   => $service_status,
   }
