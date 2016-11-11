@@ -1,6 +1,7 @@
 ---
 
 tic::services::karaf_service_ensure: 'stopped'
+tic::services::karaf_service_enable: false
 tic::frontend::tomcat_service_ensure: 'stopped'
 tic::services::init_configuration_service::ensure_init: false
 zookeeper::service_ensure: 'stopped'
@@ -8,3 +9,5 @@ nginx::service_ensure: 'stopped'
 cloudwatchlogs::service_ensure: 'stopped'
 profile::common::cloudwatchlogs::include: false
 profile::common::ssm::include: false
+profile::postgresql::service_ensure: 'stopped'
+profile::postgresql::service_enable: false
