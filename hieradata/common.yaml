@@ -31,6 +31,10 @@ cloudwatchlogs::params::region: "%{::region}"
 profile::common::ssm::region: "%{::region}"
 
 cloudwatchlog_files:
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/cfn-init.log":
+    path: '/var/log/cfn-init.log'
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/cfn-init-cmd.log":
+    path: '/var/log/cfn-init-cmd.log'
   "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/messages":
     path: '/var/log/messages'
   "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/secure":
