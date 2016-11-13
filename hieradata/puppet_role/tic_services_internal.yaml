@@ -46,6 +46,7 @@ tic::services::dts_service_url: "%{::dts_host}"
 tic::services::lts_service_url: "%{::lts_host}"
 tic::services::cms_dts_service_url: "%{::dts_host}"
 tic::services::cms_amq_broker_url: "%{::activemq_host}"
+tic::services::cms_nexus_url: "%{::nexus_nodes}"
 tic::services::activemq_broker_username: "admin"
 tic::services::activemq_broker_password: "%{::master_password}"
 
