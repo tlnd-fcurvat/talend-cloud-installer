@@ -30,6 +30,8 @@ packagecloud_repos:
 cloudwatchlogs::params::region: "%{::region}"
 profile::common::ssm::region: "%{::region}"
 
+cloudwatch::params::namespace: "talend-cloud/%{::puppet_role}"
+
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/cfn-init.log":
     path: '/var/log/cfn-init.log'
