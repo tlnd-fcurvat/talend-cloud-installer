@@ -8,11 +8,8 @@ class profile::common::cloudwatch (
 ) {
   if $include {
 
-    create_resources(
-    '::cloudwatch',
-      {
-        'metrics'   => hiera_hash('cloudwatch::metrics', {}),
-      }
-    )
+    class { '::cloudwatch':
+      metrics => hiera_hash('cloudwatch::metrics', {})
+    }
   }
 }
