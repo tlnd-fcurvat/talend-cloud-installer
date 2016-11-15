@@ -6,6 +6,7 @@ class profile::tic_services (
   $activemq_nodes         = undef,
   $mongo_nodes            = undef,
   $zookeeper_nodes        = undef,
+  $nexus_nodes            = undef,
   $flow_execution_subnets = undef,
   $version                = undef,
 
@@ -37,6 +38,12 @@ class profile::tic_services (
     $_zookeeper_nodes = $zookeeper_nodes
   }
 
+  if $nexus_nodes {
+    $_nexus_nodes = regsubst($nexus_nodes, '[\s\[\]\"]', '', 'G')
+  } else {
+    $_nexus_nodes = $nexus_nodes
+  }
+
   if $flow_execution_subnets {
     $_flow_execution_subnets = regsubst($flow_execution_subnets, '[\s\[\]\"]', '', 'G')
   } else {
@@ -54,6 +61,7 @@ class profile::tic_services (
   class { '::tic::services':
     activemq_nodes    => $_activemq_nodes,
     mongo_nodes       => $_mongo_nodes,
+    nexus_nodes       => $_nexus_nodes,
     zookeeper_nodes   => $_zookeeper_nodes,
     rt_flow_subnet_id => $rt_flow_subnet_ids[0],
     version           => $_version,
