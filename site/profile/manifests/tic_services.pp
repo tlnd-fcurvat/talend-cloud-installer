@@ -9,6 +9,7 @@ class profile::tic_services (
   $nexus_nodes            = undef,
   $flow_execution_subnets = undef,
   $version                = undef,
+  $cms_nexus_url          = undef,
 
 ) {
 
@@ -44,6 +45,22 @@ class profile::tic_services (
     $_nexus_nodes = $nexus_nodes
   }
 
+  if $cms_nexus_url {
+    $_cms_nexus_urls = split(regsubst($cms_nexus_url, '[\s\[\]\"]', '', 'G'), ',')
+  } else {
+    $_cms_nexus_urls = split($cms_nexus_url, ',')
+  }
+
+  if count($_cms_nexus_urls) > 0 {
+    if 'http://' in $_cms_nexus_urls[0] {
+      $_cms_nexus_url = $_cms_nexus_urls[0]
+    } else {
+      $_cms_nexus_url = "http://${_cms_nexus_urls[0]}"
+    }
+  } else {
+      $_cms_nexus_url = undef
+  }
+
   if $flow_execution_subnets {
     $_flow_execution_subnets = regsubst($flow_execution_subnets, '[\s\[\]\"]', '', 'G')
   } else {
@@ -62,6 +79,7 @@ class profile::tic_services (
     activemq_nodes    => $_activemq_nodes,
     mongo_nodes       => $_mongo_nodes,
     nexus_nodes       => $_nexus_nodes,
+    cms_nexus_url     => $_cms_nexus_url,
     zookeeper_nodes   => $_zookeeper_nodes,
     rt_flow_subnet_id => $rt_flow_subnet_ids[0],
     version           => $_version,
