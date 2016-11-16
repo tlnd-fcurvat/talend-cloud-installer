@@ -42,7 +42,6 @@ tic::services::postgres_nodes: "%{::postgres_nodes}"
 tic::services::quartz_db_password: "%{::master_password}"
 tic::services::syncope_password: "%{::master_password}"
 tic::services::trial_db_password: "%{::master_password}"
-tic::services::webhooks_redis_host: "%{::redis_nodes}"
 tic::services::dts_service_url: "%{::dts_host}"
 tic::services::lts_service_url: "%{::lts_host}"
 tic::services::cms_dts_service_url: "%{::dts_host}"
@@ -109,7 +108,6 @@ tic::services::karaf_features_install:
   - 'tipaas-healthcheck-service-core'
   - 'tipaas-container-management-service-client'
   - 'tipaas-configuration-service-client'
-  - 'tipaas-webhooks-client'
   - 'tipaas-notification-client'
   - 'tipaas-notification-subscription-client'
   - 'tipaas-data-transfer-service-client'
@@ -129,7 +127,6 @@ tic::services::karaf_features_install:
   - 'tesb-el-elasticsearch'
   - 'tesb-el-server'
   - 'tesb-el-collector-jms'
-  - 'tipaas-webhooks-service'
   - 'tipaas-trial-registration-service'
   - 'tipaas-data-transfer-service-client'
   - 'tipaas-data-transfer-service-core'
