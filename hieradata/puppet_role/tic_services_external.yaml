@@ -61,6 +61,10 @@ tic::services::dts_s3_prefix: 'ptic'
 
 tic::services::kms_key_alias: "%{::kms_key_alias}"
 
+cloudwatchlog_files:
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/talend/ipaas/rt-infra/data/log/karaf.log":
+    path: '/opt/talend/ipaas/rt-infra/data/log/karaf.log'
+
 tic::services::karaf_features_install:
   - '(aries-blueprint'
   - 'bundle'
