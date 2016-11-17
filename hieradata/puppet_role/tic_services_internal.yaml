@@ -12,7 +12,7 @@ profile::tic_services::mongo_nodes: "%{::mongodb_nodes}"
 profile::tic_services::zookeeper_nodes: "%{::zookeeper_nodes}"
 profile::tic_services::flow_execution_subnets: "%{::flow_execution_subnets}"
 profile::tic_services::nexus_nodes: "%{::nexus_nodes}"
-profile::tic_services::cms_nexus_url: "%{::nexus_nodes}"
+profile::tic_services::cms_nexus_url: "%{::nexus_elb}"
 
 tic::services::rt_flow_security_groups: "%{::flow_execution_security_group}"
 tic::services::rt_flow_ami_id: "%{::rt_flow_ami_id}"
