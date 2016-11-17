@@ -109,7 +109,6 @@ tic::services::karaf_features_install:
   - 'tipaas-healthcheck-service-core'
   - 'tipaas-container-management-service-client'
   - 'tipaas-configuration-service-client'
-  - 'tipaas-webhooks-client'
   - 'tipaas-notification-client'
   - 'tipaas-notification-subscription-client'
   - 'tipaas-data-transfer-service-client'
