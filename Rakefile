@@ -11,6 +11,7 @@ PuppetLint.configuration.ignore_paths = %w(
   test/**/*.pp
   modules/**/*.pp
 )
+PuppetSyntax.exclude_paths << 'modules/**/*.pp'
 
 desc 'Validate manifests, templates, and ruby files'
 task :validate do
