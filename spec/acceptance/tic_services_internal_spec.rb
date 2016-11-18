@@ -35,6 +35,6 @@ describe 'role::tic_services_internal' do
 
   describe 'Artifact Manager Service configuration' do
     subject { file('/opt/talend/ipaas/rt-infra/etc/org.talend.ipaas.rt.am.service.cfg').content }
-    it { should include 'nexus_urls=http://10.0.2.12/nexus,http://10.0.2.23/nexus' }
+    it { should include 'nexus_urls=http://10.0.2.12:8081/nexus,http://10.0.2.23:8081/nexus' }
   end
 end
