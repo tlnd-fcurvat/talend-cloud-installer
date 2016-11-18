@@ -41,11 +41,17 @@ allow httpd_t transproxy_port_t:tcp_socket name_connect;
     }
   }
 
+  if $nexus_nodes_port {
+    $_nexus_nodes_port = $nexus_nodes_port
+  } else {
+    $_nexus_nodes_port = '8081'
+  }
+
   class { '::nexus':
     version    => '2.8.0',
     revision   => '05',
     nexus_root => $nexus_root, # All directories and files will be relative to this
-    nexus_port => $nexus_nodes_port,
+    nexus_port => $_nexus_nodes_port,
   }
   contain ::nexus
 
@@ -57,7 +63,7 @@ allow httpd_t transproxy_port_t:tcp_socket name_connect;
         split(regsubst($nexus_nodes, '[\s\[\]\"]', '', 'G'), ',')
       )
     ),
-    ":${nexus_nodes_port}"
+    ":${_nexus_nodes_port}"
   )
 
   class { 'profile::nexus::nginx':
