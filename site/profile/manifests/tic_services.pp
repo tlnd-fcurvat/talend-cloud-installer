@@ -68,11 +68,17 @@ class profile::tic_services (
     $_version = 'latest'
   }
 
+  if $cms_nexus_url =~ /.*nexus$/ {
+    $_cms_nexus_url = $cms_nexus_url
+  } else {
+    $_cms_nexus_url = "${cms_nexus_url}/nexus"
+  }
+
   class { '::tic::services':
     activemq_nodes    => $_activemq_nodes,
     mongo_nodes       => $_mongo_nodes,
     nexus_nodes       => $_nexus_nodes,
-    cms_nexus_url     => $cms_nexus_url,
+    cms_nexus_url     => $_cms_nexus_url,
     zookeeper_nodes   => $_zookeeper_nodes,
     rt_flow_subnet_id => $rt_flow_subnet_ids[0],
     version           => $_version,
