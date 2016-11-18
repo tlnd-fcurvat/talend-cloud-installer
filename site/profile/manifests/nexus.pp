@@ -3,8 +3,9 @@
 #
 class profile::nexus (
 
-  $nexus_root  = '/srv',
-  $nexus_nodes = '', # A string f.e. '[ "10.0.2.12", "10.0.2.23" ]'
+  $nexus_root       = '/srv',
+  $nexus_nodes      = '', # A string f.e. '[ "10.0.2.12", "10.0.2.23" ]'
+  $nexus_nodes_port = '8081',
 
 ) {
 
@@ -44,7 +45,7 @@ allow httpd_t transproxy_port_t:tcp_socket name_connect;
     version    => '2.8.0',
     revision   => '05',
     nexus_root => $nexus_root, # All directories and files will be relative to this
-    nexus_port => '8081',
+    nexus_port => $nexus_nodes_port,
   }
   contain ::nexus
 
@@ -56,7 +57,7 @@ allow httpd_t transproxy_port_t:tcp_socket name_connect;
         split(regsubst($nexus_nodes, '[\s\[\]\"]', '', 'G'), ',')
       )
     ),
-    ':8081'
+    ":${nexus_nodes_port}"
   )
 
   class { 'profile::nexus::nginx':
