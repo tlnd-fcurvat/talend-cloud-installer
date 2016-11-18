@@ -4,6 +4,7 @@ nexus::enable_anonymous_access: false
 nexus::initialize_passwords: true
 
 profile::nexus::nexus_nodes: "%{::nexus_nodes}"
+profile::nexus::nexus_nodes_port: "%{::nexus_nodes_port}"
 
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/srv/sonatype-work/nexus/logs/nexus.log":
