@@ -7,6 +7,7 @@ class profile::tic_services (
   $mongo_nodes            = undef,
   $zookeeper_nodes        = undef,
   $nexus_nodes            = undef,
+  $nexus_nodes_port       = '8081',
   $flow_execution_subnets = undef,
   $version                = undef,
   $cms_nexus_url          = undef,
@@ -40,9 +41,17 @@ class profile::tic_services (
   }
 
   if $nexus_nodes {
-    $_nexus_nodes = regsubst($nexus_nodes, '[\s\[\]\"]', '', 'G')
+    $_nexus_nodes_str = regsubst($nexus_nodes, '[\s\[\]\"]', '', 'G')
   } else {
-    $_nexus_nodes = $nexus_nodes
+    $_nexus_nodes_str = $nexus_nodes
+  }
+
+  $_nexus_nodes_arr = split($_nexus_nodes_str, ',')
+
+  if $nexus_nodes_port {
+    $_nexus_nodes = join(suffix($_nexus_nodes_arr, ":${nexus_nodes_port}"), ',')
+  } else {
+    $_nexus_nodes = join($_nexus_nodes_arr, ',')
   }
 
   if $flow_execution_subnets {
