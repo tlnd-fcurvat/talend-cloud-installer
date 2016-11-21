@@ -4,6 +4,7 @@
 class role::test {
 
   require ::profile::base
+  require ::profile::docker_host
   require ::pip
 
   role::register_role { 'test': }

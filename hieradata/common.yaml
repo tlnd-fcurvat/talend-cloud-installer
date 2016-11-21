@@ -70,3 +70,7 @@ cloudwatch::metrics:
     evaluationperiods : 3
     threshold         : 80
     comparisonoperator: "GreaterThanThreshold"
+
+profile::docker_host::registry_region: "%{::region}"
+profile::docker_host::registry_bucket: "%{::registry_bucket}"
+profile::docker_host::registry_bucket_prefix: "%{::registry_bucket_prefix}"

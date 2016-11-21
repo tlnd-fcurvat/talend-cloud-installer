@@ -41,7 +41,7 @@ This runs bundler and a puppet apply with --noop enabled
 ## Testing Setup
 Run bundler inside the checkout to statisfy requirents
 ``` bash
-bundle install --path=vendor/bundle
+bundle install --path=vendor/bundle --with=development
 ```
 Run puppet-rspec test for all site modules with
 ``` bash
