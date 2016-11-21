@@ -18,7 +18,7 @@ The major points are:
  - Basic example of roles/profiles code
  - Example hieradata directory with pre-created common.yaml and nodes directory
    - These match the default hierarchy that ships with PE
-   
+
 # Requirements
   - Epel Repository
   - Ruby >= 1.9.3
