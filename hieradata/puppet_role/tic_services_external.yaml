@@ -11,6 +11,7 @@ profile::tic_services::activemq_nodes: "%{::activemq_nodes}"
 profile::tic_services::mongo_nodes: "%{::mongodb_nodes}"
 profile::tic_services::zookeeper_nodes: "%{::zookeeper_nodes}"
 profile::tic_services::nexus_nodes: "%{::nexus_nodes}"
+profile::tic_services::cms_nexus_url: "%{::nexus_dns}"
 
 tic::services::mongo_admin_user: "admin"
 tic::services::mongo_admin_password: "%{::master_password}"
@@ -60,6 +61,9 @@ tic::services::dts_s3_bucket_downloads_data: "{::downloads_bucket}"
 tic::services::dts_s3_prefix: 'ptic'
 
 tic::services::kms_key_alias: "%{::kms_key_alias}"
+tic::services::cms_dts_service_url: "%{::dts_host}"
+tic::services::lts_service_url: "%{::lts_host}"
+tic::services::cms_amq_broker_url: "%{::activemq_host}"
 
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/talend/ipaas/rt-infra/data/log/karaf.log":
