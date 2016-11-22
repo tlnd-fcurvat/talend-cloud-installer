@@ -76,8 +76,8 @@ GIT
 
 GIT
   remote: https://github.com/jleloup/puppet-python.git
-  ref: bug/fix_duplicate_resources
-  sha: 12c794d10c1da926f1f78275abe5adc92fd2abf3
+  ref: rename-pip-package
+  sha: 737e9f2f5994d2f4165ea7832ef575816a2b2123
   specs:
     stankevich-python (1.18.0)
       puppetlabs-stdlib (< 6.0.0, >= 4.6.0)
@@ -91,7 +91,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: Talend/puppet-cloudwatch
   specs:
-    talend-cloudwatch (0.1.0.19)
+    talend-cloudwatch (0.1.0.20)
 
 GITHUBTARBALL
   remote: Talend/puppet-cloudwatchlogs

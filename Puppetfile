@@ -49,4 +49,4 @@ mod 'puppetlabs-postgresql',
 
 mod 'stankevich-python',
   :git => 'https://github.com/jleloup/puppet-python.git',
-  :ref => 'bug/fix_duplicate_resources'
+  :ref => 'rename-pip-package'
