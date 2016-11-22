@@ -47,4 +47,6 @@ mod 'puppetlabs-postgresql',
   :git => 'https://github.com/Talend/puppetlabs-postgresql.git',
   :ref => 'master'
 
-mod 'stankevich-python'
+mod 'stankevich-python',
+  :git => 'https://github.com/jleloup/puppet-python.git',
+  :ref => 'rename-pip-package'

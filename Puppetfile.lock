@@ -51,9 +51,6 @@ FORGE
       puppetlabs-stdlib (< 5.0.0, >= 2.3.0)
     stahnma-epel (1.2.2)
       puppetlabs-stdlib (>= 3.0.0)
-    stankevich-python (1.18.0)
-      puppetlabs-stdlib (< 6.0.0, >= 4.6.0)
-      stahnma-epel (< 2.0.0, >= 1.2.2)
     tracywebtech-pip (1.3.4)
       puppetlabs-stdlib (>= 3.2.1)
 
@@ -77,6 +74,15 @@ GIT
       puppetlabs-concat (< 3.0.0, >= 1.1.0)
       puppetlabs-stdlib (~> 4.0)
 
+GIT
+  remote: https://github.com/jleloup/puppet-python.git
+  ref: rename-pip-package
+  sha: 737e9f2f5994d2f4165ea7832ef575816a2b2123
+  specs:
+    stankevich-python (1.18.0)
+      puppetlabs-stdlib (< 6.0.0, >= 4.6.0)
+      stahnma-epel (< 2.0.0, >= 1.2.2)
+
 GITHUBTARBALL
   remote: Talend/puppet-activemq
   specs:
@@ -85,7 +91,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: Talend/puppet-cloudwatch
   specs:
-    talend-cloudwatch (0.1.0.19)
+    talend-cloudwatch (0.1.0.20)
 
 GITHUBTARBALL
   remote: Talend/puppet-cloudwatchlogs
