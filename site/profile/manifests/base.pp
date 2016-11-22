@@ -15,7 +15,7 @@ class profile::base {
 
   include ::profile::common::concat
   include ::profile::common::accounts
-  include ::profile::common::cloudwatch
+  # include ::profile::common::cloudwatch
 
 
   profile::register_profile { 'base': order => 1, }
