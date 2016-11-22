@@ -51,6 +51,9 @@ FORGE
       puppetlabs-stdlib (< 5.0.0, >= 2.3.0)
     stahnma-epel (1.2.2)
       puppetlabs-stdlib (>= 3.0.0)
+    stankevich-python (1.18.0)
+      puppetlabs-stdlib (< 6.0.0, >= 4.6.0)
+      stahnma-epel (< 2.0.0, >= 1.2.2)
     tracywebtech-pip (1.3.4)
       puppetlabs-stdlib (>= 3.2.1)
 
@@ -82,7 +85,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: Talend/puppet-cloudwatch
   specs:
-    talend-cloudwatch (0.1.0.9)
+    talend-cloudwatch (0.1.0.19)
 
 GITHUBTARBALL
   remote: Talend/puppet-cloudwatchlogs
@@ -130,6 +133,7 @@ DEPENDENCIES
   puppetlabs-postgresql (>= 0)
   puppetlabs-tomcat (~> 1.0)
   saz-sudo (~> 3.0)
+  stankevich-python (>= 0)
   talend-activemq (~> 0.0)
   talend-cloudwatch (~> 0.0)
   talend-cloudwatchlogs (~> 0.0)

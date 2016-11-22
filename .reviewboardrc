@@ -1,4 +1,5 @@
 REVIEWBOARD_URL = "https://review.tipaas.com"
 REPOSITORY = "talend-cloud-installer"
-BRANCH = "development"
-LAND_DEST_BRANCH = "development"
+BRANCH = "master"
+LAND_DEST_BRANCH = "master"
+TRACKING_BRANCH = "origin/master"
