@@ -73,12 +73,17 @@ class profile::tic_services (
   } else {
     $_cms_nexus_url = "${cms_nexus_url}/nexus"
   }
+  $nexus_url_scheme = url_parse($_cms_nexus_url, 'scheme')
+  $nexus_url_host = url_parse($_cms_nexus_url, 'host')
+  $nexus_url_port = url_parse($_cms_nexus_url, 'port')
+  $nexus_url_path = url_parse($_cms_nexus_url, 'path')
+  $__cms_nexus_url = "${nexus_url_scheme}://{{username}}:{{password}}@${nexus_url_host}:${nexus_url_port}${nexus_url_path}/content/repositories/{{accountid}}@id={{accountid}}.release,${nexus_url_scheme}://{{username}}:{{password}}@${nexus_url_host}:${nexus_url_port}${nexus_url_path}/content/repositories/{{accountid}}-snapshots@snapshots@id={{accountid}}.snapshot"
 
   class { '::tic::services':
     activemq_nodes    => $_activemq_nodes,
     mongo_nodes       => $_mongo_nodes,
     nexus_nodes       => $_nexus_nodes,
-    cms_nexus_url     => $_cms_nexus_url,
+    cms_nexus_url     => $__cms_nexus_url,
     zookeeper_nodes   => $_zookeeper_nodes,
     rt_flow_subnet_id => $rt_flow_subnet_ids[0],
     version           => $_version,
