@@ -4,7 +4,6 @@ gem 'puppet', '~> 3.8'
 gem 'rake'
 gem 'tilt'
 gem 'librarian-puppet'
-gem 'r10k'
 
 group :test do
   gem 'metadata-json-lint'

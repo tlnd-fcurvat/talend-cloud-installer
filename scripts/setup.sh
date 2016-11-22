@@ -9,7 +9,7 @@ else
   exit 1
 fi
 
-bundle exec r10k puppetfile install
+bundle exec librarian-puppet install --clean
 
 bundle exec puppet apply --verbose \
 		--noop \
