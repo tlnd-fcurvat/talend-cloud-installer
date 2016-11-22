@@ -51,9 +51,6 @@ FORGE
       puppetlabs-stdlib (< 5.0.0, >= 2.3.0)
     stahnma-epel (1.2.2)
       puppetlabs-stdlib (>= 3.0.0)
-    stankevich-python (1.18.0)
-      puppetlabs-stdlib (< 6.0.0, >= 4.6.0)
-      stahnma-epel (< 2.0.0, >= 1.2.2)
     tracywebtech-pip (1.3.4)
       puppetlabs-stdlib (>= 3.2.1)
 
@@ -76,6 +73,15 @@ GIT
       puppetlabs-apt (< 3.0.0, >= 1.8.0)
       puppetlabs-concat (< 3.0.0, >= 1.1.0)
       puppetlabs-stdlib (~> 4.0)
+
+GIT
+  remote: https://github.com/jleloup/puppet-python.git
+  ref: bug/fix_duplicate_resources
+  sha: 12c794d10c1da926f1f78275abe5adc92fd2abf3
+  specs:
+    stankevich-python (1.18.0)
+      puppetlabs-stdlib (< 6.0.0, >= 4.6.0)
+      stahnma-epel (< 2.0.0, >= 1.2.2)
 
 GITHUBTARBALL
   remote: Talend/puppet-activemq
