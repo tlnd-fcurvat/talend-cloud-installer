@@ -21,7 +21,7 @@ class profile::docker_host (
     $default_resolver = "${t[0]}.${t[1]}.${t[2]}.2"
   } else {
     #vagrant mode (test)?
-    warning("docker-dns not resolved, you must be in test mode (kitchen/vagrant)")
+    warning('docker-dns not resolved, you must be in test mode (kitchen/vagrant)')
     $default_resolver = undef
   }
 
@@ -62,7 +62,7 @@ class profile::docker_host (
     'registry':
       image => 'registry:2',
       ports => '127.0.0.1:5000:5000',
-      env   => delete( [ "REGISTRY_STORAGE=s3",
+      env   => delete( [ 'REGISTRY_STORAGE=s3',
                         "REGISTRY_STORAGE_S3_REGION=${registry_region}",
                         "REGISTRY_STORAGE_S3_BUCKET=${registry_bucket}",
                         $registry_prefix_env,
