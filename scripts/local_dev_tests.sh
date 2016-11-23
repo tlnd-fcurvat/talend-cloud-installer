@@ -92,7 +92,7 @@ fi
 
 if [ ${CLEAN_MODE} -eq 1 ]; then
   fTitle  "Removing legacy installation"
-  for directory in "./vendor" "./.bundle" "./.vagrant" "./.kitchen" "./.tmp"; do
+  for directory in "./modules" "./vendor" "./.bundle" "./.vagrant" "./.kitchen" "./.tmp"; do
     fMessage "Removing directory ${directory}"
     test -n "${directory}" && rm -Rf ${directory}
   done
@@ -143,6 +143,9 @@ if [ -z "${AWS_SECRET_ACCESS_KEY}" ]; then
 fi
 
 ### test !
+fTitle "Validating code"
+bundle exec rake validate lint spec
+
 fTitle "Execute tests"
 bundle exec kitchen test ${TEST_NAME}
 exit $?
