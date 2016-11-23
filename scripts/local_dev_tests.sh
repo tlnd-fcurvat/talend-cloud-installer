@@ -54,6 +54,11 @@ fMessage(){
   /bin/echo -e "${COLOR_INFO}#[$(date --rfc-3339=seconds)] ${@}${ENDCOLOR}"
 }
 
+fWarning(){
+  /bin/echo -e "${COLOR_WARNING}#[$(date --rfc-3339=seconds)][WARNING] ${@}${ENDCOLOR}" 1>&2
+}
+
+
 # ------------
 #  main
 # ------------
@@ -106,10 +111,35 @@ if [ ${LIST_MODE} -eq 1 ]; then
   exit $?
 fi
 
+### Verifying environment for Vagrant
 if [ -z "${PACKAGECLOUD_MASTER_TOKEN}" ]; then
+  fWarning "PACKAGECLOUD_MASTER_TOKEN env var is not set"
   /bin/echo -n "Please give me the PackageCloud Master Token: "
   read PACKAGECLOUD_MASTER_TOKEN
   export PACKAGECLOUD_MASTER_TOKEN
+else
+  fMessage "PACKAGECLOUD_MASTER_TOKEN already set"
+fi
+
+if [ -z "${AWS_ACCESS_KEY_ID}" ]; then
+  fWarning "AWS_ACCESS_KEY_ID env var is not set"
+  if [ -r ${HOME}/.aws/credentials ]; then
+    fMessage "trying to get your AWS access from your credentials"
+    export AWS_ACCESS_KEY_ID="$(grep '^aws_access_key_id ' $HOME/.aws/credentials 2>/dev/null | sed 's/aws_access_key_id *= *//g')"
+    export AWS_SECRET_ACCESS_KEY="$(grep '^aws_secret_access_key ' $HOME/.aws/credentials 2>/dev/null | sed 's/aws_secret_access_key *= *//g')"
+  fi
+fi
+
+if [ -z "${AWS_ACCESS_KEY_ID}" ]; then
+  /bin/echo -n "Please give me your AWS access key id (~/.aws/credentials): "
+  read AWS_ACCESS_KEY_ID
+  export AWS_ACCESS_KEY_ID
+fi
+
+if [ -z "${AWS_SECRET_ACCESS_KEY}" ]; then
+  /bin/echo -n "Please give me you AWS secret key (~/.aws/credentials): "
+  read AWS_SECRET_ACCESS_KEY
+  export AWS_SECRET_ACCESS_KEY
 fi
 
 ### test !
