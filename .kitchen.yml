@@ -1,6 +1,6 @@
 ---
 driver:
-  name: vagrant
+  name: vagrant #need vagrant 1.8.7 if error on ssh connection
 
 provisioner:
   name: puppet_apply
@@ -17,6 +17,8 @@ provisioner:
     packagecloud_master_token: <%= ENV['PACKAGECLOUD_MASTER_TOKEN'] %>
     master_password: mypassword
     region: 'us-east-1'
+    aws_accesskey: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+    aws_secretkey: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
 
 transport:
   name: sftp

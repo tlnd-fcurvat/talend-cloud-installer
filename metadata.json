@@ -13,6 +13,7 @@
     {"name": "jdowning/awscli", "version_requirement": "1.x"},
     {"name": "jfryman/nginx", "version_requirement": "0.x"},
     {"name": "jfryman/selinux", "version_requirement": "0.x"},
+    {"name": "puppetlabs/stdlib", "version_requirement": "4.x"},
     {"name": "puppetlabs/concat", "version_requirement": "1.x"},
     {"name": "puppetlabs/mongodb", "version_requirement": "0.x"},
     {"name": "puppetlabs/tomcat", "version_requirement": "1.x"},
@@ -21,6 +22,8 @@
     {"name": "herculesteam-augeasproviders_shellvar","version_requirement":"2.x"},
     {"name": "camptocamp/accounts", "version_requirement": "1.x"},
     {"name": "saz/sudo", "version_requirement": "3.x"},
-    {"name": "landcareresearch/amazon_ses", "version_requirement": "0.1.x"}
+    {"name": "landcareresearch/amazon_ses", "version_requirement": "0.1.x"},
+    {"name": "thias/sysctl", "version_requirement": "1.x"},
+    {"name": "garethr/docker", "version_requirement": "5.3.x"}
   ]
 }

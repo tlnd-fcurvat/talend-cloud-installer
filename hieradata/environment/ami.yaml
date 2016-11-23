@@ -11,3 +11,5 @@ profile::common::cloudwatchlogs::include: false
 profile::common::ssm::include: false
 profile::postgresql::service_ensure: 'stopped'
 profile::postgresql::service_enable: false
+docker::service_state: 'stopped'
+docker::service_enable: false

@@ -28,3 +28,9 @@ tic::services::init_configuration_service::username: "%{::services_username}"
 tic::services::init_configuration_service::password: "%{::services_password}"
 
 activemq::persistence: 'kahadb'
+
+profile::docker_host::registry_region: 'us-west-2'
+profile::docker_host::registry_bucket: "us-east-1-pub-tests-devops-talend-com"
+profile::docker_host::registry_prefix: "registry"
+profile::docker_host::aws_accesskey: "%{::aws_accesskey}"
+profile::docker_host::aws_secretkey: "%{::aws_secretkey}"
