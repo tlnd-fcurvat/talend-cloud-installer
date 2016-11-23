@@ -16,8 +16,10 @@ class profile::base {
   include ::profile::common::concat
   include ::profile::common::accounts
 
-  #contain(::profile::common::cloudwatch, ::awscli)
-  #Class['::profile::common::cloudwatch'] -> Class['::awscli']
+  include ::profile::common::cloudwatch
+  include ::awscli
+
+  Class['::profile::common::cloudwatch'] -> Class['::awscli']
 
   profile::register_profile { 'base': order => 1, }
 
@@ -26,7 +28,6 @@ class profile::base {
   }
 
   if $::ec2_metadata {
-    include ::awscli
     include profile::common::helper_scripts
   }
 
