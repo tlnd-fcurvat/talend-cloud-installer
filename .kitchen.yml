@@ -17,8 +17,8 @@ provisioner:
     packagecloud_master_token: <%= ENV['PACKAGECLOUD_MASTER_TOKEN'] %>
     master_password: mypassword
     region: 'us-east-1'
-    registry_bucket: 'us-east-1-pub-tests-devops-talend-com'
-    registry_bucket_prefix: 'docker'
+    aws_accesskey: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+    aws_secretkey: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
 
 transport:
   name: sftp
