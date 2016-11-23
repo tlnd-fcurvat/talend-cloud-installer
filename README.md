@@ -49,7 +49,7 @@ sh scripts/test_runner.sh
 ```
 
 ## Development tests
-[You need vagrant installed for this](https://www.vagrantup.com/downloads.html) and VirtualBox) and 6Go RAM free.
+[You need vagrant installed for this](https://www.vagrantup.com/downloads.html) and VirtualBox and at least 6Go RAM free.
 
 To see the script usage:
 
