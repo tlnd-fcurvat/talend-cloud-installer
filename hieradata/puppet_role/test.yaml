@@ -1,5 +1,4 @@
 ---
-docker::version: '1.12.3-1.el7.centos'
 
 common_packages:
   'ipaas-rt-integration-test':
