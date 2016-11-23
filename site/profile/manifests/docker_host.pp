@@ -5,9 +5,13 @@ class profile::docker_host (
   $registry_region,
   $registry_bucket,
   $registry_prefix = '',
+  $aws_accesskey = '',
+  $aws_secretkey = ''
 ) {
   #require puppetlabs/stdlib
   #require thias/sysctl
+
+  #aws_accesskey and aws_secretkey only for local tests (kitchen/vagrant)
 
   profile::register_profile { 'docker_host': }
 
@@ -35,16 +39,34 @@ class profile::docker_host (
     require                     => Sysctl['net.ipv4.conf.all.route_localnet', 'vm.max_map_count']
   }
 
+  #Building optionnals container env vars
+  if empty($registry_prefix) {
+    $registry_prefix_env = ''
+  } else {
+    $registry_prefix_env = "REGISTRY_STORAGE_S3_ROOTDIRECTORY=${registry_prefix}"
+  }
+  #Only for local acceptance tests with docker used, on AWS, roles and policies for ec2 instances will be sufficient
+  if empty($aws_accesskey) {
+    $aws_accesskey_env = ''
+  } else {
+    $aws_accesskey_env = "REGISTRY_STORAGE_S3_ACCESSKEY=${aws_accesskey}"
+  }
+  if empty($aws_secretkey) {
+    $aws_secretkey_env = ''
+  } else {
+    $aws_secretkey_env= "REGISTRY_STORAGE_S3_SECRETKEY=${aws_secretkey}"
+  }
+
   #every docker host has a registry listening in localhost:5000
   docker::run {
     'registry':
       image => 'registry:2',
       ports => '127.0.0.1:5000:5000',
-      env   => [
-        'REGISTRY_STORAGE=s3',
-        "REGISTRY_STORAGE_S3_REGION=${registry_region}",
-        "REGISTRY_STORAGE_S3_BUCKET=${registry_bucket}",
-        "REGISTRY_STORAGE_S3_ROOTDIRECTORY=${registry_prefix}",
-      ]
+      env   => delete( [ "REGISTRY_STORAGE=s3",
+                        "REGISTRY_STORAGE_S3_REGION=${registry_region}",
+                        "REGISTRY_STORAGE_S3_BUCKET=${registry_bucket}",
+                        $registry_prefix_env,
+                        $aws_accesskey_env,
+                        $aws_secretkey_env ], '')
   }
 }
