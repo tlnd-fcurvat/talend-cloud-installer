@@ -8,12 +8,16 @@ class profile::mongodb (
   $replset_auth_enable = false,
   $service_ensure      = 'running',
   $service_enable      = true,
-
+  $dbpath              = '/var/lib/mongo',
+  $storage_device      = undef
 ) {
 
   require ::profile::common::packages
 
   include ::profile::common::concat
+  # $dbpath configured in hiera for monitoring
+  # FIXME rework cloudwatch to add defines and so manage easily each mount in each profiles
+  include ::profile::common::cloudwatch
 
   profile::register_profile { 'mongodb': }
 
@@ -31,7 +35,7 @@ class profile::mongodb (
       }
     }
 
-    if $replset_auth_enable == 'true' {
+    if $replset_auth_enable == true {
       $mongo_auth = true
       $keyfile = '/var/lib/mongo/shared_key'
     } else {
@@ -44,6 +48,43 @@ class profile::mongodb (
     $mongo_auth = true
   }
 
+  if $storage_device {
+    # File[$dbpath] is managed by mongodb::server::config.pp (called by mongodb::server)
+    filesystem { $storage_device:
+      ensure  => present,
+      fs_type => 'xfs',
+      options => '-f',
+      before  => Class['::mongodb::server']
+    }
+
+    #creates parent path if absent
+    exec { "mkdir-${dbpath}":
+      command => "mkdir -p ${dbpath}",
+      creates => $dbpath,
+      path    => '/bin:/usr/bin',
+      before  => Class['::mongodb::server']
+    }
+
+    #configure the disk before mounting
+    exec { "fix-readahead-${storage_device}":
+      command => "/sbin/blockdev --setra 32 ${storage_device}",
+      unless  => "/sbin/blockdev --getra ${storage_device} | grep -w 32",
+      require => Filesystem[$storage_device],
+    }
+
+    #mount the storage volume, rights will be put by File[$dbpath]
+    mount { $dbpath:
+      ensure  => 'mounted',
+      device  => $storage_device,
+      fstype  => 'xfs',
+      options => 'noatime,nodiratime,noexec',
+      atboot  => true,
+      require => [ Filesystem[$storage_device],
+                    Exec["mkdir-${dbpath}"],
+                    Exec["fix-readahead-${storage_device}"] ],
+      before  => Class['::mongodb::server']
+    }
+  }
 
   $create_admin_user = "/usr/bin/mongo ipaas --eval \"db.createUser({ \
     user: 'admin', \
@@ -68,7 +109,8 @@ class profile::mongodb (
     key            => $shared_key,
     keyfile        => $keyfile,
     service_ensure => $service_ensure,
-    service_enable => $service_enable
+    service_enable => $service_enable,
+    dbpath         => $dbpath
   } ->
   class { '::mongodb::client':
   }
