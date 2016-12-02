@@ -18,3 +18,5 @@ nexus::service_enable: false
 syncope::service_ensure: 'stopped'
 activemq::service_ensure: 'stopped'
 activemq::service_enable: false
+profile::mongodb::service_ensure: 'stopped'
+profile::mongodb::service_enable: false
