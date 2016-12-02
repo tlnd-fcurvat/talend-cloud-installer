@@ -20,3 +20,5 @@ activemq::service_ensure: 'stopped'
 activemq::service_enable: false
 profile::mongodb::service_ensure: 'stopped'
 profile::mongodb::service_enable: false
+dataprep_dataset::service_ensure: 'stopped'
+dataprep_dataset::service_enable: false
