@@ -109,7 +109,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: Talend/puppet-dataprep_dataset
   specs:
-    talend-dataprep_dataset (0.1.0.4)
+    talend-dataprep_dataset (0.1.0.5)
 
 GITHUBTARBALL
   remote: Talend/puppet-syncope
