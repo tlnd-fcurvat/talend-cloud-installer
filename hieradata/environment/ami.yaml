@@ -13,3 +13,5 @@ profile::postgresql::service_ensure: 'stopped'
 profile::postgresql::service_enable: false
 docker::service_state: 'stopped'
 docker::service_enable: false
+nexus::service_ensure: 'stopped'
+nexus::service_enable: false
