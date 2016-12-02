@@ -16,3 +16,5 @@ docker::service_enable: false
 nexus::service_ensure: 'stopped'
 nexus::service_enable: false
 syncope::service_ensure: 'stopped'
+activemq::service_ensure: 'stopped'
+activemq::service_enable: false
