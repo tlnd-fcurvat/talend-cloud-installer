@@ -65,7 +65,7 @@ FORGE
 GIT
   remote: https://github.com/Talend/puppet-nexus.git
   ref: master
-  sha: 8d795148b5e41b4bc91e369c1f995ae314379246
+  sha: 8db5f4078b76c3e0b41dd0ec81a16b2c0050303d
   specs:
     hubspot-nexus (1.3.4)
       maestrodev-wget (< 2.0.0, >= 1.0.0)
