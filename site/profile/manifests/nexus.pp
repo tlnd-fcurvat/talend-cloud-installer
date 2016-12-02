@@ -18,7 +18,7 @@ class profile::nexus (
 
   profile::register_profile { 'nexus': }
 
-  if $::osfamily == 'RedHat'{
+  if $::osfamily == 'RedHat' and $::selinux == 'true' {
     selinux::boolean { 'httpd_can_network_connect':
       ensure => 'on',
     }
