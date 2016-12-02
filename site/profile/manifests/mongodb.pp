@@ -1,11 +1,13 @@
 #
 # Sets up the mongodb instance
 #
-class profile::mongodb(
+class profile::mongodb (
 
   $mongodb_nodes       = '', # A string f.e. '[ "10.0.2.12", "10.0.2.23" ]'
   $shared_key          = undef,
   $replset_auth_enable = false,
+  $service_ensure      = 'running',
+  $service_enable      = true,
 
 ) {
 
@@ -64,17 +66,21 @@ class profile::mongodb(
     replset        => $replset_name,
     replset_config => $replset_config,
     key            => $shared_key,
-    keyfile        => $keyfile
+    keyfile        => $keyfile,
+    service_ensure => $service_ensure,
+    service_enable => $service_enable
   } ->
   class { '::mongodb::client':
   }
 
-  $instanceLogicalId = pick($::cfn_resource_name, $::ec2_userdata, '')
-  if $instanceLogicalId =~ /InstanceA/ {
-    exec { 'setup MongoDB admin user':
-      command => $create_admin_user,
-      creates => '/var/lock/mongo_admin_user_lock',
-      require => Class['::mongodb::client']
+  if $service_ensure == 'running' {
+    $instanceLogicalId = pick($::cfn_resource_name, $::ec2_userdata, '')
+    if $instanceLogicalId =~ /InstanceA/ {
+      exec { 'setup MongoDB admin user':
+        command => $create_admin_user,
+        creates => '/var/lock/mongo_admin_user_lock',
+        require => Class['::mongodb::client']
+      }
     }
   }
 
