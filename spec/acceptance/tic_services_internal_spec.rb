@@ -17,6 +17,27 @@ describe 'role::tic_services_internal' do
     it { should be_running.under('systemd') }
   end
 
+  describe port('8180') do
+    it { should be_listening }
+  end
+
+  describe port('8181') do
+    it { should be_listening }
+  end
+
+  describe service('nginx') do
+    it { should be_enabled }
+    it { should be_running.under('systemd') }
+  end
+
+  describe command('/usr/bin/curl http://localhost:8181/services') do
+    its(:stdout) { should include 'Service list' }
+  end
+
+  describe command('/usr/bin/curl http://localhost:8180/services') do
+    its(:stdout) { should include 'Service list' }
+  end
+
   describe 'Service configuration' do
     subject { file('/opt/talend/ipaas/rt-infra/etc/rt-infra-service-wrapper.conf').content }
     it { should match /wrapper.jvm_kill.delay\s*=\s*5/ }
