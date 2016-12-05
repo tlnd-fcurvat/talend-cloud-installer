@@ -19,6 +19,7 @@ class profile::tic_services (
 
   include ::profile::common::concat
   include ::profile::common::cloudwatchlogs
+  include ::nginx
 
   profile::register_profile { 'tic_services': }
 

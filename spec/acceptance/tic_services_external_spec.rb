@@ -17,6 +17,11 @@ describe 'role::tic_services_external' do
     it { should be_running.under('systemd') }
   end
 
+  describe service('nginx') do
+    it { should be_enabled }
+    it { should be_running.under('systemd') }
+  end
+
   describe 'Service configuration' do
     subject { file('/opt/talend/ipaas/rt-infra/etc/rt-infra-service-wrapper.conf').content }
     it { should match /wrapper.jvm_kill.delay\s*=\s*5/ }
@@ -26,5 +31,21 @@ describe 'role::tic_services_external' do
     it { should match /wrapper.java.additional.13\s*=\s*-Dcom.sun.management.jmxremote.ssl=false/ }
     it { should match /wrapper.java.maxmemory\s*=\s*1024/ }
     it { should match /wrapper.disable_restarts\s*=\s*true/ }
+  end
+
+  describe port(8182) do
+    it { should be_listening }
+  end
+
+  describe port(8183) do
+    it { should be_listening }
+  end
+
+  describe port(8184) do
+    it { should be_listening }
+  end
+
+  describe port(8185) do
+    it { should be_listening }
   end
 end
