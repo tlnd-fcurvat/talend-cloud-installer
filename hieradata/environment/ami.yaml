@@ -22,3 +22,4 @@ profile::mongodb::service_ensure: 'stopped'
 profile::mongodb::service_enable: false
 dataprep_dataset::service_ensure: 'stopped'
 dataprep_dataset::service_enable: false
+profile::elasticsearch::status: 'disabled'
