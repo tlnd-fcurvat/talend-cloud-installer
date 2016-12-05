@@ -8,6 +8,7 @@ class profile::elasticsearch::setup (
   $cluster_name   = undef,
   $heap_size      = undef,
   $config         = undef,
+  $status         = running,
 
 ) {
 
@@ -33,7 +34,7 @@ class profile::elasticsearch::setup (
 
   elasticsearch::instance { 'default':
     ensure        => present,
-    status        => running,
+    status        => $status,
     logging_level => INFO,
     config        => $real_config
   }

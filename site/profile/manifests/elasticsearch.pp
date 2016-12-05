@@ -1,13 +1,14 @@
 #
 # Sets up elasticsearch instance and waits for the service to start
 #
-class profile::elasticsearch(
+class profile::elasticsearch (
 
   $plugins_hash   = undef,
   $security_group = 'not_available',
   $cluster_name   = undef,
   $heap_size      = undef,
   $config         = undef,
+  $status         = running,
 
 ) {
 
@@ -17,8 +18,10 @@ class profile::elasticsearch(
     cluster_name   => $cluster_name,
     heap_size      => $heap_size,
     config         => $config,
+    status         => $status,
   } ->
   class { '::profile::elasticsearch::wait':
+    status => $status,
   }
 
   contain ::profile::elasticsearch::setup
