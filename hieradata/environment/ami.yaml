@@ -3,6 +3,7 @@
 tic::services::karaf_service_ensure: 'stopped'
 tic::services::karaf_service_enable: false
 tic::frontend::tomcat_service_ensure: 'stopped'
+tic::frontend::tomcat_service_enable: false
 tic::services::init_configuration_service::ensure_init: false
 zookeeper::service_ensure: 'stopped'
 nginx::service_ensure: 'stopped'
