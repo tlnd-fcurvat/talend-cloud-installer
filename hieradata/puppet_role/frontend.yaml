@@ -32,6 +32,16 @@ tic::frontend::dts_service_url: "http://%{::tic_services_external_nodes}:8181/se
 
 tic::frontend::web_use_ssl: false
 
+cloudwatchlog_files:
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/srv/tomcat/ipaas-srv/logs/catalina.out":
+    path: '/srv/tomcat/ipaas-srv/logs/catalina.out'
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/srv/tomcat/ipaas-srv/logs/ipaas-api.log":
+    path: '/srv/tomcat/ipaas-srv/logs/ipaas-api.log'
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/srv/tomcat/ipaas-srv/logs/ipaas-server.log":
+    path: '/srv/tomcat/ipaas-srv/logs/ipaas-server.log'
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/srv/tomcat/ipaas-srv/logs/inventory-service.log":
+    path: '/srv/tomcat/ipaas-srv/logs/inventory-service.log'
+
 nginx::nginx_vhosts:
   'redirect':
     use_default_location: false
