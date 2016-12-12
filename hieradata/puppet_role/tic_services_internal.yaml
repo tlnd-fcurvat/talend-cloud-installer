@@ -88,6 +88,8 @@ cloudwatchlog_files:
     path: '/var/log/nginx/tic_services.access.log'
   "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/nginx/tic_services.error.log":
     path: '/var/log/nginx/tic_services.error.log'
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/maillog":
+    path: '/var/log/maillog'
 
 tic::services::karaf_features_install:
   - '(aries-blueprint'
