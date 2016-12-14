@@ -21,6 +21,7 @@ profile::tic_services::flow_execution_subnets: "%{::flow_execution_subnets}"
 profile::tic_services::nexus_nodes: "%{::nexus_nodes}"
 profile::tic_services::nexus_nodes_port: "%{::nexus_nodes_port}"
 profile::tic_services::cms_nexus_url: "%{::nexus_dns}"
+profile::tic_services::custom_resources_bucket_data: "%{::customresourcebucket}"
 
 tic::services::rt_flow_security_groups: "%{::flow_execution_security_group}"
 tic::services::rt_flow_ami_id: "%{::rt_flow_ami_id}"
