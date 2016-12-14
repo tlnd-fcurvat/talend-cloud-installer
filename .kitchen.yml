@@ -15,6 +15,7 @@ provisioner:
     tic_db_host: localhost
     postgres_nodes: localhost
     packagecloud_master_token: <%= ENV['PACKAGECLOUD_MASTER_TOKEN'] %>
+    customresourcebucket: '"[\"mytestbucket\", \"mytestprefix\"]"'
     master_password: mypassword
     region: 'us-east-1'
     aws_accesskey: <%= ENV['AWS_ACCESS_KEY_ID'] %>

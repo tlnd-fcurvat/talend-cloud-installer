@@ -58,4 +58,10 @@ describe 'role::tic_services_internal' do
     subject { file('/opt/talend/ipaas/rt-infra/etc/org.talend.ipaas.rt.am.service.cfg').content }
     it { should include 'nexus_urls=http://10.0.2.12:8081/nexus,http://10.0.2.23:8081/nexus' }
   end
+
+  describe 'Custom Resources Service configuration' do
+    subject { file('/opt/talend/ipaas/rt-infra/etc/org.talend.ipaas.rt.cr.service.cfg').content }
+    it { should include 'bucket.name = mytestbucket' }
+    it { should include 'object.key.prefix = mytestprefix' }
+  end
 end
