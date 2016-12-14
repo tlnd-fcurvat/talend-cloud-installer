@@ -64,4 +64,9 @@ describe 'role::tic_services_internal' do
     it { should include 'bucket.name = mytestbucket' }
     it { should include 'object.key.prefix = mytestprefix' }
   end
+
+  describe 'Trial Registration Service configuration' do
+    subject { file('/opt/talend/ipaas/rt-infra/etc/org.talend.ipaas.rt.trial.service.cfg').content }
+    it { should include 'confirm.url.template=https://the-frontend.hostname.com/#/signup/login?trialKey=' }
+  end
 end
