@@ -3,14 +3,15 @@
 #
 class profile::tic_services (
 
-  $activemq_nodes         = undef,
-  $mongo_nodes            = undef,
-  $zookeeper_nodes        = undef,
-  $nexus_nodes            = undef,
-  $nexus_nodes_port       = '8081',
-  $flow_execution_subnets = undef,
-  $version                = undef,
-  $cms_nexus_url          = undef,
+  $activemq_nodes               = undef,
+  $mongo_nodes                  = undef,
+  $zookeeper_nodes              = undef,
+  $nexus_nodes                  = undef,
+  $nexus_nodes_port             = '8081',
+  $flow_execution_subnets       = undef,
+  $version                      = undef,
+  $cms_nexus_url                = undef,
+  $custom_resources_bucket_data = undef,
 
 ) {
 
@@ -74,11 +75,22 @@ class profile::tic_services (
   } else {
     $_cms_nexus_url = "${cms_nexus_url}/nexus"
   }
+
   $nexus_url_scheme = url_parse($_cms_nexus_url, 'scheme')
   $nexus_url_host = url_parse($_cms_nexus_url, 'host')
   $nexus_url_port = url_parse($_cms_nexus_url, 'port')
   $nexus_url_path = url_parse($_cms_nexus_url, 'path')
   $__cms_nexus_url = "${nexus_url_scheme}://{{username}}:{{password}}@${nexus_url_host}:${nexus_url_port}${nexus_url_path}/content/repositories/{{accountid}}@id={{accountid}}.release,${nexus_url_scheme}://{{username}}:{{password}}@${nexus_url_host}:${nexus_url_port}${nexus_url_path}/content/repositories/{{accountid}}-snapshots@snapshots@id={{accountid}}.snapshot"
+
+  if $custom_resources_bucket_data {
+    $_custom_resources_bucket_data = split(regsubst($custom_resources_bucket_data, '[\s\[\]\"]', '', 'G'), ',')
+
+    $cr_bucket_name       = $_custom_resources_bucket_data[0]
+    $cr_object_key_prefix = $_custom_resources_bucket_data[1]
+  } else {
+    $cr_bucket_name       = undef
+    $cr_object_key_prefix = undef
+  }
 
   class { '::tic::services':
     activemq_nodes       => $_activemq_nodes,
@@ -88,7 +100,9 @@ class profile::tic_services (
     zookeeper_nodes      => $_zookeeper_nodes,
     rt_flow_subnet_id    => $rt_flow_subnet_ids[0],
     version              => $_version,
-    dispatcher_nexus_url => $_cms_nexus_url
+    dispatcher_nexus_url => $_cms_nexus_url,
+    cr_bucket_name       => $cr_bucket_name,
+    cr_object_key_prefix => $cr_object_key_prefix
   }
 
   contain ::tic::services
