@@ -12,6 +12,8 @@ class profile::tic_services (
   $version                      = undef,
   $cms_nexus_url                = undef,
   $custom_resources_bucket_data = undef,
+  $frontend_host                = undef,
+  $confirm_email_external_url   = undef,
 
 ) {
 
@@ -92,17 +94,26 @@ class profile::tic_services (
     $cr_object_key_prefix = undef
   }
 
+  if $confirm_email_external_url {
+    $_confirm_email_external_url = $confirm_email_external_url
+  } elsif size($frontend_host) > 0 {
+    $_confirm_email_external_url = "${frontend_host}/#/signup/login?trialKey="
+  } else {
+    $_confirm_email_external_url = undef
+  }
+
   class { '::tic::services':
-    activemq_nodes       => $_activemq_nodes,
-    mongo_nodes          => $_mongo_nodes,
-    nexus_nodes          => $_nexus_nodes,
-    cms_nexus_url        => $__cms_nexus_url,
-    zookeeper_nodes      => $_zookeeper_nodes,
-    rt_flow_subnet_id    => $rt_flow_subnet_ids[0],
-    version              => $_version,
-    dispatcher_nexus_url => $_cms_nexus_url,
-    cr_bucket_name       => $cr_bucket_name,
-    cr_object_key_prefix => $cr_object_key_prefix
+    activemq_nodes             => $_activemq_nodes,
+    mongo_nodes                => $_mongo_nodes,
+    nexus_nodes                => $_nexus_nodes,
+    cms_nexus_url              => $__cms_nexus_url,
+    zookeeper_nodes            => $_zookeeper_nodes,
+    rt_flow_subnet_id          => $rt_flow_subnet_ids[0],
+    version                    => $_version,
+    dispatcher_nexus_url       => $_cms_nexus_url,
+    cr_bucket_name             => $cr_bucket_name,
+    cr_object_key_prefix       => $cr_object_key_prefix,
+    confirm_email_external_url => $_confirm_email_external_url
   }
 
   contain ::tic::services
