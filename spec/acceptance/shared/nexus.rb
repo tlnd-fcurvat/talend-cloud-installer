@@ -67,4 +67,8 @@ shared_examples 'profile::nexus' do
     its(:content) { should include 'location @nexus1' }
   end
 
+  describe package('jre-jce') do
+    it { should_not be_installed }
+  end
+
 end

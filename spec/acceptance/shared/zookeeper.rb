@@ -14,4 +14,8 @@ shared_examples 'profile::zookeeper' do
     its(:stdout) { should match /"description":".*?"/ }
   end
 
+  describe package('jre-jce') do
+    it { should_not be_installed }
+  end
+
 end

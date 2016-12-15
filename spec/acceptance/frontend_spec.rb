@@ -92,4 +92,9 @@ describe 'role::frontend' do
     it { should be_enabled }
     it { should be_running }
   end
+
+  describe package('jre-jce') do
+    it { should_not be_installed }
+  end
+
 end

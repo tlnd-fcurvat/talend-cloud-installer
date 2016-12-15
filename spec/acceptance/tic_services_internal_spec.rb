@@ -69,4 +69,10 @@ describe 'role::tic_services_internal' do
     subject { file('/opt/talend/ipaas/rt-infra/etc/org.talend.ipaas.rt.trial.service.cfg').content }
     it { should include 'confirm.url.template=https://the-frontend.hostname.com/#/signup/login?trialKey=' }
   end
+
+  describe 'Additional Java Packages' do
+    subject { package('jre-jce') }
+    it { should be_installed }
+  end
+
 end

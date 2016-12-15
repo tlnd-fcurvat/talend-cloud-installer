@@ -17,4 +17,8 @@ shared_examples 'profile::activemq' do
 		it { should be_listening }
 	end
 
+  describe package('jre-jce') do
+    it { should_not be_installed }
+  end
+
 end

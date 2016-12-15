@@ -48,4 +48,10 @@ describe 'role::tic_services_external' do
   describe port(8185) do
     it { should be_listening }
   end
+
+  describe 'Additional Java Packages' do
+    subject { package('jre-jce') }
+    it { should be_installed }
+  end
+
 end
