@@ -29,7 +29,7 @@ tic::frontend::trial_service_nodes: "%{::tic_services_internal_nodes}"
 tic::frontend::webhooks_service_nodes: "%{::tic_services_internal_nodes}"
 tic::frontend::cms_node: "%{::tic_services_internal_nodes}"
 tic::frontend::dts_service_url: "http://%{::tic_services_external_nodes}:8181/services/data-transfer-service"
-tic::frontend::logs_log_transfer_service_nodes: "%{::tic_services_internal_nodes}"
+tic::frontend::logs_log_transfer_service_nodes: "%{::tic_services_external_nodes}"
 
 tic::frontend::web_use_ssl: false
 
