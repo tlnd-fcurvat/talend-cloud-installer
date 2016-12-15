@@ -63,6 +63,9 @@ tic::services::cms_amq_broker_url: "%{::activemq_host}"
 tic::services::activemq_broker_username: "admin"
 tic::services::activemq_broker_password: "%{::master_password}"
 
+tic::services::logs_transfer_client_admin_url: "http://%{::tic_services_external_nodes}:8181/services/logs-transfer-service"
+tic::services::logs_transfer_client_upload_url: "http://%{::tic_services_external_nodes}:8181/services/logs-transfer-service-runtime"
+
 tic::services::ams_password_reset_url_template: "/#/reset_password?token="
 
 tic::services::ams_mail_config_update_period: "1800000"
@@ -143,6 +146,7 @@ tic::services::karaf_features_install:
   - 'tipaas-data-transfer-service-client'
   - 'tipaas-data-transfer-service-core'
   - 'tipaas-custom-resources-service'
+  - 'tipaas-logs-transfer-service-client'
   - 'tipaas-notification-subscription-service'
   - 'tipaas-notification-manager'
   - 'tipaas-notification-server'
