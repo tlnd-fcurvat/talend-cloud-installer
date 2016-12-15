@@ -2,6 +2,11 @@
 # Wraps the java module
 #
 class profile::java {
-  contain ::java
+  require ::java
+
+  create_resources(
+    Package,
+    hiera_hash('profile::java::packages', {})
+  )
 }
 
