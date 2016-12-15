@@ -31,7 +31,6 @@ describe 'role::frontend' do
   end
 
   describe command('/usr/bin/ps ax | grep java') do
-    its(:stdout) { should include '-Djava.security.auth.login.config=/srv/tomcat/ipaas-srv/conf/jaas-ipaas-services.conf' }
     its(:stdout) { should include '-Djava.awt.headless=true' }
     its(:stdout) { should include '-Xmx1024m' }
     its(:stdout) { should include '-XX:MaxPermSize=256m' }
