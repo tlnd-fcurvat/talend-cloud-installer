@@ -83,6 +83,9 @@ tic::services::syncope_password: "%{::master_password}"
 tic::services::trial_db_password: "%{::master_password}"
 tic::services::webhooks_redis_host: "%{::redis_nodes}"
 
+tic::services::logs_datasource_servername: "%{::postgres_nodes}"
+tic::services::logs_datasource_password: "%{::master_password}"
+
 tic::services::ams_mail_config_update_period: "1800000"
 tic::services::ams_mail_config_password_reset: "templates/password_reset_email_description.xml"
 tic::services::ams_mail_config_user_created: "templates/user_created_email_description.xml"
@@ -166,6 +169,7 @@ tic::services::karaf_features_install:
   - 'tipaas-notification-server'
   - 'tipaas-notification-sendgrid-webhook-service'
   - 'tipaas-custom-resources-service'
+  - 'tipaas-logs-transfer-service-core'
   - 'tipaas-notification-subscription-service'
   - 'tipaas-notification-manager'
   - 'tipaas-notification-server'

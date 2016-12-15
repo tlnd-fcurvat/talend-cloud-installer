@@ -73,9 +73,6 @@ tic::services::ams_disaster_region: "%{::region}"
 
 tic::services::rt_aws_region: "%{::region}"
 
-tic::services::logs_datasource_servername: "%{::postgres_nodes}"
-tic::services::logs_datasource_password: "%{::master_password}"
-
 tic::services::crypto_current_region: "%{::region}"
 tic::services::crypto_secondary_regions: "%{::region}"
 
@@ -146,7 +143,6 @@ tic::services::karaf_features_install:
   - 'tipaas-data-transfer-service-client'
   - 'tipaas-data-transfer-service-core'
   - 'tipaas-custom-resources-service'
-  - 'tipaas-logs-transfer-service-core'
   - 'tipaas-notification-subscription-service'
   - 'tipaas-notification-manager'
   - 'tipaas-notification-server'
