@@ -3,17 +3,18 @@
 #
 class profile::tic_services (
 
-  $activemq_nodes               = undef,
-  $mongo_nodes                  = undef,
-  $zookeeper_nodes              = undef,
-  $nexus_nodes                  = undef,
-  $nexus_nodes_port             = '8081',
-  $flow_execution_subnets       = undef,
-  $version                      = undef,
-  $cms_nexus_url                = undef,
-  $custom_resources_bucket_data = undef,
-  $frontend_host                = undef,
-  $confirm_email_external_url   = undef,
+  $activemq_nodes                  = undef,
+  $mongo_nodes                     = undef,
+  $zookeeper_nodes                 = undef,
+  $nexus_nodes                     = undef,
+  $nexus_nodes_port                = '8081',
+  $flow_execution_subnets          = undef,
+  $version                         = undef,
+  $cms_nexus_url                   = undef,
+  $custom_resources_bucket_data    = undef,
+  $frontend_host                   = undef,
+  $confirm_email_external_url      = undef,
+  $ams_password_reset_url_template = undef,
 
 ) {
 
@@ -102,18 +103,27 @@ class profile::tic_services (
     $_confirm_email_external_url = undef
   }
 
+  if $ams_password_reset_url_template {
+    $_ams_password_reset_url_template = $ams_password_reset_url_template
+  } elsif size($frontend_host) > 0 {
+    $_ams_password_reset_url_template = "${frontend_host}/#/reset_password?token="
+  } else {
+    $_ams_password_reset_url_template = undef
+  }
+
   class { '::tic::services':
-    activemq_nodes             => $_activemq_nodes,
-    mongo_nodes                => $_mongo_nodes,
-    nexus_nodes                => $_nexus_nodes,
-    cms_nexus_url              => $__cms_nexus_url,
-    zookeeper_nodes            => $_zookeeper_nodes,
-    rt_flow_subnet_id          => $rt_flow_subnet_ids[0],
-    version                    => $_version,
-    dispatcher_nexus_url       => $_cms_nexus_url,
-    cr_bucket_name             => $cr_bucket_name,
-    cr_object_key_prefix       => $cr_object_key_prefix,
-    confirm_email_external_url => $_confirm_email_external_url
+    activemq_nodes                  => $_activemq_nodes,
+    mongo_nodes                     => $_mongo_nodes,
+    nexus_nodes                     => $_nexus_nodes,
+    cms_nexus_url                   => $__cms_nexus_url,
+    zookeeper_nodes                 => $_zookeeper_nodes,
+    rt_flow_subnet_id               => $rt_flow_subnet_ids[0],
+    version                         => $_version,
+    dispatcher_nexus_url            => $_cms_nexus_url,
+    cr_bucket_name                  => $cr_bucket_name,
+    cr_object_key_prefix            => $cr_object_key_prefix,
+    confirm_email_external_url      => $_confirm_email_external_url,
+    ams_password_reset_url_template => $_ams_password_reset_url_template
   }
 
   contain ::tic::services
