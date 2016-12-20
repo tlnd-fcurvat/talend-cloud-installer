@@ -14,7 +14,7 @@ class profile::activemq {
 
   # prevent postgres provisioning on all the nodes except one: ActiveMQ-A
   # this should be replaced with more sophisticated solution in the future
-  $ec2_userdata = pick($::ec2_userdata, '')
+  $ec2_userdata = pick_default($::ec2_userdata, '')
   if $ec2_userdata =~ /InstanceA/ {
     $update_user_password = "/usr/bin/psql \
     -U ams \
