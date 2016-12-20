@@ -98,6 +98,8 @@ tic::services::rt_aws_region: "%{::region}"
 tic::services::crypto_current_region: "%{::region}"
 tic::services::crypto_secondary_regions: "%{::region}"
 
+tic::services::tipaas_email_subject: "Confirmation Required for Talend Integration Cloud Trial"
+
 tic::services::dts_s3_bucket_rejected_data: "%{::rejecteddatabucket}"
 tic::services::dts_s3_bucket_test_data: "%{::testdatabucket}"
 tic::services::dts_s3_bucket_logs_data: "%{::flowlogsbucket}"
