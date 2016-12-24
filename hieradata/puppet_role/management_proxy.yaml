@@ -1,0 +1,7 @@
+---
+nginx::service_ensure: 'running'
+nginx::nginx_vhosts:
+  es_sys:
+    listen_port: 80
+    proxy: "https://%{elasticsearch_sys}/"
+
