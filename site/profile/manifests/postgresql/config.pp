@@ -2,7 +2,7 @@ class profile::postgresql::config {
 
   require ::profile::postgresql::install
 
-  if $profile::postgresql::service_ensure == 'running' {
+  if str2bool($profile::postgresql::create_databases) == true {
     $role_names = keys($profile::postgresql::roles)
     profile::postgresql::role { $role_names: }
   }

@@ -3,13 +3,14 @@
 #
 class profile::postgresql (
 
-  $hostname       = undef,
-  $password       = undef,
-  $username       = undef,
-  $database       = undef,
-  $service_ensure = stopped,
-  $service_enable = false,
-  $roles          = {},
+  $hostname         = undef,
+  $password         = undef,
+  $username         = undef,
+  $database         = undef,
+  $service_ensure   = stopped,
+  $service_enable   = false,
+  $create_databases = true,
+  $roles            = {},
 
 ) {
 
