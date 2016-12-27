@@ -11,6 +11,7 @@ profile::tic_services::nexus_nodes_port: '8081'
 profile::tic_services::cms_nexus_url: 'http://10.0.2.12'
 profile::nexus::nexus_nodes_port: "8081"
 profile::postgresql::service_ensure: running
+profile::postgresql::create_databases: true
 profile::postgresql::username: postgres
 profile::postgresql::database: postgres
 postgresql::server::postgres_password: "%{::master_password}"
