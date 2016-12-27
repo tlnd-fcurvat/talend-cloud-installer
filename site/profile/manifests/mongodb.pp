@@ -23,6 +23,7 @@ class profile::mongodb (
 
   # A list of strings, like ['10.0.2.12:27017', '10.0.2.23:27017']
   $_mongo_nodes = suffix(split(regsubst($mongodb_nodes, '[\s\[\]\"]', '', 'G'), ','), ':27017')
+  $_mongo_auth_enable = str2bool($replset_auth_enable)
 
   # explicitly only support replica sets of size 3
   if size($_mongo_nodes) == 3 {
@@ -35,7 +36,7 @@ class profile::mongodb (
       }
     }
 
-    if $replset_auth_enable == true {
+    if $_mongo_auth_enable == true {
       $mongo_auth = true
       $keyfile = '/var/lib/mongo/shared_key'
     } else {
