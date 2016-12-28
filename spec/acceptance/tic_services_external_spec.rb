@@ -60,4 +60,13 @@ describe 'role::tic_services_external' do
     it { should be_installed }
   end
 
+  describe 'Data Transfer Service configuration' do
+    subject { file('/opt/talend/ipaas/rt-infra/etc/org.talend.ipaas.rt.dts.core.cfg').content }
+    it { should include 's3.bucket.name.test.data=td-bucket' }
+    it { should include 's3.bucket.name.rejected.data=rd-bucket' }
+    it { should include 's3.bucket.name.log.data=fl-bucket' }
+    it { should include 's3.bucket.name.download=dl-bucket' }
+    it { should include 'object.key.prefix=td-prefix' }
+  end
+
 end
