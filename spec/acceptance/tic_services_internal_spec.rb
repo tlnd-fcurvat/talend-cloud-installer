@@ -12,6 +12,12 @@ describe 'role::tic_services_internal' do
     its(:stdout) { should include 'Install the container as a system service in the OS' }
   end
 
+  describe command('/opt/talend/ipaas/rt-infra/bin/client "list"') do
+    its(:stdout) { should include 'Data Transfer Service :: Client' }
+    its(:stdout) { should include 'Data Transfer Service :: Common' }
+    its(:stdout) { should_not include 'Data Transfer Service :: Core' }
+  end
+
   describe service('rt-infra-service') do
     it { should be_enabled }
     it { should be_running.under('systemd') }
