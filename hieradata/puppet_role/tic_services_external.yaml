@@ -100,11 +100,10 @@ tic::services::crypto_secondary_regions: "%{::region}"
 
 tic::services::tipaas_email_subject: "Confirmation Required for Talend Integration Cloud Trial"
 
-tic::services::dts_s3_bucket_rejected_data: "%{::rejecteddatabucket}"
-tic::services::dts_s3_bucket_test_data: "%{::testdatabucket}"
-tic::services::dts_s3_bucket_logs_data: "%{::flowlogsbucket}"
-tic::services::dts_s3_bucket_downloads_data: "%{::downloads_bucket}"
-tic::services::dts_s3_prefix: 'ptic'
+profile::tic_services::rejected_data_bucket_data: "%{::rejecteddatabucket}"
+profile::tic_services::test_data_bucket_data: "%{::testdatabucket}"
+profile::tic_services::flow_logs_bucket_data: "%{::flowlogsbucket}"
+profile::tic_services::downloads_bucket_data: "%{::downloads_bucket}"
 
 tic::services::kms_key_alias: "%{::kms_key_alias}"
 tic::services::cms_dts_service_url: "%{::dts_host}"
