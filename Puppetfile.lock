@@ -63,6 +63,8 @@ FORGE
     thias-sysctl (1.0.6)
     tracywebtech-pip (1.3.4)
       puppetlabs-stdlib (>= 3.2.1)
+    yo61-logrotate (1.4.0)
+      puppetlabs-stdlib (< 5.0.0, >= 1.0.0)
 
 GIT
   remote: https://github.com/Talend/puppet-nexus.git
@@ -154,4 +156,5 @@ DEPENDENCIES
   talend-zookeeper (~> 0.0)
   thias-sysctl (~> 1.0)
   tracywebtech-pip (~> 1.0)
+  yo61-logrotate (~> 1.0)
 
