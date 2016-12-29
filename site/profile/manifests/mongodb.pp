@@ -14,6 +14,7 @@ class profile::mongodb (
 
   require ::profile::common::packages
 
+  include ::logrotate
   include ::profile::common::concat
   # $dbpath configured in hiera for monitoring
   # FIXME rework cloudwatch to add defines and so manage easily each mount in each profiles
