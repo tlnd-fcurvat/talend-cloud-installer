@@ -37,4 +37,11 @@ shared_examples 'profile::mongodb' do
     it { should be_file }
   end
 
+  describe 'Logrotate configuration' do
+    subject { file('/etc/logrotate.d/mongodb_log').content }
+    it { should include '/var/log/mongodb/mongod.log' }
+    it { should include 'copytruncate' }
+    it { should include 'daily' }
+  end
+
 end
