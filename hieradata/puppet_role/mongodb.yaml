@@ -8,6 +8,7 @@ logrotate::hieramerge: true
 logrotate::rules:
   mongodb_log:
     path: '/var/log/mongodb/mongod.log'
+    maxsize: '250M'
     copytruncate: true
     rotate: 5
     rotate_every: 'day'
