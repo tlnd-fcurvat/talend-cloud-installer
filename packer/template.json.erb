@@ -135,6 +135,13 @@
     },
     {
       "type": "shell",
+      "only": ["amazon"],
+      "inline": [
+        "find /etc/yum.repos.d -type f ! -name puppetlabs.repo -exec rm -rf {} +"
+      ]
+    },
+    {
+      "type": "shell",
       "override": {
         "vagrant": {
           "execute_command": "sudo -E sh '{{ .Path }}'"
