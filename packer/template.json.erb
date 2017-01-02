@@ -41,6 +41,13 @@
   ],
   "provisioners": [
     {
+      "type": "shell",
+      "only": ["amazon"],
+      "inline": [
+        "find /etc/yum.repos.d -type f -exec rm -rf {} +"
+      ]
+    },
+    {
       "type": "file",
       "only": ["amazon"],
       "source": "{{template_dir}}/yum-plugin-s3-iam-1.0.2-1.noarch.rpm",
@@ -84,13 +91,6 @@
       "only": ["amazon"],
       "source": "{{template_dir}}/extra.yaml",
       "destination": "/tmp/puppet/hieradata/extra.yaml"
-    },
-    {
-      "type": "shell",
-      "only": ["amazon"],
-      "inline": [
-        "find /etc/yum.repos.d -type f ! -name 'puppetlabs.repo' -exec rm -rf {} +"
-      ]
     },
     {
       "type": "shell",
