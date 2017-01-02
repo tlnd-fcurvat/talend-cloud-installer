@@ -50,6 +50,12 @@
     {
       "type": "file",
       "only": ["amazon"],
+      "source": "{{template_dir}}/etc/yum.repos.d/",
+      "destination": "/etc/yum.repos.d"
+    },
+    {
+      "type": "file",
+      "only": ["amazon"],
       "source": "{{template_dir}}/yum-plugin-s3-iam-1.0.2-1.noarch.rpm",
       "destination": "/tmp/yum-plugin-s3-iam-1.0.2-1.noarch.rpm"
     },
@@ -99,12 +105,6 @@
       "inline": [
         "mkdir -p /tmp/packer/yum.repos.d"
       ]
-    },
-    {
-      "type": "file",
-      "only": ["amazon"],
-      "source": "{{template_dir}}/etc/yum.repos.d/",
-      "destination": "/etc/yum.repos.d"
     },
     {
       "type": "puppet-masterless",
