@@ -22,4 +22,10 @@ shared_examples 'profile::elasticsearch' do
     it { should match /"status"\s+:\s+200/ }
   end
 
+  describe 'elasticsearch cluster setup' do
+    subject { file('/etc/elasticsearch/default/elasticsearch.yml').content }
+    it { should include 'discovery.ec2.groups: sg-889900ff' }
+    it { should include 'cluster.name: tic' }
+  end
+
 end
