@@ -8,6 +8,7 @@ profile::elasticsearch::plugins_hash:
   'elasticsearch/elasticsearch-cloud-aws/2.5.1':
     instances: 'default'
 profile::elasticsearch::cluster_name: 'tic'
+profile::elasticsearch::security_group: '%{::elasticsearch_discovery_security_group}'
 
 common_packages:
   'wget':
