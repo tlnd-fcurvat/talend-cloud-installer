@@ -24,6 +24,7 @@ shared_examples 'profile::elasticsearch' do
 
   describe 'elasticsearch cluster setup' do
     subject { file('/etc/elasticsearch/default/elasticsearch.yml').content }
+    it { should include 'discovery.type: ec2' }
     it { should include 'discovery.ec2.groups: sg-889900ff' }
     it { should include 'cluster.name: tic' }
   end
