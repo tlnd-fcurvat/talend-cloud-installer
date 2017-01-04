@@ -27,6 +27,7 @@ class profile::elasticsearch::setup (
   $real_sg = pick($userdata_sg, $security_group)
 
   $userdata_config = {
+    'discovery.type'       => 'ec2',
     'discovery.ec2.groups' => $real_sg,
     'cluster.name'         => $cluster_name
   }
