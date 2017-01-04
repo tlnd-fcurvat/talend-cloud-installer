@@ -25,3 +25,4 @@ profile::mongodb::service_enable: false
 dataprep_dataset::service_ensure: 'stopped'
 dataprep_dataset::service_enable: false
 profile::elasticsearch::status: 'disabled'
+profile::elasticsearch::security_group: 'not_available'

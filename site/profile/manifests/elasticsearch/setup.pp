@@ -24,7 +24,7 @@ class profile::elasticsearch::setup (
     }
   }
 
-  $real_sg = pick($userdata_sg, $security_group, 'not_available')
+  $real_sg = pick($userdata_sg, $security_group)
 
   $userdata_config = {
     'discovery.ec2.groups' => $real_sg,
