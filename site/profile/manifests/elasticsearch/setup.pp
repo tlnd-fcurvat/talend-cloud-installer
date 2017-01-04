@@ -15,23 +15,12 @@ class profile::elasticsearch::setup (
   require ::profile::java
   require ::elasticsearch
 
-  $userdata_json = parsejson($::ec2_userdata, {})
-
-  if has_key($userdata_json,'cloud_formation') {
-    $userdata_cloudformation = $userdata_json['cloud_formation']
-    if has_key($userdata_cloudformation, 'elasticsearch_sg') {
-      $userdata_sg = $userdata_cloudformation['elasticsearch_sg']
-    }
-  }
-
-  $real_sg = pick($userdata_sg, $security_group)
-
-  $userdata_config = {
+  $_config = {
     'discovery.type'       => 'ec2',
-    'discovery.ec2.groups' => $real_sg,
+    'discovery.ec2.groups' => $security_group,
     'cluster.name'         => $cluster_name
   }
-  $real_config = merge($config, $userdata_config)
+  $real_config = merge($config, $_config)
 
   elasticsearch::instance { 'default':
     ensure        => present,
