@@ -4,7 +4,7 @@
 class profile::elasticsearch::setup (
 
   $plugins_hash   = undef,
-  $security_group = 'not_available',
+  $security_group = undef,
   $cluster_name   = undef,
   $heap_size      = undef,
   $config         = undef,
@@ -24,7 +24,7 @@ class profile::elasticsearch::setup (
     }
   }
 
-  $real_sg = pick($userdata_sg, $security_group)
+  $real_sg = pick($userdata_sg, $security_group, 'not_available')
 
   $userdata_config = {
     'discovery.ec2.groups' => $real_sg,
