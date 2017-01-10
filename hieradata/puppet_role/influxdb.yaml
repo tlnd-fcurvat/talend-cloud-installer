@@ -1,0 +1,31 @@
+---
+profile::influxdb::storage_device: "%{::storage_device}"
+
+logrotate::ensure: 'present'
+logrotate::hieramerge: true
+logrotate::rules:
+  influxdb:
+    path: '/var/log/influxdb/influxd.log'
+    missingok: true
+    maxsize: '250M'
+    copytruncate: true
+    dateext: true
+    rotate: 7
+    rotate_every: 'day'
+    compress: true
+
+cloudwatch::metrics:
+  DiskSpace:
+    type              : diskspace
+    params            : '-f /var/lib/influxdb'
+    unit              : Percent
+    description       : 'Percentage of used disk space for influxdb data'
+    statistic         : 'Average'
+    period            : 300
+    evaluationperiods : 3
+    threshold         : 80
+    comparisonoperator: "GreaterThanThreshold"
+
+cloudwatchlog_files:
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/influxdb/influxd.log":
+    path: '/var/log/influxdb/influxd.log'
