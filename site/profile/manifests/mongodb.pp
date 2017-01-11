@@ -50,44 +50,6 @@ class profile::mongodb (
     $mongo_auth = true
   }
 
-  if $storage_device {
-    # File[$dbpath] is managed by mongodb::server::config.pp (called by mongodb::server)
-    filesystem { $storage_device:
-      ensure  => present,
-      fs_type => 'xfs',
-      options => '-f',
-      before  => Class['::mongodb::server']
-    }
-
-    #creates parent path if absent
-    exec { "mkdir-${dbpath}":
-      command => "mkdir -p ${dbpath}",
-      creates => $dbpath,
-      path    => '/bin:/usr/bin',
-      before  => Class['::mongodb::server']
-    }
-
-    #configure the disk before mounting
-    exec { "fix-readahead-${storage_device}":
-      command => "/sbin/blockdev --setra 32 ${storage_device}",
-      unless  => "/sbin/blockdev --getra ${storage_device} | grep -w 32",
-      require => Filesystem[$storage_device],
-    }
-
-    #mount the storage volume, rights will be put by File[$dbpath]
-    mount { $dbpath:
-      ensure  => 'mounted',
-      device  => $storage_device,
-      fstype  => 'xfs',
-      options => 'noatime,nodiratime,noexec',
-      atboot  => true,
-      require => [ Filesystem[$storage_device],
-                    Exec["mkdir-${dbpath}"],
-                    Exec["fix-readahead-${storage_device}"] ],
-      before  => Class['::mongodb::server']
-    }
-  }
-
   $create_admin_user = "/usr/bin/mongo ipaas --eval \"db.createUser({ \
     user: 'admin', \
     pwd: '${::master_password}', \
@@ -99,6 +61,11 @@ class profile::mongodb (
     ] \
 });\" && /bin/touch /var/lock/mongo_admin_user_lock"
 
+  class { '::profile::common::mount_device':
+    device  => $storage_device,
+    path    => $dbpath,
+    options => 'noatime,nodiratime,noexec'
+  } ->
   class {'::mongodb::globals':
     manage_package_repo => true,
   }->
