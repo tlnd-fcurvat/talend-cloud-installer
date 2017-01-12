@@ -9,9 +9,16 @@ class profile::elasticsearch (
   $heap_size      = undef,
   $config         = undef,
   $status         = running,
+  $datadir        = '/usr/share/elasticsearch/data',
+  $storage_device = undef,
 
 ) {
 
+  class { '::profile::common::mount_device':
+    device  => $storage_device,
+    path    => $datadir,
+    options => 'noatime,nodiratime'
+  } ->
   class { '::profile::elasticsearch::setup':
     plugins_hash   => $plugins_hash,
     security_group => $security_group,
@@ -19,6 +26,7 @@ class profile::elasticsearch (
     heap_size      => $heap_size,
     config         => $config,
     status         => $status,
+    datadir        => $datadir,
   } ->
   class { '::profile::elasticsearch::wait':
     status => $status,

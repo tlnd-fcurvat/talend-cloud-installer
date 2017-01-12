@@ -63,9 +63,13 @@ suites:
       patterns:
         - 'spec/acceptance/activemq_spec.rb'
   - name: role-elasticsearch
+    driver:
+      vagrantfiles:
+        - vagrant/second_disk.rb
     provisioner:
       custom_facts:
         puppet_role: elasticsearch
+        storage_device: /dev/sdb
     verifier:
       patterns:
         - 'spec/acceptance/elasticsearch_spec.rb'

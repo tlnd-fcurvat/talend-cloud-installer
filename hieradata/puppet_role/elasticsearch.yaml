@@ -9,6 +9,7 @@ profile::elasticsearch::plugins_hash:
     instances: 'default'
 profile::elasticsearch::cluster_name: 'tic'
 profile::elasticsearch::security_group: '%{::elasticsearch_discovery_security_group}'
+profile::elasticsearch::storage_device: "%{::storage_device}"
 
 common_packages:
   'wget':

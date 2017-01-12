@@ -29,4 +29,17 @@ shared_examples 'profile::elasticsearch' do
     it { should include 'cluster.name: tic' }
   end
 
+  describe file('/usr/share/elasticsearch/data') do
+    it do
+      should be_mounted.with(
+        :type    => 'xfs',
+        :options => {
+          :rw         => true,
+          :noatime    => true,
+          :nodiratime => true
+        }
+      )
+    end
+  end
+
 end

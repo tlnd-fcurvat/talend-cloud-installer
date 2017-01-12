@@ -9,11 +9,15 @@ class profile::elasticsearch::setup (
   $heap_size      = undef,
   $config         = undef,
   $status         = running,
+  $datadir        = undef,
 
 ) {
 
   require ::profile::java
-  require ::elasticsearch
+
+  class { '::elasticsearch':
+    datadir => $datadir,
+  }
 
   $_config = {
     'discovery.type'       => 'ec2',
