@@ -8,8 +8,8 @@ class profile::common::mount_device (
 
   if $device and $path {
     filesystem { "Filesystem ${device}":
-      name    => $device,
       ensure  => present,
+      name    => $device,
       fs_type => 'xfs',
       options => '-f'
     } ->
@@ -23,8 +23,8 @@ class profile::common::mount_device (
       unless  => "/sbin/blockdev --getra ${device} | grep -w 32"
     } ->
     mount { "Mounting ${path} to ${device}":
-      name    => $path,
       ensure  => mounted,
+      name    => $path,
       device  => $device,
       fstype  => 'xfs',
       options => $options,
