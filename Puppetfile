@@ -46,5 +46,3 @@ mod 'talend-user_accounts', '0.x',
 mod 'puppetlabs-postgresql',
   :git => 'https://github.com/Talend/puppetlabs-postgresql.git',
   :ref => 'master'
-
-mod 'stankevich-python', '1.18.2'
