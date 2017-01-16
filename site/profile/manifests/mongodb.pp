@@ -9,7 +9,10 @@ class profile::mongodb (
   $service_ensure      = 'running',
   $service_enable      = true,
   $dbpath              = '/var/lib/mongo',
-  $storage_device      = undef
+  $storage_device      = undef,
+  $users               = {},
+  $roles               = {},
+
 ) {
 
   require ::profile::common::packages
@@ -50,17 +53,6 @@ class profile::mongodb (
     $mongo_auth = true
   }
 
-  $create_admin_user = "/usr/bin/mongo ipaas --eval \"db.createUser({ \
-    user: 'admin', \
-    pwd: '${::master_password}', \
-    roles: [ \
-      {role: 'userAdminAnyDatabase', db: 'admin'}, \
-      {role: 'dbAdminAnyDatabase', db: 'admin'}, \
-      {role: 'readWriteAnyDatabase', db: 'admin'}, \
-      {role: 'dbOwner', db: 'ipaas'} \
-    ] \
-});\" && /bin/touch /var/lock/mongo_admin_user_lock"
-
   class { '::profile::common::mount_device':
     device  => $storage_device,
     path    => $dbpath,
@@ -82,17 +74,19 @@ class profile::mongodb (
     dbpath         => $dbpath
   } ->
   class { '::mongodb::client':
-  }
-
-  if $service_ensure == 'running' {
-    $instanceLogicalId = pick($::cfn_resource_name, $::ec2_userdata, '')
-    if $instanceLogicalId =~ /InstanceA/ {
-      exec { 'setup MongoDB admin user':
-        command => $create_admin_user,
-        creates => '/var/lock/mongo_admin_user_lock',
-        require => Class['::mongodb::client']
-      }
-    }
+  } ->
+  class { '::profile::mongodb::roles':
+    roles => $roles,
+  } ->
+  class { '::profile::mongodb::users':
+    users => $users,
+  } ->
+  class { '::profile::mongodb::replset_reconfigure':
+    replset_size  => size($_mongo_nodes),
+    $instructions => [
+      'cfg.members[2].priority = 0;',
+      'cfg.members[2].hidden = true;'
+    ],
   }
 
   contain ::mongodb::server
