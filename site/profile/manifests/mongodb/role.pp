@@ -27,7 +27,7 @@ define profile::mongodb::role (
       creates => $lock_name,
     }
   } else {
-    notice("Skipping creating MongoDB role : empty rolename")
+    notice('Skipping creating MongoDB role : empty rolename')
   }
 
 }
