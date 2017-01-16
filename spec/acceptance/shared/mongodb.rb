@@ -26,6 +26,12 @@ shared_examples 'profile::mongodb' do
     end
   end
 
+  describe command('/usr/bin/lsblk -o KNAME,SIZE,FSTYPE -n /dev/sdb') do
+    its(:stdout) { should include 'sdb' }
+    its(:stdout) { should include '10G' }
+    its(:stdout) { should include 'xfs' }
+  end
+
   describe command('/usr/bin/mongo -u admin -p mypassword ipaas --eval "printjson(db.getUser(\'admin\'));" | /usr/bin/tr -d "\t\n "') do
     its(:stdout) { should include '{"role":"userAdminAnyDatabase","db":"admin"}' }
     its(:stdout) { should include '{"role":"dbAdminAnyDatabase","db":"admin"}' }
@@ -33,7 +39,7 @@ shared_examples 'profile::mongodb' do
     its(:stdout) { should include '{"role":"dbOwner","db":"ipaas"}' }
   end
 
-  describe file('/var/lock/mongo_admin_user_lock') do
+  describe file('/var/lib/mongo/shared_key') do
     it { should be_file }
   end
 
