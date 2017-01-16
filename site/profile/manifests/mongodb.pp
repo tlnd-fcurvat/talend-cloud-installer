@@ -80,13 +80,6 @@ class profile::mongodb (
   } ->
   class { '::profile::mongodb::users':
     users => $users,
-  } ->
-  class { '::profile::mongodb::replset_reconfigure':
-    replset_size  => size($_mongo_nodes),
-    $instructions => [
-      'cfg.members[2].priority = 0;',
-      'cfg.members[2].hidden = true;'
-    ],
   }
 
   contain ::mongodb::server
