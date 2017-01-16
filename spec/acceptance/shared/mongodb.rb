@@ -39,10 +39,6 @@ shared_examples 'profile::mongodb' do
     its(:stdout) { should include '{"role":"dbOwner","db":"ipaas"}' }
   end
 
-  describe file('/var/lib/mongo/shared_key') do
-    it { should be_file }
-  end
-
   describe 'Logrotate configuration' do
     subject { file('/etc/logrotate.d/mongodb_log').content }
     it { should include '/var/log/mongodb/mongod.log' }
