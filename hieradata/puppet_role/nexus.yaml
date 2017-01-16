@@ -2,6 +2,7 @@
 nexus::admin_password: "%{::master_password}"
 nexus::enable_anonymous_access: false
 nexus::initialize_passwords: true
+nexus::set_user_root: true
 
 profile::nexus::nexus_nodes: "%{::nexus_nodes}"
 profile::nexus::nexus_nodes_port: "%{::nexus_nodes_port}"

@@ -71,4 +71,8 @@ shared_examples 'profile::nexus' do
     it { should_not be_installed }
   end
 
+  describe file('/srv/nexus/bin/jsw/conf/wrapper.conf') do
+    its(:content) { should include 'wrapper.java.additional.3=-Djava.util.prefs.userRoot=/srv/nexus' }
+  end
+
 end
