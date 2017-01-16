@@ -24,7 +24,6 @@ define profile::mongodb::user (
     exec { "Create MongoDB user : ${username}":
       command => $create_user_cmd,
       creates => $lock_name,
-      onlyif  => "test \"true\" = \"$(/usr/bin/mongo --quiet ${db_address} --eval 'db.isMaster().ismaster')\"",
     }
   } else {
     notice("Skipping creating MongoDB user ${username} : empty password")

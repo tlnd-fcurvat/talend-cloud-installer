@@ -25,7 +25,6 @@ define profile::mongodb::role (
     exec { "Create MongoDB role : ${rolename}":
       command => $create_role_cmd,
       creates => $lock_name,
-      onlyif  => "test \"true\" = \"$(/usr/bin/mongo --quiet ${db_address} --eval 'db.isMaster().ismaster')\"",
     }
   } else {
     notice("Skipping creating MongoDB role : empty rolename")
