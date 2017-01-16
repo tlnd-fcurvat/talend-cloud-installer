@@ -6,6 +6,9 @@ tic::services::rt_flow_instance_type:    'test-instance_type'
 tic::services::rt_flow_subnet_id:        'test-subnet_id'
 tic::services::rt_flow_instance_profile: 'test-instance_profile'
 
+profile::mongodb::shared_key: 'thesharedkey'
+profile::mongodb::replset_auth_enable: 'true'
+
 profile::tic_services::nexus_nodes: '[ "10.0.2.12", "10.0.2.23" ]'
 profile::tic_services::nexus_nodes_port: '8081'
 profile::tic_services::cms_nexus_url: 'http://10.0.2.12'
