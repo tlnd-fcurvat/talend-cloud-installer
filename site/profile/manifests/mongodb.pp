@@ -41,16 +41,13 @@ class profile::mongodb (
     }
 
     if $_mongo_auth_enable == true {
-      $mongo_auth = true
       $keyfile = '/var/lib/mongo/shared_key'
     } else {
-      $mongo_auth = false
       $keyfile = undef
     }
   } else {
     $mongo_replset_name = undef
     $replset_name = undef
-    $mongo_auth = true
   }
 
   class { '::profile::common::mount_device':
@@ -63,7 +60,7 @@ class profile::mongodb (
   }->
   class { '::mongodb::server':
     verbose        => true,
-    auth           => $mongo_auth,
+    auth           => $_mongo_auth_enable,
     bind_ip        => [$::ipaddress, '127.0.0.1'],
     replset        => $replset_name,
     replset_config => $replset_config,
