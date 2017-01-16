@@ -13,3 +13,4 @@ site/profile/spec/fixtures
 .tmp/
 build/
 *.swp
+.ruby-version
