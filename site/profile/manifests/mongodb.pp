@@ -58,6 +58,15 @@ class profile::mongodb (
   class {'::mongodb::globals':
     manage_package_repo => true,
   }->
+  file { 'ensure mongodb pid file directory':
+    path => '/var/run/mongodb',
+    ensure => directory,
+    mode   => '0755',
+  } ->
+  exec { 'chown mongodb dbpath':
+    command => "chown -R  ${mongodb::server::user}:${mongodb::server::group} ${dbpath}",
+    onlyif  => "test -e ${dbpath}",
+  } ->
   class { '::mongodb::server':
     verbose        => true,
     auth           => $_mongo_auth_enable,
