@@ -59,8 +59,8 @@ class profile::mongodb (
     manage_package_repo => true,
   }->
   file { 'ensure mongodb pid file directory':
-    path => '/var/run/mongodb',
     ensure => directory,
+    path   => '/var/run/mongodb',
     mode   => '0755',
   } ->
   exec { 'chown mongodb dbpath':
