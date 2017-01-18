@@ -6,7 +6,7 @@ java::java_home: "/usr/java/jre1.8.0_60"
 
 common_packages:
   'ptic-postgresql-schemes':
-    ensure: 'installed'
+    ensure: '1.1-1'
 
 activemq::version: 'installed'
 activemq::network_password: "%{::master_password}"
