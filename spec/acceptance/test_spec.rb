@@ -10,6 +10,10 @@ describe 'role::test' do
     it { should be_installed }
   end
 
+  describe package('zip') do
+    it { should be_installed }
+  end
+
   describe command('/usr/bin/pip show invoke') do
     its(:exit_status) { should eq 0 }
   end
