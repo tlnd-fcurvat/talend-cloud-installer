@@ -8,6 +8,10 @@ syncope::postgres_host: "%{::postgres_nodes}"
 syncope::postgres_db_name: 'syncope'
 syncope::postgres_password: "%{::master_password}"
 syncope::admin_password: "%{::master_password}"
+syncope::ams_security_db_host: "%{::postgres_nodes}"
+syncope::ams_security_db_name: 'ams'
+syncope::ams_security_db_user: 'ams'
+syncope::ams_security_db_pass: "%{::master_password}"
 
 profile::postgresql::roles:
   syncope:
