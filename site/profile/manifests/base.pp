@@ -16,11 +16,7 @@ class profile::base {
   include ::profile::common::concat
   include ::profile::common::accounts
 
-  include ::pip
   include ::profile::common::cloudwatch
-  include ::awscli
-
-  Class['::pip'] -> Class['::profile::common::cloudwatch'] -> Class['::awscli']
 
   profile::register_profile { 'base': order => 1, }
 

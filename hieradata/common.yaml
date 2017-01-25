@@ -2,6 +2,10 @@
 message: "This node is using common data"
 sudo::purge: false
 
+python::virtualenv: 'present'
+python::pip: 'present'
+python::dev: 'present'
+
 common_packages:
   'hiera-eyaml':
     ensure: 'installed'
@@ -19,6 +23,9 @@ common_packages:
     ensure: 'installed'
   'cloud-init':
     ensure: 'installed'
+  'awscli':
+    ensure: 'installed'
+    provider: 'pip'
 
 packagecloud_repos:
   'talend/other':

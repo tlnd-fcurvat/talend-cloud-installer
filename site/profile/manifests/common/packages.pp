@@ -4,6 +4,7 @@
 class profile::common::packages {
 
   require ::profile::common::packagecloud_repos
+  require ::pip
 
   create_resources(
     Package,

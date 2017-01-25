@@ -6,10 +6,13 @@ class profile::common::cloudwatch (
   $include = true,
 
 ) {
+
   if $include {
+    require ::pip
 
     class { '::cloudwatch':
       metrics => hiera_hash('cloudwatch::metrics', {})
     }
   }
+
 }
