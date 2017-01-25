@@ -17,6 +17,7 @@ provisioner:
     packagecloud_master_token: <%= ENV['PACKAGECLOUD_MASTER_TOKEN'] %>
     customresourcebucket: '"[\"mytestbucket\", \"mytestprefix\"]"'
     frontend_host: 'https://the-frontend.hostname.com'
+    ec2_userdata: 'AWSResourceName=InstanceA'
     master_password: mypassword
     region: 'us-east-1'
     aws_accesskey: <%= ENV['AWS_ACCESS_KEY_ID'] %>
