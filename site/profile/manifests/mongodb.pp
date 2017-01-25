@@ -63,10 +63,6 @@ class profile::mongodb (
     path   => '/var/run/mongodb',
     mode   => '0755',
   } ->
-  exec { 'chown mongodb dbpath':
-    command => "chown -R  ${mongodb::server::user}:${mongodb::server::group} ${dbpath}",
-    onlyif  => "test -e ${dbpath}",
-  } ->
   class { '::mongodb::server':
     verbose        => true,
     auth           => $_mongo_auth_enable,
@@ -77,7 +73,8 @@ class profile::mongodb (
     keyfile        => $keyfile,
     service_ensure => $service_ensure,
     service_enable => $service_enable,
-    dbpath         => $dbpath
+    dbpath         => $dbpath,
+    dbpath_fix     => true,
   } ->
   class { '::mongodb::client':
   } ->
