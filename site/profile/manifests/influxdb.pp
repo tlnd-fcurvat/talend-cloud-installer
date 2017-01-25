@@ -16,42 +16,13 @@ class profile::influxdb (
   profile::register_profile { 'influxdb': }
 
   if $storage_device {
-    filesystem { $storage_device:
-      ensure  => present,
-      fs_type => 'xfs',
-      options => '-f',
-      before  => Class['::influxdb::server']
-    }
-
-    #creates parent path if absent
-    exec { "mkdir-${influxdb_datapath}":
-      command => "mkdir -p ${influxdb_datapath}",
-      creates => $influxdb_datapath,
-      path    => '/bin:/usr/bin',
-      before  => Class['::influxdb::server']
-    }
-
-    #configure the disk before mounting
-    exec { "fix-readahead-${storage_device}":
-      command => "/sbin/blockdev --setra 32 ${storage_device}",
-      unless  => "/sbin/blockdev --getra ${storage_device} | grep -w 32",
-      require => Filesystem[$storage_device],
-    }
-
-    #mount the storage volume, rights will be put by nexus class
-    mount { $influxdb_datapath:
-      ensure  => 'mounted',
+    class { '::profile::common::mount_device':
       device  => $storage_device,
-      fstype  => 'xfs',
+      path    => $influxdb_datapath,
       options => 'noatime,nodiratime,noexec',
-      atboot  => true,
-      require => [ Filesystem[$storage_device],
-                    Exec["mkdir-${influxdb_datapath}"],
-                    Exec["fix-readahead-${storage_device}"] ],
       before  => Class['::influxdb::server']
     }
   }
-
 
   class { '::influxdb::server':
     version                   => '1.1.1-1',
