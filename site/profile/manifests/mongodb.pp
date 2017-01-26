@@ -61,7 +61,7 @@ class profile::mongodb (
   file { 'ensure mongodb pid file directory':
     ensure => directory,
     path   => '/var/run/mongodb',
-    mode   => '0755',
+    mode   => '0777',
   } ->
   class { '::mongodb::server':
     verbose        => true,
