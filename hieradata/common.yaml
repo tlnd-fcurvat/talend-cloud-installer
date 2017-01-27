@@ -34,10 +34,10 @@ packagecloud_repos:
   'talend/thirdparty':
     type: 'rpm'
 
-cloudwatchlogs::params::region: "%{::region}"
+cloudwatchlogs::region: "%{::region}"
 profile::common::ssm::region: "%{::region}"
 
-cloudwatch::params::namespace: "talend-cloud/%{::main_stack}/%{::puppet_role}"
+cloudwatch::namespace: "talend-cloud/%{::main_stack}/%{::puppet_role}"
 
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/cfn-init.log":
