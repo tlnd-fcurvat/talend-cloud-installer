@@ -18,15 +18,11 @@ class profile::influxdb (
 
   profile::register_profile { 'influxdb': }
 
-  if $storage_device {
-    class { '::profile::common::mount_device':
-      device  => $storage_device,
-      path    => $influxdb_datapath,
-      options => 'noatime,nodiratime,noexec',
-      before  => Class['::influxdb::server']
-    }
-  }
-
+  class { '::profile::common::mount_device':
+    device  => $storage_device,
+    path    => $influxdb_datapath,
+    options => 'noatime,nodiratime,noexec',
+  } ->
   class { '::influxdb::server':
     service_enabled           => $service_enable,
     version                   => '1.1.1-1',
