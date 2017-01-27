@@ -128,3 +128,14 @@ suites:
     verifier:
       patterns:
         - 'spec/acceptance/test_spec.rb'
+  - name: role-influxdb
+    driver:
+      vagrantfiles:
+        - vagrant/second_disk.rb
+    provisioner:
+      custom_facts:
+        puppet_role: influxdb
+        storage_device: /dev/sdb
+    verifier:
+      patterns:
+        - 'spec/acceptance/influxdb_spec.rb'
