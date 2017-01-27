@@ -2,8 +2,11 @@
 # Sets up the influxdb instance
 #
 class profile::influxdb (
+
   $influxdb_datapath = '/var/lib/influxdb',
-  $storage_device    = undef
+  $storage_device    = undef,
+  $service_enable    = true,
+
 ) {
 
   require ::profile::common::packages
@@ -25,6 +28,7 @@ class profile::influxdb (
   }
 
   class { '::influxdb::server':
+    service_enabled           => $service_enable,
     version                   => '1.1.1-1',
     meta_dir                  => "${influxdb_datapath}/meta",
     data_dir                  => "${influxdb_datapath}/data",
