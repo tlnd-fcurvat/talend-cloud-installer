@@ -135,9 +135,9 @@ class profile::tic_services (
         before => Package['talend-ipaas-rt-infra']
   }
 
-  if $::environment == "ami" {
+  if $::environment == 'ami' {
     file {
-      "/etc/facter/facts.d/ipaas_services_build_version.txt":
+      '/etc/facter/facts.d/ipaas_services_build_version.txt':
         content => "ipaas_rt_infra_installed_version=${_version}"
     }
   }
