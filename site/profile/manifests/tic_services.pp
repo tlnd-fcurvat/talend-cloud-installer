@@ -185,10 +185,16 @@ class profile::tic_services (
 
   if $::environment == 'ami' {
     file {
-      ['/etc/facter', '/etc/facter/facts.d']:
+      '/etc/facter':
         ensure => directory;
+
+      '/etc/facter/facts.d':
+        ensure => directory,
+        require => File['/etc/facter'];
+
       '/etc/facter/facts.d/ipaas_services_build_version.txt':
-        content => "ipaas_rt_infra_build_version=${_version}"
+        content => "ipaas_rt_infra_build_version=${_version}",
+        require => File['/etc/facter/facts.d'];
     }
   }
 
