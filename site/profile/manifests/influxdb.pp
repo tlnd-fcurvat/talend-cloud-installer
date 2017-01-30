@@ -37,6 +37,22 @@ class profile::influxdb (
     monitoring_database       => '_internal',
     monitoring_write_interval => '10s'
   }
+  file { [ $::influxdb::server::meta_dir, $::influxdb::server::data_dir ]:
+    ensure  => 'directory',
+    owner   => $::influxdb::server::influxdb_user,
+    group   => $::influxdb::server::influxdb_group,
+    mode    => '0755',
+    require => Package['influxdb'],
+    notify  => Service['influxdb']
+  }
+  file { [ $::influxdb::server::wal_dir, $::influxdb::server::hinted_handoff_dir ]:
+    ensure  => 'directory',
+    owner   => $::influxdb::server::influxdb_user,
+    group   => $::influxdb::server::influxdb_group,
+    mode    => '0700',
+    require => Package['influxdb'],
+    notify  => Service['influxdb']
+  }
 
   contain ::influxdb::server
 }
