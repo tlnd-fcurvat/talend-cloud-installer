@@ -183,4 +183,18 @@ class profile::tic_services (
         before => Package['talend-ipaas-rt-infra']
   }
 
+  if $::environment == 'ami' {
+    file {
+      '/etc/facter/facts.d/ipaas_services_build_version.txt':
+        content => "ipaas_rt_infra_build_version=${_version}"
+    }
+  }
+
+  if versioncmp($::ipaas_rt_infra_build_version, '2.0') {
+    class {
+      'tic::services20':
+        iam_service_node       => 'iam-test-node'
+    }
+  }
+
 }

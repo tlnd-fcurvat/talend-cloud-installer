@@ -146,3 +146,6 @@ tic::services::karaf_features_install:
   - 'tesb-el-server'
   - 'tipaas-crypto-service-core'
   - 'tipaas-logs-transfer-service-client'
+
+tic::services20::karaf_features_install:
+  - 'tipaas-account-manager-service'
