@@ -149,3 +149,6 @@ tic::services::karaf_features_install:
   - 'tipaas-notification-manager'
   - 'tipaas-notification-server'
   - 'tipaas-notification-sendgrid-webhook-service'
+
+tic::services20::karaf_features_install:
+  - 'tipaas-account-manager-service'
