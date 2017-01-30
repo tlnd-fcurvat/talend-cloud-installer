@@ -78,6 +78,7 @@ tic::services::crypto_current_region: "%{::region}"
 tic::services::crypto_secondary_regions: "%{::region}"
 
 tic::services::tipaas_email_subject: "Confirmation Required for Talend Integration Cloud Trial"
+tic::services20::iam_service_node: "%{::iam_internal_elb_dns_name}"
 
 profile::amazon_ses_smtp::region: '%{::region}'
 profile::amazon_ses_smtp::domain: 'localhost'

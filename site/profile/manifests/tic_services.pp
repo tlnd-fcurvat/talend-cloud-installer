@@ -191,10 +191,7 @@ class profile::tic_services (
   }
 
   if versioncmp($::ipaas_rt_infra_build_version, '2.0') {
-    class {
-      'tic::services20':
-        iam_service_node       => 'iam-test-node'
-    }
+      include 'tic::services20'
   }
 
 }
