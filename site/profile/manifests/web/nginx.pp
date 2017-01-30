@@ -28,6 +28,13 @@ class profile::web::nginx {
         port     => $vhosts['redirect']['listen_port'],
       }
     }
+    if has_key($vhosts, 'tic_services') {
+      selinux::port{ 'allow-http-tic_services-port':
+        context  => 'http_port_t',
+        protocol => 'tcp',
+        port     => $vhosts['tic_services']['listen_port'],
+      }
+    }
   }
 
 }

@@ -24,10 +24,7 @@ class profile::tic_services (
 
   require ::profile::java
   require ::profile::postgresql
-
-  include ::profile::common::concat
-  include ::profile::common::cloudwatchlogs
-  include ::nginx
+  include ::profile::web::nginx
 
   profile::register_profile { 'tic_services': }
 
