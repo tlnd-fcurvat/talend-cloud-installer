@@ -55,11 +55,6 @@ describe 'role::tic_services_internal' do
     it { should match /wrapper.disable_restarts\s*=\s*true/ }
   end
 
-  describe 'CMS configuration' do
-    subject { file('/opt/talend/ipaas/rt-infra/etc/org.talend.ipaas.rt.cms.config.cfg').content }
-    it { should include 'karaf/org.ops4j.pax.url.mvn/org.ops4j.pax.url.mvn.repositories=http://{{username}}:{{password}}@10.0.2.12' }
-  end
-
   describe 'Artifact Manager Service configuration' do
     subject { file('/opt/talend/ipaas/rt-infra/etc/org.talend.ipaas.rt.am.service.cfg').content }
     it { should include 'nexus_urls=http://10.0.2.12:8081/nexus,http://10.0.2.23:8081/nexus' }

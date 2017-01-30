@@ -69,4 +69,9 @@ describe 'role::tic_services_external' do
     it { should include 'object.key.prefix=td-prefix' }
   end
 
+  describe 'CMS configuration' do
+    subject { file('/opt/talend/ipaas/rt-infra/etc/org.talend.ipaas.rt.cms.config.cfg').content }
+    it { should include 'karaf/org.ops4j.pax.url.mvn/org.ops4j.pax.url.mvn.repositories=http://{{username}}:{{password}}@10.0.2.12' }
+  end
+
 end
