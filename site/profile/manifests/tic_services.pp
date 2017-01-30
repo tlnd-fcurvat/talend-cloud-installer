@@ -189,7 +189,7 @@ class profile::tic_services (
         ensure => directory;
 
       '/etc/facter/facts.d':
-        ensure => directory,
+        ensure  => directory,
         require => File['/etc/facter'];
 
       '/etc/facter/facts.d/ipaas_services_build_version.txt':
