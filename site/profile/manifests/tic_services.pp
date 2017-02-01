@@ -184,18 +184,12 @@ class profile::tic_services (
   }
 
   if $::environment == 'ami' {
-    file {
-      '/etc/facter':
-        ensure => directory;
 
-      '/etc/facter/facts.d':
-        ensure  => directory,
-        require => File['/etc/facter'];
-
-      '/etc/facter/facts.d/ipaas_services_build_version.txt':
-        content => "ipaas_rt_infra_build_version=${_version}",
-        require => File['/etc/facter/facts.d'];
+    class {
+      'profile::build_time_facts':
+        facts_hash => {'ipaas_rt_infra_build_version' => $_version}
     }
+
   }
 
   if versioncmp($::ipaas_rt_infra_build_version, '2.0') > 0 {
