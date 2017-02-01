@@ -23,4 +23,17 @@ class profile::tic_frontend (
 
   contain ::tic::frontend
 
+  if $::environment == 'ami' {
+
+    class {
+      'profile::build_time_facts':
+        facts_hash => {'ipaas_frontend_build_version' => $_version}
+    }
+  }
+
+ if versioncmp($::ipaas_frontend_build_version, '2.0') > 0 {
+      include 'tic::frontend20'
+  }
+
+
 }
