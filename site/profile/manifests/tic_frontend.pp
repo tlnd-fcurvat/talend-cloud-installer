@@ -31,7 +31,7 @@ class profile::tic_frontend (
     }
   }
 
- if versioncmp($::ipaas_frontend_build_version, '2.0') > 0 {
+  if versioncmp($::ipaas_frontend_build_version, '2.0') > 0 {
       include 'tic::frontend20'
   }
 
