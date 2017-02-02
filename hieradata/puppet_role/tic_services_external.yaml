@@ -83,6 +83,7 @@ tic::services::syncope_password: "%{::master_password}"
 tic::services::trial_db_password: "%{::master_password}"
 tic::services::webhooks_redis_host: "%{::redis_nodes}"
 tic::services::webhooks_external_url: "%{::webhooks_host}"
+tic::services::account_manager_nodes: "%{::tic_services_internal_nodes}"
 
 tic::services::logs_datasource_servername: "%{::postgres_nodes}"
 tic::services::logs_datasource_password: "%{::master_password}"
