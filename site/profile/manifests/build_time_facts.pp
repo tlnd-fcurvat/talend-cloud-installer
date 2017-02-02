@@ -17,7 +17,7 @@ class profile::build_time_facts($facts_hash) {
       require => File['/etc/facter'];
 
     '/etc/facter/facts.d/build_time_facts.json':
-      content => inline_template('<%= Hash[@facts_hash.sort_by { |key, val| key }] %>'),
+      content => inline_template('<%= Hash[@facts_hash.sort_by { |key, val| key }].to_json %>'),
       require => File['/etc/facter/facts.d'];
   }
 }
