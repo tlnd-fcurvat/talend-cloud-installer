@@ -43,3 +43,6 @@ profile::tic_services::flow_logs_bucket_data: '["fl-bucket", "fl-prefix"]'
 profile::tic_services::downloads_bucket_data: '["dl-bucket", "dl-prefix"]'
 
 profile::elasticsearch::security_group: 'sg-889900ff'
+
+#For Kafka, in vagrant mode (kitchen test), java is already installed by zookeeper required profile
+kafka::install_java: false

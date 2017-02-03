@@ -27,3 +27,4 @@ dataprep_dataset::service_enable: false
 profile::elasticsearch::status: 'disabled'
 profile::elasticsearch::security_group: 'not_available'
 profile::influxdb::service_enable: false
+kafka::broker::service_ensure: 'stopped'

@@ -1,4 +1,6 @@
 require 'serverspec'
+require 'facter'
+
 Dir[Pathname.new(File.dirname(__FILE__)).join('shared/**/*.rb')].each{ |f| require f }
 
 RSpec.configure do |config|
