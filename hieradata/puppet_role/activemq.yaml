@@ -9,6 +9,7 @@ common_packages:
     ensure: '1.1-1'
 
 activemq::version: 'installed'
+activemq::network_password: "%{::master_password}"
 activemq::network_user: 'activemq'
 activemq::brokers: '%{::activemq_nodes}'
 activemq::java_home: '/usr/java/default'
@@ -17,9 +18,11 @@ activemq::zookeeper_nodes: '%{::zookeeper_nodes}'
 activemq::pg_host: "%{::postgres_nodes}"
 activemq::pg_db: 'ams'
 activemq::pg_username: 'ams'
+activemq::pg_password: "%{::master_password}"
 activemq::auth_url: 'http://%{::syncope_nodes}:8080/activemq-security-service/authenticate'
 activemq::persistence: 'postgres'
 activemq::persistence_pg_host: "%{::activemq_postgres_nodes}"
+activemq::persistence_pg_password: "%{::master_password}"
 
 profile::postgresql::roles:
   ams:
