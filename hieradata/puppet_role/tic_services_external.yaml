@@ -87,6 +87,7 @@ tic::services::account_manager_nodes: "%{::tic_services_internal_nodes}"
 tic::services::flow_manager_nodes: "%{::tic_services_internal_nodes}"
 tic::services::bookkeeper_service_nodes: "%{::tic_services_internal_nodes}"
 tic::services::crypto_service_nodes: "%{::tic_services_internal_nodes}"
+tic::services::pe_service_nodes: "%{::tic_services_internal_nodes}"
 
 tic::services::logs_datasource_servername: "%{::postgres_nodes}"
 tic::services::logs_datasource_password: "%{::master_password}"
