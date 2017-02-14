@@ -19,6 +19,7 @@ class profile::kafka (
 ) {
 
   require ::profile::common::packages
+  require ::profile::java
   include ::logrotate
   include ::profile::common::concat
   # FIXME rework cloudwatch to add defines and so manage easily each mount in each profiles
@@ -49,7 +50,8 @@ class profile::kafka (
   } ->
   class { '::kafka':
     version       => $kafka_version,
-    scala_version => $scala_version
+    scala_version => $scala_version,
+    install_java  => false
   } ->
   class { '::kafka::broker':
     config                     => deep_merge($_kafka_broker_config, $kafka_broker_config),
