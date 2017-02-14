@@ -144,9 +144,10 @@ suites:
       vagrantfiles:
         - vagrant/second_disk.rb
     provisioner:
+      manifests_path: kitchen_manifests
+      manifest: kafka.pp
       custom_facts:
         puppet_role: kafka
-        kitchen_test: true
         storage_device: /dev/sdb
         topics_replication_factor: 1
         topics_partitions: 6
