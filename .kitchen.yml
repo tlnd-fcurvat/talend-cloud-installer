@@ -144,7 +144,7 @@ suites:
       vagrantfiles:
         - vagrant/second_disk.rb
     provisioner:
-      manifests_path: kitchen_manifests
+      manifests_path: examples
       manifest: kafka.pp
       custom_facts:
         puppet_role: kafka
