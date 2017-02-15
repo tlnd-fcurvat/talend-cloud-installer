@@ -4,11 +4,11 @@
   - yaml
 
 :hierarchy:
+  - extra
   - clientcert/%{clientcert}
   - environment/%{::environment}
   - puppet_role/%{puppet_role}
   - common
-  - extra
 
 :yaml:
   :datadir: "%{settings::confdir}/hieradata"
