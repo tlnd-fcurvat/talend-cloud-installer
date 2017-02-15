@@ -3,6 +3,7 @@ FORGE
   specs:
     camptocamp-accounts (1.8.0)
       puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
+    camptocamp-systemd (0.4.0)
     ceritsc-yum (0.9.8)
       puppetlabs-stdlib (>= 4.2.0)
     computology-packagecloud (0.3.1)
@@ -33,6 +34,8 @@ FORGE
     landcareresearch-amazon_ses (0.1.4)
       puppetlabs-stdlib (>= 2.4.0)
     maestrodev-wget (1.7.3)
+    puppet-archive (1.2.0)
+      puppetlabs-stdlib (< 5.0.0, >= 4.6.0)
     puppet-staging (1.0.7)
     puppetlabs-apt (2.3.0)
       puppetlabs-stdlib (< 5.0.0, >= 4.5.0)
@@ -64,6 +67,17 @@ FORGE
       puppetlabs-stdlib (>= 3.2.1)
     yo61-logrotate (1.4.0)
       puppetlabs-stdlib (< 5.0.0, >= 1.0.0)
+
+GIT
+  remote: https://github.com/Talend/puppet-kafka.git
+  ref: master
+  sha: 9faf6a9acb9a26822fa502ce1b8affa8a68cb467
+  specs:
+    talend-kafka (2.2.1-rc0)
+      camptocamp-systemd (< 2.0.0, >= 0.4.0)
+      puppet-archive (>= 1.0.0)
+      puppetlabs-java (>= 1.4.2)
+      puppetlabs-stdlib (>= 4.11.0)
 
 GIT
   remote: https://github.com/Talend/puppet-nexus.git
@@ -149,6 +163,7 @@ DEPENDENCIES
   talend-cloudwatch (~> 0.0)
   talend-cloudwatchlogs (~> 0.0)
   talend-dataprep_dataset (~> 0.0)
+  talend-kafka (>= 0)
   talend-syncope (~> 0.0)
   talend-tic (~> 0.0)
   talend-user_accounts (~> 0.0)

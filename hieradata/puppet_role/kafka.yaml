@@ -1,0 +1,43 @@
+---
+profile::kafka::zookeeper_nodes: "%{::zookeeper_nodes}"
+profile::kafka::storage_device: "%{::storage_device}"
+
+cloudwatchlog_files:
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/kafka/logs/server.log":
+    path: '/opt/kafka/logs/server.log'
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/kafka/logs/state-change.log":
+    path: '/opt/kafka/logs/state-change.log'
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/kafka/logs/kafka-request.log":
+    path: '/opt/kafka/logs/kafka-request.log'
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/kafka/logs/log-cleaner.log":
+    path: '/opt/kafka/logs/log-cleaner.log'
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/kafka/logs/controller.log":
+    path: '/opt/kafka/logs/controller.log'
+  "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/kafka/logs/kafka-authorizer.log":
+    path: '/opt/kafka/logs/kafka-authorizer.log'
+
+
+cloudwatch::metrics:
+  DiskSpace:
+    type              : diskspace
+    params            : '-f /var/lib/kafka'
+    unit              : Percent
+    description       : 'Percentage of used disk space for kafka topics'
+    statistic         : 'Average'
+    period            : 300
+    evaluationperiods : 3
+    threshold         : 80
+    comparisonoperator: "GreaterThanThreshold"
+
+profile::kafka::kafka_broker_config:
+  log.cleanup.policy: 'delete'
+  log.retention.bytes: "%{::topics_max_size_bytes}"
+  log.retention.ms: "%{::topics_max_age_ms}"
+
+profile::kafka::kafka_topics_config:
+  tpsvclogs:
+    replication_factor: "%{::topics_replication_factor}"
+    partitions: "%{::topics_partitions}"
+  zipkin:
+    replication_factor: "%{::topics_replication_factor}"
+    partitions: "%{::topics_partitions}"
