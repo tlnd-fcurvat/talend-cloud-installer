@@ -110,6 +110,7 @@ profile::tic_services::test_data_bucket_data: "%{::testdatabucket}"
 profile::tic_services::flow_logs_bucket_data: "%{::flowlogsbucket}"
 profile::tic_services::downloads_bucket_data: "%{::downloadsbucket}"
 
+tic::services::cms_node: "%{::tic_services_internal_nodes}"
 tic::services::kms_key_alias: "%{::kms_key_alias}"
 tic::services::cms_dts_service_url: "%{::dts_host}"
 tic::services::cms_lts_service_url: "%{::lts_host}"
@@ -156,7 +157,6 @@ tic::services::karaf_features_install:
   - 'tipaas-notification-subscription-client'
   - 'tipaas-data-transfer-service-client'
   - 'tipaas-data-transfer-service-core'
-  - 'tipaas-container-management-service'
   - 'tipaas-pairing-service'
   - 'tipaas-webhooks-service'
   - 'tipaas-logs-transfer-service-core'

@@ -43,7 +43,6 @@ tic::services::ams_postgres_password: "%{::master_password}"
 tic::services::ams_syncope_host: "%{::syncope_nodes}"
 tic::services::ams_syncope_password: "%{::master_password}"
 tic::services::cms_db_password: "%{::master_password}"
-tic::services::cms_node: "%{::tic_services_external_nodes}"
 tic::services::config_db_password: "%{::master_password}"
 tic::services::crypto_db_password: "%{::master_password}"
 tic::services::elasticsearch_host: "%{::elasticsearch_nodes}"
@@ -128,6 +127,7 @@ tic::services::karaf_features_install:
   - 'tipaas-notification-client'
   - 'tipaas-notification-subscription-client'
   - 'tipaas-data-transfer-service-client'
+  - 'tipaas-container-management-service'
   - 'tipaas-artifact-manager-service'
   - 'tipaas-schema-discovery-service-core'
   - 'tipaas-custom-resources-service'
