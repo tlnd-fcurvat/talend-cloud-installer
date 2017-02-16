@@ -1,5 +1,5 @@
 ---
-nginx::nginx_vhosts:
+nginx::nginx_servers:
   es:
     listen_port: 8080 
     proxy: 'https://%{::elasticsearch_sys}'

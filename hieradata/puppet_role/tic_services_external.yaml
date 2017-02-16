@@ -11,7 +11,7 @@ tic::services::java_home: "/usr/java/jre1.8.0_60"
 
 tic::services::osgi_http_service_port: 8180
 nginx::service_ensure: 'running'
-nginx::nginx_vhosts:
+nginx::nginx_servers:
   tic_services:
     client_max_body_size: '300M'
     listen_port: 8181
@@ -32,19 +32,19 @@ nginx::nginx_vhosts:
 nginx::nginx_locations:
   webhooks_status:
     location: '/status'
-    vhost: 'webhooks'
+    server: 'webhooks'
     proxy: 'http://localhost:8181/services/healthcheck/is-ok'
   dts_status:
     location: '/status'
-    vhost: 'dts'
+    server: 'dts'
     proxy: 'http://localhost:8181/services/healthcheck/is-ok'
   lts_status:
     location: '/status'
-    vhost: 'lts'
+    server: 'lts'
     proxy: 'http://localhost:8181/services/healthcheck/is-ok'
   pairing_status:
     location: '/status'
-    vhost: 'pairing'
+    server: 'pairing'
     proxy: 'http://localhost:8181/services/healthcheck/is-ok'
 
 profile::tic_services::version: "%{::tic_services_version}"
