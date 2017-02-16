@@ -44,10 +44,10 @@ cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/srv/tomcat/ipaas-srv/logs/inventory-service.log":
     path: '/srv/tomcat/ipaas-srv/logs/inventory-service.log'
 
-nginx::nginx_servers:
+nginx::nginx_vhosts:
   'redirect':
     use_default_location: false
     server_name: ['_']
     listen_port: 8088
-    server_cfg_append:
+    vhost_cfg_append:
       rewrite: '^ https://$host$request_uri? permanent'
