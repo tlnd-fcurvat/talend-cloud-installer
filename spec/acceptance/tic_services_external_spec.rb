@@ -28,11 +28,6 @@ describe 'role::tic_services_external' do
     it { should be_running.under('systemd') }
   end
 
-  describe 'TIC Services Nginx Configuration' do
-    subject { file('/etc/nginx/sites-available/tic_services.conf').content }
-    it { should include 'client_max_body_size 300M;' }
-  end
-
   describe 'Service configuration' do
     subject { file('/opt/talend/ipaas/rt-infra/etc/rt-infra-service-wrapper.conf').content }
     it { should match /wrapper.jvm_kill.delay\s*=\s*5/ }
