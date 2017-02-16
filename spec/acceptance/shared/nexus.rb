@@ -67,6 +67,17 @@ shared_examples 'profile::nexus' do
     its(:content) { should include 'location @nexus1' }
   end
 
+  describe 'Nginx configuration' do
+    subject { file('/etc/nginx/nginx.conf').content }
+    it { should match(/server_tokens.*off;/) }
+    it { should match(/keepalive_timeout.*5 5;/) }
+    it { should match(/client_body_buffer_size.*128k;/) }
+    it { should match(/client_max_body_size.*500M;/) }
+    it { should match(/proxy_connect_timeout.*3600;/) }
+    it { should match(/proxy_read_timeout.*3600;/) }
+    it { should match(/proxy_send_timeout.*3600;/) }
+  end
+
   describe package('jre-jce') do
     it { should_not be_installed }
   end

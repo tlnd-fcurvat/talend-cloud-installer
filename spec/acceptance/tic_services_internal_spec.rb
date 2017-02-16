@@ -36,6 +36,17 @@ describe 'role::tic_services_internal' do
     it { should be_running.under('systemd') }
   end
 
+  describe 'Nginx configuration' do
+    subject { file('/etc/nginx/nginx.conf').content }
+    it { should match(/server_tokens.*off;/) }
+    it { should match(/keepalive_timeout.*5 5;/) }
+    it { should match(/client_body_buffer_size.*128k;/) }
+    it { should match(/client_max_body_size.*500M;/) }
+    it { should match(/proxy_connect_timeout.*3600;/) }
+    it { should match(/proxy_read_timeout.*3600;/) }
+    it { should match(/proxy_send_timeout.*3600;/) }
+  end
+
   describe command('/usr/bin/curl http://localhost:8181/services') do
     its(:stdout) { should include 'Service list' }
   end
