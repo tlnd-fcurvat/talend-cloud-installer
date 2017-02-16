@@ -36,6 +36,11 @@ describe 'role::tic_services_internal' do
     it { should be_running.under('systemd') }
   end
 
+  describe 'TIC Services Nginx Configuration' do
+    subject { file('/etc/nginx/sites-available/tic_services.conf').content }
+    it { should include 'client_max_body_size 300M;' }
+  end
+
   describe command('/usr/bin/curl http://localhost:8181/services') do
     its(:stdout) { should include 'Service list' }
   end
