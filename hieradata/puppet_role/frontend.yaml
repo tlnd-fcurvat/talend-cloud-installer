@@ -6,6 +6,15 @@ java::java_home: "/usr/java/jre1.8.0_60"
 
 profile::tic_frontend::version: "%{::tic_frontend_version}"
 
+profile::common::hosts::entries:
+  mongo:
+    entries: "%{::mongodb_nodes}"
+    aliases:
+      - "mongo%index%.at.internal-tipaas.com"
+      - "mongo%index%.st.internal-tipaas.com"
+      - "mongo%index%.pr.internal-tipaas.com"
+      - "mongo%index%"
+
 tic::frontend::java_home: "/usr/java/jre1.8.0_60"
 tic::frontend::sts_host: '%{::syncope_nodes}'
 tic::frontend::sts_username: 'admin'
