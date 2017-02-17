@@ -6,6 +6,15 @@ tic::services::rt_flow_instance_type:    'test-instance_type'
 tic::services::rt_flow_subnet_id:        'test-subnet_id'
 tic::services::rt_flow_instance_profile: 'test-instance_profile'
 
+profile::common::hosts::entries:
+  mongo:
+    entries: '[ "10.0.2.12", "10.0.2.23" ]'
+    aliases:
+      - "mongo%index%.com"
+      - "mongo%index%.org"
+      - "mongo%index%.net"
+      - "mongo%index%.io"
+
 profile::tic_services::nexus_nodes: '[ "10.0.2.12", "10.0.2.23" ]'
 profile::tic_services::nexus_nodes_port: '8081'
 profile::tic_services::cms_nexus_url: 'http://10.0.2.12'
