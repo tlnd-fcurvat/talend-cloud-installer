@@ -154,6 +154,12 @@ class profile::tic_services (
     $_ams_password_reset_url_template = undef
   }
 
+  if size($rt_flow_subnet_ids) > 1 {
+    $rt_flow_failover_subnets_ids = delete_at($rt_flow_subnet_ids, 0)
+  } else {
+    $rt_flow_failover_subnets_ids = []
+  }
+
   class { '::tic::services':
     activemq_nodes                  => $_activemq_nodes,
     mongo_nodes                     => $_mongo_nodes,
@@ -161,6 +167,7 @@ class profile::tic_services (
     cms_nexus_url                   => $__cms_nexus_url,
     zookeeper_nodes                 => $_zookeeper_nodes,
     rt_flow_subnet_id               => $rt_flow_subnet_ids[0],
+    rt_flow_failover_subnets_ids    => $rt_flow_failover_subnets_ids,
     version                         => $_version,
     dispatcher_nexus_url            => $_cms_nexus_url,
     cr_bucket_name                  => $cr_bucket_name,
