@@ -9,6 +9,15 @@ profile::java::packages:
 
 tic::services::java_home: "/usr/java/jre1.8.0_60"
 
+profile::common::hosts::entries:
+  mongo:
+    entries: "%{::mongodb_nodes}"
+    aliases:
+      - "mongo%index%.at.internal-tipaas.com"
+      - "mongo%index%.st.internal-tipaas.com"
+      - "mongo%index%.pr.internal-tipaas.com"
+      - "mongo%index%"
+
 tic::services::osgi_http_service_port: 8180
 nginx::service_ensure: 'running'
 nginx::nginx_vhosts:

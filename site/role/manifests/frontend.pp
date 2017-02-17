@@ -8,6 +8,7 @@ class role::frontend {
 
   include ::profile::common::concat
   include ::profile::common::cloudwatchlogs
+  include ::profile::common::hosts
   include ::profile::web::nginx
 
   contain ::profile::tic_frontend
