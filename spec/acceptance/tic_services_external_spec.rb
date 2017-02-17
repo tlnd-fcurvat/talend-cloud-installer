@@ -69,4 +69,19 @@ describe 'role::tic_services_external' do
     it { should include 'object.key.prefix=td-prefix' }
   end
 
+  %w(
+    mongo0.com
+    mongo0.net
+    mongo0.org
+    mongo0.io
+    mongo1.com
+    mongo1.net
+    mongo1.org
+    mongo1.io
+  ).each do |h|
+    describe host(h) do
+      it { should be_resolvable.by('hosts') }
+    end
+  end
+
 end
