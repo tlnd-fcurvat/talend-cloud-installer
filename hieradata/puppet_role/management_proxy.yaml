@@ -1,5 +1,3 @@
 ---
-nginx::nginx_vhosts:
-  es:
-    listen_port: 8080
-    proxy: 'https://%{::elasticsearch_sys}'
+role::management_proxy::elasticsearch_host: "%{::elasticsearch_sys}"
+role::management_proxy::elasticsearch_url_scheme: 'https'
