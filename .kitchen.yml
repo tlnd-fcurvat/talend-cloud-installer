@@ -156,3 +156,17 @@ suites:
     verifier:
       patterns:
         - 'spec/acceptance/kafka_spec.rb'
+  - name: role-management_proxy
+    driver:
+      vagrantfiles:
+        - vagrant/second_disk.rb
+    provisioner:
+      manifests_path: examples
+      manifest: management_proxy.pp
+      custom_facts:
+        puppet_role: management_proxy
+        elasticsearch_sys: localhost:9200
+        storage_device: /dev/sdb
+    verifier:
+      patterns:
+        - 'spec/acceptance/management_proxy_spec.rb'
