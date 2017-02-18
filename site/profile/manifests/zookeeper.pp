@@ -25,5 +25,5 @@ class profile::zookeeper (
   class { '::zookeeper':
     zookeeper_nodes => $_zookeeper_ec2_hostnames
   }
-
+  contain ::profile::zookeeper::backup
 }

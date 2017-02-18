@@ -34,7 +34,8 @@ class profile::elasticsearch (
 
   contain ::profile::elasticsearch::setup
   contain ::profile::elasticsearch::wait
-
+  contain ::profile::elasticsearch::backup
+  
   include ::profile::common::concat
   include ::profile::common::cloudwatchlogs
 
