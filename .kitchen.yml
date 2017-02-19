@@ -112,6 +112,12 @@ suites:
       vagrantfiles:
         - vagrant/second_disk.rb
     provisioner:
+      custom_pre_install_command: |
+        sudo /usr/sbin/mkfs.xfs /dev/sdb
+        sudo /usr/bin/mount /dev/sdb /mnt
+        sudo /usr/bin/touch /mnt/mongod.lock
+        sudo /usr/bin/chown root:root /mnt/mongod.lock
+        sudo /usr/bin/umount /mnt
       custom_facts:
         puppet_role: mongodb
         cfn_resource_name: InstanceA
