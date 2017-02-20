@@ -11,8 +11,8 @@ profile::common::hosts::entries:
     entries: "%{::mongodb_nodes}"
     aliases:
       - "mongo%index%.at.internal-tipaas.com"
-      - "mongo%index%.st.internal-tipaas.com"
-      - "mongo%index%.pr.internal-tipaas.com"
+      - "mongo%index%.staging.internal-tipaas.com"
+      - "mongo%index%.production.internal-tipaas.com"
       - "mongo%index%"
 
 tic::frontend::java_home: "/usr/java/jre1.8.0_60"
