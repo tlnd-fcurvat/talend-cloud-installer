@@ -85,6 +85,15 @@ class profile::mongodb (
     users => $users,
   }
 
+  if $storage_device {
+    class { '::profile::common::mount_device::fixup_ownership':
+      path                    => $dbpath,
+      owner                   => 'mongod',
+      group                   => 'mongod',
+      fixup_ownership_require => Package['mongodb_server']
+    }
+  }
+
   contain ::mongodb::server
   contain ::mongodb::client
 
