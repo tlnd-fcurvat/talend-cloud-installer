@@ -117,6 +117,7 @@ describe 'role::tic_services_internal' do
     its(:content) { should include 'nodeman.subnet.failover.us-east-1' }
     its(:content) { should include '"value": "subnet-aaaaaaaa"' }
     its(:content) { should include '"value": ["subnet-bbbbbbbb", "subnet-cccccccc"]' }
+    its(:content) { should include '"value": "my-release"' }
   end
 
 end

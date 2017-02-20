@@ -46,6 +46,7 @@ profile::tic_services::frontend_host: "%{::frontend_host}"
 
 tic::services::rt_flow_security_groups: "%{::flow_execution_security_group}"
 tic::services::rt_flow_ami_id: "%{::rt_flow_ami_id}"
+tic::services::rt_flow_t_release: "trunk"
 tic::services::rt_flow_instance_profile: "%{::flow_execution_instance_profile}"
 
 tic::services::mongo_admin_user: "admin"
