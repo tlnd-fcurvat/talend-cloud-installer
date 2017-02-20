@@ -4,7 +4,8 @@ tic::services::rt_flow_ami_id:           'test-ami_id'
 tic::services::rt_flow_security_groups:  'test-security_groups'
 tic::services::rt_flow_instance_type:    'test-instance_type'
 tic::services::rt_flow_instance_profile: 'test-instance_profile'
-tic::services::rt_flow_t_release: "my-release"
+tic::services::rt_flow_t_release:         'my-release'
+tic::services::rt_flow_t_branch:          'my-branch'
 
 profile::common::hosts::entries:
   mongo:
