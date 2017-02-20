@@ -3,7 +3,6 @@
 tic::services::rt_flow_ami_id:           'test-ami_id'
 tic::services::rt_flow_security_groups:  'test-security_groups'
 tic::services::rt_flow_instance_type:    'test-instance_type'
-tic::services::rt_flow_subnet_id:        'test-subnet_id'
 tic::services::rt_flow_instance_profile: 'test-instance_profile'
 
 profile::common::hosts::entries:
@@ -15,6 +14,7 @@ profile::common::hosts::entries:
       - "mongo%index%.net"
       - "mongo%index%.io"
 
+profile::tic_services::flow_execution_subnets: '["subnet-aaaaaaaa", "subnet-bbbbbbbb", "subnet-cccccccc"]'
 profile::tic_services::nexus_nodes: '[ "10.0.2.12", "10.0.2.23" ]'
 profile::tic_services::nexus_nodes_port: '8081'
 profile::tic_services::cms_nexus_url: 'http://10.0.2.12'
