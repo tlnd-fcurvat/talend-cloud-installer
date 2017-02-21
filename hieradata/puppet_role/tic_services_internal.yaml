@@ -89,12 +89,12 @@ tic::services::ams_mail_config_update_period: "1800000"
 tic::services::ams_mail_config_password_reset: "templates/password_reset_email_description.xml"
 tic::services::ams_mail_config_user_created: "templates/user_created_email_description.xml"
 tic::services::ams_current_region: "%{::region}"
-tic::services::ams_disaster_region: "%{::region}"
+tic::services::ams_disaster_region: "%{::kms_secondary_region}"
 
 tic::services::rt_aws_region: "%{::region}"
 
 tic::services::crypto_current_region: "%{::region}"
-tic::services::crypto_secondary_regions: "%{::region}"
+tic::services::crypto_secondary_regions: "%{::kms_secondary_region}"
 
 tic::services::tipaas_email_subject: "Confirmation Required for Talend Integration Cloud Trial"
 tic::services20::iam_service_node: "%{::iam_internal_elb_dns_name}"
