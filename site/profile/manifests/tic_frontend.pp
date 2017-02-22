@@ -7,6 +7,7 @@ class profile::tic_frontend (
 
 ) {
 
+  include ::logrotate
   include ::profile::common::concat
 
   profile::register_profile { 'tic_frontend': }

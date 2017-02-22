@@ -43,6 +43,24 @@ tic::frontend::web_samples_account_name: "sample"
 
 tic::frontend::web_use_ssl: false
 
+logrotate::ensure: 'present'
+logrotate::hieramerge: true
+logrotate::rules:
+  catalina_out:
+    path: '/srv/tomcat/ipaas-srv/logs/catalina.*'
+    maxsize: '250M'
+    copytruncate: true
+    rotate: 5
+    rotate_every: 'hour'
+    compress: true
+  tomcat_log:
+    path: '/srv/tomcat/ipaas-srv/logs/*.log'
+    maxsize: '250M'
+    copytruncate: true
+    rotate: 5
+    rotate_every: 'hour'
+    compress: true
+
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/srv/tomcat/ipaas-srv/logs/catalina.out":
     path: '/srv/tomcat/ipaas-srv/logs/catalina.out'
