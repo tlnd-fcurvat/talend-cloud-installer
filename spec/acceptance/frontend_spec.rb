@@ -96,6 +96,20 @@ describe 'role::frontend' do
     it { should_not be_installed }
   end
 
+  describe 'Catalina logs logrotate configuration' do
+    subject { file('/etc/logrotate.d/hourly/catalina_out').content }
+    it { should include '/srv/tomcat/ipaas-srv/logs/catalina.*' }
+    it { should include 'maxsize 250M' }
+    it { should include 'copytruncate' }
+  end
+
+  describe 'Tomcat logs logrotate configuration' do
+    subject { file('/etc/logrotate.d/hourly/tomcat_log').content }
+    it { should include '/srv/tomcat/ipaas-srv/logs/*.log' }
+    it { should include 'maxsize 250M' }
+    it { should include 'copytruncate' }
+  end
+
   %w(
     mongo0.com
     mongo0.net
