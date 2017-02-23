@@ -82,7 +82,7 @@ GIT
 GIT
   remote: https://github.com/Talend/puppet-nexus.git
   ref: master
-  sha: 22c0cb81ee1cf6b14145aa813949301180dc50c7
+  sha: 22de0d933cd66f82dc16cbe090b71e92a6dec584
   specs:
     hubspot-nexus (1.3.4)
       maestrodev-wget (< 2.0.0, >= 1.0.0)
