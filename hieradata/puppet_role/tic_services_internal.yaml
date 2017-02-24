@@ -98,6 +98,9 @@ tic::services::crypto_secondary_regions: "%{::kms_secondary_region}"
 
 tic::services::zookeeper_prefix: "/subenv/talend/role/bookkeeper"
 
+tic::services::dispatcher_input_queue: "ipaas.talend.dispatcher.input.queue"
+tic::services::dispatcher_response_queue: "ipaas.talend.dispatcher.response.queue"
+
 tic::services::tipaas_email_subject: "Confirmation Required for Talend Integration Cloud Trial"
 tic::services20::iam_service_node: "%{::iam_internal_elb_dns_name}"
 
