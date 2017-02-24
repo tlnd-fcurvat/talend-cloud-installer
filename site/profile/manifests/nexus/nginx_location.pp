@@ -32,7 +32,7 @@ define profile::nexus::nginx_location (
     proxy      => "http://${vhost}${parts[0]}",
     raw_append => concat(
       $raw_append,
-      ['limit_except GET { deny all; }']
+      ['limit_except GET { deny all; }', 'proxy_cookie_path /nexus /;']
     ),
   }
 
