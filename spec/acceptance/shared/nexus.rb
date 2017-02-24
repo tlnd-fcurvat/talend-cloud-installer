@@ -51,6 +51,16 @@ shared_examples 'profile::nexus' do
         its(:stdout) { should include 'HTTP/1.1 200 OK' }
         its(:stdout) { should include '<userId>admin</userId>' }
       end
+
+    end
+  end
+
+  %w(0 1 2).each do |num|
+    describe "requesting admin user from nexus on port 80 and with legacy URI #{num}" do
+      subject { command("/usr/bin/curl -v -f -X GET -u admin:mypassword http://localhost:80/nexus#{num}/service/local/users/admin 2>&1") }
+      its(:exit_status) { should eq 0 }
+      its(:stdout) { should include 'HTTP/1.1 200 OK' }
+      its(:stdout) { should include '<userId>admin</userId>' }
     end
   end
 

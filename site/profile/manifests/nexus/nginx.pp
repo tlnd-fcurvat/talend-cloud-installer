@@ -63,6 +63,7 @@ class profile::nexus::nginx (
   nginx::resource::vhost { $vhost:
     server_name         => ['_'],
     listen_port         => $listen_port,
+    rewrite_rules       => ['^/nexus[012]/(.*)$ /nexus/$1'],
     location_custom_cfg => {
       'try_files' => "\$uri @${vhost}1" # <- there is always at least 1 nexus instance
     },
