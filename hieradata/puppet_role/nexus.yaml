@@ -16,6 +16,12 @@ profile::nexus::nexus_nodes: "%{::nexus_nodes}"
 profile::nexus::nexus_nodes_port: "%{::nexus_nodes_port}"
 profile::nexus::storage_device: "%{::storage_device}"
 
+limits::fragment:
+  "nexus/soft/nofile":
+    value: '65535'
+  "nexus/hard/nofile":
+    value: '65535'
+
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/srv/sonatype-work/nexus/logs/nexus.log":
     path: '/srv/sonatype-work/nexus/logs/nexus.log'
