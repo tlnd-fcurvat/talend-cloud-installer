@@ -120,4 +120,13 @@ describe 'role::tic_services_internal' do
     its(:content) { should include '"value": "my-branch"' }
   end
 
+  %w(
+    nexus0
+    nexus1
+  ).each do |h|
+    describe host(h) do
+      it { should be_resolvable.by('hosts') }
+    end
+  end
+
 end
