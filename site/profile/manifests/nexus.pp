@@ -50,16 +50,20 @@ allow httpd_t transproxy_port_t:tcp_socket name_connect;
     $_nexus_nodes_port = '8081'
   }
 
+  $java_memory = floor($::memorysize_mb * 0.70)
+
   class { '::profile::common::mount_device':
     device  => $storage_device,
     path    => $nexus_root,
     options => 'noatime,nodiratime'
   } ->
   class { '::nexus':
-    version    => '2.8.0',
-    revision   => '05',
-    nexus_root => $nexus_root, # All directories and files will be relative to this
-    nexus_port => $_nexus_nodes_port,
+    version         => '2.8.0',
+    revision        => '05',
+    nexus_root      => $nexus_root, # All directories and files will be relative to this
+    nexus_port      => $_nexus_nodes_port,
+    java_initmemory => $java_memory,
+    java_maxmemory  => $java_memory
   }
   contain ::nexus
 
