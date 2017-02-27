@@ -17,6 +17,10 @@ profile::common::hosts::entries:
       - "mongo%index%.staging.internal-tipaas.com"
       - "mongo%index%.production.internal-tipaas.com"
       - "mongo%index%"
+  nexus:
+    entries: "%{::nexus_nodes}"
+    aliases:
+      - "nexus%index%"
 
 tic::services::osgi_http_service_port: 8180
 nginx::service_ensure: 'running'

@@ -15,6 +15,10 @@ profile::common::hosts::entries:
       - "mongo%index%.org"
       - "mongo%index%.net"
       - "mongo%index%.io"
+  nexus:
+    entries: '[ "10.0.1.11", "10.0.1.12" ]'
+    aliases:
+      - "nexus%index%"
 
 profile::tic_services::flow_execution_subnets: '["subnet-aaaaaaaa", "subnet-bbbbbbbb", "subnet-cccccccc"]'
 profile::tic_services::nexus_nodes: '[ "10.0.2.12", "10.0.2.23" ]'

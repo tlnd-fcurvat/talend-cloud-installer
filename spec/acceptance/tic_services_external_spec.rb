@@ -84,4 +84,13 @@ describe 'role::tic_services_external' do
     end
   end
 
+  %w(
+    nexus0
+    nexus1
+  ).each do |h|
+    describe host(h) do
+      it { should be_resolvable.by('hosts') }
+    end
+  end
+
 end
