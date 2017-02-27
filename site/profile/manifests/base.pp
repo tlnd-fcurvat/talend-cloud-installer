@@ -39,4 +39,6 @@ class profile::base {
     noop    => false,
   }
 
+  create_resources('limits::fragment', hiera('limits::fragment', {}))
+
 }
