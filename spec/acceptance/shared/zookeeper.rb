@@ -18,4 +18,22 @@ shared_examples 'profile::zookeeper' do
     it { should_not be_installed }
   end
 
+  describe file('/etc/rc.d/init.d/zookeeper') do
+    it { should_not exist }
+  end
+
+  describe file('/etc/init.d/zookeeper') do
+    it { should_not exist }
+  end
+
+  describe service('tomcat-exhibitor') do
+    it { should be_running.under('systemd') }
+  end
+
+  describe command('/usr/bin/curl -v http://127.0.0.1:8080/exhibitor/v1/config/get-state') do
+    its(:stdout) { should include '"clientPort":2181' }
+    its(:stdout) { should include '"connectPort":2888' }
+    its(:stdout) { should include '"electionPort":3888' }
+  end
+
 end
