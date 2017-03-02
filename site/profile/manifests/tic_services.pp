@@ -191,12 +191,12 @@ class profile::tic_services (
   }
 
   if $::environment == 'ami' {
-
-    class {
-      'profile::build_time_facts':
-        facts_hash => {'ipaas_rt_infra_build_version' => $_version}
+    class { 'profile::build_time_facts':
+      facts_hash => {
+        'ipaas_rt_infra_build_version' => $_version,
+        'tic_services_version'         => $_version,
+      }
     }
-
   }
 
   if versioncmp($::ipaas_rt_infra_build_version, '2.0') > 0 {

@@ -25,10 +25,11 @@ class profile::tic_frontend (
   contain ::tic::frontend
 
   if $::environment == 'ami' {
-
-    class {
-      'profile::build_time_facts':
-        facts_hash => {'ipaas_frontend_build_version' => $_version}
+    class { 'profile::build_time_facts':
+      facts_hash => {
+        'ipaas_frontend_build_version' => $_version,
+        'tic_frontend_version'         => $_version,
+      }
     }
   }
 
