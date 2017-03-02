@@ -15,7 +15,7 @@ class profile::tic_frontend (
   if size($version) > 0 {
     $_version = $version
   } else {
-    $_version = 'latest'
+    $_version = 'installed'
   }
 
   class { '::tic::frontend':

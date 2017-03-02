@@ -71,7 +71,7 @@ class profile::tic_services (
   if size($version) > 0 {
     $_version = $version
   } else {
-    $_version = 'latest'
+    $_version = 'installed'
   }
 
   if $cms_nexus_url =~ /.*nexus$/ {
