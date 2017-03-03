@@ -43,7 +43,8 @@ class role::management_proxy(
     listen_port          => '8080',
     auth_basic           => $auth_basic,
     auth_basic_user_file => $auth_basic_user_file,
-    proxy                => $elasticsearch_url
+    proxy                => $elasticsearch_url,
+    location_raw_append  => ['proxy_pass_request_headers off;'],
   }
 
 }

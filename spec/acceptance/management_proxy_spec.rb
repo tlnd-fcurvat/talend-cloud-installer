@@ -17,4 +17,8 @@ describe 'role::management_proxy' do
     its(:content) { should include 'kibana:' }
   end
 
+  describe file('/etc/nginx/sites-available/es-sys.conf') do
+    its(:content) { should include 'proxy_pass_request_headers off;' }
+  end
+
 end
