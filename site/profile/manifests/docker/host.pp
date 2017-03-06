@@ -1,7 +1,7 @@
 #
 # Docker Host profile
 #
-class profile::docker_host (
+class profile::docker::host (
 
   $registry_region,
   $registry_bucket,
