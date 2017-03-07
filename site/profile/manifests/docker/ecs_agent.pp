@@ -64,9 +64,9 @@ class profile::docker::ecs_agent (
       'ECS_DATADIR=/data',
       'ECS_DISABLE_METRICS=false',
       "ECS_CLUSTER=${cluster_name_real}",
-      "ECS_ENABLE_TASK_IAM_ROLE=true",
-      "ECS_ENABLE_TASK_IAM_ROLE_NETWORK_HOST=true",
-      "ECS_AVAILABLE_LOGGING_DRIVERS=[\"json-file\",\"awslogs\"]"
+      'ECS_ENABLE_TASK_IAM_ROLE=true',
+      'ECS_ENABLE_TASK_IAM_ROLE_NETWORK_HOST=true',
+      'ECS_AVAILABLE_LOGGING_DRIVERS=["json-file","awslogs"]'
     ]
   }
 
