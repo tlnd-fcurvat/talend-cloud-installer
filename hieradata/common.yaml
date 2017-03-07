@@ -81,6 +81,12 @@ cloudwatch::metrics:
     comparisonoperator: "GreaterThanThreshold"
 
 docker::version: '1.12.3-1.el7.centos'
-profile::docker::host::registry_region: "%{::region}"
-profile::docker::host::registry_bucket: "%{::registry_bucket}"
-profile::docker::host::registry_prefix: "%{::registry_prefix}"
+docker::run_instance::instance:
+  registry:
+    image: 'registry:2'
+    ports: '127.0.0.1:5000:5000'
+    env:
+      - 'REGISTRY_STORAGE=s3'
+      - 'REGISTRY_STORAGE_S3_REGION=%{::region}'
+      - 'REGISTRY_STORAGE_S3_BUCKET=%{::registry_bucket}'
+      - 'REGISTRY_STORAGE_S3_ROOTDIRECTORY=%{::registry_prefix}'
