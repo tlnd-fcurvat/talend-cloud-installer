@@ -8,4 +8,22 @@ describe 'role::ecs' do
   describe docker_container('amazon-ecs-agent') do
     it { should be_running }
   end
+
+  describe service('docker-amazon-ecs-agent') do
+    it { should be_enabled }
+    it { should be_running }
+  end
+
+  describe file('/var/lib/ecs/data') do
+    it do
+      should be_mounted.with(
+        :type    => 'xfs',
+        :options => {
+          :rw         => true,
+          :noatime    => true,
+          :nodiratime => true
+        }
+      )
+    end
+  end
 end

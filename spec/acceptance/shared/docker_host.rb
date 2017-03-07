@@ -6,6 +6,10 @@ shared_examples 'profile::docker_host' do
     it { is_expected.to be_installed }
   end
 
+  describe command('/usr/bin/sleep 5') do
+    its(:exit_status) { should eq 0 }
+  end
+
   describe docker_container('registry') do
     it { should be_running }
   end
