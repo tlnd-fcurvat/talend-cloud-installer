@@ -177,9 +177,13 @@ suites:
       patterns:
         - 'spec/acceptance/management_proxy_spec.rb'
   - name: role-ecs
+    driver:
+      vagrantfiles:
+        - vagrant/second_disk.rb
     provisioner:
       custom_facts:
         puppet_role: ecs
+        storage_device: /dev/sdb
     verifier:
       patterns:
         - 'spec/acceptance/ecs_spec.rb'

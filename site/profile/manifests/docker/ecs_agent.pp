@@ -3,7 +3,8 @@
 #
 class profile::docker::ecs_agent (
 
-  $cluster_name = undef,
+  $cluster_name   = undef,
+  $storage_device = undef,
 
 ) {
 
@@ -42,6 +43,11 @@ class profile::docker::ecs_agent (
       require     => Package['iptables-services'];
   }
 
+  class { '::profile::common::mount_device':
+    device  => $storage_device,
+    path    => '/var/lib/ecs/data',
+    options => 'noatime,nodiratime'
+  } ->
   docker::run { 'amazon-ecs-agent':
     image   => 'amazon/amazon-ecs-agent:latest',
     net     => 'host',

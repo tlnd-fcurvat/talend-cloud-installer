@@ -2,3 +2,5 @@
 common_packages:
   'iptables-services':
     ensure: 'installed'
+
+profile::docker::ecs_agent::storage_device: "%{::storage_device}"
