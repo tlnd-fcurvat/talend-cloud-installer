@@ -90,3 +90,4 @@ docker::run_instance::instance:
       - 'REGISTRY_STORAGE_S3_REGION=%{::region}'
       - 'REGISTRY_STORAGE_S3_BUCKET=%{::registry_bucket}'
       - 'REGISTRY_STORAGE_S3_ROOTDIRECTORY=%{::registry_prefix}'
+docker::images::images: {}
