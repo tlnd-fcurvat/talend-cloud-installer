@@ -37,5 +37,4 @@ class profile::tic_frontend (
       include 'tic::frontend20'
   }
 
-
 }
