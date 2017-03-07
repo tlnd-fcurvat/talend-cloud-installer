@@ -176,3 +176,10 @@ suites:
     verifier:
       patterns:
         - 'spec/acceptance/management_proxy_spec.rb'
+  - name: role-ecs
+    provisioner:
+      custom_facts:
+        puppet_role: ecs
+    verifier:
+      patterns:
+        - 'spec/acceptance/ecs_spec.rb'
