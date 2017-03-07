@@ -1,0 +1,4 @@
+---
+common_packages:
+  'iptables-services':
+    ensure: 'installed'

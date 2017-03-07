@@ -28,7 +28,8 @@ class profile::docker::ecs_agent (
       proto       => 'tcp',
       chain       => 'PREROUTING',
       jump        => 'DNAT',
-      todest      => '127.0.0.1:51679';
+      todest      => '127.0.0.1:51679',
+      require     => Package['iptables-services'];
 
     '002 redirect port 80 to 51679 of the metadata address':
       table       => 'nat',
@@ -37,7 +38,8 @@ class profile::docker::ecs_agent (
       dport       => '80',
       chain       => 'OUTPUT',
       jump        => 'REDIRECT',
-      toports     => '51679'
+      toports     => '51679',
+      require     => Package['iptables-services'];
   }
 
   docker::run { 'amazon-ecs-agent':
