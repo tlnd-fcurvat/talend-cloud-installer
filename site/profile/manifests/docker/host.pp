@@ -41,8 +41,6 @@ class profile::docker::host (
     dm_thinpooldev              => $dm_thinpooldev,
     dm_use_deferred_removal     => $dm_use_deferred_removal,
     dm_use_deferred_deletion    => $dm_use_deferred_deletion,
-    service_state => 'stopped',
-    service_enable => false,
     repo_opt                    => '',
     require                     => Sysctl['net.ipv4.conf.all.route_localnet', 'vm.max_map_count'],
   }
