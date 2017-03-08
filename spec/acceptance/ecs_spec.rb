@@ -14,16 +14,14 @@ describe 'role::ecs' do
     it { should be_running }
   end
 
-  describe file('/var/lib/ecs/data') do
-    it do
-      should be_mounted.with(
-        :type    => 'xfs',
-        :options => {
-          :rw         => true,
-          :noatime    => true,
-          :nodiratime => true
-        }
-      )
-    end
+  describe command('/usr/sbin/lvs -o+seg_monitor -a docker') do
+    its(:stdout) { should include 'monitored' }
+    its(:stdout) { should include 'data_tdata' }
+    its(:stdout) { should include 'data_tmeta' }
+  end
+
+  describe command('/usr/bin/lsblk -a /dev/sdb') do
+    its(:stdout) { should include 'docker-data_tmeta' }
+    its(:stdout) { should include 'docker-data_tdata' }
   end
 end
