@@ -16,7 +16,7 @@ class profile::docker::ecs_agent (
     $cluster_name_real = $cluster_name
   } elsif $::ec2_userdata {
     $userdata_json     = parsejson($::ec2_userdata, {'cloud_formation' => {'ecs_cluster_name' => undef}})
-    $cluster_name_real = dig($userdata_json, ['cloud_formation', 'ecs_cluster_name'], undef)
+    $cluster_name_real = dig44($userdata_json, ['cloud_formation', 'ecs_cluster_name'], undef)
   } else {
     $cluster_name_real = undef
   }
