@@ -34,8 +34,13 @@ class profile::docker::direct_lvm (
   $lv_convert_lock = '/var/tmp/lv_convert_thin_pool'
   $lv_change_lock = '/var/tmp/lv_change_thin_pool'
 
+  $lv_convert_cmd = "lvconvert -y --zero n -c 512K \
+    --thinpool ${vg_name}/${lv_data_name} \
+    --poolmetadata ${vg_name}/${lv_metadata_name} \
+    && touch ${lv_convert_lock}"
+
   exec { 'Convert the pool to a thin pool':
-    command => "lvconvert -y --zero n -c 512K --thinpool ${vg_name}/${lv_data_name} --poolmetadata ${vg_name}/${lv_metadata_name} && touch ${lv_convert_lock}",
+    command => $lv_convert_cmd,
     creates => $lv_convert_lock,
     path    => ['/usr/bin', '/usr/sbin'],
     require => [Logical_volume[$lv_data_name], Logical_volume[$lv_metadata_name]],
