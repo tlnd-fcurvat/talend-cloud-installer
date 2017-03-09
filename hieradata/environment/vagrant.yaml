@@ -51,4 +51,6 @@ profile::tic_services::test_data_bucket_data: '["td-bucket", "td-prefix"]'
 profile::tic_services::flow_logs_bucket_data: '["fl-bucket", "fl-prefix"]'
 profile::tic_services::downloads_bucket_data: '["dl-bucket", "dl-prefix"]'
 
+profile::docker::registry::storage_driver: 'filesystem'
+
 profile::elasticsearch::security_group: 'sg-889900ff'

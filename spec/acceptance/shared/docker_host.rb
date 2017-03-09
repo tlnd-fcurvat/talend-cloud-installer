@@ -31,6 +31,10 @@ shared_examples 'profile::docker_host' do
   #- Push to your registry
   #  - docker push localhost:5000/test/hello-world:latest
   # Your registry is now ready for this acceptance test
+  describe command('/usr/bin/docker pull hello-world') do
+    its(:exit_status) { should eq 0 }
+  end
+
   describe command('/usr/bin/docker tag hello-world localhost:5000/test/hello-world:latest') do
     its(:exit_status) { should eq 0 }
   end
