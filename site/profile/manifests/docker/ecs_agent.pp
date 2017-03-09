@@ -5,6 +5,7 @@ class profile::docker::ecs_agent (
 
   $cluster_name = undef,
   $running      = true,
+  $image        = 'amazon/amazon-ecs-agent:v1.14.0',
 
 ) {
 
@@ -45,7 +46,7 @@ class profile::docker::ecs_agent (
 
   docker::run { 'amazon-ecs-agent':
     running => $running,
-    image   => 'amazon/amazon-ecs-agent:latest',
+    image   => $image,
     net     => 'host',
     volumes => [
       '/var/run/docker.sock:/var/run/docker.sock',
