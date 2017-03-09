@@ -46,4 +46,9 @@ shared_examples 'profile::docker_host' do
   describe docker_image('localhost:5000/test/hello-world:latest') do
     its(['Config.Cmd']) { should include '/hello' }
   end
+
+  describe file('/var/lib/registry/docker/registry/v2/repositories/test/hello-world/_manifests/tags/latest') do
+    it { should exist }
+    it { should be_directory }
+  end
 end
