@@ -45,15 +45,6 @@ tic::services::init_configuration_service::password: "%{::services_password}"
 
 activemq::persistence: 'kahadb'
 
-docker::run_instance::instance:
-  registry:
-    image: 'registry:2'
-    ports: '127.0.0.1:5000:5000'
-    env:
-      - 'REGISTRY_STORAGE=filesystem'
-docker::images::images:
-  'hello-world': {}
-
 profile::tic_services::ams_password_reset_url_template: "https://my-password-reset-host.com"
 profile::tic_services::rejected_data_bucket_data: '["rd-bucket", "rd-prefix"]'
 profile::tic_services::test_data_bucket_data: '["td-bucket", "td-prefix"]'
