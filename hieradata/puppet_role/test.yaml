@@ -6,6 +6,17 @@ common_packages:
   'zip':
     ensure: 'present'
 
+docker::version: '1.12.3-1.el7.centos'
+
+profile::docker::host::storage_device: "%{::storage_device}"
+
+profile::docker::registry::running: true
+profile::docker::registry::image: 'registry:2'
+profile::docker::registry::storage_driver: 's3'
+profile::docker::registry::s3_region: '%{::region}'
+profile::docker::registry::s3_bucket: '%{::registry_bucket}'
+profile::docker::registry::s3_prefix: '%{::registry_prefix}'
+
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/var/log/rt_test.log":
     path: '/var/log/rt_test.log'

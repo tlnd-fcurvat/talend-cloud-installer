@@ -80,4 +80,3 @@ cloudwatch::metrics:
     threshold         : 80
     comparisonoperator: "GreaterThanThreshold"
 
-docker::version: '1.12.3-1.el7.centos'

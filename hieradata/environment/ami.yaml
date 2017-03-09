@@ -16,9 +16,10 @@ profile::postgresql::service_enable: false
 profile::postgresql::create_databases: false
 
 # Docker
-profile::docker::ecs_agent::running: false
 docker::service_state: 'stopped'
 docker::service_enable: false
+profile::docker::registry::running: false
+profile::docker::ecs_agent::running: false
 
 nexus::service_ensure: 'stopped'
 nexus::service_enable: false
