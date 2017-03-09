@@ -5,6 +5,7 @@ class role::test {
 
   require ::profile::base
   require ::profile::docker::host
+  require ::profile::docker::registry
   require ::pip
 
   role::register_role { 'test': }
