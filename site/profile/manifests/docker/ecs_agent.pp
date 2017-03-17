@@ -22,26 +22,28 @@ class profile::docker::ecs_agent (
     $cluster_name_real = undef
   }
 
-  firewall {
-    '001 forward the metadata address to the ecsagent container':
-      table       => 'nat',
-      destination => '169.254.170.2',
-      dport       => '80',
-      proto       => 'tcp',
-      chain       => 'PREROUTING',
-      jump        => 'DNAT',
-      todest      => '127.0.0.1:51679',
-      require     => Package['iptables-services'];
+  if $running {
+    firewall {
+      '001 forward the metadata address to the ecsagent container':
+        table       => 'nat',
+        destination => '169.254.170.2',
+        dport       => '80',
+        proto       => 'tcp',
+        chain       => 'PREROUTING',
+        jump        => 'DNAT',
+        todest      => '127.0.0.1:51679',
+        require     => Package['iptables-services'];
 
-    '002 redirect port 80 to 51679 of the metadata address':
-      table       => 'nat',
-      destination => '169.254.170.2',
-      proto       => 'tcp',
-      dport       => '80',
-      chain       => 'OUTPUT',
-      jump        => 'REDIRECT',
-      toports     => '51679',
-      require     => Package['iptables-services'];
+      '002 redirect port 80 to 51679 of the metadata address':
+        table       => 'nat',
+        destination => '169.254.170.2',
+        proto       => 'tcp',
+        dport       => '80',
+        chain       => 'OUTPUT',
+        jump        => 'REDIRECT',
+        toports     => '51679',
+        require     => Package['iptables-services'];
+    }
   }
 
   docker::run { 'amazon-ecs-agent':
