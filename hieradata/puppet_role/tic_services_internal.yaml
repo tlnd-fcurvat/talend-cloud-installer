@@ -108,8 +108,8 @@ tic::services::dispatcher_response_queue: "ipaas.talend.dispatcher.response.queu
 
 tic::services::tipaas_email_subject: "Confirmation Required for Talend Integration Cloud Trial"
 
-tic::services20::scim_service_node: "%{::scim_internal_elb_dns_name}"
-tic::services20::iam_service_node: "%{::iam_internal_elb_dns_name}"
+tic::services20::scim_service_url: "%{::tpsvc_iam_scim_back_url}"
+tic::services20::iam_service_url: "%{::tpsvc_iam_server_front_url}"
 
 tic::services::notification_subscription_memcached_host: "%{::memcache_nodes}"
 
