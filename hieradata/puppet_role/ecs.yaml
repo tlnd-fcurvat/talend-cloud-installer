@@ -13,5 +13,8 @@ profile::docker::ecs_agent::image: 'amazon/amazon-ecs-agent:v1.14.1'
 
 profile::docker::registry::running: true
 profile::docker::registry::image: 'registry:2'
-profile::docker::registry::storage_driver: 'filesystem'
+profile::docker::registry::storage_driver: '%{::registry_storage_driver}'
 profile::docker::registry::filesystem_device: '%{::registry_device}'
+profile::docker::registry::s3_region: '%{::registry_s3_region}'
+profile::docker::registry::s3_bucket: '%{::registry_s3_bucket}'
+profile::docker::registry::s3_prefix: '%{::registry_s3_prefix}'
