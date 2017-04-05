@@ -11,6 +11,7 @@ profile::docker::ecs_agent::running: true
 profile::docker::ecs_agent::cluster_name: "%{::cluster_name}"
 profile::docker::ecs_agent::image: 'amazon/amazon-ecs-agent:v1.14.1'
 
+profile::docker::registry::ensure: '%{::registry_ensure}'
 profile::docker::registry::running: true
 profile::docker::registry::image: 'registry:2'
 profile::docker::registry::storage_driver: '%{::registry_storage_driver}'
