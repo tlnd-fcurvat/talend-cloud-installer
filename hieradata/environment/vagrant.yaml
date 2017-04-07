@@ -43,6 +43,11 @@ sudo::configs:
 tic::services::init_configuration_service::username: "%{::services_username}"
 tic::services::init_configuration_service::password: "%{::services_password}"
 
+tic::frontend20::client_app_oidc_clientId: "iam-client"
+tic::frontend20::client_app_oidc_clientSecret: "iam-client-secret"
+tic::frontend20::server_app_oidc_clientId: "iam-server"
+tic::frontend20::server_app_oidc_clientSecret: "iam-server-secret"
+
 activemq::persistence: 'kahadb'
 
 profile::tic_services::ams_password_reset_url_template: "https://my-password-reset-host.com"
