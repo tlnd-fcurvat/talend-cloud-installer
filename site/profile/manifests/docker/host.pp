@@ -42,6 +42,8 @@ class profile::docker::host (
     dm_use_deferred_removal     => $dm_use_deferred_removal,
     dm_use_deferred_deletion    => $dm_use_deferred_deletion,
     repo_opt                    => '',
+    icc                         => false,
+    iptables                    => true,
     require                     => Sysctl['net.ipv4.conf.all.route_localnet', 'vm.max_map_count'],
   }
 
