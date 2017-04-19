@@ -47,6 +47,6 @@ profile::kafka::kafka_topics_config:
   container-manager:
     replication_factor: "%{::topics_replication_factor}"
     partitions: "%{::topics_partitions}"
-  container-event:
+  container-events:
     replication_factor: "%{::topics_replication_factor}"
     partitions: "%{::topics_partitions}"
