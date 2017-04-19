@@ -74,5 +74,8 @@ shared_examples 'profile::kafka' do
     subject { command('/opt/kafka/bin/kafka-topics.sh --list --zookeeper "'+ zookeepernodes + '"').stdout }
     it { should include 'tpsvclogs' }
     it { should include 'zipkin' }
+    it { should include 'dispatcher' }
+    it { should include 'container-manager' }
+    it { should include 'container-event' }
   end
 end

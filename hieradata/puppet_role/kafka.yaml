@@ -41,3 +41,12 @@ profile::kafka::kafka_topics_config:
   zipkin:
     replication_factor: "%{::topics_replication_factor}"
     partitions: "%{::topics_partitions}"
+  dispatcher:
+    replication_factor: "%{::topics_replication_factor}"
+    partitions: "%{::topics_partitions}"
+  container-manager:
+    replication_factor: "%{::topics_replication_factor}"
+    partitions: "%{::topics_partitions}"
+  container-event:
+    replication_factor: "%{::topics_replication_factor}"
+    partitions: "%{::topics_partitions}"
