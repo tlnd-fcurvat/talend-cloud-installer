@@ -23,6 +23,8 @@ GEM
     kitchen-puppet (1.42.0)
       net-ssh (~> 3)
       test-kitchen (~> 1.4)
+    kitchen-ssh (0.0.12)
+      minitar (~> 0.5)
     kitchen-sync (2.1.1)
       net-sftp
       test-kitchen (>= 1.0.0)
@@ -136,6 +138,7 @@ PLATFORMS
 
 DEPENDENCIES
   kitchen-puppet
+  kitchen-ssh
   kitchen-sync
   kitchen-vagrant
   kitchen-verifier-serverspec
