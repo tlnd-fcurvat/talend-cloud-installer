@@ -129,6 +129,7 @@ tic::services::cms_dts_service_url: "%{::dts_host}"
 tic::services::cms_lts_service_url: "%{::lts_host}"
 tic::services::lts_service_url: "%{::lts_host}"
 tic::services::cms_amq_broker_url: "%{::activemq_host}"
+tic::services20::crypto_service_url: "%{::tpsvc_crypto_url}"
 
 cloudwatchlog_files:
   "/talend/tic/%{::main_stack}/%{::puppet_role}/opt/talend/ipaas/rt-infra/data/log/karaf.log":
@@ -173,3 +174,7 @@ tic::services::karaf_features_install:
   - 'tipaas-pairing-service'
   - 'tipaas-webhooks-service'
   - 'tipaas-logs-transfer-service-core'
+
+tic::services20::karaf_features_install:
+  - 'tipaas-account-manager-service'
+  - 'tipaas-tpsvc-crypto-client'
