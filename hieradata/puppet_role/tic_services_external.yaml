@@ -28,6 +28,9 @@ nginx::nginx_vhosts:
   tic_services:
     listen_port: 8181
     proxy: 'http://localhost:8180/'
+    vhost_cfg_prepend:
+      proxy_intercept_errors: 'on'
+      error_page: '500 501 502 503 504 505 506 507 508 509 510 511 @5xx.html'
   webhooks:
     listen_port: 8182
     proxy: 'http://localhost:8181/services/webhooks-service/'
@@ -42,6 +45,12 @@ nginx::nginx_vhosts:
     proxy: 'http://localhost:8181/services/pairing-service/'
 
 nginx::nginx_locations:
+  5xx_error:
+    location: '@5xx.html'
+    vhost: 'tic_services'
+    location_custom_cfg:
+      internal: ''
+      return: '500'
   webhooks_status:
     location: '/status'
     vhost: 'webhooks'

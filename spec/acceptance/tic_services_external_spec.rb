@@ -69,6 +69,11 @@ describe 'role::tic_services_external' do
     it { should include 'object.key.prefix=td-prefix' }
   end
 
+  describe 'Custom Error page' do
+    subject { command('/usr/bin/curl -X POST "http://localhost:8181/services/logs-transfer-service-runtime/as<h1>dasd"').stdout }
+    it { should_not include 'Powered by Jetty' }
+  end
+
   %w(
     mongo0.com
     mongo0.net
