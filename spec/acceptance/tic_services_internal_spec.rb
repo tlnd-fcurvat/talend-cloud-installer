@@ -18,7 +18,7 @@ describe 'role::tic_services_internal' do
     its(:stdout) { should_not include 'Data Transfer Service :: Core' }
   end
 
-  describe service('rt-infra-service') do
+  describe service('karaf') do
     it { should be_enabled }
     it { should be_running.under('systemd') }
   end
@@ -56,7 +56,7 @@ describe 'role::tic_services_internal' do
   end
 
   describe 'Service configuration' do
-    subject { file('/opt/talend/ipaas/rt-infra/etc/rt-infra-service-wrapper.conf').content }
+    subject { file('/opt/talend/ipaas/rt-infra/etc/karaf-wrapper.conf').content }
     it { should match /wrapper.jvm_kill.delay\s*=\s*5/ }
     it { should match /wrapper.java.additional.10\s*=\s*-XX:MaxPermSize=256m/ }
     it { should match /wrapper.java.additional.11\s*=\s*-Dcom.sun.management.jmxremote.port=7199/ }
