@@ -39,6 +39,12 @@ profile::mongodb::users:
         db: 'admin'
       - role: 'dbOwner'
         db: 'ipaas'
+  tpsvc_config:
+    db_address: 'configuration'
+    password: "%{::master_password}"
+    roles:
+      - role: 'dbAdmin'
+        db: 'configuration'
   backup:
     db_address: 'admin'
     username: 'backup'
