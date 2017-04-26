@@ -4,6 +4,6 @@ class profile::common::jsons (
 
 ) {
 
-  create_resources('profile::common::json', $files)
+  create_resources('profile::common::json', pick_default($files, {}))
 
 }
