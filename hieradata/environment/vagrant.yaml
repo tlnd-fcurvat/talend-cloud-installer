@@ -59,3 +59,15 @@ profile::tic_services::downloads_bucket_data: '["dl-bucket", "dl-prefix"]'
 profile::docker::registry::storage_driver: 'filesystem'
 
 profile::elasticsearch::security_group: 'sg-889900ff'
+
+profile::common::jsons::files:
+  myjson_file.json:
+    foldername: '/opt/my_jsons'
+    data:
+      some_string: "some_value"
+      some_strings:
+        - string1
+        - string2
+      some_urls:
+        - "https://url1.com/uri"
+        - "http://localhost/uri"

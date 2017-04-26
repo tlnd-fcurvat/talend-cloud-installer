@@ -24,4 +24,10 @@ describe 'role::ecs' do
     its(:stdout) { should include 'docker-data_tmeta' }
     its(:stdout) { should include 'docker-data_tdata' }
   end
+
+  describe file('/opt/my_jsons/myjson_file.json') do
+    its(:content) { should include '"some_string":"some_value"' }
+    its(:content) { should include '"some_strings":["string1","string2"]' }
+    its(:content) { should include '"some_urls":["https://url1.com/uri","http://localhost/uri"]' }
+  end
 end
