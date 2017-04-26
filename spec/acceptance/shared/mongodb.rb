@@ -43,6 +43,18 @@ shared_examples 'profile::mongodb' do
     its(:stdout) { should include '{"role":"dbAdmin","db":"configuration"}' }
   end
 
+  describe command('/usr/bin/mongo -u backup -p mypassword admin --eval "printjson(db.getUser(\'backup\'));" | /usr/bin/tr -d "\t\n "') do
+    its(:stdout) { should include '{"role":"backupRole","db":"admin"}' }
+  end
+
+  describe command('/usr/bin/mongo -u monitor -p mypassword admin --eval "printjson(db.getUser(\'monitor\'));" | /usr/bin/tr -d "\t\n "') do
+    its(:stdout) { should include '{"role":"clusterMonitor","db":"admin"}' }
+  end
+
+  describe command('/usr/bin/mongo -u datadog -p mypassword admin --eval "printjson(db.getUser(\'datadog\'));" | /usr/bin/tr -d "\t\n "') do
+    its(:stdout) { should include '{"role":"clusterMonitor","db":"admin"}' }
+  end
+
   describe 'Logrotate configuration' do
     subject { file('/etc/logrotate.d/mongodb_log').content }
     it { should include '/var/log/mongodb/mongod.log' }
