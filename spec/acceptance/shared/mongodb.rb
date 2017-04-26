@@ -39,6 +39,10 @@ shared_examples 'profile::mongodb' do
     its(:stdout) { should include '{"role":"dbOwner","db":"ipaas"}' }
   end
 
+  describe command('/usr/bin/mongo -u tpsvc_config -p mypassword configuration --eval "printjson(db.getUser(\'tpsvc_config\'));" | /usr/bin/tr -d "\t\n "') do
+    its(:stdout) { should include '{"role":"dbAdmin","db":"configuration"}' }
+  end
+
   describe 'Logrotate configuration' do
     subject { file('/etc/logrotate.d/mongodb_log').content }
     it { should include '/var/log/mongodb/mongod.log' }
