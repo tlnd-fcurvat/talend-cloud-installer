@@ -12,6 +12,10 @@ class profile::mongodb (
   $storage_device      = undef,
   $users               = {},
   $roles               = {},
+  $collections         = {},
+  $admin_username      = 'admin',
+  $admin_password      = undef,
+  $admin_roles         = [{'role'=>'root', 'db'=>'admin'}, {'role'=>'dbOwner', 'db'=>'ipaas'}]
 
 ) {
 
@@ -83,6 +87,21 @@ class profile::mongodb (
   } ->
   class { '::profile::mongodb::users':
     users => $users,
+  } ->
+  class { '::profile::mongodb::collections':
+    collections => $collections,
+  }
+
+  if $_mongo_auth_enable {
+    validate_string($admin_password)
+    profile::mongodb::user {'db_admin_user':
+      username   => $admin_username,
+      password   => $admin_password,
+      db_address => 'admin',
+      roles      => $admin_roles,
+      before     => Class['profile::mongodb::users', 'profile::mongodb::roles'],
+      require    => Class['mongodb::client'],
+    }
   }
 
   if $storage_device {

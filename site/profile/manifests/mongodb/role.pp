@@ -16,11 +16,23 @@ define profile::mongodb::role (
     $privileges_str = regsubst(to_json_ex($privileges), '\"', '\\"', 'G')
     $roles_str      = regsubst(to_json_ex($roles), '\"', '\\"', 'G')
 
-    $create_role_cmd = "/usr/bin/mongo ${db_address} --eval \"db.createRole({ \
-      role: '${rolename}', \
-      privileges: ${privileges_str}, \
-      roles: ${roles_str} \
-    });\" && /bin/touch ${lock_name}"
+    if str2bool($profile::mongodb::replset_auth_enable) {
+      $create_role_cmd = "/usr/bin/mongo ${db_address} \
+        -u ${profile::mongodb::admin_username} \
+        -p ${profile::mongodb::admin_password} \
+        --authenticationDatabase admin \
+        --eval \"db.createRole({ \
+        role: '${rolename}', \
+        privileges: ${privileges_str}, \
+        roles: ${roles_str} \
+      });\" && /bin/touch ${lock_name}"
+    } else {
+      $create_role_cmd = "/usr/bin/mongo ${db_address} --eval \"db.createRole({ \
+        role: '${rolename}', \
+        privileges: ${privileges_str}, \
+        roles: ${roles_str} \
+      });\" && /bin/touch ${lock_name}"
+    }
 
     exec { "Create MongoDB role : ${rolename}":
       command => $create_role_cmd,
