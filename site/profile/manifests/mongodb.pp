@@ -3,7 +3,7 @@
 #
 class profile::mongodb (
 
-  $mongodb_nodes       = '', # A string f.e. '[ "10.0.2.12", "10.0.2.23" ]'
+  $mongodb_nodes       = "[ ${::ipaddress} ]", # A string f.e. '[ "10.0.2.12", "10.0.2.23" ]'
   $shared_key          = undef,
   $replset_auth_enable = false,
   $service_ensure      = 'running',
