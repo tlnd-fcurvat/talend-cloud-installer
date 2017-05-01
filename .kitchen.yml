@@ -122,6 +122,7 @@ suites:
         puppet_role: mongodb
         cfn_resource_name: InstanceA
         storage_device: /dev/sdb
+        mongo_replset_auth_enable: true
     verifier:
       patterns:
         - 'spec/acceptance/mongodb_spec.rb'

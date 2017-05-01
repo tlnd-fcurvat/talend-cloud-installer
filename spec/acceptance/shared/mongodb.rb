@@ -32,26 +32,29 @@ shared_examples 'profile::mongodb' do
     its(:stdout) { should include 'xfs' }
   end
 
-  describe command('/usr/bin/mongo -u admin -p mypassword ipaas --eval "printjson(db.getUser(\'admin\'));" | /usr/bin/tr -d "\t\n "') do
+  describe command('/usr/bin/mongo --authenticationDatabase "admin" -u admin -p mypassword ipaas --eval "printjson(db.getUser(\'admin\'));" | /usr/bin/tr -d "\t\n "') do
     its(:stdout) { should include '{"role":"userAdminAnyDatabase","db":"admin"}' }
     its(:stdout) { should include '{"role":"dbAdminAnyDatabase","db":"admin"}' }
     its(:stdout) { should include '{"role":"readWriteAnyDatabase","db":"admin"}' }
+  end
+
+  describe command('/usr/bin/mongo --authenticationDatabase "ipaas" -u admin -p mypassword ipaas --eval "printjson(db.getUser(\'admin\'));" | /usr/bin/tr -d "\t\n "') do
     its(:stdout) { should include '{"role":"dbOwner","db":"ipaas"}' }
   end
 
-  describe command('/usr/bin/mongo -u tpsvc_config -p mypassword configuration --eval "printjson(db.getUser(\'tpsvc_config\'));" | /usr/bin/tr -d "\t\n "') do
+  describe command('/usr/bin/mongo --authenticationDatabase "configuration" -u tpsvc_config -p mypassword configuration --eval "printjson(db.getUser(\'tpsvc_config\'));" | /usr/bin/tr -d "\t\n "') do
     its(:stdout) { should include '{"role":"dbAdmin","db":"configuration"}' }
   end
 
-  describe command('/usr/bin/mongo -u backup -p mypassword admin --eval "printjson(db.getUser(\'backup\'));" | /usr/bin/tr -d "\t\n "') do
+  describe command('/usr/bin/mongo --authenticationDatabase "admin" -u backup -p mypassword admin --eval "printjson(db.getUser(\'backup\'));" | /usr/bin/tr -d "\t\n "') do
     its(:stdout) { should include '{"role":"backupRole","db":"admin"}' }
   end
 
-  describe command('/usr/bin/mongo -u monitor -p mypassword admin --eval "printjson(db.getUser(\'monitor\'));" | /usr/bin/tr -d "\t\n "') do
+  describe command('/usr/bin/mongo --authenticationDatabase "admin" -u monitor -p mypassword admin --eval "printjson(db.getUser(\'monitor\'));" | /usr/bin/tr -d "\t\n "') do
     its(:stdout) { should include '{"role":"clusterMonitor","db":"admin"}' }
   end
 
-  describe command('/usr/bin/mongo -u datadog -p mypassword admin --eval "printjson(db.getUser(\'datadog\'));" | /usr/bin/tr -d "\t\n "') do
+  describe command('/usr/bin/mongo --authenticationDatabase "admin" -u datadog -p mypassword admin --eval "printjson(db.getUser(\'datadog\'));" | /usr/bin/tr -d "\t\n "') do
     its(:stdout) { should include '{"role":"clusterMonitor","db":"admin"}' }
   end
 
