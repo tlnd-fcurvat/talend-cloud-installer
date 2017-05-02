@@ -28,8 +28,6 @@ common_packages:
     provider: 'pip'
   'ntp':
     ensure: 'installed'
-  'python-virtualenv':
-    ensure: 'installed'
 
 packagecloud_repos:
   'talend/other':
