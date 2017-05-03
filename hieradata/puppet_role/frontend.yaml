@@ -26,6 +26,7 @@ tic::frontend::elasticsearch_port: "9200"
 
 tic::frontend20::scim_service_url: "%{::tpsvc_iam_scim_back_url}"
 tic::frontend20::crypto_service_url: "%{::tpsvc_crypto_url}"
+tic::frontend20::iam_oidc_front_url: "%{::tpsvc_iam_oidc_front_url}"
 
 tic::frontend::account_manager_nodes: "%{::tic_services_internal_nodes}"
 tic::frontend::artifact_manager_nodes: "%{::tic_services_internal_nodes}"
