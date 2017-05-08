@@ -20,6 +20,7 @@ tic::frontend::sts_host: '%{::syncope_nodes}'
 tic::frontend::sts_username: 'admin'
 tic::frontend::sts_password: "%{::master_password}"
 tic::frontend::elasticache_address: "%{::memcache_nodes}"
+tic::frontend::workspace_url: "/ipaas/services"
 
 tic::frontend::elasticsearch_host: "%{::elasticsearch_nodes}"
 tic::frontend::elasticsearch_port: "9200"
